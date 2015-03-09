@@ -16,9 +16,9 @@ This is what a sample receipt looks like:
 Version 1
 ---------
 
-Implement a system that contains the business logic to produce receipts similar to this. A sample `.json` file has been provided with the list of products sold at this particular coffee shop.
+Implement a system that contains the business logic to produce receipts similar to this, based on a `json` price list and test orders. A sample `.json` file has been provided with the list of products sold at this particular coffee shop. 
 
-Here are some sample orders - whether you use this information is up to you:
+Here are some sample orders you can try - whether you use this information is up to you:
 
 > **Jane**  
 > 2 x Cafe Latte  
@@ -30,12 +30,13 @@ Here are some sample orders - whether you use this information is up to you:
 > 2 x Tiramisu  
 > 5 x Blueberry Muffin  
 
-Your receipt must calculate and show the correct amount of tax (in this shop's case, 8.64%). Do not worry about calculating discounts at this point!
+Your receipt must calculate and show the correct amount of tax (in this shop's case, 8.64%), as well as correct line totals and and total amount. Do not worry about calculating discounts or change yet. Consider what output formats may be suitable.
 
 Version 2
 ---------
 
-Add functionality to handle discounts - in this example, a 5% discount on orders over $50, and a 10% muffin discount.
+- Add functionality to take payment and calculate correct change.  
+- Add functionality to handle discounts - in this example, a 5% discount on orders over $50, and a 10% muffin discount.
 
 Version 3
 ---------
