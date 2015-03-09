@@ -20,12 +20,12 @@ Implement a system that contains the business logic to produce receipts similar 
 
 Here are some sample orders - whether you use this information is up to you:
 
-> **Jane**
+> **Jane**  
 > 2 x Cafe Latte  
 > 1 x Blueberry Muffin  
 > 1 x Choc Mudcake  
 >
-> **John**
+> **John**  
 > 4 x Americano  
 > 2 x Tiramisu  
 > 5 x Blueberry Muffin  
