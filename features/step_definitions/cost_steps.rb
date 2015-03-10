@@ -12,5 +12,5 @@ When(/^I look at the receipt$/) do
 end
 
 Then(/^I should see "(.*?)"$/) do |item|
-  expect(receipt.print).to have_contents item
+  expect(receipt.show_breakdown).to have_contents item
 end
