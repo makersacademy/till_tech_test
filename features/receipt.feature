@@ -9,7 +9,7 @@ Feature: Receipt
     And I have ordered "Cafe Latte"
     Then my receipt shows an itemized list of my order 
 
-  Scenario: Receipt Footer
+  Scenario: Multiple orders 
     Given I am at a cafe
     And I have ordered "Spaghetti"
     And I have ordered "Wine"

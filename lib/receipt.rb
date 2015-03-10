@@ -1,13 +1,14 @@
 class Receipt
-  attr_reader :orders
+  attr_reader :orders, :location
 
-  def initialize orders
-    @orders = orders
+  def initialize orders, location
+    @orders  = orders
+    @location  = location
   end
 
   def receipt_footer 
     {subtotal: calculate_total,
-     tax: calculate_tax(0.04),
+     tax: location.calculate(calculate_total),
      total: calculate_total + calculate_tax(0.04)}
   end
 

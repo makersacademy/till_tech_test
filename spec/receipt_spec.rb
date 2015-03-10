@@ -4,7 +4,8 @@ describe Receipt do
 
   let(:spaghetti_order) { double('order', cost: 5.0, name: 'spaghetti',:cost= => nil)}
   let(:coffee_order)    { double('coffee',cost: 3.0, name: 'coffee' ,  :cost= => nil)}
-  let(:receipt) { Receipt.new([spaghetti_order, spaghetti_order])}
+  let(:cafe)            { double('Cafe', calculate: 0.4 )}
+  let(:receipt) { Receipt.new([spaghetti_order, spaghetti_order], cafe)}
 
   describe 'outputs order information' do
 
@@ -15,7 +16,7 @@ describe Receipt do
     end
 
     it 'about two orders of a different kind' do
-      receipt = Receipt.new([spaghetti_order, coffee_order, coffee_order]) 
+      receipt = Receipt.new([spaghetti_order, coffee_order, coffee_order], cafe) 
 
       expect(receipt.print[:items]).to eq(
         [ { name: 'spaghetti', quantity: 1, cost:   5.0 },
