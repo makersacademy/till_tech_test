@@ -1,24 +1,22 @@
 require 'byebug'
 
-
-Given(/^I am at "(.*?)"$/) do |arg1|
-  @till = Till.new(example["prices"].sample)
+Given /^I am at a cafe(?: with a sales tax of "(.*?)")?$/ do |tax_rate|
+  @till = Till.new
+  @till.tax_rate = tax_rate.to_f || 0.04
 end
 
-Given(/^I have ordered "(\d*?)" "(.*?)"$/) do |quantity, item|
-  quantity.to_i.times do
-    @till.receive_order(Order.new(item))
-  end
+Given /^I have ordered "(.*?)" at a cost of "(.*?)"$/ do |item, price|
+  @till.receive_order(Order.new(item), price.to_f)
 end
 
-Then(/^I should have "(.*?)" on my receipt$/) do |arg1|
-  expect(@till.receipt[:items]).to eq(
-    [{name: 'Cafe Latte',
-      quantity: 2,
-      cost: 9.5 }])
+Then(/^my receipt should show "(.*?)" with a quantity of "(.*?)" and a cost of "(.*?)"$/) do |name, quantity, cost|
+  expect(@till.receipt[:items]).to eq([{
+    name:     name,
+    quantity: quantity.to_i,
+    cost:     cost.to_f}])
 end
 
-def example
-  JSON.parse(File.read('./features/support/shop_examples.json')).sample
+Then(/^my receipt should show a total of "(.*?)"$/) do |total|
+  expect(@till.receipt[:total]).to eq total.to_f
 end
 
