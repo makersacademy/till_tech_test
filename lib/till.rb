@@ -1,14 +1,19 @@
+require './lib/receipt'
+
 class Till
 
+  attr_reader :receipt
+
   def initialize(shop_information)
+    @order_information = {}
   end
 
-  def receive_order(item)
+  def receive_order(order)
 
   end
 
-  def print_receipt
-    {:items=>[[2, "Caffe Latte", 4.75]]}
+  def receipt 
+    Receipt.new(@order_information) 
   end
 
 end
