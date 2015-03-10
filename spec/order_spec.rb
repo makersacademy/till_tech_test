@@ -8,4 +8,5 @@ describe Order do
     
     expect(order.price).to eq 3
   end
+
 end

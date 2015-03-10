@@ -6,6 +6,5 @@ class Order
     @name = name 
   end
 
-
-
 end
+
