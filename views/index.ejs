@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+</head>
+
+<body>
+
+<div ng-app="" ng-init="quantity=1;cost=5;">
+Quantity: <input type="number"    ng-model="quantity">
+<p>Total in quidz: {{ quantity * cost}}</p>
+<p>Tax (8.64%): {{((quantity * cost) / 100 * 8.64) | number:2 }}</p>
+<p>Total(tax deducted): {{ quantity * cost - ((quantity * cost) / 100 * 8.64) | number:2 }}</p>
+</div>
+
+</body>
+</html>
