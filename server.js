@@ -2,6 +2,7 @@
 var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
+var recepitInfo = require('./public/js/receiptinfo.js')
 
 // Router
 var index = require('./routes/index');
@@ -15,7 +16,7 @@ app.use('/', index);
 app.set('port', (process.env.PORT || 3000));
 
 server.listen(app.get('port'), function(){
-  console.log('Server runing at' + app.get('port'));
+  console.log('Hipsters running at ' + app.get('port'));
 });
 
 module.exports = server;
