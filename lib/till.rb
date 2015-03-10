@@ -27,8 +27,4 @@ class Till
 		Time.now.strftime("%d/%m/%Y %H:%M")
 	end
 
-	def print_out_order
-		puts @complete_order
-	end
-
 end
