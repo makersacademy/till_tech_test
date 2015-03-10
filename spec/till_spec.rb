@@ -15,7 +15,8 @@ describe 'a till' do
 
     it 'should be capable of receiving an item and a quantity' do
       @till.add_order_item(item: "banana", quantity: 7)
-      expect(@till.order).to eq({"banana" => 7})
+      expect(@till.order.first[:item]).to eq("banana")
+      expect(@till.order.first[:quantity]).to eq(7)
     end
 
     it 'should be capable of receiving multiple items and quantity' do
@@ -32,18 +33,23 @@ describe 'a till' do
 
   end
 
-  describe 'calculating the cost of an order' do
+  describe 'calculating the cost of an order line' do
 
     it 'should load the prices when till initialised' do
       expect(@till.prices.length).to eq(15)
     end
 
-    it 'should know the price of each item ordered - Cafe Latte' do
-      expect(@till.price_of("Cafe Latte")). to eq(4.75)
+    it 'should know the price of each item - Cafe Latte' do
+      expect(@till.price_of("Cafe Latte")).to eq(4.75)
     end
 
-    it 'should know the price of each item ordered - Affogato' do
-      expect(@till.price_of("Affogato")). to eq(14.80)
+    it 'should know the price of each item - Affogato' do
+      expect(@till.price_of("Affogato")).to eq(14.80)
+    end
+
+    it 'should add the unit price of the item to the order' do
+      @till.add_order_item(item: "Cafe Latte", quantity: 1)
+      expect(@till.order.first[:unit_price]).to eq(4.75)
     end
 
 
