@@ -17,11 +17,12 @@ module.exports = function() {
   });
 
   this.Then(/^The hipster list contains a single item$/, function(callback) {
-    assert.equal(myList.getAll().length, 1, 'Grocery List should grow by one item.');
+    assert.equal(myList.getAll().length, 1, 'Hipster List should grow by one item.');
     callback();
   });
 
   this.Then(/^I can access that item from the hipster list$/, function(callback) {
+    assert.notEqual(myList.getItemIndex(listItem), -1, 'Added item should be found at non-negaive index,');
     callback();
   });
 
