@@ -5,6 +5,7 @@ module.exports = function() {
 
   var myList;
     listItem = 'coffee'
+    itemCost = 4
 
   this.Given(/^I have an empty hipster list$/, function(callback) {
     myList = HipsterList.create();
@@ -21,8 +22,18 @@ module.exports = function() {
     callback();
   });
 
+  this.Then(/^The hipster list contains two items$/, function(callback) {
+    assert.equal(myList.getAll().length, 2, 'Hipster List should grow by one item.');
+    callback();
+  });
+
   this.Then(/^I can access that item from the hipster list$/, function(callback) {
-    assert.notEqual(myList.getItemIndex(listItem), -1, 'Added item should be found at non-negaive index,');
+    assert.notEqual(myList.getItemIndex(listItem), -1, 'Added item should not be found at non-negaive index,');
+    callback();
+  });
+
+  this.Then(/^I can find out how much it costs$/, function(callback){
+    assert.equal(myList.getValueOf(listItem), 4);
     callback();
   });
 
