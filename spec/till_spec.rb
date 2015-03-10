@@ -14,19 +14,19 @@ describe 'a till' do
     end
 
     it 'should be capable of receiving an item and a quantity' do
-      @till.add_order_item(item: "banana", quantity: 7)
-      expect(@till.order.first[:item]).to eq("banana")
-      expect(@till.order.first[:quantity]).to eq(7)
+      @till.add_order_item(item: "Cortado", quantity: 3)
+      expect(@till.order.first[:item]).to eq("Cortado")
+      expect(@till.order.first[:quantity]).to eq(3)
     end
 
     it 'should be capable of receiving multiple items and quantity' do
-      @till.add_order_item(item: "banana", quantity: 7)
-      @till.add_order_item(item: "apple", quantity: 4)
+      @till.add_order_item(item: "Americano", quantity: 2)
+      @till.add_order_item(item: "Tea", quantity: 1)
       expect(@till.order.length). to eq(2)
     end
 
     it 'should be able to be reset for the next customer' do
-      @till.add_order_item(item: "banana", quantity: 7)
+      @till.add_order_item(item: "Choc Mudcake", quantity: 1)
       @till.reset_order
       expect(@till.order).to be_empty
     end
@@ -43,15 +43,45 @@ describe 'a till' do
       expect(@till.price_of("Cafe Latte")).to eq(4.75)
     end
 
+    it 'should know the price of each item - Choc Mudcake' do
+      expect(@till.price_of("Choc Mudcake")).to eq(6.40)
+    end
+
     it 'should know the price of each item - Affogato' do
       expect(@till.price_of("Affogato")).to eq(14.80)
     end
 
-    it 'should add the unit price of the item to the order' do
-      @till.add_order_item(item: "Cafe Latte", quantity: 1)
-      expect(@till.order.first[:unit_price]).to eq(4.75)
+    it 'should calculate the price of a line of the order' do
+      @till.add_order_item(item: "Cafe Latte", quantity: 2)
+      expect(@till.line_price(@till.order[0])).to eq(9.50)
     end
 
+  end
+
+  describe 'calculating the total price of an order' do
+
+    it 'should total up the net total (pre-tax) of all lines in the order' do
+      @till.add_order_item(item: "Cafe Latte", quantity: 2)
+      @till.add_order_item(item: "Blueberry Muffin", quantity: 1)
+      expect(@till.net_total).to eq(13.55)
+    end
+
+    it 'should calculate the tax due on the net total' do
+      @till.add_order_item(item: "Cafe Latte", quantity: 2)
+      @till.add_order_item(item: "Blueberry Muffin", quantity: 1)
+      expect(@till.order_tax).to eq(1.17)
+    end
+
+  end
+
+  describe 'creating a receipt' do
+
+    it 'should output each line item total, tax and total' do
+      @till.add_order_item(item: "Cafe Latte", quantity: 2)
+      @till.add_order_item(item: "Blueberry Muffin", quantity: 1)
+      @till.add_order_item(item: "Choc Mudcake", quantity: 1)
+      expect(@till.generate_receipt).to eq('Cafe Latte 2 x 4.75,Blueberry Muffin 1 x 4.05,Choc Mudcake 1 x 6.40,Tax 1.72,Total 21.67')
+    end
 
   end
 
