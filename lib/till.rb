@@ -5,15 +5,16 @@ class Till
   attr_reader :orders, :prices
   attr_accessor :tax_rate
 
-  def initialize
+  def initialize prices
     @orders   = []
-    @tax_rate = 0.04
+    @prices   = prices
   end
 
-  def receive_order(order, price)
-    order.cost = price 
+  def receive_order(order)
+    order.cost = prices[order.name] 
     orders.push order
   end
 
-  end
+end
+
 
