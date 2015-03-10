@@ -7,7 +7,7 @@ class Cafe
   end
   
   def calculate(value)
-    value * @tax 
+    { after_tax: value * @tax }
   end
 
 end

@@ -13,7 +13,6 @@ Given /^I have ordered "(.*?)"$/ do |item|
 end
 
 Then(/^my receipt shows an itemized list of my order$/) do
-  
   @receipt = Receipt.new @till.orders, @location
   @receipt.print[:items]
 end
@@ -22,3 +21,4 @@ Then(/^my receipt should show me the total$/) do
   @receipt = Receipt.new @till.orders, @location
   @receipt.print[:total] 
 end
+

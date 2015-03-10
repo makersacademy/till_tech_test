@@ -38,5 +38,13 @@ describe Receipt do
       expect(receipt.print[:total]   ).to equal 10.4
     end
   end
+
+  describe 'payments' do
+
+    it 'receives and calculates payments' do
+      receipt.receive_payment(10.0)
+      expect(receipt.print[:change]).to equal 0.0
+    end
+  end
 end
 

@@ -14,8 +14,4 @@ Feature: Receipt
     And I have ordered "Spaghetti"
     And I have ordered "Wine"
     Then my receipt should show me the total 
-    
-   
-
-
 
