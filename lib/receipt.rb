@@ -7,7 +7,7 @@ class Receipt
   end
 
   def show_breakdown
-    order
+    order.items
   end
 
 end
