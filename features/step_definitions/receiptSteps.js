@@ -1,11 +1,11 @@
 var HipsterList = require(process.cwd() + '/models/hipsterList');
+var ShopInfo = require(process.cwd() + '/public/js/receiptinfo');
 var assert = require('assert');
 
 module.exports = function() {
 
   var myList;
-    listItem = 'coffee'
-    itemCost = 4
+    listItem = {'Cafe Latte': 4.75}
 
   this.Given(/^I have an empty hipster list$/, function(callback) {
     myList = HipsterList.create();
@@ -33,7 +33,7 @@ module.exports = function() {
   });
 
   this.Then(/^I can find out how much it costs$/, function(callback){
-    assert.equal(myList.getValueOf(listItem), 4);
+    assert.equal(myList.getValueOf(listItem), 4.75);
     callback();
   });
 

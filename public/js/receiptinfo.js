@@ -1,9 +1,9 @@
-[
+var shopInfo =
   {
     "shopName": "The Coffee Connection",
     "address": "123 Lakeside Way",
     "phone": "16503600708",
-    "prices": [
+    "prices": 
       {
         "Cafe Latte": 4.75,
         "Flat White": 4.75,
@@ -21,6 +21,4 @@
         "Chocolate Chip Muffin": 4.05,
         "Muffin Of The Day": 4.55
       }
-    ]
   }
-]
