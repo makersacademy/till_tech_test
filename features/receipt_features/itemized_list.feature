@@ -5,8 +5,8 @@ Feature: Itemized List
 
   Scenario: Quantities 
     Given I am at "The Coffee Connection"
-    And I have ordered "2" "Caffe Latte" 
-    Then I should have "Cafe Latte 2x" on my receipt
+    And I have ordered "2" "Cafe Latte" 
+    Then I should have "Cafe Latte 2 x" on my receipt
 
 
 

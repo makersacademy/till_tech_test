@@ -1,7 +1,8 @@
-@example = JSON.parse(File.read('./features/support/shop_examples.json'))
+require 'byebug'
+
 
 Given(/^I am at "(.*?)"$/) do |arg1|
-  @till = Till.new(@example)
+  @till = Till.new(example["prices"].sample)
 end
 
 Given(/^I have ordered "(\d*?)" "(.*?)"$/) do |quantity, item|
@@ -11,9 +12,13 @@ Given(/^I have ordered "(\d*?)" "(.*?)"$/) do |quantity, item|
 end
 
 Then(/^I should have "(.*?)" on my receipt$/) do |arg1|
-  expect(@till.receipt.items).to eq(
-    [{name: 'Caffe Latte',
+  expect(@till.receipt[:items]).to eq(
+    [{name: 'Cafe Latte',
       quantity: 2,
       cost: 9.5 }])
+end
+
+def example
+  JSON.parse(File.read('./features/support/shop_examples.json')).sample
 end
 

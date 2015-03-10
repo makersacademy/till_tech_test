@@ -1,6 +1,6 @@
 class Order
   attr_reader   :name
-  attr_accessor :price
+  attr_accessor :cost
   
   def initialize(name)
     @name = name 

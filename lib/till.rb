@@ -1,23 +1,38 @@
 require './lib/receipt'
+require 'byebug'
 
 class Till
 
-  attr_reader :orders
+  attr_reader :orders, :prices
   attr_accessor :tax_rate
 
-  def initialize(shop_information)
+  def initialize(prices)
     @orders  = []
+    @prices  = prices
+    @tax_rate= 0.04
   end
 
   def receive_order(order)
+    order.cost = prices[order.name]
     orders.push order
   end
 
-  def order_information
-    {orders: self.orders,
-     subtotal: calculate_total,
+  def receipt_footer 
+    {subtotal: calculate_total,
      tax: calculate_tax,
      total: calculate_total + calculate_tax} 
+  end
+
+  def receipt
+    items = itemize(orders)
+    {items: items}.merge receipt_footer 
+  end
+
+  def itemize orders
+    orders.map do |order|
+      {name: order.name, quantity: orders.select {|ord| ord.name == order.name}.count,
+       cost: order.cost * orders.select {|ord| ord.name == order.name}.count }
+    end.uniq
   end
 
   def calculate_total
