@@ -1,6 +1,9 @@
 class Receipt
+  attr_reader :items
 
-  def initialize(order_information)
+  def initialize(order_information = {})
+    puts order_information
+    @items = order_information[:items]
   end
 
   def print
