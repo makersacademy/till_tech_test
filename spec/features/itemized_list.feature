@@ -4,10 +4,9 @@ Feature: Itemized List
   So that I can check that I have been fairly charged 
 
   Scenario: Quantities 
-    Given I am at the till
-    And I have ordered two Lattes
-    And I request the bill
-    Then I should have "Cafe Latte 2x" on my bill
+    Given I am at "The Coffee Connection"
+    And I have ordered "2" "Caffe Latte" 
+    Then I should have "Cafe Latte 2x" on my receipt
 
 
 
