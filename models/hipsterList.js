@@ -1,11 +1,17 @@
+var shopInfo = require('./menu')
 var total = []
 var howMuch
 
 
 var hipsterList = {
   add: function(item, price) {
-    this.list.push(item);
-    this.price.push(price)
+    if (shopInfo.prices[item] != undefined) {
+     this.list.push(item);
+     this.price.push(price)
+    }
+    else {
+      console.log("Sorry item not found")
+    }
   },
   getAll: function() {
     return this.list;

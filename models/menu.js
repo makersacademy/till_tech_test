@@ -1,4 +1,4 @@
-    var localShopInfo =
+var localShopInfo =
       {
         "shopName": "The Coffee Connection",
         "address": "123 Lakeside Way",

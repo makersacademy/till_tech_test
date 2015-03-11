@@ -8,6 +8,7 @@
 <body>
 
 <div ng-app="" ng-init="quantity=1;cost=5;">
+Order: <input type="text" id="shopOrder"  ng-model="text">
 Quantity: <input type="number"    ng-model="quantity">
 <p>Total in quidz: {{ quantity * cost}}</p>
 <p>Tax (8.64%): {{((quantity * cost) / 100 * 8.64) | number:2 }}</p>

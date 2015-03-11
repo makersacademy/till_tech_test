@@ -1,6 +1,5 @@
 var NewShopper = require(process.cwd() + '/models/newShopper');
 var HipsterList = require(process.cwd() + '/models/hipsterList');
-var ShopInfo = require(process.cwd() + '/public/js/receiptinfo');
 var assert = require('assert');
 
 module.exports = function() {
