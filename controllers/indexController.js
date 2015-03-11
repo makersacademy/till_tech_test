@@ -1,4 +1,7 @@
+var shopperName
+
+
 exports.index = function(req, res){
-  var order = req.params.shopOrder;
+  var shopperName = req.params.shopperName;
   res.render('index');
 };

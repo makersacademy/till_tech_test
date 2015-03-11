@@ -2,7 +2,7 @@ var shopInfo = require('./menu')
 var total = []
 var howMuch
 
-
+//functions for list
 var hipsterList = {
   add: function(item, price) {
     if (shopInfo.prices[item] != undefined) {
@@ -17,12 +17,12 @@ var hipsterList = {
     return this.list;
   },
   getTotal: function() {
-    var howMuch = eval(this.price.join('+'))
+    var howMuch = (eval(this.price.join('+'))/ 100 * 8.64)
     return howMuch
   }
 };
   
-
+//create a new list for shoppers
 module.exports = {
   create: function() {
     return Object.create(hipsterList,{

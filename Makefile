@@ -3,8 +3,8 @@ UNIT_TESTS = $(shell find test/app -name "*.test.js")
 
 # vim => :map ,f :w\|!clear && make cucumber<cr>
 cucumber:
-	@NODE_ENV=test node_modules/.bin/cucumber-js features \
-		-r features/step_definitions
+	@NODE_ENV=test test/node_modules/.bin/cucumber-js test/features \
+		-r test/features/step_definitions
 
 test-performance:
 
