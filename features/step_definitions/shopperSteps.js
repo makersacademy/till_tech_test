@@ -4,10 +4,17 @@ var assert = require('assert');
 
 module.exports = function() {
 
-var Jane;
+var shopper;
+  name = "Jane"
 
  this.Given(/^I am a shopper$/, function(callback) {
-    Jane = NewShopper.create();
+    shopper = NewShopper.create();
+    callback();
+  });
+
+ this.Then(/^I have a name$/, function(callback) {
+    shopper.addName(name);
+    assert.equal(shopper.name, "Jane")
     callback();
   });
 
