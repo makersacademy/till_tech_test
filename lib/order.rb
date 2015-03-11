@@ -1,15 +1,15 @@
 class Order
-  attr_reader   :name
-  attr_accessor :cost, :discount
+  attr_reader   :name, :cost
+  attr_accessor :price, :discount
   
   def initialize(options = {})
     @name     = options[:name] 
-    @cost     = options[:cost]
-    @discount = "0%"
+    @price    = options[:price]
+    @discount = options[:discount] 
   end
 
   def cost 
-    @cost * discount_multiplier
+    @price * discount_multiplier
   end
 
   def discount_multiplier
