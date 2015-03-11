@@ -27,7 +27,7 @@ describe 'a till' do
 
     it 'should be able to be reset for the next customer' do
       @till.add_order_item(item: "Choc Mudcake", quantity: 1)
-      @till.reset_order
+      @till.new_order
       expect(@till.order).to be_empty
     end
 
@@ -81,6 +81,48 @@ describe 'a till' do
       @till.add_order_item(item: "Blueberry Muffin", quantity: 1)
       @till.add_order_item(item: "Choc Mudcake", quantity: 1)
       expect(@till.generate_receipt).to eq('Cafe Latte 2 x 4.75,Blueberry Muffin 1 x 4.05,Choc Mudcake 1 x 6.40,Tax 1.72,Total 21.67')
+    end
+
+  end
+
+  describe 'taking payment' do
+
+    it 'should provide the amount of change from cash offered' do
+      @till.add_order_item(item: "Cafe Latte", quantity: 2)
+      @till.add_order_item(item: "Blueberry Muffin", quantity: 1)
+      @till.add_order_item(item: "Choc Mudcake", quantity: 1)
+      expect(@till.take_payment(25)).to eq('The change is 3.33')
+    end
+
+    it 'should return a message if amount tendered is less than total' do
+      @till.add_order_item(item: "Cafe Latte", quantity: 2)
+      @till.add_order_item(item: "Blueberry Muffin", quantity: 1)
+      @till.add_order_item(item: "Choc Mudcake", quantity: 1)
+      expect(@till.take_payment(20)).to eq('The amount tendered is 1.67 less than the total')
+    end
+
+  end
+
+  describe 'discounting' do
+
+    it 'should calculate a discount of 5% on an order with a pre-tax total over $50' do
+      @till.add_order_item(item: "Cafe Latte", quantity: 11)
+      expect(@till.discount).to eq(2.61)
+    end
+
+    it 'should not offer a discount on an order where pre-tax total is less than $50' do
+      @till.add_order_item(item: "Cafe Latte", quantity: 10)
+      expect(@till.discount_total_price).to eq(0)
+    end
+
+    it 'should offer a discount of 10% on muffins' do
+      @till.add_order_item(item: "Chocolate Chip Muffin", quantity: 2)
+      expect(@till.discount_muffins).to eq(0.81)
+    end
+
+    it 'discounts should work independently of each other' do
+      @till.add_order_item(item: "Chocolate Chip Muffin", quantity: 13)
+      expect(@till.discount).to eq(7.90)
     end
 
   end
