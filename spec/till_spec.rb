@@ -60,16 +60,16 @@ describe 'a till' do
 
   describe 'calculating the total price of an order' do
 
-    it 'should total up the net total (pre-tax) of all lines in the order' do
+    it 'should total up the net total (pre-tax and discounts) of all lines in the order' do
       @till.add_order_item(item: "Cafe Latte", quantity: 2)
       @till.add_order_item(item: "Blueberry Muffin", quantity: 1)
       expect(@till.net_total).to eq(13.55)
     end
 
-    it 'should calculate the tax due on the net total' do
+    it 'should calculate the tax due on the net total minus discounts' do
       @till.add_order_item(item: "Cafe Latte", quantity: 2)
       @till.add_order_item(item: "Blueberry Muffin", quantity: 1)
-      expect(@till.order_tax).to eq(1.17)
+      expect(@till.order_tax).to eq(1.14)
     end
 
   end
@@ -78,9 +78,13 @@ describe 'a till' do
 
     it 'should output each line item total, tax and total' do
       @till.add_order_item(item: "Cafe Latte", quantity: 2)
-      @till.add_order_item(item: "Blueberry Muffin", quantity: 1)
       @till.add_order_item(item: "Choc Mudcake", quantity: 1)
-      expect(@till.generate_receipt).to eq('Cafe Latte 2 x 4.75,Blueberry Muffin 1 x 4.05,Choc Mudcake 1 x 6.40,Tax 1.72,Total 21.67')
+      expect(@till.generate_receipt).to eq('Cafe Latte 2 x 4.75,Choc Mudcake 1 x 6.40,Tax 1.37,Total 17.27')
+    end
+
+    it 'should display applicable discount amount on the receipt' do
+      @till.add_order_item(item: "Blueberry Muffin", quantity: 13)
+      expect(@till.generate_receipt).to eq('Blueberry Muffin 13 x 4.05,Discount 7.90,Tax 3.87,Total 48.62')
     end
 
   end
@@ -91,14 +95,14 @@ describe 'a till' do
       @till.add_order_item(item: "Cafe Latte", quantity: 2)
       @till.add_order_item(item: "Blueberry Muffin", quantity: 1)
       @till.add_order_item(item: "Choc Mudcake", quantity: 1)
-      expect(@till.take_payment(25)).to eq('The change is 3.33')
+      expect(@till.take_payment(25)).to eq('The change is 3.77')
     end
 
     it 'should return a message if amount tendered is less than total' do
       @till.add_order_item(item: "Cafe Latte", quantity: 2)
       @till.add_order_item(item: "Blueberry Muffin", quantity: 1)
       @till.add_order_item(item: "Choc Mudcake", quantity: 1)
-      expect(@till.take_payment(20)).to eq('The amount tendered is 1.67 less than the total')
+      expect(@till.take_payment(20)).to eq('The amount tendered is 1.23 less than the total')
     end
 
   end

@@ -4,8 +4,7 @@ class Till
 
   include Discounts
 
-  attr_accessor :order
-  attr_reader :prices, :tax
+  attr_reader :order, :prices, :tax
 
   def initialize
     @tax = 8.64
@@ -41,19 +40,24 @@ class Till
   end
 
   def order_tax
-    (net_total * @tax / 100).round(2)
+    ((net_total - discount) * tax / 100).round(2)
+  end
+
+  def order_total
+    net_total - discount + order_tax
   end
 
   def generate_receipt
     receipt = ''
     order.each {|line| receipt << "#{line[:item]} #{line[:quantity]} x #{'%.2f' % price_of(line[:item])},"}
-    receipt << "Tax #{order_tax},"
-    receipt << "Total #{net_total + order_tax}"
+    receipt << "Discount #{'%.2f' % discount}," if discount > 0
+    receipt << "Tax #{'%.2f' % order_tax},"
+    receipt << "Total #{'%.2f' % order_total}"
     return receipt
   end
 
   def take_payment(payment)
-    change = (payment - (net_total + order_tax)).round(2)
+    change = (payment - (order_total)).round(2)
     if change < 0
       return "The amount tendered is #{change.abs} less than the total"
     else
