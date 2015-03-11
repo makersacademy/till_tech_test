@@ -9,7 +9,7 @@ class TillApp < Sinatra::Base
   till = Till.new
 
   get '/' do
-    'hello hipster coffee shop'
+    erb :index
   end
 
 
