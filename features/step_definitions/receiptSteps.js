@@ -33,7 +33,12 @@ module.exports = function() {
   });
 
   this.Then(/^I can find out how much it costs$/, function(callback){
-    assert.equal(myList.getValueOf(listItem), 4.75);
+    assert.equal(myList.getValueOf(listItem), 4.75, 'Shopper can get the value of item');
+    callback();
+  });
+
+  this.Then(/^Pay for the total$/, function(callback) {
+    assert.equal(myList.getTotal(), 9.5)
     callback();
   });
 

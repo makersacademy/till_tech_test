@@ -18,3 +18,5 @@ Feature: Shopper can add an item to their Hipster List
     Given I have an empty hipster list
     When I add an item to the list
     Then I can access that item from the hipster list
+
+    

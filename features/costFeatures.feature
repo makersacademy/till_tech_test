@@ -7,3 +7,10 @@ Feature: Shopper knows how much item costs
     Given I have an empty hipster list
     When I add an item to the list
     Then I can find out how much it costs
+
+  Scenario: item prices added to get total
+    Given I have an empty hipster list
+    When I add an item to the list
+    When I add an item to the list
+    Then I can find out how much it costs
+    Then Pay for the total

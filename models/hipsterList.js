@@ -1,5 +1,5 @@
-var val
-
+var val 
+var total = []
 
 var hipsterList = {
   add: function(item) {
@@ -18,13 +18,24 @@ var hipsterList = {
     return -1;
   },
   getValueOf: function(obj) {
+ 
     var keys = Object.keys(obj);
 
     for (var i = 0; i < keys.length; i++) {
-       val = obj[keys[i]];
+       val = obj[keys[i]];  
     }
-   return val 
+   putInHipList(val);
+   return val
+  },
+  getTotal: function() {
+    var howMuch = eval(total.join('+'))
+    return howMuch
   }
+};
+
+var putInHipList = function(val) {
+  total.push(val)
+  return total
 };
 
 
