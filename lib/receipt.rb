@@ -8,7 +8,7 @@ class Receipt
   end
 
   def receipt_footer 
-    {subtotal: calculate_total,
+    {subtotal: calculate_subtotal,
      tax: calculate_tax,
      total: calculate_total + calculate_tax,
      paid: @total_payment,
@@ -27,8 +27,13 @@ class Receipt
     end.uniq
   end
 
-  def calculate_total
+  def calculate_subtotal
     self.orders.inject(0) {|sum, order| sum + order.cost }
+  end
+
+  def calculate_total
+    total = self.orders.inject(0) {|sum, order| sum + order.cost }
+    total > 50 ? total * 0.9 : total
   end
 
   def calculate_tax

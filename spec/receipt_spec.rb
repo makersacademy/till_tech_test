@@ -4,6 +4,7 @@ describe Receipt do
 
   let(:spaghetti_order) { double('order', cost: 5.0, name: 'spaghetti',:cost= => nil)}
   let(:coffee_order)    { double('coffee',cost: 3.0, name: 'coffee' ,  :cost= => nil)}
+  let(:expensive_order) { double('caviar',cost: 90.0,name: 'caviar' ,  :cost= => nil)}
   let(:cafe)            { double('Cafe', calculate_tax: 0.4)}
   let(:receipt) { Receipt.new(orders:[spaghetti_order, spaghetti_order], location: cafe)}
 
@@ -38,18 +39,24 @@ describe Receipt do
     it 'calculates total' do
       expect(receipt.print[:total]   ).to equal 10.4
     end
+
+    it 'calculates 10% discount when subtotal is above 50$' do
+      receipt = Receipt.new(orders:[expensive_order], location: cafe)
+
+      expect(receipt.print[:total]).to equal 81.4
+    end
   end
 
   describe 'calculates change' do
 
     it 'when payment matches cost' do
-      receipt.receive_payment(10.0)
-      expect(receipt.print[:change]).to equal 0.0
+      receipt.receive_payment(12.0)
+      expect(receipt.print[:change]).to equal 1.6 
     end
 
     it 'when payment is more than cost' do
       receipt.receive_payment(12.5)
-      expect(receipt.print[:change]).to equal 2.5
+      expect(receipt.print[:change]).to equal 2.1
     end
   end
 end

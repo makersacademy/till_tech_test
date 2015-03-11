@@ -6,5 +6,6 @@ describe Cafe do
     cafe = Cafe.new(tax: "4%")
     expect(cafe.calculate_tax 100.0).to eq 4.0
   end
+
 end
 
