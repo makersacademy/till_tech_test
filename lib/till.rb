@@ -4,7 +4,6 @@ class Till
 
 	def initialize
 		@complete_order = {}
-		@customer_order = []
 		@tax = 1.0864
 	end
 
@@ -12,17 +11,8 @@ class Till
 		price * quantity
 	end
 
-	def add_line_total_to_order_calc(price, quantity)
-		customer_order << self.line_total(price, quantity)
-	end
-
-	def add_item_to_print_out(name, price, quantity)
-		complete_order.store(name, [quantity, price])
-	end
-
 	def record_item(name, price, quantity)
 		add_item_to_print_out(name, price, quantity)
-		add_line_total_to_order_calc(price, quantity)
 	end
 
 	def list_of_item_names
@@ -30,16 +20,11 @@ class Till
 	end
 
 	def list_of_item_quantities
-		quantities = []
-		complete_order.values.collect(&:last)
-	end
-
-	def list_of_line_prices
-		customer_order
+		complete_order.values.collect(&:first)
 	end
 
 	def subtotal
-		customer_order.inject(:+)
+		complete_order.values.collect(&:last).inject(:+)
 	end
 
 	def total
@@ -52,6 +37,12 @@ class Till
 
 	def print_out_order
 		puts complete_order
+	end
+
+private
+
+	def add_item_to_print_out(name, price, quantity)
+		complete_order.store(name, [quantity, price*quantity])
 	end
 
 end
