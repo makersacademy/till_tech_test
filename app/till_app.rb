@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require '.app/lib/till'
+require './lib/till'
 
 class TillApp < Sinatra::Base
 
@@ -9,7 +9,7 @@ class TillApp < Sinatra::Base
   till = Till.new
 
   get '/' do
-    'hello world'
+    'hello hipster coffee shop'
   end
 
 

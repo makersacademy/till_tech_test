@@ -1,4 +1,5 @@
-require 'discount'
+require_relative 'discount'
+require 'json'
 
 class Till
 
