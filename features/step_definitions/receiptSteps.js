@@ -28,11 +28,6 @@ module.exports = function() {
     callback();
   });
 
-  this.Then(/^I can access that item from the hipster list$/, function(callback) {
-    assert.notEqual(myList.getItemIndex(listItem), -1, 'Added item should not be found at non-negaive index,');
-    callback();
-  });
-
   this.Then(/^I can pay for the total$/, function(callback) {
     assert.equal(myList.getTotal(), 9.5);
     callback();
