@@ -5,10 +5,10 @@ require 'byebug'
 Given /^I am at a cafe(?: with a sales tax of "(.*?)")?$/ do |tax_rate|
   @location = Cafe.new(tax: tax_rate.to_f)
   @till = Till.new({'Cafe Latte' => 4.5, 'Spaghetti' => 5.0,
-                    'Wine'       => 3.0})
+                    'Wine'       => 3.0, 'Flat White'=> 4.5})
 end
 
-Given /^I have ordered "(.*?)"$/ do |item|
+Given /^I have ordered "(.*?)"(?: at a discount of "(.*?)")?$/ do |item, discount|
   @till.receive_order(Order.new(item))
 end
 
