@@ -4,8 +4,8 @@ describe Receipt do
 
   let(:spaghetti_order) { double('order', cost: 5.0, name: 'spaghetti',:cost= => nil)}
   let(:coffee_order)    { double('coffee',cost: 3.0, name: 'coffee' ,  :cost= => nil)}
-  let(:cafe)            { double('Cafe', calculate: 0.4 )}
-  let(:receipt) { Receipt.new([spaghetti_order, spaghetti_order], cafe)}
+  let(:cafe)            { double('Cafe', calculate_tax: 0.4)}
+  let(:receipt) { Receipt.new(orders:[spaghetti_order, spaghetti_order], location: cafe)}
 
   describe 'outputs order information' do
 
@@ -16,7 +16,8 @@ describe Receipt do
     end
 
     it 'about two orders of a different kind' do
-      receipt = Receipt.new([spaghetti_order, coffee_order, coffee_order], cafe) 
+      receipt = Receipt.new(orders: [spaghetti_order, coffee_order, coffee_order], 
+                            location: cafe) 
 
       expect(receipt.print[:items]).to eq(
         [ { name: 'spaghetti', quantity: 1, cost:   5.0 },
@@ -39,11 +40,16 @@ describe Receipt do
     end
   end
 
-  describe 'payments' do
+  describe 'calculates change' do
 
-    it 'receives and calculates payments' do
+    it 'when payment matches cost' do
       receipt.receive_payment(10.0)
       expect(receipt.print[:change]).to equal 0.0
+    end
+
+    it 'when payment is more than cost' do
+      receipt.receive_payment(12.5)
+      expect(receipt.print[:change]).to equal 2.5
     end
   end
 end

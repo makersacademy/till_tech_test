@@ -2,10 +2,9 @@ require './lib/cafe'
 
 describe Cafe do
 
-  it 'calculates a total with sales tax' do
-    cafe = Cafe.new(tax: 0.04)
-
-    expect(cafe.calculate(10.0)).to eq 10.4
+  it 'can calculate tax on a value' do
+    cafe = Cafe.new(tax: "4%")
+    expect(cafe.calculate_tax 100.0).to eq 4.0
   end
 end
 

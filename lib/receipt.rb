@@ -1,18 +1,18 @@
 class Receipt
   attr_reader :orders, :location
 
-  def initialize orders, location
-    @orders    = orders
-    @location  = location
+  def initialize options = {} 
+    @orders    = options[:orders]
+    @location  = options[:location]
     @total_payment = 0
   end
 
   def receipt_footer 
     {subtotal: calculate_total,
-     tax: location.calculate(calculate_total),
-     total: calculate_total + calculate_tax(0.04),
+     tax: calculate_tax,
+     total: calculate_total + calculate_tax,
      paid: @total_payment,
-     change: calculate_change}
+     change: calculate_change}.map {|k, v| [k, v.round(2)] }.to_h
   end
 
   def print 
@@ -31,8 +31,8 @@ class Receipt
     self.orders.inject(0) {|sum, order| sum + order.cost }
   end
 
-  def calculate_tax tax_rate
-    calculate_total * tax_rate
+  def calculate_tax
+    location.calculate_tax calculate_total 
   end
 
   def receive_payment(payment)
@@ -40,7 +40,8 @@ class Receipt
   end
 
   def calculate_change
-    @total_payment - @orders.inject(0) {|sum, order| sum + order.cost }
+    @total_payment - (@orders.inject(0) {|sum, order| sum + order.cost } +
+      calculate_tax)
   end
 
 end
