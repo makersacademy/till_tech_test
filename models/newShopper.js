@@ -1,3 +1,4 @@
+var HipsterList = require(process.cwd() + '/models/hipsterList');
 
 var newShopper = {
   addName: function(name){
@@ -6,6 +7,12 @@ var newShopper = {
   },
   name: function(){
     return this.name
+  },
+  addList: function(){
+    newList = HipsterList.create();
+  },
+  showList: function(){
+    return newList.list;
   }
 }
 
@@ -16,7 +23,7 @@ module.exports = {
         value: [],
         writable: false,
         enumeable: true
-      }
+      },
     });
   }
 };

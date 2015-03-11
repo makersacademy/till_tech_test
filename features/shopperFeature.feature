@@ -6,4 +6,5 @@ Feature: Shopper can enter the store
   Scenario: New Shopper in the Hipster Shop
     Given I am a shopper
     Then I have a name
+    Then I can have a hipster list
 
