@@ -1,9 +1,11 @@
-var val 
 var total = []
+var howMuch
+
 
 var hipsterList = {
-  add: function(item) {
+  add: function(item, price) {
     this.list.push(item);
+    this.price.push(price)
   },
   getAll: function() {
     return this.list;
@@ -17,33 +19,32 @@ var hipsterList = {
     }
     return -1;
   },
-  getValueOf: function(obj) {
- 
-    var keys = Object.keys(obj);
-
-    for (var i = 0; i < keys.length; i++) {
-       val = obj[keys[i]];  
+  getPriceIndex: function(value) {
+    var index = this.price.length;
+    while(--index > -1) {
+      if(this.price[index] === value) {
+        return index;
+      }
     }
-   putInHipList(val);
-   return val
+    return -1;
   },
   getTotal: function() {
-    var howMuch = eval(total.join('+'))
+    var howMuch = eval(this.price.join('+'))
     return howMuch
   }
 };
-
-var putInHipList = function(val) {
-  total.push(val)
-  return total
-};
-
+  
 
 module.exports = {
   create: function() {
     return Object.create(hipsterList,{
       'list': {
         value: [],
+        writable: false,
+        enumeable: true
+      },
+      'price':{
+        value:[],
         writable: false,
         enumeable: true
       }

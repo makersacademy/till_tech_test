@@ -5,7 +5,8 @@ var assert = require('assert');
 module.exports = function() {
 
   var myList;
-    listItem = {'Cafe Latte': 4.75}
+    listItem = 'Cafe Latte'
+    listPrice = 4.75
 
   this.Given(/^I have an empty hipster list$/, function(callback) {
     myList = HipsterList.create();
@@ -13,7 +14,7 @@ module.exports = function() {
   });
 
   this.When(/^I add an item to the list$/, function(callback) {
-    myList.add(listItem)
+    myList.add(listItem, listPrice)
     callback();
   });
 
@@ -32,13 +33,8 @@ module.exports = function() {
     callback();
   });
 
-  this.Then(/^I can find out how much it costs$/, function(callback){
-    assert.equal(myList.getValueOf(listItem), 4.75, 'Shopper can get the value of item');
-    callback();
-  });
-
-  this.Then(/^Pay for the total$/, function(callback) {
-    assert.equal(myList.getTotal(), 9.5)
+  this.Then(/^I can pay for the total$/, function(callback) {
+    assert.equal(myList.getTotal(), 9.5);
     callback();
   });
 
