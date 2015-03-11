@@ -17,7 +17,7 @@ class Receipt
 
   def print 
     items = itemize(orders)
-    {items: items}.merge receipt_footer 
+    {items: items}.merge(receipt_footer).merge({ location: location.info })
   end
 
   def itemize orders

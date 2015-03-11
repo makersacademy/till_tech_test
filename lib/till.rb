@@ -1,7 +1,4 @@
-require 'byebug'
-
 class Till
-
   attr_reader :orders
   attr_accessor :tax_rate, :total_payment
 
@@ -13,7 +10,6 @@ class Till
   def receive_order(order)
     orders.push order
   end
-
   
 end
 

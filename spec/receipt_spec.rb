@@ -5,7 +5,7 @@ describe Receipt do
   let(:spaghetti_order) { double('order', cost: 5.0, name: 'spaghetti',:cost= => nil)}
   let(:coffee_order)    { double('coffee',cost: 3.0, name: 'coffee' ,  :cost= => nil)}
   let(:expensive_order) { double('caviar',cost: 90.0,name: 'caviar' ,  :cost= => nil)}
-  let(:cafe)            { double('Cafe', calculate_tax: 0.4)}
+  let(:cafe)            { double('Cafe', calculate_tax: 0.4, info: {name: "Cafe"})}
   let(:receipt) { Receipt.new(orders:[spaghetti_order, spaghetti_order], location: cafe)}
 
   describe 'outputs order information' do
