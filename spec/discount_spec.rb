@@ -15,11 +15,13 @@ describe 'discounts' do
   describe 'calculating a 5% discount when net total above 50' do
 
     it 'should calculate a discount of 5% on an order with a pre-tax total over $50' do
-      expect(dummy_receipt.discount_total_price(55)).to eq(2.75)
+      allow(dummy_receipt).to receive(:net_total).and_return(55)
+      expect(dummy_receipt.discount_total_price).to eq(2.75)
     end
 
     it 'should not offer a discount on an order where pre-tax total is less than $50' do
-      expect(dummy_receipt.discount_total_price(49)).to eq(0)
+      allow(dummy_receipt).to receive(:net_total).and_return(49)
+      expect(dummy_receipt.discount_total_price).to eq(0)
     end
 
   end
@@ -28,13 +30,15 @@ describe 'discounts' do
 
     it 'should offer a discount of 10% on the total spend on muffins' do
       allow(dummy_receipt).to receive(:line_price).with({:item=>"Blueberry Muffin", :quantity=>2}).and_return(8.10)
-      order = [{item: 'Blueberry Muffin', quantity:2}, {item: 'Tea', quantity: 3}]
-      expect(dummy_receipt.discount_muffins(order)).to eq(0.81)
+      dummy_order = [{item: 'Blueberry Muffin', quantity:2}, {item: 'Tea', quantity: 3}]
+      allow(dummy_receipt).to receive(:order).and_return(dummy_order)
+      expect(dummy_receipt.discount_muffins).to eq(0.81)
     end
 
     it 'should not offer a discount if no muffins are ordered' do
-      order = [{item: 'Tea', quantity: 3}]
-      expect(dummy_receipt.discount_muffins(order)).to eq(0)
+      dummy_order = [{item: 'Tea', quantity: 3}]
+      allow(dummy_receipt).to receive(:order).and_return(dummy_order)
+      expect(dummy_receipt.discount_muffins).to eq(0)
     end
 
   end
@@ -42,10 +46,9 @@ describe 'discounts' do
   describe 'calculating the total of all discounts' do
 
     it 'should total up all applicable discounts' do
-      double_order = double("order")
       allow(dummy_receipt).to receive(:net_total).and_return(55)
       allow(dummy_receipt).to receive(:discount_muffins).and_return(0.81)
-      expect(dummy_receipt.discount(double_order)).to eq(3.56)
+      expect(dummy_receipt.discount_total).to eq(3.56)
     end
 
   end

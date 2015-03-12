@@ -1,19 +1,19 @@
 module Discounts
 
-  def discount(order)
+  def discount_total
     discount = 0
-    discount += discount_total_price(net_total)
-    discount += discount_muffins(order)
+    discount += discount_total_price
+    discount += discount_muffins
     return (discount).round(2)
   end
 
-  def discount_total_price(net_total)
+  def discount_total_price
     discount_level = 5
     discount_applied_at = 50
     net_total > discount_applied_at ? calculate_discount(net_total, discount_level) : 0
   end
 
-  def discount_muffins(order)
+  def discount_muffins
     discount_level = 10
     matched_order_lines = order.select {|line| line[:item].include?('Muffin')}
     matched_total = matched_order_lines.inject(0){ | memo, n| memo + line_price(n) }
