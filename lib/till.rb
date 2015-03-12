@@ -4,13 +4,19 @@ require 'json'
 class Till
 
   def initialize
-    @price = load_item_prices
+    @price_list = load_item_prices
     new_transaction
   end
 
-  attr_reader :transaction
-  attr_accessor :price
+  attr_reader :transaction, :price_list
 
+  def add_item(item, quantity=1)
+    validate_item(item)
+    quantity.times {current_transaction.add(price_list[item])}
+  end
+
+  private
+  
   def new_transaction
     @transaction = Transaction.new
   end
@@ -19,14 +25,14 @@ class Till
     transaction
   end
 
-  def add_item(item, quantity=1)
-    quantity.times {current_transaction.add(price[item])}
-  end
-
   def load_item_prices
     file = File.read('hipstercoffee.json')
     hash = JSON.parse(file).first
     hash['prices'].first
+  end
+
+  def validate_item(item)
+    raise 'Only items on the pricelist can be added!' unless price_list.has_key? item 
   end
 
 end

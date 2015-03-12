@@ -21,5 +21,10 @@ describe Till do
       expect(till.transaction.subtotal).to eq 7.70
     end
 
+    it 'Can only add valid items' do
+      expect{till.add_item('Ice Cold Beer')}.to raise_error 'Only items on the pricelist can be added!'
+    end
+
   end
+
 end
