@@ -5,7 +5,7 @@ class Order
   def initialize(options = {})
     @name     = options[:name] 
     @price    = options[:price]
-    @discount = options[:discount] 
+    @discount = options[:discount] || "0%"
   end
 
   def cost 
