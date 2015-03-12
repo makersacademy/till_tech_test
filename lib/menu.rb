@@ -1,8 +1,10 @@
 module Menu
 
-  def price_list
+  attr_reader :price_list
+
+  def read_price_list
     file = File.read('./hipstercoffee.json')
-    JSON.parse(file).first['prices'].first
+    @price_list = JSON.parse(file).first['prices'].first
   end
 
   def items

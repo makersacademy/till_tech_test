@@ -5,6 +5,10 @@ describe 'a menu' do
 
   let(:dummy_receipt) { Class.new { extend Menu } }
 
+  before(:each) do
+    dummy_receipt.read_price_list
+  end
+
   describe 'loading of prices' do
 
     it 'should have items loaded' do
@@ -28,6 +32,5 @@ describe 'a menu' do
     end
 
   end
-
 
 end
