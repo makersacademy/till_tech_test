@@ -1,49 +1,32 @@
 class Order
 
-	attr_reader :customer_name, :tax, :complete_order
+	attr_reader :customer_name, :complete_list
 
 	def initialize(customer_name)
-		@complete_order = {}
-		@tax = 1.0864
+		@complete_list = {}
 		@customer_name = customer_name
 	end
 
-	def line_total(price, quantity)
-		price * quantity
-	end
+	# def line_total(price, quantity)
+	# 	price * quantity
+	# end
 
 	def record_item(name, price, quantity)
 		add_item_to_print_out(name, price, quantity)
 	end
 
 	def list_of_item_names
-		complete_order.keys
+		complete_list.keys
 	end
 
 	def list_of_item_quantities
-		complete_order.values.collect(&:first)
-	end
-
-	def subtotal
-		complete_order.values.collect(&:last).inject(:+)
-	end
-
-	def total
-		(subtotal * self.tax).round(2)
-	end
-
-	def time_and_date
-		Time.now.strftime("%d/%m/%Y %H:%M")
-	end
-
-	def print_out_order
-		puts complete_order
+		complete_list.values.collect(&:first)
 	end
 
 private
 
 	def add_item_to_print_out(name, price, quantity)
-		complete_order.store(name, [quantity, price*quantity])
+		complete_list.store(name, [quantity, price*quantity])
 	end
 
 end

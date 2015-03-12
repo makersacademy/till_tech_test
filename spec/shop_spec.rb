@@ -13,15 +13,15 @@ describe "Shop" do
 	end
 
 	it 'can return its name' do
-		expect(shop.name).to eq("The Coffee Connection")
+		expect(shop.details("shopName")).to eq("The Coffee Connection")
 	end
 
 	it 'can return its address' do
-		expect(shop.address).to eq("123 Lakeside Way")
+		expect(shop.details("address")).to eq("123 Lakeside Way")
 	end
 
 	it 'can return its phone number' do
-		expect(shop.phone_number).to eq("16503600708")
+		expect(shop.details("phone")).to eq("16503600708")
 	end
 	
-end	
+end
