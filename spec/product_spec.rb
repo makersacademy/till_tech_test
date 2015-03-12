@@ -1,0 +1,13 @@
+describe 'Product' do 
+
+  let(:product){Product.new(name: "Blueberry Muffin", price: 4.05)}
+  
+  it "has a name" do
+    expect(product.name).to be "Blueberry Muffin"
+  end
+
+  it "has a price" do
+    expect(product.price).to be 4.05
+  end
+
+end
