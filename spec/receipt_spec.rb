@@ -14,7 +14,8 @@ describe Receipt do
   describe 'runs calculations passed on initialization' do
 
     it 'and outputs them as a hash' do
-      expect(receipt.print).to eq ({itemized_list: [], items_total: 10.0, after_tax: 9.5}) 
+      expect(receipt.print).to eq ({itemized_list: [], items_total: 10.0, 
+                                    tax: { after_tax: 9.5 } }) 
     end
   end
 end

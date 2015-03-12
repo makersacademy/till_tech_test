@@ -1,5 +1,6 @@
 class Receipt
   attr_reader :orders, :location
+  attr_accessor :evaluators
 
   def initialize orders, options = {} 
     @orders       = orders 

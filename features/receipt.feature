@@ -13,3 +13,10 @@ Feature: Receipt
     And I order "Spaghetti" at a cost of "5.0"
     Then my receipt shows a subtotal of "8.0"
 
+  Scenario: Tax
+    Given I am at a cafe with a sales tax of "5%"
+    Given I have ordered "Cafe Latte" as a cost of "3.0"
+    Then my receipt shows a tax of "0.15"
+
+  
+
