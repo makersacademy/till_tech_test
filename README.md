@@ -65,6 +65,7 @@ A receipt
 
 An Order
 - contains a number of products
+- contains the number of each item required
 
 A Calculator
 - calculates the subtotal
