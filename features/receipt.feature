@@ -1,0 +1,15 @@
+Feature: Receipt 
+  As a customer
+  I want to be given a receipt 
+  So that I can check that I have been fairly charged 
+
+  Scenario: Itemized List 
+    Given I have ordered "Cafe Latte"
+    And I order "Cafe Latte"
+    Then my receipt shows an itemized list of my order 
+
+  Scenario: Subtotal
+    Given I have ordered "Cafe Latte" at a cost of "3.0"
+    And I order "Spaghetti" at a cost of "5.0"
+    Then my receipt shows a subtotal of "8.0"
+
