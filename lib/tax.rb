@@ -6,10 +6,10 @@ class Tax
   end
 
   def total value
-    value * (1 - tax_rate.to_f/100) 
+    value * (1 * tax_rate.to_f/100.0) 
   end
 
   def print value
-    { total_after_tax: total(value), tax: tax_rate }
+    { total: total(value).round(2), tax: tax_rate }
   end
 end

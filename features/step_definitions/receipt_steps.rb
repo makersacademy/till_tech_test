@@ -18,7 +18,7 @@ Then(/^my receipt shows a subtotal of "(.*?)"$/) do |subtotal|
 end
 
 Then(/^my receipt shows a tax of "(.*?)"$/) do |tax|
-  expect(receipt.print[:tax]).to eq tax.to_f
+  expect(receipt.print[:tax][:total]).to eq tax.to_f
 end
 
 

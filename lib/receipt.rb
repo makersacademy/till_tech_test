@@ -9,7 +9,7 @@ class Receipt
 
   def print 
     orders.print.merge(
-      @evaluators.values.inject({}) {|memo, eval| memo.merge(eval.print orders.total) }
+      @evaluators.map {|key, eval| [key, eval.print(orders.total)] }.to_h 
     )
   end
 
