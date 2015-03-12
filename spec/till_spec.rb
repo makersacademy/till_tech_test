@@ -22,22 +22,4 @@ describe 'a till' do
 
   end
 
-  describe 'taking payment' do
-
-    xit 'should provide the amount of change from cash offered' do
-      @till.add_order_item(item: "Cafe Latte", quantity: 2)
-      @till.add_order_item(item: "Blueberry Muffin", quantity: 1)
-      @till.add_order_item(item: "Choc Mudcake", quantity: 1)
-      expect(@till.take_payment(25)).to eq('The change is 3.77')
-    end
-
-    xit 'should return a message if amount tendered is less than total' do
-      @till.add_order_item(item: "Cafe Latte", quantity: 2)
-      @till.add_order_item(item: "Blueberry Muffin", quantity: 1)
-      @till.add_order_item(item: "Choc Mudcake", quantity: 1)
-      expect(@till.take_payment(20)).to eq('The amount tendered is 1.23 less than the total')
-    end
-
-  end
-
 end
