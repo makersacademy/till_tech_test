@@ -1,4 +1,7 @@
-
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
 
 footer {
   margin-left: 2em;
