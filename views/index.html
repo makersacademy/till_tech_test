@@ -17,7 +17,40 @@
     <div id="tillNumbers">
          $00.00
      </div>
+</div>
+<div class="entryBox">
+    <div id="entryTill">
+          <form action="/items" method="post">
+          <select>                
+          <optgroup label="Coffee">
+              <option>Cafe Latte</option>
+              <option>Flat White</option>
+              <option>Cappucino</option>
+              <option>Single Espresso</option>
+              <option>Americano</option>
+          </optgroup>
+          <optgroup label="Drinks">
+              <option>Cortado</option>
+              <option>Tea</option>
+          </optgroup>
+          <optgroup label="Desserts">
+              <option>Choc Mudcake</option>
+              <option>Chock Mousse</option>
+              <option>Affogato</option>
+              <option>Tiramisu</option>
+              <option>Blueberry Muffin</option>
+              <option>Chocolate Chip Muffin</option>
+              <option>Muffin Of The Day</option>
+          </optgroup>
+          </select>
+          <label for="Quantity" id="quantity">Quantity:</label>
+                  <input type="number" min="0" max="9" value="shopperItem" id='shopperItem'>
     </div>
+    <div id="addToRecepit">
+          <input type="submit" max="9" value="add" id='add'>
+           </form>
+    </div>
+</div>
 
     
 
