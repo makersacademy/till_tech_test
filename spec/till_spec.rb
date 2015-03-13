@@ -37,6 +37,6 @@ describe Till do
   end 
 
   it "can take the money and calculate the change" do
-    expect(till.change(order)).to eq(2)
+    expect(till.change(order,10)).to eq(4.02)
   end
 end

@@ -19,6 +19,9 @@ class Till
     @orders << order
   end
 
-  
+  def change(order,amount)
+    (amount - order.total_sum*(1+@tax/100.0)).round(2)
+  end
+
 
 end
