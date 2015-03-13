@@ -19,4 +19,6 @@ class Till
     @orders << order
   end
 
+  
+
 end
