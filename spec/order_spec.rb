@@ -5,7 +5,7 @@ describe Order do
                        :price=>2.99)}
   let(:item2){Item.new(:name=>"Cookie",
                        :price=>0.99)}
-  let(:order){Order.new({item1=>1,item2=>2})}
+  let(:order){Order.new({item1=>1,item2=>2},1)}
 
   it 'can count the items' do
     expect(order.count_items).to eq(3)

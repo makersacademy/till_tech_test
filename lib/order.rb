@@ -2,8 +2,9 @@ class Order
 
   attr_reader :order
 
-  def initialize(hash)
+  def initialize(hash,table)
     @order = hash
+    @table = table
   end
 
   def count_items
