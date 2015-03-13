@@ -1,13 +1,10 @@
 require './lib/order'
 
 describe Order do
+  
+  let(:spaghetti) { Order.new(name: 'spaghetti', price: 3.0) }
 
   describe 'can be assigned' do
-
-    it 'a price' do
-      order       = Order.new(name: 'spaghetti', price: 3.0)
-      expect(order.cost).to eq 3
-    end
 
     it 'a discount value effecting its cost' do
       order = Order.new name: 'Jam Tart', price: 5.0, discount: '5%'
@@ -16,4 +13,9 @@ describe Order do
 
   end
 
+  it 'prints its details' do
+    expect(spaghetti.print).to eq({ name: 'spaghetti', price: 3.0, cost: 3.0,
+                                    discount: '0%'})
+  end
 end
+

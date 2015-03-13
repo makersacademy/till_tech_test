@@ -15,7 +15,10 @@ class Order
   def discount_multiplier
    1-(discount.to_f/100)
   end
- 
+
+  def print value=nil
+    { name: name, price: price, cost: cost, discount: discount } 
+  end
 
 end
 
