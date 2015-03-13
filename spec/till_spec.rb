@@ -1,4 +1,4 @@
-require 'till'
+require_relative '../app/lib/till'
 
 describe 'a till' do
 

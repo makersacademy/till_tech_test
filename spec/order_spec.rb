@@ -1,4 +1,4 @@
-require 'order'
+require_relative '../app/lib/order'
 
 describe 'an order' do
 

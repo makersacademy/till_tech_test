@@ -1,4 +1,4 @@
-require 'payment'
+require_relative '../app/lib/payment'
 
 describe 'taking payment' do
 

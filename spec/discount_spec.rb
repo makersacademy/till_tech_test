@@ -1,4 +1,4 @@
-require 'discount'
+require_relative '../app/lib/discount'
 
 describe 'discounts' do
 

@@ -1,4 +1,4 @@
-require 'menu'
+require_relative '../app/lib/menu'
 
 describe 'a menu' do
 
