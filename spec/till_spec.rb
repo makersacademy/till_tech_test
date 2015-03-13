@@ -25,4 +25,11 @@ describe Till do
     expect(till.waiters).to eq(2)
   end
 
+  it "can add an item to the menu" do 
+    item1 = Item.new(:name => "Latte",:price => 2.75)
+    till.add_item_to_menu(item1)
+    expect(till.menu.count).to eq(1)
+  end 
+
+
 end
