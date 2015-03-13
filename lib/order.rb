@@ -10,7 +10,7 @@ class Order
     @order.reduce(0){|sum,(item,count)| sum+=count}
   end
 
-  def sum_order
+  def total_sum
     @order.reduce(0){|sum,(item,count)| sum+=count*item.price}.round(2)
   end
 
