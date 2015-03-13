@@ -1,68 +1,44 @@
-require 'discount'
+require_relative 'order'
+require_relative 'receipt'
+require_relative 'payment'
+require_relative 'menu'
+
 
 class Till
 
-  include Discounts
+  include Menu
 
-  attr_reader :order, :prices, :tax
+  attr_reader :order, :receipt, :tax
 
   def initialize
     @tax = 8.64
-    @order = []
-    get_prices
-  end
-
-  def add_order_item(args)
-    item = args[:item]
-    quantity = args[:quantity]
-    order.push({item: item, quantity: quantity})
+    menu_read_price_list
   end
 
   def new_order
-    order.clear
+    @order = Order.new
   end
 
-  def price_of(item)
-    prices[item]
+  def order_list
+    order.order_list
   end
 
-  def get_prices
-    file = File.read('./hipstercoffee.json')
-    @prices = JSON.parse(file).first['prices'].first
+  def add_item_to_order(item, quantity)
+    order.add_item(item, quantity)
   end
 
-  def line_price(order_line)
-    order_line[:quantity] * price_of(order_line[:item])
+  def print_receipt
+    @receipt = Receipt.new(order_list, tax)
+    receipt.print_receipt
   end
 
-  def net_total
-    order.inject(0){ | memo, n| memo + line_price(n) }
+  def total_due
+    receipt ? receipt.total_due : 'Please generate a receipt'
   end
 
-  def order_tax
-    ((net_total - discount) * tax / 100).round(2)
-  end
-
-  def order_total
-    net_total - discount + order_tax
-  end
-
-  def generate_receipt
-    receipt = ''
-    order.each {|line| receipt << "#{line[:item]} #{line[:quantity]} x #{'%.2f' % price_of(line[:item])},"}
-    receipt << "Discount #{'%.2f' % discount}," if discount > 0
-    receipt << "Tax #{'%.2f' % order_tax},"
-    receipt << "Total #{'%.2f' % order_total}"
-    return receipt
-  end
-
-  def take_payment(payment)
-    change = (payment - (order_total)).round(2)
-    if change < 0
-      return "The amount tendered is #{change.abs} less than the total"
-    else
-      return "The change is #{change}"
-    end
+  def payment(money_tendered)
+    payment = Payment.new
+    payment.payment_result(money_tendered, total_due)
   end
 
 end
