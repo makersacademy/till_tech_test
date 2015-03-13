@@ -2,6 +2,7 @@
 <html>
 
 <head>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
      <link href="css/tillScreen.css" rel="stylesheet">
      <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
@@ -17,22 +18,56 @@
     <div id="tillNumbers">
          $00.00
      </div>
+</div>
+<div class="entryBox">
+    <div id="entryTill">
+          <form action="/items" method="post">
+          <select class="btn btn-mini">                
+          <optgroup label="Coffee">
+              <option>Cafe Latte</option>
+              <option>Flat White</option>
+              <option>Cappucino</option>
+              <option>Single Espresso</option>
+              <option>Americano</option>
+          </optgroup>
+          <optgroup label="Drinks">
+              <option>Cortado</option>
+              <option>Tea</option>
+          </optgroup>
+          <optgroup label="Desserts">
+              <option>Choc Mudcake</option>
+              <option>Chock Mousse</option>
+              <option>Affogato</option>
+              <option>Tiramisu</option>
+              <option>Blueberry Muffin</option>
+              <option>Chocolate Chip Muffin</option>
+              <option>Muffin Of The Day</option>
+          </optgroup>
+          </select>
+          <label for="Quantity" id="quantity">Quantity:</label>
+                  <input type="number" min="0" max="9" value="shopperItem" id='shopperItem'>
     </div>
+    <div id="addToRecepit">
+          <input type="submit" max="9" value="add" id='add'>
+           </form>
+    </div>
+</div>
 
-  
-        <!-- Footer -->
+
+
+ <!-- Footer -->
         <footer class="footer">
-            <div class="row">
-                <div class="col-lg-12">
+            <div class="container">
                     <small>Copyright &copy; Hannah Carney 2015</small>
                 </div>
-            </div>
         </footer>
+
+  
+       
 
     <!-- Socket io -->
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 </body>
+
 </html>
 
-<!DOCTYPE html>
-<html>

@@ -1,17 +1,25 @@
-
-
-footer {
-  margin-left: 2em;
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  min-height:800px; 
 }
+
+
 
 #tillNumbers {
   position:absolute;
   z-index:1;
   background: none;
-  left:0;
+  left:1%;
   top:40%;
   width:100%;
   height:100%;
+}
+
+.numberBox {
+  width:100%;
+  height:100%;
+  text-align:center;
 }
 
 
@@ -29,9 +37,57 @@ footer {
   height:100%
 }
 
-.numberBox {
+.entryBox {
   width:100%;
   height:100%;
   text-align:center;
+}
+
+#entryTill {
+  position:absolute;
+  z-index:1;
+  background: none;
+  left:0;
+  top:69%;
+  left:0;
+  width:100%;
+  height:100%;
+}
+
+#shopperItem {
+  width:2.5em;
+}
+
+#addToRecepit {
+  position:absolute;
+  z-index:1;
+  background: none;
+  left:0;
+  top:76%;
+  width:100%;
+  height:100%;
+}
+
+.btn {
+  width:10em;
+}
+
+@media (max-width: 600px) {
+  #quantity {
+    font-size:1px;
+  }
+}
+
+@media (max-width: 399px) {
+   .btn-mini {
+    width:4.5em;
+  }
+}
+
+@media (max-height: 350px) {
+   #addToRecepit {
+    top:52%;
+    font-size:10px;
+  }
 }
 
