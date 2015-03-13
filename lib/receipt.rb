@@ -12,7 +12,7 @@ class Receipt
   def initialize(order, tax = 0)
     @tax = tax
     @order = order
-    read_price_list
+    menu_read_price_list
   end
 
   def price_of(item)
@@ -36,10 +36,10 @@ class Receipt
   end
 
   def print_receipt
-    receipt = ''
-    order.each {|line| receipt << "#{line[:item]} #{line[:quantity]} x #{'%.2f' % price_of(line[:item])},"}
-    receipt << "Discount #{'%.2f' % discount_total}," if discount_total > 0
-    receipt << "Tax #{'%.2f' % tax_total},"
+    receipt = []
+    order.each {|line| receipt << "#{line[:item]} #{line[:quantity]} x #{'%.2f' % price_of(line[:item])}"}
+    receipt << "Discount #{'%.2f' % discount_total}" if discount_total > 0
+    receipt << "Tax #{'%.2f' % tax_total}"
     receipt << "Total #{'%.2f' % total_due}"
     return receipt
   end

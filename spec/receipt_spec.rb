@@ -75,7 +75,7 @@ describe 'a receipt' do
     it 'should generate a fully itemised receipt' do
       order = [{item: "Cafe Latte", quantity: 2}, {item: "Blueberry Muffin", quantity: 1}]
       receipt = Receipt.new(order, 8.64)
-      expect(receipt.print_receipt).to eq('Cafe Latte 2 x 4.75,Blueberry Muffin 1 x 4.05,Discount 0.41,Tax 1.14,Total 14.28')
+      expect(receipt.print_receipt).to eq(['Cafe Latte 2 x 4.75','Blueberry Muffin 1 x 4.05','Discount 0.41','Tax 1.14','Total 14.28'])
     end
 
   end

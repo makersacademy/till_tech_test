@@ -17,14 +17,14 @@ describe 'an order' do
   describe 'adding an item to an order' do
 
     it 'should accept an item and a quantity into an order' do
-      @order.add_item({item: 'Cafe Latte', quantity: 2})
+      @order.add_item('Cafe Latte', 2)
       expect(@order.order_list.first[:item]).to eq('Cafe Latte')
       expect(@order.order_list.first[:quantity]).to eq(2)
     end
 
     it 'should be able to hold multiple order lines' do
-      @order.add_item({item: 'Cafe Latte', quantity: 2})
-      @order.add_item({item: 'Americano', quantity: 3})
+      @order.add_item('Cafe Latte', 2)
+      @order.add_item('Americano', 3)
       expect(@order.order_list.length).to eq (2)
     end
 

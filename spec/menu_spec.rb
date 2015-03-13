@@ -1,12 +1,11 @@
 require 'menu'
-require 'json'
 
 describe 'a menu' do
 
   let(:dummy_receipt) { Class.new { extend Menu } }
 
   before(:each) do
-    dummy_receipt.read_price_list
+    dummy_receipt.menu_read_price_list
   end
 
   describe 'loading of prices' do
@@ -24,11 +23,11 @@ describe 'a menu' do
   describe 'loading of items' do
 
     it 'should be an array' do
-      expect(dummy_receipt.items.kind_of?(Array)).to be true
+      expect(dummy_receipt.menu_read_items.kind_of?(Array)).to be true
     end
 
     it 'should not be empty' do
-      expect(dummy_receipt.items).not_to be_empty
+      expect(dummy_receipt.menu_read_items).not_to be_empty
     end
 
   end

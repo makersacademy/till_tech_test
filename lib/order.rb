@@ -6,9 +6,7 @@ class Order
     @order_list = []
   end
 
-  def add_item(order_line)
-    item = order_line[:item]
-    quantity = order_line[:quantity]
+  def add_item(item, quantity)
     order_list.push({item: item, quantity: quantity})
   end
 
