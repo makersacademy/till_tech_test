@@ -6,13 +6,13 @@
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
      <link href="css/tillScreen.css" rel="stylesheet">
      <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+     <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
     <title>The Coffee Connection</title>
 </head>
 
 <body>
 <div id="background">
     <img src='till.png' id="backgroundimage" alt='[]' />
-    </div>
 </div>
 <div class="numberBox">
     <div id="tillNumbers">
@@ -20,8 +20,8 @@
      </div>
 </div>
 <div class="entryBox">
-    <div id="entryTill">
-          <form action="/items" method="post">
+    <form>
+        <div id="entryTill">
           <select class="btn btn-mini">                
           <optgroup label="Coffee">
               <option>Cafe Latte</option>
@@ -45,14 +45,16 @@
           </optgroup>
           </select>
           <label for="Quantity" id="quantity">Quantity:</label>
-                  <input type="number" min="0" max="9" value="shopperItem" id='shopperItem'>
-    </div>
-    <div id="addToRecepit">
-          <input type="submit" max="9" value="add" id='add'>
-           </form>
-    </div>
+             <input type="number" min="0" max="9" value="shopperItem" id='shopperItem'>
+        </div>
+        <div id="addToRecepit">
+            <input type="submit" id="buttonForAdd" value="add" id='add'>
+            <input type="submit" hidden="hidden" value="print" id="printReceipt">
+        </div>
+    </form>
 </div>
-
+<div class="receiptPlacement"></div>
+<div class="overView"></div>
 
 
  <!-- Footer -->
@@ -63,10 +65,11 @@
         </footer>
 
   
-       
+  
 
     <!-- Socket io -->
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="js/interface.js"></script>
 </body>
 
 </html>

@@ -31,12 +31,5 @@ function DB(cBack) {
     var cBack = (cBack || function() {})();
 }
 
-DB.prototype.allItems = function() {
-  var items = [];
-  for (var id in this.db) {
-    items.push(this.db[id]);
-  }
-  return items.sort(function(a, b) { return a.id - b.id });
-};
 
 module.exports = DB;
