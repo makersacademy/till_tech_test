@@ -5,13 +5,9 @@ class Till
 
 
   def initialize(tables,address,phone,shopName,waiters,tax)
-    @tables = tables;
-    @address = address;
-    @phone = phone
-    @shopName = shopName
-    @waiters = waiters
+    @tables,@address,@phone = tables,address,phone
+    @shopName,@waiters,@tax = shopName,waiters,tax
     @menu = []
-    @tax = tax
     @orders = []
   end  
 

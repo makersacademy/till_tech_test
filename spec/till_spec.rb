@@ -35,4 +35,6 @@ describe Till do
     expect(till.menu.count).to eq(1)
   end 
 
+
+
 end
