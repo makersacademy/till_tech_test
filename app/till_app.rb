@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require './lib/till'
+require './app/lib/till'
 
 class TillApp < Sinatra::Base
 
@@ -9,6 +9,7 @@ class TillApp < Sinatra::Base
   till = Till.new
 
   get '/' do
+    @menu_items = till.menu_read_items
     erb :index
   end
 
