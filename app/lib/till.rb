@@ -8,15 +8,18 @@ class Till
 
   include Menu
 
-  attr_reader :order, :receipt, :tax
+  attr_reader :order, :receipt, :tax, :change
 
   def initialize
     @tax = 8.64
     menu_read_price_list
+    new_order
   end
 
   def new_order
     @order = Order.new
+    @receipt = nil
+    @change = nil
   end
 
   def order_list
@@ -33,12 +36,12 @@ class Till
   end
 
   def total_due
-    receipt ? receipt.total_due : 'Please generate a receipt'
+    @receipt ? receipt.total_due : 'Please generate a receipt'
   end
 
   def payment(money_tendered)
     payment = Payment.new
-    payment.payment_result(money_tendered, total_due)
+    @change = payment.payment_result(money_tendered, total_due)
   end
 
 end

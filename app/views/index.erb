@@ -12,6 +12,7 @@
 
   <header>
     <h1>Welcome to The Coffee Connection</h1>
+    <a href='/clear_order'>Clear current order</a>
   </header>
 
   <body>
@@ -22,13 +23,21 @@
         <%= erb :_add_order_items %>
       </section>
 
-      <section class='row' id='take-payment'>
-
+      <section class='row' id='order-items'>
+        <%= erb :_order_items %>
       </section>
 
     </section>
 
-    <section class='col-1-2' id='receipt-display'>
+    <section class='col-1-2'>
+
+      <section class='row' id='receipt-display'>
+        <%= erb :_receipt_display %>
+      </section>
+
+      <section class='row' id='payment'>
+        <%= erb :_take_payment %>
+      </section>
 
     </section>
 

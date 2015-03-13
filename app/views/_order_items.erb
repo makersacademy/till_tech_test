@@ -1,0 +1,7 @@
+<h2>Customer's Order</h2>
+
+<ul>
+  <% @order_list.each do |line| %>
+    <li><%=line[:item]%> x <%=line[:quantity]%></li>
+  <% end %>
+</ul>

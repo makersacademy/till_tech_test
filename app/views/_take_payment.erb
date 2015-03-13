@@ -1,0 +1,11 @@
+<h2>Payment</h2>
+
+<% if @receipt != nil && @change == nil %>
+  <form action='/submit_payment' method='post' id='payment'>
+    <label for="money_tendered">Money Tendered</label>
+    <input type='number' name='money_tendered'><br>
+    <input type='submit' value='Submit Payment'>
+  </form>
+<% elsif @change != nil %>
+  <%= @change %>
+<% end %>

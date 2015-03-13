@@ -1,0 +1,14 @@
+<h2>Receipt</h2>
+
+
+<% if @receipt %>
+  <ul>
+    <% @receipt.each do |receipt_line| %>
+      <li><%= receipt_line %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <form action='/print_receipt' method='get'>
+    <input type='submit' value='Print Receipt'>
+  </form>
+<% end %>
