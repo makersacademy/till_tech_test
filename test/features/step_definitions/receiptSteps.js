@@ -1,4 +1,6 @@
-var HipsterList = require(process.cwd() + '/models/hipsterList');
+
+var HipsterList = require('../../../public/js/hipsterList');
+
 var assert = require('assert');
 
 module.exports = function() {
@@ -8,7 +10,7 @@ module.exports = function() {
     listPrice = 4.75
 
   this.Given(/^I have an empty hipster list$/, function(callback) {
-    myList = HipsterList.create();
+    myList = hipsterList.create();
     callback();
   });
 

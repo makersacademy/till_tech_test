@@ -55,7 +55,7 @@ body {
 }
 
 #shopperItem {
-  width:2em;
+  width:2.5em;
 }
 
 #addToRecepit {
@@ -89,5 +89,33 @@ body {
     top:52%;
     font-size:10px;
   }
+}
+
+.receipt1 {
+  position:absolute;
+  content: url(../recepit1.png) 0 0 no-repeat;
+  top:70%;
+  left:13.2%;
+  z-index:100;
+  width:4%;
+  height:8%
+}
+
+.receipt1:hover {
+  border: 3px solid red; 
+
+}
+
+.receipt2 {
+  position:absolute;
+  top:3%;
+  left:2%;
+  content: url(../receipt.jpg) 0 0 no-repeat;
+  z-index:100;
+}
+
+.receipt2:hover {
+  border: 3px solid red; 
+
 }
 

@@ -1,12 +1,12 @@
-var NewShopper = require(process.cwd() + '/models/newShopper');
-var HipsterList = require(process.cwd() + '/models/hipsterList');
-var assert = require('assert');
+
+var HipsterList = require('../../../public/js/hipsterList');
+
 
 module.exports = function() {
 
 var shopper;
   name = "Jane"
-  newList = HipsterList.create();
+  newList = hipsterList.create();
 
  this.Given(/^I am a shopper$/, function(callback) {
     shopper = NewShopper.create();
