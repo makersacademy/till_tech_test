@@ -11,7 +11,7 @@ class OrderList
   end
 
   def print value=nil
-    { items: itemized_list, items_total: total }  
+    { order: { items: itemized_list, total: total }}
   end
 
   def total

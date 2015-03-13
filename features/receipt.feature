@@ -18,5 +18,10 @@ Feature: Receipt
     Given I have ordered "Cafe Latte" as a cost of "3.0"
     Then my receipt shows a tax of "0.15"
 
+  Scenario: Discount
+    Given I have order a discounted "Muffin" 
+    Then my receipt shows a discounted cost
+    
+
   
 

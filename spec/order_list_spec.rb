@@ -12,9 +12,9 @@ describe OrderList do
       order_list.receive_order(spaghetti_order)
       2.times { order_list.receive_order(coffee_order) } 
 
-      expect(order_list.print).to eq ({ items: [
+      expect(order_list.print).to eq ({order: { items: [
           { name: 'spaghetti', quantity: 1, cost:   5.0 },
-          { name: 'coffee'   , quantity: 2, cost: 6.0 }], items_total: 11.0})
+          { name: 'coffee'   , quantity: 2, cost: 6.0 }], total: 11.0}})
     end
   end
 end
