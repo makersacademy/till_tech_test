@@ -12,6 +12,6 @@ describe Order do
   end
 
   it 'can calculate the overall sum' do 
-    expect(order.sum_order).to eq(4.97)
+    expect(order.total_sum).to eq(4.97)
   end
 end 
