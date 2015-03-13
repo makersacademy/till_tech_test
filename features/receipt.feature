@@ -19,7 +19,7 @@ Feature: Receipt
     Then my receipt shows a tax of "0.15"
 
   Scenario: Discount
-    Given I have order a discounted "Muffin" 
+    Given I have ordered a discounted "Muffin" 
     Then my receipt shows a discounted cost
     
 
