@@ -14,4 +14,8 @@ describe Order do
   it 'can calculate the overall sum' do 
     expect(order.total_sum).to eq(4.97)
   end
+
+  it 'can calculate the sum per item' do
+    expect(order.items_sum).to eq({item1=>2.99,item2=>1.98})
+  end  
 end 
