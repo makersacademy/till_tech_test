@@ -4,15 +4,13 @@ body {
   min-height:800px; 
 }
 
-footer {
-  margin-left: 2em;
-}
+
 
 #tillNumbers {
   position:absolute;
   z-index:1;
   background: none;
-  left:2%;
+  left:1%;
   top:40%;
   width:100%;
   height:100%;
@@ -51,7 +49,7 @@ footer {
   background: none;
   left:0;
   top:69%;
-  left:-1%;
+  left:0;
   width:100%;
   height:100%;
 }
