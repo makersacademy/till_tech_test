@@ -7,5 +7,6 @@ require './lib/order_list'
 require './lib/receipt'
 require './lib/tax'
 require './lib/menu'
-require './lib/location'
+require './lib/discount'
+require './lib/modules/percentage'
 

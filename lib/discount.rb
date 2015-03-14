@@ -13,6 +13,10 @@ class Discount
     calculate_discount amount 
   end
 
+  def print amount 
+    {total: total(amount), discount: @discount}
+  end
+
   def calculate_discount amount
     0 - (@discount.percent_of(amount)) if discountable? amount
   end
