@@ -14,6 +14,7 @@
     <img src='till.png' id="backgroundimage" alt='[]' />
 </div>
 <div class="numberBox">
+    <div id="errorTill"></div>
     <div id="tillNumbers">
     </div>
 </div>
@@ -58,11 +59,18 @@
 <script type="text/javascript">
 
 
- var addToList = function(item, quantity, price) {
+var addToList = function(item, quantity, price) {
   var _this = this;
-  $.post('/', {item: item, quantity: quantity}, function(data) {
-    $('#tillNumbers').append(item + "x" + quantity + "= " + (price*quantity));   
-  });
+  if (quantity != 0) {
+    $('#errorTill').empty();
+    $.post('/', {item: item, quantity: quantity}, function(data) { 
+      button = item + " x" + quantity + "= " + (price*quantity) + " " + '<button class="btn x" id="'+ item +'">x</button>';
+    $('<div />',{html: button}).appendTo('#tillNumbers');
+    });
+  }
+  else {
+    $("#errorTill").append("Enter a Quantity");
+   }
 };
 
   $(document).on('ready', function() {
