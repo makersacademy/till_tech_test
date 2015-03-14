@@ -8,10 +8,16 @@ class Discount
   end
 
   def total amount
-    -3.5 
+    calculate_discount amount 
   end
 
+  def calculate_discount amount
+    0 - ((@discount.to_f/100) * amount) if discountable? amount
+  end
 
+  def discountable? amount
+    @discountable_evaluator.call(amount)
+  end
 
 
 end

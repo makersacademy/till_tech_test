@@ -10,8 +10,8 @@ Given(/^I am at a cafe with a sales tax of "(.*?)"$/) do |tax|
 end
 
 Given(/^I am at a cafe with a discount on orders over "(#{FLOAT})"$/) do |discount|
-  receipt.evaluators[:location] = Location.new(discount: "10%", 
-                                               min_spend_for_discount: discount)
+  receipt.evaluators[:location] = Location.new(big_spend_discount: "10%", 
+                                               big_spend_threshold: discount)
 end
 
 Given(/^I (?:have ordered|order) "(.*?)"(?:$| at a cost of "(#{FLOAT})"$)/) do |order, cost|
