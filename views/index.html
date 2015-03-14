@@ -21,7 +21,7 @@
 <div class="entryBox">
     <form>
         <div id="entryTill">
-          <select class="btn btn-mini">                
+          <select id="itemselect" class="btn btn-mini">                
           <optgroup label="Coffee">
               <option>Cafe Latte</option>
               <option>Flat White</option>
@@ -44,7 +44,7 @@
           </optgroup>
           </select>
           <label for="Quantity" id="quantity">Quantity:</label>
-             <input type="number" min="0" max="9" value="shopperItem" id='shopperItem'>
+             <input type="number" min="0" max="9" value="quantityInput" id='quantityInput'>
         </div>
         <div id="addToRecepit">
             <input type="submit" id="buttonForAdd" value="add" id='add'>
@@ -56,21 +56,29 @@
 <div class="overView"></div>
 <script src="js/hipsterList.js"></script>
 <script type="text/javascript">
- 
+
+
+ var addToList = function(item, price) {
+  var _this = this;
+  $.post('/', {item: item, price: price}, function(data) {
+    $('#tillNumbers').append(item + " " + price);
+  });
+};
+
+
+
   $(document).on('ready', function() {
- 
-    customer = newShopper.create();
-    list = hipsterList.create();
+
+
 
   $(document).on('click', '#buttonForAdd', function(e) {
-    e.preventDefault();
-    $('.receiptPlacement').addClass('receipt1')
-    $('#printReceipt').removeAttr('hidden')
-    list.add("Cafe Latte", 4.75)
-    $('#tillNumbers').text('Cafe Lattee, 4.75')
+      e.preventDefault();
+      $('.receiptPlacement').addClass('receipt1')
+      $('#printReceipt').removeAttr('hidden')
+      addToList($( "#itemselect" ).val(), $("#quantityInput").val());
+    });
+  
 
-
-  });
   $(document).on('click', '.receiptPlacement', function(e) {
     e.preventDefault();
     $('.overView').addClass('receipt2')
@@ -80,6 +88,8 @@
     e.preventDefault();
     $('.overView').removeClass('receipt2')
   });
+  
+
 });
 
 </script>
@@ -87,8 +97,8 @@
  <!-- Footer -->
         <footer class="footer">
             <div class="container">
-                    <small>Copyright &copy; Hannah Carney 2015</small>
-                </div>
+                <small>Copyright &copy; Hannah Carney 2015</small>
+            </div>
         </footer>
 
   

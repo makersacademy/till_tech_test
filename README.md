@@ -3,7 +3,7 @@ Practice Tech Test for Jobz
 
 Heroku
 ---
-[coffee]:https://coffeeconnection.herokuapp.com/
+[coffee]:https://thecoffeeconnection.herokuapp.com/
 [coffee]
 
 How to clone

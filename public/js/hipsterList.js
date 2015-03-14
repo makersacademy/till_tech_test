@@ -1,8 +1,8 @@
 var total = []
 var howMuch
-
+function HipsterList(cBack) {
 //menu items
-var shopInfo =
+ this.shopInfo =
       {
         "shopName": "The Coffee Connection",
         "address": "123 Lakeside Way",
@@ -25,75 +25,67 @@ var shopInfo =
             "Chocolate Chip Muffin": 4.05,
             "Muffin Of The Day": 4.55
           }
-      }
+      };
+    this.list = []
+    this.price = []
+    var cBack = (cBack || function() {})();
 
-
+}
 
 //functions for list
-var hipsterList = {
-    create: function() {
-    return Object.create(hipsterList,{
-      'list': {
-        value: [],
-        writable: false,
-        enumeable: true
-      },
-      'price':{
-        value:[],
-        writable: false,
-        enumeable: true
-      }
-    });
-  },
 
-  add: function(item, price) {
-    if (shopInfo.prices[item] != undefined) {
+  HipsterList.prototype.add = function(item, price) {
+    if (this.shopInfo.prices[item] != undefined) {
      this.list.push(item);
      this.price.push(price)
     }
     else {
       console.log("Sorry item not found")
     }
-  },
-  getAll: function() {
+  };
+
+  HipsterList.prototype.getAll = function() {
     return this.list;
-  },
-  getTotal: function() {
+  };
+
+  HipsterList.prototype.getTotal = function() {
     var howMuch = (eval(this.price.join('+'))/ 100 * 8.64)
     return howMuch
-  }
-};
+  };
   
 
 
 //create a new list for shoppers
-var newShopper = {
-  create: function() {
-    return Object.create(newShopper,{
-      'name': {
-        value: [],
-        writable: false,
-        enumeable: true
-      },
-    });
-  },
-  addName: function(name){
-    this.name.push(name);
-    return name
-  },
-  name: function(){
-    return this.name
-  },
-  addList: function(){
-    newList = HipsterList.create();
-  },
-  showList: function(){
-    return newList.list;
-  }
-}
+// function NewShopper(){}
+//   NewShopper.prototype.create = function() {
+//     return Object.create(newShopper,{
+//       'name': {
+//         value: [],
+//         writable: false,
+//         enumeable: true
+//       },
+//     });
+//   };
+
+//   NewShopper.prototype.addName = function(name){
+//     this.name.push(name);
+//     return name
+//   };
+
+//   NewShopper.prototype.name = function(){
+//     return this.name
+//   };
+
+//   NewShopper.prototype.addList = function(){
+//     newList = HipsterList.create();
+//   };
+
+//   NewShopper.prototype.showList = function(){
+//     return newList.list;
+//   };
 
 
 
-
-
+module.exports = HipsterList;
+// module.exports = NewShopper;
 

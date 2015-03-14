@@ -1,12 +1,15 @@
 var path = require('path');
-var express = require('express');
-var router = express.Router();
 
-router.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, '../views', '/index.html'))
-});
+function routes(app, db) {
+  app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, '../views', '/index.html'));
+  });
 
-module.exports = router;
+  app.post('/', function(req, res) {
+    var item = db.add(req.body.item, req.body.price);
+    res.status(200).send({item: item});
+  });
 
+}
 
-  
+module.exports = routes;
