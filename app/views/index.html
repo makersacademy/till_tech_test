@@ -9,11 +9,14 @@
 
     <script id="receipt-template" type="text/x-handlebars-template" >
       <section id='receipt-box'>
-
       
-
+      Items:
+       <ul>
+         {{#order.items}}
+         <li>{{name}} X {{quantity}} ::: {{cost}}</li>
+         {{/order.items}}
+       </ul>
       Total: {{total}}
-
 
       </section>
 
