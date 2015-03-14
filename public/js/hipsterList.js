@@ -34,9 +34,10 @@ function HipsterList(cBack) {
 
 //functions for list
 
-  HipsterList.prototype.add = function(item, price) {
+  HipsterList.prototype.add = function(item, quantity) {
     if (this.shopInfo.prices[item] != undefined) {
      this.list.push(item);
+     var price = (this.shopInfo.prices[item] * quantity)
      this.price.push(price)
     }
     else {

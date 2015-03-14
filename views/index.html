@@ -2,7 +2,6 @@
 <html>
 
 <head>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
      <link href="css/tillScreen.css" rel="stylesheet">
      <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
@@ -23,24 +22,25 @@
         <div id="entryTill">
           <select id="itemselect" class="btn btn-mini">                
           <optgroup label="Coffee">
-              <option>Cafe Latte</option>
-              <option>Flat White</option>
-              <option>Cappucino</option>
-              <option>Single Espresso</option>
-              <option>Americano</option>
+              <option id="4.75">Cafe Latte</option>
+              <option id="4.75">Flat White</option>
+              <option id="3.85">Cappucino</option>
+              <option id="2.05">Single Espresso</option>
+              <option id="3.75">Double Espresso</option>
+              <option id="3.75">Americano</option>
           </optgroup>
           <optgroup label="Drinks">
-              <option>Cortado</option>
-              <option>Tea</option>
+              <option id="4.55">Cortado</option>
+              <option id="3.65">Tea</option>
           </optgroup>
           <optgroup label="Desserts">
-              <option>Choc Mudcake</option>
-              <option>Chock Mousse</option>
-              <option>Affogato</option>
-              <option>Tiramisu</option>
-              <option>Blueberry Muffin</option>
-              <option>Chocolate Chip Muffin</option>
-              <option>Muffin Of The Day</option>
+              <option id="6.40">Choc Mudcake</option>
+              <option id="8.20">Chock Mousse</option>
+              <option id="14.80">Affogato</option>
+              <option id="11.40">Tiramisu</option>
+              <option id="4.05">Blueberry Muffin</option>
+              <option id="4.05">Chocolate Chip Muffin</option>
+              <option id="4.55">Muffin Of The Day</option>
           </optgroup>
           </select>
           <label for="Quantity" id="quantity">Quantity:</label>
@@ -58,19 +58,12 @@
 <script type="text/javascript">
 
 
- var addToList = function(item, price) {
+ var addToList = function(item, quantity, price) {
   var _this = this;
-  $.post('/', {item: item, price: price}, function(data) {
-    $('#tillNumbers').append(item + " " + price);
-    // calculatePrice(price);
+  $.post('/', {item: item, quantity: quantity}, function(data) {
+    $('#tillNumbers').append(item + "x" + quantity + "= " + (price*quantity));   
   });
 };
-
- // var calculatePrice = function (price) {
- //   var quantity = $("#quantityInput").val())
- //   console.log(price)
- // };
-
 
   $(document).on('ready', function() {
 
@@ -80,7 +73,7 @@
       e.preventDefault();
       $('.receiptPlacement').addClass('receipt1')
       $('#printReceipt').removeAttr('hidden')
-      addToList($( "#itemselect" ).val(), $("#quantityInput").val());
+      addToList($( "#itemselect" ).val(), $("#quantityInput").val(), $("#itemselect :selected").attr("id"));
     });
   
 

@@ -6,7 +6,7 @@ function routes(app, db) {
   });
 
   app.post('/', function(req, res) {
-    var item = db.add(req.body.item, req.body.price);
+    var item = db.add(req.body.item, req.body.quantity);
     res.status(200).send({item: item});
   });
 
