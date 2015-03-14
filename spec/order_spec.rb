@@ -25,11 +25,6 @@ describe 'order' do
 		expect(order.list_of_item_prices).to eq([9.50,3.85])
 	end
 
-	xit 'can return a total for multiple quantities of any item' do
-		allow(shop).to receive(:options).and_return(4.75)
-		expect(order.line_total(shop.options("Cafe Latte"), 2)).to eq(9.50)
-	end
-
 	it 'if the same item has been previously added, it updates the quantity' do
 		add_muffin
 		add_muffin
@@ -40,6 +35,18 @@ describe 'order' do
 		add_muffin
 		add_muffin
 		expect(order.list_of_item_prices).to eq([8.10])	
+	end
+
+	it 'should be able to be cleared down' do
+		add_muffin
+		order.clear_order
+		expect(order.complete_list).to eq({})
+	end
+
+	it 'can be confirmed/finalized' do
+		add_muffin
+		order.confirm_order?
+		expect(order.confirmed).to eq(true)
 	end
 
 end

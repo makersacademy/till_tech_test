@@ -9,14 +9,23 @@
 <% end %>
 
 <%= @order_name %>:
-<% if @order_so_far != nil %>
+
+<% if @order_so_far != {} %>
 	Order so far:
 	<% @order_so_far.each do |item, details| %>
 		<ul>
-			<li><%= item %> x <%=details[0]%></li>
+			<li><%= item %> x <%=details[0]%> = $<%=details[1]%></li>
 		</ul>
 	<% end %>
+
+	<form action="/confirm_order" method="post">
+		<button>Confirm Order</button>
+	</form>
+
 <% else %>
-	no order
+	No order
 <% end %>
-	
+
+<form action="/clear_order" method="post">
+	<button>Clear Order</button>
+</form>

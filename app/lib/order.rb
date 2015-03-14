@@ -1,16 +1,17 @@
 class Order
 
-	attr_reader :customer_name, :complete_list
+	attr_reader :customer_name, :complete_list, :confirmed
 
 	def initialize(customer_name)
 		@complete_list = {}
 		@customer_name = customer_name
+		@confirmed = false
 	end
 
 	def record_item(name, price, quantity)
 		if complete_list.has_key?(name)
 			update_item(name, price, quantity)
-		else	
+		else
 			complete_list.store(name, [quantity, price*quantity])
 		end
 	end
@@ -25,6 +26,14 @@ class Order
 
 	def list_of_item_prices
 		complete_list.values.collect(&:last)
+	end
+
+	def clear_order
+		complete_list.clear
+	end
+
+	def confirm_order?
+		@confirmed = true
 	end
 
 private
