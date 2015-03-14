@@ -3,7 +3,7 @@ var validate = function(item, quantity, price) {
   var count = $('#tillNumbers').children() .length
   if (quantity != 0 && count < 6) {
     addToList(item, quantity, price);
-    db.getTotal();
+    
   }
   else if (count == 6) {
     $("#errorTill").text("Sorry, that is too many orders");
@@ -14,12 +14,21 @@ var validate = function(item, quantity, price) {
 };
 
 var addToList = function(item, quantity, price) {
+  calculateTotal();
   $('#errorTill').empty();
-    $.post('/', {item: item, quantity: quantity}, function(data) { 
+    $.post('/items', {item: item, quantity: quantity}, function(data) { 
       button = item + " x" + quantity + "= " + (price*quantity).toFixed(2) + " " + '<button class="btn x" id="'+ item +'">x</button>';
     $('<div />',{html: button}).appendTo('#tillNumbers');
     });
-}
+};
+
+var calculateTotal = function(){
+  $.get('/items', function(data) {
+    $('#errorTill').text(total)
+    alert(total)
+    alert(data.total)
+  });
+};
 
 $(document).on('ready', function() {
 

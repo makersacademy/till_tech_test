@@ -1,21 +1,19 @@
-
 var HipsterList = require('../../../public/js/hipsterList');
-
 var assert = require('assert');
 
 module.exports = function() {
 
   var myList;
     listItem = 'Cafe Latte'
-    listPrice = 4.75
+    quantity = 1
 
   this.Given(/^I have an empty hipster list$/, function(callback) {
-    myList = hipsterList.create();
+    myList = new HipsterList();
     callback();
   });
 
   this.When(/^I add an item to the list$/, function(callback) {
-    myList.add(listItem, listPrice)
+    myList.add(listItem, quantity)
     callback();
   });
 
@@ -30,7 +28,7 @@ module.exports = function() {
   });
 
   this.Then(/^I can pay for the total$/, function(callback) {
-    assert.equal(myList.getTotal(), 9.5);
+    assert.equal(myList.getTotal(), 9.50);
     callback();
   });
 

@@ -1,5 +1,4 @@
-var total = []
-var howMuch
+
 function HipsterList(cBack) {
 //menu items
  this.shopInfo =
@@ -28,15 +27,16 @@ function HipsterList(cBack) {
       };
     this.list = []
     this.price = []
+    this.total = []
+
     var cBack = (cBack || function() {})();
 
 }
 
 //functions for list
-
   HipsterList.prototype.add = function(item, quantity) {
      this.list.push(item);
-     var price = (this.shopInfo.prices[item] * quantity)
+     var price = (this.shopInfo.prices[item] * quantity).toFixed(2)
      this.price.push(price)
     };
 
@@ -45,43 +45,12 @@ function HipsterList(cBack) {
   };
 
   HipsterList.prototype.getTotal = function() {
-    var howMuch = (eval(this.price.join('+'))/ 100 * 8.64)
-    return howMuch
+    this.total = eval(this.price.join('+')).toFixed(2)
+    return this.total
   };
   
 
 
-//create a new list for shoppers
-// function NewShopper(){}
-//   NewShopper.prototype.create = function() {
-//     return Object.create(newShopper,{
-//       'name': {
-//         value: [],
-//         writable: false,
-//         enumeable: true
-//       },
-//     });
-//   };
-
-//   NewShopper.prototype.addName = function(name){
-//     this.name.push(name);
-//     return name
-//   };
-
-//   NewShopper.prototype.name = function(){
-//     return this.name
-//   };
-
-//   NewShopper.prototype.addList = function(){
-//     newList = HipsterList.create();
-//   };
-
-//   NewShopper.prototype.showList = function(){
-//     return newList.list;
-//   };
-
-
-
 module.exports = HipsterList;
-// module.exports = NewShopper;
+
 
