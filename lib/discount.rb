@@ -2,6 +2,7 @@ require './lib/modules/percentage'
 
 class Discount 
   attr_reader :discount
+  include Percentage
 
   def initialize options
     @discount               = options[:discount]
