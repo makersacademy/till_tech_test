@@ -4,8 +4,8 @@ describe Menu do
 
   let(:menu) { Menu.new(spaghetti: {name: 'Spaghetti', price: 5.0 }) }
 
-  it 'manufactures orders' do
-    expect(menu.order(:spaghetti).name).to eq 'Spaghetti'
+  it 'manufactures order information' do
+    expect(menu.order(:spaghetti)[:name]).to eq 'Spaghetti'
   end
 
   it 'raises an error if ordered item is not on the menu' do

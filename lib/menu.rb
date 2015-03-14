@@ -12,7 +12,7 @@ class Menu
       raise "'#{item_name.to_s.capitalize}' is not on the menu" 
     end
     
-    Order.new items[item_name] 
+    items[item_name] 
   end
 
 end
