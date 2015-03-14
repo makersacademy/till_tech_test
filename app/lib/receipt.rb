@@ -37,13 +37,12 @@ class Receipt
 
   def print_receipt
     receipt = []
-    order.each {|line| receipt << "#{line[:item]} #{line[:quantity]} x #{'%.2f' % price_of(line[:item])}"}
+    order.each {|line| receipt <<
+        "#{line[:item]} #{line[:quantity]} x #{'%.2f' % price_of(line[:item])}"}
     receipt << "Discount #{'%.2f' % discount_total}" if discount_total > 0
     receipt << "Tax #{'%.2f' % tax_total}"
     receipt << "Total #{'%.2f' % total_due}"
     return receipt
   end
-
-
 
 end
