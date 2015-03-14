@@ -46,6 +46,7 @@ function HipsterList(cBack) {
 
   HipsterList.prototype.getTotal = function() {
     this.total = eval(this.price.join('+')).toFixed(2)
+    console.log(this.total)
     return this.total
   };
   

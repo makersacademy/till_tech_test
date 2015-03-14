@@ -11,7 +11,7 @@ function routes(app, db) {
   });
 
   app.get('/items', function(req, res){
-    res.send(total: db.getTotal());
+    res.send({total: db.getTotal()});
   });
 }
 
