@@ -7,4 +7,9 @@ module Helper
     JSON.parse(file)[0]
   end  
 
+  def extractShop(json)
+    
+  end  
+
+
 end

@@ -6,7 +6,9 @@ describe Order do
   let(:item2){Item.new(:name=>"Cookie",
                        :price=>0.99)}
   let(:order){Order.new({item1=>1,item2=>2},1)}
-  let(:till){Till.new(4,"olo Road","111","OLO",2,10)}
+  let(:till){Till.new(:tables=>4,:address=>"olo Road",
+                      :phone=>"111",:shopName=>"OLO",
+                      :waiters=>2,:tax=>10)}
 
   it 'can count the items' do
     expect(order.count_items).to eq(3)

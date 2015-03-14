@@ -2,12 +2,13 @@ require 'till'
 
 describe Till do
 
-  let(:till){Till.new(4,"123 Lakeside Way","16503600708",
-                      "The Coffee Connection",2,8.64)}
+  let(:till){Till.new(:tables=>4,:address=>"123 Lakeside Way",:phone=>"16503600708",
+                      :shopName=>"The Coffee Connection",:waiters=>2,:tax=>8.64)}
   let(:item1){Item.new(:name => "Latte",:price => 2.75)}
   let(:order){Order.new({item1=>2},1)}
 
   it "can have the address" do 
+    puts till
     expect(till.address).to eq("123 Lakeside Way")
   end
 

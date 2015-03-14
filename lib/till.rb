@@ -4,9 +4,9 @@ class Till
               :shopName,:waiters,:menu,:orders
 
 
-  def initialize(tables,address,phone,shopName,waiters,tax)
-    @tables,@address,@phone = tables,address,phone
-    @shopName,@waiters,@tax = shopName,waiters,tax
+  def initialize(params={})
+    @tables,@address,@phone = params.fetch(:tables),params.fetch(:address),params.fetch(:phone)
+    @shopName,@waiters,@tax = params.fetch(:shopName),params.fetch(:waiters),params.fetch(:tax)
     @menu = []
     @orders = []
   end  
