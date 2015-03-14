@@ -7,15 +7,11 @@ class Order
   def initialize(options = {})
     @name     = options[:name] 
     @price    = options[:price]
-    @discount = options[:discount] || "0%"
+    @discount = options[:discount]
   end
 
   def cost 
-    @price - (@discount.percent_of @price)
-  end
-
-  def discount_multiplier
-   1-(discount.to_f/100)
+    @discount ? @price - (@discount.percent_of @price) : @price
   end
 
   def print value=nil
