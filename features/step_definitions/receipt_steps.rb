@@ -1,7 +1,7 @@
 require './features/support/env'
 require 'byebug'
 
-FLOAT = Transform /^\d\.\d*$/ do |float_string|
+FLOAT = Transform /^\d*\.\d*$/ do |float_string|
   float_string.to_f
 end
 
