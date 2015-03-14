@@ -5,6 +5,7 @@ describe Till do
   let(:till){Till.new(:tables=>4,:address=>"123 Lakeside Way",:phone=>"16503600708",
                       :shopName=>"The Coffee Connection",:waiters=>2,:tax=>8.64)}
   let(:item1){Item.new(:name => "Latte",:price => 2.75)}
+  let(:item2){Item.new(:name => "Muffin of the day",:price => 4.55)}
   let(:order){Order.new({item1=>2},1)}
 
   it "can have the address" do 
@@ -41,8 +42,8 @@ describe Till do
   end
 
   it "can add discount data" do 
-    till.addDiscount({50=>5,item1=>10})
-    expect(till.discount).to eq({50=>5,item1=>10})
+    till.addDiscount({50=>5,item2=>10})
+    expect(till.discount).to eq({50=>5,item2=>10})
   end
 
 

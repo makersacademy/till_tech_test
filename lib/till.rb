@@ -25,6 +25,8 @@ class Till
     (amount - order.total_sum*(1+@tax/100.0)).round(2)
   end
 
+  # eg.{50=>5,item1=>10} above 50  5% discount
+  #                         item1 10% discount
   def addDiscount(details)
     @discount = details
   end
