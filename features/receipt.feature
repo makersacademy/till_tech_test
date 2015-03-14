@@ -18,10 +18,12 @@ Feature: Receipt
     Given I have ordered "Cafe Latte" as a cost of "3.0"
     Then my receipt shows a tax of "0.15"
 
-  Scenario: Discount
+  Scenario: Discount on Item
     Given I have ordered a discounted "Muffin" 
     Then my receipt shows a discounted cost
+
+  Scenario: Discount on Overall Price
+    Given I am at a cafe with a discount on orders over "50.0"
+    And I have spent over "50.0" 
+    Then my receipt shows a discounted grand total
     
-
-  
-

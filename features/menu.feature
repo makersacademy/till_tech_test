@@ -6,3 +6,4 @@ Feature: Menu
   Scenario: Choosing
     Given I have ordered something on the menu
     Then my order should be placed
+
