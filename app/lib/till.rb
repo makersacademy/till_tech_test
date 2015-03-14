@@ -6,7 +6,7 @@ class Till
 		@discount_threshold = 50
 		@discount_rate = 0.95
 		@item_on_discount = "Muffin"
-		@item_discount_rate = 0.9
+		@item_discount_rate = 0.90 #10% discount
 		@tax = 1.0864
 	end
 

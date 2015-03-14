@@ -1,5 +1,5 @@
-require 'till'
-require 'order'
+require_relative '../app/lib/till'
+require_relative '../app/lib/order'
 
 describe 'till' do
 

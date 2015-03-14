@@ -1,4 +1,4 @@
-require 'shop'
+require_relative '../app/lib/shop'
 
 describe "Shop" do
 

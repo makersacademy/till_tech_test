@@ -1,5 +1,5 @@
-require 'order'
-require 'spec_helper'
+require_relative '../app/lib/order'
+require_relative 'spec_helper'
 
 describe 'order' do
 	
