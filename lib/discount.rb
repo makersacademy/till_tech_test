@@ -24,7 +24,6 @@ class Discount
   def discountable? amount
     @discountable_evaluator.call(amount)
   end
-
   
 end
 

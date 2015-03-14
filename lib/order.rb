@@ -1,3 +1,5 @@
+require './lib/modules/percentage'
+
 class Order
   attr_reader   :name, :cost
   attr_accessor :price, :discount
@@ -9,7 +11,7 @@ class Order
   end
 
   def cost 
-    @price * discount_multiplier
+    @price - (@discount.percent_of @price)
   end
 
   def discount_multiplier
