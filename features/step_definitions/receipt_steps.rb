@@ -11,7 +11,7 @@ end
 
 Given(/^I am at a cafe with a discount on orders over "(#{FLOAT})"$/) do |discount|
   big_spend_evaluator = proc {|value| value > discount }
-  receipt.evaluators[:location] = Discount.new(discount: "10%", 
+  receipt.evaluators[:discount] = Discount.new(discount: "10%", 
                                                discountable?: big_spend_evaluator)
 end
 
@@ -27,7 +27,6 @@ Given(/^I have ordered a discounted "(.*?)"$/) do |order|
 end
 
 Given(/^I have spent over "(#{FLOAT})"$/) do |total_spent|
-  @total_spent = total_spent
   order_list.receive_order Order.new({name: "Champagne", price: total_spent*2})
 end
 
@@ -48,6 +47,6 @@ Then(/^my receipt shows a discounted cost$/) do
 end
 
 Then(/^my receipt shows a discounted grand total$/) do
-  expect(receipt.print[:total] < @total_spent).to eq true
+  expect(receipt.print[:total] < receipt.print[:order][:total]).to eq true
 end
 
