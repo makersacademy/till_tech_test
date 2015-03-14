@@ -10,14 +10,23 @@
 </head>
 
 <body>
+
+<!-- background image -->
+
 <div id="background">
-    <img src='till.png' id="backgroundimage" alt='[]' />
+    <img src='images/till.png' id="backgroundimage" alt='[]' />
 </div>
+
+<!-- results form -->
+
 <div class="numberBox">
     <div id="errorTill"></div>
     <div id="tillNumbers">
     </div>
 </div>
+
+<!-- order form -->
+
 <div class="entryBox">
     <form>
         <div id="entryTill">
@@ -56,64 +65,14 @@
 <div class="receiptPlacement"></div>
 <div class="overView"></div>
 <script src="js/hipsterList.js"></script>
-<script type="text/javascript">
-
-
-var addToList = function(item, quantity, price) {
-  var _this = this;
-  var count = $('#tillNumbers').children() .length
-  if (quantity != 0 && count < 6) {
-    $('#errorTill').empty();
-    $.post('/', {item: item, quantity: quantity}, function(data) { 
-      button = item + " x" + quantity + "= " + (price*quantity) + " " + '<button class="btn x" id="'+ item +'">x</button>';
-    $('<div />',{html: button}).appendTo('#tillNumbers');
-    });
-  }
-  else if (count == 6) {
-    $("#errorTill").text("Sorry, that is too many orders");
-  }
-  else {
-    $("#errorTill").text("Enter a Quantity");
-   }
-};
-
-  $(document).on('ready', function() {
-
-
-
-  $(document).on('click', '#buttonForAdd', function(e) {
-      e.preventDefault();
-      $('.receiptPlacement').addClass('receipt1')
-      $('#printReceipt').removeAttr('hidden')
-      addToList($( "#itemselect" ).val(), $("#quantityInput").val(), $("#itemselect :selected").attr("id"));
-    });
-  
-
-  $(document).on('click', '.receiptPlacement', function(e) {
-    e.preventDefault();
-    $('.overView').addClass('receipt2')
-  });
-
-  $(document).on('click', '.overView', function(e) {
-    e.preventDefault();
-    $('.overView').removeClass('receipt2')
-  });
-  
-
-});
-
-</script>
+<script src="js/interface.js"></script>
 
  <!-- Footer -->
+
         <footer class="footer">
             <div class="container">
                 <small>Copyright &copy; Hannah Carney 2015</small>
             </div>
-        </footer>
-
-  
-  
+        </footer> 
 </body>
-
 </html>
-

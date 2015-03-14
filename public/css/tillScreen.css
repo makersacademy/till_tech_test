@@ -107,7 +107,7 @@ body {
 
 .receipt1 {
   position:absolute;
-  content: url(../recepit1.png) 0 0 no-repeat;
+  content: url(../images/recepit1.png) 0 0 no-repeat;
   top:70%;
   left:13.2%;
   z-index:100;
@@ -124,7 +124,7 @@ body {
   position:absolute;
   top:3%;
   left:2%;
-  content: url(../receipt.jpg) 0 0 no-repeat;
+  content: url(../images/receipt.jpg) 0 0 no-repeat;
   z-index:100;
 }
 
