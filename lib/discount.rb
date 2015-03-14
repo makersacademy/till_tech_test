@@ -1,3 +1,4 @@
+require './lib/modules/percentage'
 
 class Discount 
   attr_reader :discount
@@ -12,12 +13,14 @@ class Discount
   end
 
   def calculate_discount amount
-    0 - ((@discount.to_f/100) * amount) if discountable? amount
+    0 - (@discount.percent_of(amount)) if discountable? amount
   end
 
   def discountable? amount
     @discountable_evaluator.call(amount)
   end
 
-
+  
 end
+
+
