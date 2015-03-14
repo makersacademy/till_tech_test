@@ -10,8 +10,9 @@ Given(/^I am at a cafe with a sales tax of "(.*?)"$/) do |tax|
 end
 
 Given(/^I am at a cafe with a discount on orders over "(#{FLOAT})"$/) do |discount|
-  receipt.evaluators[:location] = Location.new(big_spend_discount: "10%", 
-                                               big_spend_threshold: discount)
+  big_spend_evaluator = proc {|value| value > discount }
+  receipt.evaluators[:location] = Discount.new(discount: "10%", 
+                                               discountable?: big_spend_evaluator)
 end
 
 Given(/^I (?:have ordered|order) "(.*?)"(?:$| at a cost of "(#{FLOAT})"$)/) do |order, cost|
@@ -26,7 +27,8 @@ Given(/^I have ordered a discounted "(.*?)"$/) do |order|
 end
 
 Given(/^I have spent over "(#{FLOAT})"$/) do |total_spent|
-  order_list.receive_order Order.new({name: "Champagne", price: total_spend*2})
+  @total_spent = total_spent
+  order_list.receive_order Order.new({name: "Champagne", price: total_spent*2})
 end
 
 Then(/^my receipt shows an itemized list of my order$/) do
@@ -46,6 +48,6 @@ Then(/^my receipt shows a discounted cost$/) do
 end
 
 Then(/^my receipt shows a discounted grand total$/) do
-    pending # express the regexp above with the code you wish you had
+  expect(receipt.print[:total] < @total_spent).to eq true
 end
 
