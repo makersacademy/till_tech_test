@@ -39,4 +39,11 @@ describe Till do
   it "can take the money and calculate the change" do
     expect(till.change(order,10)).to eq(4.02)
   end
+
+  it "can add discount data" do 
+    till.addDiscount({50=>5,item1=>10})
+    expect(till.discount).to eq({50=>5,item1=>10})
+  end
+
+
 end
