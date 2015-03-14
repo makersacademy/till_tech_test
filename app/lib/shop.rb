@@ -9,14 +9,6 @@ class Shop
 		@menu = open_menu(shop_details)
 	end
 
-	def open_shop_info(filename)
-		JSON.parse(File.read(filename)).first
-	end
-
-  def open_menu(shop_details)
-    shop_details["prices"].first
-  end
-
 	def options(chosen_product)
 		menu[chosen_product]
 	end
@@ -24,5 +16,19 @@ class Shop
 	def details(required_info)
 		shop_details[required_info]
 	end
+
+	def available_items
+		menu.keys
+	end
+
+private
+
+	def open_shop_info(filename)
+		JSON.parse(File.read(filename)).first
+	end
+
+  def open_menu(shop_details)
+    shop_details["prices"].first
+  end
 
 end

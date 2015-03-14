@@ -1,0 +1,22 @@
+<% @menu.each do |item, price| %>
+	<ul>
+		<form action="/add_order" method="post">
+		 	<input type="hidden" name="item" value="<%= item %>" >
+		 	<input type="hidden" name="price" value=<%= price %>>
+			<button name="<%= item %>"><%= item %> <%= price %></button>
+		</form>
+	</ul>
+<% end %>
+
+<%= @order_name %>:
+<% if @order_so_far != nil %>
+	Order so far:
+	<% @order_so_far.each do |item, details| %>
+		<ul>
+			<li><%= item %> x <%=details[0]%></li>
+		</ul>
+	<% end %>
+<% else %>
+	no order
+<% end %>
+	
