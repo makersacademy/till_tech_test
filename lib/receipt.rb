@@ -18,7 +18,7 @@ class Receipt
   end
 
   def total receipt_elements
-    {total: receipt_elements.values.inject(0) {|memo, hash| memo + hash[:total]}}
+    {total: receipt_elements.values.inject(0) {|memo, hash| memo + (hash[:total] || 0 )}}
   end
 
 end
