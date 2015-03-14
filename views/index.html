@@ -62,9 +62,14 @@
   var _this = this;
   $.post('/', {item: item, price: price}, function(data) {
     $('#tillNumbers').append(item + " " + price);
+    // calculatePrice(price);
   });
 };
 
+ // var calculatePrice = function (price) {
+ //   var quantity = $("#quantityInput").val())
+ //   console.log(price)
+ // };
 
 
   $(document).on('ready', function() {
