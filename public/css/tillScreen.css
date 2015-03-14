@@ -8,6 +8,7 @@ body {
   padding-right:.2em;
   padding-top:.1em;
   padding-bottom:.1em;
+  font-size: .7em;
 }
 
 #tillNumbers {
@@ -15,9 +16,10 @@ body {
   z-index:1;
   background: none;
   left:1%;
-  top:40%;
+  top:35%;
   width:100%;
   height:100%;
+  font-size: .7em;
 }
 
 #errorTill {
@@ -25,9 +27,10 @@ body {
   z-index:1;
   background: none;
   left:1%;
-  top:40%;
+  top:33%;
   width:100%;
   height:100%;
+  font-size:.8em;
 }
 
 .numberBox {

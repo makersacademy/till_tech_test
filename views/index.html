@@ -61,15 +61,19 @@
 
 var addToList = function(item, quantity, price) {
   var _this = this;
-  if (quantity != 0) {
+  var count = $('#tillNumbers').children() .length
+  if (quantity != 0 && count < 6) {
     $('#errorTill').empty();
     $.post('/', {item: item, quantity: quantity}, function(data) { 
       button = item + " x" + quantity + "= " + (price*quantity) + " " + '<button class="btn x" id="'+ item +'">x</button>';
     $('<div />',{html: button}).appendTo('#tillNumbers');
     });
   }
+  else if (count == 6) {
+    $("#errorTill").text("Sorry, that is too many orders");
+  }
   else {
-    $("#errorTill").append("Enter a Quantity");
+    $("#errorTill").text("Enter a Quantity");
    }
 };
 
