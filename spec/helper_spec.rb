@@ -12,8 +12,9 @@ describe Helper do
   end
 
   it "can extract shop details from json" do 
-    result=tester.load_json("hipstercoffee.json")
-    expect(tester.extractShop(result)).to eq({:shopName=>"The Coffee Connection",:address=>"123 Lakeside Way",:phone=>"16503600708"})
+    result = tester.load_json("hipstercoffee.json")
+    shop =tester.extractShop(result)
+    expect(shop[:shopName]).to eq("The Coffee Connection")
   end
 
 

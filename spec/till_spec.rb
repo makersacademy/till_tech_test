@@ -8,7 +8,6 @@ describe Till do
   let(:order){Order.new({item1=>2},1)}
 
   it "can have the address" do 
-    puts till
     expect(till.address).to eq("123 Lakeside Way")
   end
 
@@ -34,7 +33,7 @@ describe Till do
 
   it "can add an item to the menu" do     
     till.add_item_to_menu(item1)
-    expect(till.menu.count).to eq(1)
+    expect(till.prices.count).to eq(1)
   end 
 
   it "can take the money and calculate the change" do

@@ -1,18 +1,18 @@
 class Till 
   
   attr_reader :tables,:address,:phone,:tax,
-              :shopName,:waiters,:menu,:orders
+              :shopName,:waiters,:prices,:orders
 
 
   def initialize(params={})
     @tables,@address,@phone = params.fetch(:tables),params.fetch(:address),params.fetch(:phone)
     @shopName,@waiters,@tax = params.fetch(:shopName),params.fetch(:waiters),params.fetch(:tax)
-    @menu = []
+    @prices = []
     @orders = []
   end  
 
   def add_item_to_menu(item)
-    @menu.push(item)
+    @prices.push(item)
   end
 
   def add_order(order)
