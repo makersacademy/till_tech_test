@@ -66,6 +66,24 @@ describe ("Till", function(){
       expect(till.totalPrice).toEqual(4.75)
     });
 
+    it("can sum more than one price", function() {
+      till.addProduct("Cafe Latte", quantityToChangeBy);
+      till.addProduct("Cappucino", quantityToChangeBy);
+      expect(till.totalPrice).toEqual(8.6)
+    });
+
+    it("can remove the price of a removed product", function() {
+      till.addProduct("Cafe Latte", quantityToChangeBy);
+      till.addProduct("Cappucino", quantityToChangeBy);
+      till.removeProduct("Cappucino", quantityToChangeBy);
+      expect(till.totalPrice).toEqual(4.75)
+    });
+
+    it("cannot be negative", function() {
+      till.removeProduct("Cafe Latte", quantityToChangeBy);
+      expect(till.totalPrice).toEqual(0);
+    });
+
   });
 
 });

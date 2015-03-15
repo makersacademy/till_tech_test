@@ -23,5 +23,6 @@ Till.prototype.removeProduct = function(productName, quantityToChangeBy) {
   }
   else {
     this.totalQuantity -= quantityToChangeBy;
+    this.totalPrice -= this.prices[productName] * quantityToChangeBy;
   }
 };
