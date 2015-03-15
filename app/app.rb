@@ -25,7 +25,8 @@ class TillTechTest < Sinatra::Base
   end
 
   put '/api/orderlist/1' do
-
+    dish_name = params[:itemname].downcase
+    order_list.receive_order(Order.new(menu.order(dish_name)))
   end
 
 end
