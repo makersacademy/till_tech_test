@@ -1,18 +1,16 @@
 <% if @change_owed.round(2) < 0 %>
 	Customer still owes $<%= -@change_owed.round(2)%>, go back"
 <% else %>
-	
-	<%= @time %>
 
 	<% @shop_details.each do |detail| %>
 		<ul>
-			<li><%= detail %></li>
+			<%= detail %>
 		</ul>
 	<% end %>
 
-	<% @order.each do |item, details| %>
+	<% @order.each do |item| %>
 		<ul>
-			<li><%= item %> <%=details[0]%> x $<%=details[1].round(2) %></li>
+			<li><%= item %></li>
 		</ul>
 	<% end %>
 	

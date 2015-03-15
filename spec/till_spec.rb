@@ -1,59 +1,43 @@
 require_relative '../app/lib/till'
 require_relative '../app/lib/order'
+require_relative '../app/lib/shop'
 
 describe 'till' do
 
 	let(:till)  {Till.new        }
-	let(:shop)  {double(:shop)   }
-	let(:order) {Order.new("Bob")}
+	let(:shop)  {Shop.new   }
+	let(:order) {Order.new   }
+	let(:adjustments) {Adjustments.new}
 
 	it 'can calculate the subtotal of an order' do
 		add_items
-		expect(till.subtotal_of(order.complete_list)).to eq(13.35)
+		expect(till.subtotal_of(order.list)).to eq(13.35)
 	end
 
 	it 'can calculate the total of an order inc. tax' do
 		add_items
-		expect(till.total_of(order.complete_list)).to eq(14.50)
+		expect(till.total_of(order.list, adjustments)).to eq(14.50)
 	end
 
 	it 'can work out how much change is owed to customer' do
 		add_items
-		expect(till.calculate_change(20.00, till.total_of(order.complete_list))).to eq(5.50)
-	end
-
-	it 'can calculate a 5% discount for orders over $50' do
-		add_many_items
-		expect(till.discount(till.subtotal_of(order.complete_list))).to eq(63.41)
-	end
-
-	it 'doesnt do a discount for orders under $50' do
-		add_items
-		expect(till.discount(till.subtotal_of(order.complete_list))).to eq(13.35)
-	end
-
-	it 'can calculate a 10% discount on muffins' do
-		add_muffin
-		expect(till.subtotal_of(till.item_discount(order.complete_list))).to eq(3.65)
-	end
-
-	it 'doesnt calculate a 10% discount for non-muffins' do
-		add_items
-		expect(till.subtotal_of(till.item_discount(order.complete_list))).to eq(13.35)
-	end
-
-	it 'can show how much the discount for muffins has been taken from' do
-		add_muffin
-		expect(till.item_discount_total(order.complete_list)).to eq(4.05)
+		expect(till.calculate_change(20.00, till.total_of(order.list, adjustments))).to eq(5.50)
 	end
 
 	it 'can show how much tax is on the order' do
 		add_muffin
-		expect(till.tax_total(order.complete_list)).to eq(0.35)
+		expect(till.tax_total(order.list, adjustments)).to eq(0.35)
 	end
 
-	it 'can show the time and date' do
-		expect(till.time_and_date).to eq(Time.now.strftime("%d/%m/%Y %H:%M"))
+	it 'can print a receipt header with all details' do
+		add_muffin
+		expect(till.print_receipt_head(shop.array_of_details).length).to eq(4)
+	end
+
+	it 'can print a receipt body with order details' do
+		add_muffin
+		add_items
+		expect(till.print_receipt_body(order.list).length).to eq 3
 	end
 
 end

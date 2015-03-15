@@ -4,11 +4,7 @@ require_relative 'spec_helper'
 describe 'order' do
 	
 	let(:shop)  { double("shop")  }
-	let(:order) { Order.new("Bob")}
-
-	it 'can have a name to distinguish itself from other orders' do
-		expect(order.customer_name).to eq("Bob")
-	end
+	let(:order) { Order.new}
 
 	it 'can provide a list of the item names ordered' do
 		add_items
@@ -40,7 +36,7 @@ describe 'order' do
 	it 'should be able to be cleared down' do
 		add_muffin
 		order.clear_order
-		expect(order.complete_list).to eq({})
+		expect(order.list).to eq({})
 	end
 
 	it 'can be confirmed/finalized' do

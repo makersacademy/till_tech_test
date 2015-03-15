@@ -1,35 +1,31 @@
 class Order
 
-	attr_reader :customer_name, :complete_list, :confirmed
+	attr_reader :list, :confirmed
 
-	def initialize(customer_name)
-		@complete_list = {}
-		@customer_name = customer_name
+	def initialize
+		@list = {}
 		@confirmed = false
 	end
 
-	def record_item(name, price, quantity)
-		if complete_list.has_key?(name)
-			update_item(name, price, quantity)
-		else
-			complete_list.store(name, [quantity, price*quantity])
-		end
+	def record_item(item_name, price, quantity)
+		list.has_key?(item_name) ? 
+		update_item(item_name, price, quantity) : list.store(item_name, [quantity, price*quantity])
 	end
 
 	def list_of_item_names
-		complete_list.keys
+		list.keys
 	end
 
 	def list_of_item_quantities
-		complete_list.values.collect(&:first)
+		list.values.collect(&:first)
 	end
 
 	def list_of_item_prices
-		complete_list.values.collect(&:last)
+		list.values.collect(&:last)
 	end
 
 	def clear_order
-		complete_list.clear
+		list.clear
 	end
 
 	def confirm_order?
@@ -38,9 +34,9 @@ class Order
 
 private
 
-	def update_item(name, price, quantity)
-		old_quantity = complete_list[name].first; old_price = complete_list[name].last
-		complete_list[name] = [(old_quantity + quantity), (old_price + (price*quantity))]
+	def update_item(item_name, price_to_add, quantity_to_add)
+		old_quantity, old_price = list[item_name].first, list[item_name].last
+		list[item_name] = [(old_quantity + quantity_to_add), (old_price + (price_to_add*quantity_to_add))]
 	end
 
 end
