@@ -57,5 +57,5 @@ Till.prototype.totalTax = function() {
 };
 
 Till.prototype.totalPriceAfterTax = function() {
-  return parseFloat((this.totalPriceBeforeDiscountAndTax + this.totalTax()).toFixed(2));
+  return parseFloat((this.totalPriceBeforeTax() + this.totalTax()).toFixed(2));
 };

@@ -174,7 +174,7 @@ describe ("Till", function(){
 
     it("can sum tax with discounts", function() {
       till.totalPriceBeforeDiscountAndTax = 100;
-      expect(till.totalPriceAfterTax()).toEqual(108.21);
+      expect(till.totalPriceAfterTax()).toEqual(103.21);
     });
 
     it("can remove the price of a removed product", function() {
