@@ -64,5 +64,5 @@ Given(/^I pay the balance of my bill$/) do
 end
 
 Then(/^my receipt shows that I have paid$/) do
-    pending # express the regexp above with the code you wish you had
+  expect(receipt.print[:payment][:remaining_balance]).to eq 0.0
 end
