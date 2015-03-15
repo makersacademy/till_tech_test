@@ -10,4 +10,9 @@ describe Till do
     end
   end
 
+  context 'Adding items to an order' do
+    it 'Has an empty order by default' do
+      expect(till.current_order).to be_empty
+    end
+  end
 end
