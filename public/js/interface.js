@@ -10,7 +10,6 @@ var validate = function(item, quantity, price) {
   else {
     $("#errorTill").text("We can't fill anymore orders");
   }
-  calculateTotal();
 };
 
 var isRepeated = function(item, quantity, price) {
@@ -21,6 +20,7 @@ var isRepeated = function(item, quantity, price) {
     else {
       appendList(item, quantity, price)
     }
+   calculateTotal();
   });
 };
 
