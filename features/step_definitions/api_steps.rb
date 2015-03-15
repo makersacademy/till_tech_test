@@ -1,9 +1,6 @@
 When(/^I (?:make|have made) a GET request to "(.*?)"$/) do |address|
   get address 
-end
-
-Given(/^I have made a POST request to "(.*?)"$/) do |address|
-  post address   
+  expect_status 200
 end
 
 Given(/^I receive the status "(\d*?)"$/) do |status|
@@ -18,5 +15,16 @@ end
 
 Given(/^I have made a PUT request with my order to "(.*?)"$/) do |address|
   put address, { itemname: :spaghetti }
+end
+
+Given(/^I have made a few orders$/) do
+  steps %{
+    And I have made a PUT request with my order to "api/order/1"
+    And I have made a PUT request with my order to "api/order/1"
+  }
+end
+
+Then(/^I should receive a JSON receipt$/) do
+  expect_json_keys [:order, :total] 
 end
 

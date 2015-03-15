@@ -1,3 +1,4 @@
+@api
 Feature: API
 
   Scenario: Returns menu as JSON
@@ -6,7 +7,12 @@ Feature: API
     Then I should receive a JSON with a menu
 
   Scenario: Adding an order to an OrderList
-    Given I have made a PUT request with my order to "api/orderlist/1"
+    Given I have made a PUT request with my order to "api/order/1"
     Then I receive the status "200" 
+
+  Scenario: Retrieving a receipt
+    Given I have made a few orders
+    And I make a GET request to "/api/order/1"
+    Then I should receive a JSON receipt
     
     
