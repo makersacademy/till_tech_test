@@ -22,6 +22,18 @@ describe ("Till", function(){
       till.addProduct(quantityToChangeBy);
       expect(till.totalQuantity).toEqual(1);
     });
+
+    it("can remove a product", function() {
+      till.addProduct(quantityToChangeBy);
+      till.removeProduct(quantityToChangeBy);
+      expect(till.totalQuantity).toEqual(0);
+    });
+
+    it("cannot be negative", function() {
+      till.removeProduct(quantityToChangeBy);
+      expect(till.totalQuantity).toEqual(0);
+    });
+
   });
 
 });
