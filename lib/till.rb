@@ -17,7 +17,11 @@ class Till
   end
 
   def current_order
-    order.list_current_order
+    order.current
+  end
+
+  def add_item item, quantity
+    order.add(item, quantity)
   end
 
 end

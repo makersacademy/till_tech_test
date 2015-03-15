@@ -14,5 +14,11 @@ describe Till do
     it 'Has an empty order by default' do
       expect(till.current_order).to be_empty
     end
+
+    it 'Can add one item to an order' do
+      till.add_item('Cappucino', 4)
+
+      expect(till.current_order).to eq [{item: 'Cappucino', quantity: 4}]
+    end
   end
 end

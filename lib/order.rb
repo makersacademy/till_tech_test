@@ -1,8 +1,12 @@
 class Order
 
-  attr_reader :list_current_order
+  attr_reader :current
 
   def initialize
-    @list_current_order = []
+    @current = []
+  end
+
+  def add item, quantity
+    current.push({item: item, quantity: quantity})
   end
 end
