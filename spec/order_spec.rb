@@ -18,5 +18,11 @@ describe Order do
       expect(order.current.first[:quantity]).to eq 2
     end
 
+    it 'Defaults to one item if a quantity isn\'t passed' do
+      order.add('Cafe Latte')
+
+      expect(order.current.first[:quantity]).to eq 1
+    end
+
   end
 end

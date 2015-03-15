@@ -20,7 +20,7 @@ class Till
     order.current
   end
 
-  def add_item item, quantity
+  def add_item item, quantity=1
     order.add(item, quantity)
   end
 
