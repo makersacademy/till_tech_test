@@ -47,11 +47,14 @@ class TillApp < Sinatra::Base
   end
 
   get '/make_payment' do
-    @total = till.total_of(order.complete_list)
+    @order = order.complete_list
+    @subtotal = till.subtotal_of(@order)
+    @total = till.total_of(@order)
+    @tax = till.tax_total(@order)
     @cash_taken = params[:cash].to_f
     @change_owed = till.calculate_change(@cash_taken, @total)
-    @order = order.complete_list
-    @item_discount_total = till.item_discount_total(order.complete_list)
+    @item_discount_total = till.item_discount_total(@order)
+    @shop_details = shop.array_of_details
     erb :receipt
   end
 

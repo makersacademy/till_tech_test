@@ -81,6 +81,17 @@ Then(/^I see Muffin Discount (\d+)% from \$(\d+)\.(\d+)$/) do |arg1, arg2, arg3|
   expect(page).to have_content("Muffin Discount 10% from $4.05")
 end
 
+Given(/^I am on the order page and I have ordered (\d+) Cafe Latte's$/) do |arg1|
+  visit('/')
+  click_button("Clear Order")
+  20.times { click_button("Cafe Latte") }
+  click_button('Confirm Order')
+end
 
+Then(/^I see Discount (\d+)% from \$(\d+)$/) do |arg1, arg2|
+  expect(page).to have_content("Discount 5% from $95")
+end
 
-
+When(/^I input sufficient cash$/) do
+  fill_in('cash',with: 100)
+end

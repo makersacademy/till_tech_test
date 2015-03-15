@@ -47,4 +47,9 @@ describe 'till' do
 		expect(till.item_discount_total(order.complete_list)).to eq(4.05)
 	end
 
+	it 'can show how much tax is on the order' do
+		add_muffin
+		expect(till.tax_total(order.complete_list)).to eq(0.35)
+	end
+
 end

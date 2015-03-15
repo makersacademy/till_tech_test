@@ -1,12 +1,35 @@
 <% if @change_owed.round(2) < 0 %>
 	Customer still owes $<%= -@change_owed.round(2)%>, go back"
 <% else %>
+	
+	<% @shop_details.each do |detail| %>
+		<ul>
+			<li><%= detail %></li>
+		</ul>
+	<% end %>
+
 	<% @order.each do |item, details| %>
 		<ul>
 			<li><%= item %> <%=details[0]%> x $<%=details[1].round(2) %></li>
 		</ul>
 	<% end %>
-	Muffin Discount 10% from $<%= @item_discount_total %>
-	Cash: $<%= @cash_taken %>
-	Change: $<%= @change_owed.round(2) %>
-<% end %>
+	
+	<ul>
+
+		<% if @item_discount_total != nil %>
+			<li>Muffin Discount 10% from $<%= @item_discount_total %></li>
+		<% end %>
+
+		<% if @subtotal > 50 %>
+			<li>Discount 5% from $<%= @subtotal %></li>
+		<% end %>
+
+		<li>Tax $<%= @tax %></li>
+
+		<li>Cash: $<%= @cash_taken %></li>
+
+		<li>Change: $<%= @change_owed.round(2) %></li>
+
+	</ul>
+
+	<% end %>

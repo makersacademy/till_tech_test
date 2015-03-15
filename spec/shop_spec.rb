@@ -24,8 +24,12 @@ describe "Shop" do
 		expect(shop.details("phone")).to eq("16503600708")
 	end
 
+	it 'can return its name, address and phone number in an array' do
+		expect(shop.array_of_details.length).to eq(3)
+	end
+
 	it 'can return a list of items available' do
 		expect(shop.available_items.length).to eq(15)
 	end
-	
+
 end

@@ -45,4 +45,8 @@ class Till
 		total.inject(:+)
 	end
 
+	def tax_total(order)
+		(total_of(order) - discount(subtotal_of(order))).round(2)
+	end
+
 end

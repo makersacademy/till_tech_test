@@ -14,3 +14,21 @@ Feature: Printing a receipt
 		When I input some cash
 		And I click "Open Till"
 		Then I see Muffin Discount 10% from $4.05
+
+	Scenario: The customer orders many items to a value over the discount limit
+		Given I am on the order page and I have ordered 20 Cafe Latte's
+		When I input sufficient cash
+		And I click "Open Till"
+		Then I see Discount 5% from $95
+
+	Scenario: The customer needs to see their tax
+		Given I am on the order page and I have ordered a "Cafe Latte" and a "Tea"
+		When I input some cash
+		And I click "Open Till"
+		Then I see "Tax $0.73"
+
+	Scenario: The customer needs to see the cafe details
+		Given I am on the order page and I have ordered a "Cafe Latte" and a "Tea"
+		When I input some cash
+		And I click "Open Till"
+		Then I see "The Coffee Connection 123 Lakeside Way 16503600708"

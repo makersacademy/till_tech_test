@@ -2,11 +2,11 @@ require 'json'
 
 class Shop
 
-	attr_accessor :menu, :shop_details
+	attr_accessor :menu, :all_shop_information
 
 	def initialize(filename)
-		@shop_details = open_shop_info(filename)
-		@menu = open_menu(shop_details)
+		@all_shop_information = open_shop_info(filename)
+		@menu = open_menu(all_shop_information)
 	end
 
 	def options(chosen_product)
@@ -14,11 +14,15 @@ class Shop
 	end
 
 	def details(required_info)
-		shop_details[required_info]
+		all_shop_information[required_info]
 	end
 
 	def available_items
 		menu.keys
+	end
+
+	def array_of_details
+		all_shop_information.values[0..2]
 	end
 
 private
@@ -27,8 +31,8 @@ private
 		JSON.parse(File.read(filename)).first
 	end
 
-  def open_menu(shop_details)
-    shop_details["prices"].first
+  def open_menu(all_shop_information)
+    all_shop_information["prices"].first
   end
 
 end
