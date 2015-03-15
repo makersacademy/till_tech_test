@@ -18,8 +18,7 @@ var Till = function(catalogue) {
 Till.prototype.addProduct = function(productName, quantityToChangeBy) {
   quantityToChangeBy = quantityToChangeBy || this.defaultQuantityChange;
   this.totalQuantity += quantityToChangeBy;
-  pcost = this.productCost(productName, quantityToChangeBy)
-  this.totalPriceBeforeDiscountAndTax += pcost;
+  this.totalPriceBeforeDiscountAndTax += this.productCost(productName, quantityToChangeBy);
 };
 
 Till.prototype.removeProduct = function(productName, quantityToChangeBy) {
@@ -30,8 +29,7 @@ Till.prototype.removeProduct = function(productName, quantityToChangeBy) {
   }
   else {
     this.totalQuantity -= quantityToChangeBy;
-    pcost = this.productCost(productName, quantityToChangeBy)
-    this.totalPriceBeforeDiscountAndTax -= pcost;
+    this.totalPriceBeforeDiscountAndTax -= this.productCost(productName, quantityToChangeBy);
   }
 };
 
