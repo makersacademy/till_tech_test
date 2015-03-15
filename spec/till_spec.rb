@@ -8,6 +8,10 @@ describe Till do
     it 'Loads the price list' do
       expect(till.price_list.kind_of? Hash).to be true
     end
+
+    it 'Has a tax level configured' do
+      expect(till.tax).to eq 8.64
+    end
   end
 
   context 'Adding items to an order' do
