@@ -26,7 +26,7 @@ class Till
   end
 
   # eg.{50=>5,item1=>10} above 50.0  5% discount
-  #                         item1 10% discount
+  #                           item1 10% discount
   def addDiscount(details)
     @discount = details
   end
