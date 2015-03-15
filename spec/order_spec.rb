@@ -33,7 +33,7 @@ describe 'order' do
 		expect(order.list_of_item_prices).to eq([8.10])	
 	end
 
-	it 'should be able to be cleared down' do
+	it 'can be cleared down' do
 		add_muffin
 		order.clear_order
 		expect(order.list).to eq({})

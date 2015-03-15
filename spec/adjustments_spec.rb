@@ -27,7 +27,7 @@ describe 'adjustments' do
 		expect(till.subtotal_of(adjustments.item_discount(order.list))).to eq(13.35)
 	end
 
-	it 'can show how much the discount for muffins has been taken from' do
+	it 'can show the total amount the discount was calculated on for muffins' do
 		add_muffin
 		expect(adjustments.item_discount_total(order.list)).to eq(4.05)
 	end
