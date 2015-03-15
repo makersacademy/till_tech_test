@@ -18,3 +18,8 @@ Feature: Taking an order
 		When I click on "Cafe Latte"
 		And I click on "Clear Order"
 		Then I should not see "Cafe Latte" x "1"
+
+	Scenario: Displaying prices (should only see to two decimal places)
+		Given I am on the homepage
+		When I click on "Blueberry Muffin" 3 times
+		Then I should see Blueberry Muffin x 3 = $12.15

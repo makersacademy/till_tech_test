@@ -1,15 +1,14 @@
 <% @ordered_items.each do |item, details| %>
 
 	<ul>
-		<li><%= item %> x <%=details[0]%> = $<%=details[1]%></li>
+		<li><%= item %> x <%=details[0]%> = $<%=details[1].round(2) %></li>
 	</ul>
 
 <% end %>
 
 Total = $<%= @total %>
 
-<form action="/make_payment" method="post">
+<form action="/make_payment" method="get">
  	<input type="text" name="cash" id="amount_received">
 	<button type="submit">Open Till</button>
 </form>
-

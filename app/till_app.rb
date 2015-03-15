@@ -46,8 +46,13 @@ class TillApp < Sinatra::Base
   	end
   end
 
-  post '/make_payment' do
-
+  get '/make_payment' do
+    @total = till.total_of(order.complete_list)
+    @cash_taken = params[:cash].to_f
+    @change_owed = till.calculate_change(@cash_taken, @total)
+    @order = order.complete_list
+    @item_discount_total = till.item_discount_total(order.complete_list)
+    erb :receipt
   end
 
   # start the server if ruby file executed directly

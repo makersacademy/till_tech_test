@@ -42,4 +42,9 @@ describe 'till' do
 		expect(till.subtotal_of(till.item_discount(order.complete_list))).to eq(13.35)
 	end
 
+	it 'can show how much the discount for muffins has been taken from' do
+		add_muffin
+		expect(till.item_discount_total(order.complete_list)).to eq(4.05)
+	end
+
 end

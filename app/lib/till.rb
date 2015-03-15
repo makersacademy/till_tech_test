@@ -37,4 +37,12 @@ class Till
 		end
 	end
 
+	def item_discount_total(order)
+		total = []
+		order.each do |item, array| 
+			total << order[item].last if item.include?(item_on_discount)
+		end
+		total.inject(:+)
+	end
+
 end

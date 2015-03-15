@@ -1,0 +1,12 @@
+<% if @change_owed.round(2) < 0 %>
+	Customer still owes $<%= -@change_owed.round(2)%>, go back"
+<% else %>
+	<% @order.each do |item, details| %>
+		<ul>
+			<li><%= item %> <%=details[0]%> x $<%=details[1].round(2) %></li>
+		</ul>
+	<% end %>
+	Muffin Discount 10% from $<%= @item_discount_total %>
+	Cash: $<%= @cash_taken %>
+	Change: $<%= @change_owed.round(2) %>
+<% end %>

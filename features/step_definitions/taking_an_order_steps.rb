@@ -33,5 +33,54 @@ Then(/^I should see No items, reset order$/) do
 end
 
 Then(/^I should not be able to see "(.*?)"$/) do |arg1|
-  expect(page).not_to have_content("Confirm order")
+  expect(page).not_to have_content("Confirm Order")
 end
+
+When(/^I click on "(.*?)" (\d+) times$/) do |arg1, arg2|
+  click_button(arg1)
+  click_button(arg1)
+  click_button(arg1)
+end
+
+Then(/^I should see Blueberry Muffin x (\d+) = \$(\d+)\.(\d+)$/) do |arg1, arg2, arg3|
+  expect(page).to have_content("Blueberry Muffin x 3 = $12.15")
+end
+
+Given(/^I am on order page and I have ordered a Cafe Latte$/) do
+  visit('/')
+  click_button("Clear Order")
+  click_button('Cafe Latte')
+  click_button('Confirm Order')
+end
+
+When(/^I click "(.*?)"$/) do |arg1|
+  click_button(arg1)
+end
+
+Then(/^I see "(.*?)"$/) do |arg1|
+  expect(page).to have_content(arg1)
+end
+
+When(/^I input "(.*?)" cash$/) do |arg1|
+  fill_in('cash',with: arg1)
+end
+
+Given(/^I am on the order page and I have ordered a "(.*?)" and a "(.*?)"$/) do |arg1, arg2|
+  visit('/')
+  click_button("Clear Order")
+  click_button(arg1)
+  click_button(arg2)
+  click_button('Confirm Order')
+end
+
+When(/^I input some cash$/) do
+  fill_in('cash',with: 50)
+end
+
+Then(/^I see Muffin Discount (\d+)% from \$(\d+)\.(\d+)$/) do |arg1, arg2, arg3|
+  expect(page).to have_content("Muffin Discount 10% from $4.05")
+end
+
+
+
+
