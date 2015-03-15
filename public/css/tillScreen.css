@@ -41,6 +41,7 @@ select {
   position:absolute;
   z-index:1;
   background: none;
+  left:1%;
   top:50%;
   width:100%;
   height:100%;
@@ -51,6 +52,7 @@ select {
   position:absolute;
   z-index:1;
   background: none;
+  left:1%;
   top:52%;
   width:100%;
   height:100%;
@@ -61,6 +63,7 @@ select {
   position:absolute;
   z-index:1;
   background: none;
+  left:1%;
   top:54%;
   width:100%;
   height:100%;
@@ -144,6 +147,10 @@ select {
     top:52%;
     font-size:10px;
   }
+}
+
+@-ms-viewport{
+  width: device-width;
 }
 
 .receipt1 {

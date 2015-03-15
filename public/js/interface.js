@@ -2,8 +2,7 @@ var validate = function(item, quantity, price) {
   var count = $('#tillNumbers').children().length;
   if (quantity != 0 && count < 7 ||
    $("." + item.replace(/\s+/g, '')).length != 0) {
-    isRepeated(item, quantity, price);
-    calculateTotal();   
+    isRepeated(item, quantity, price);     
   }
   else if (quantity == 0){
     $("#errorTill").text("Enter a Quantity");
@@ -11,6 +10,7 @@ var validate = function(item, quantity, price) {
   else {
     $("#errorTill").text("We can't fill anymore orders");
   }
+  calculateTotal();
 };
 
 var isRepeated = function(item, quantity, price) {
@@ -48,10 +48,6 @@ var calculateTotal = function(){
     $('#totalPrice').text("Total: £" + data.total)
     $('#tax').text("Tax (8.64%): £" + data.tax)
     $('#afterTax').text("After Tax: £" + data.after)
-
-    console.log(data.total)
-    console.log(data.tax)
-    console.log(data.after)
   });
 };
 
