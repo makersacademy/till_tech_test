@@ -16,7 +16,11 @@ class Receipt
   end
 
   def line_price_for line
-    price_list[line[:item]] * line[:quantity]
+    price_for(line[:item]) * line[:quantity]
+  end
+
+  def subtotal
+    order.inject(0){|memo, line| memo + line_price_for(line)}.round(2)
   end
 
 end
