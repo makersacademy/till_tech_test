@@ -52,7 +52,6 @@ function HipsterList(cBack) {
   };
 
   HipsterList.prototype.getTotal = function() {
-    console.log(this.total)
     if (this.price.length > 0)
       this.total = eval(this.price.join('+')).toFixed(2);
     else {
@@ -61,12 +60,20 @@ function HipsterList(cBack) {
     return this.total;
   };
 
+  HipsterList.prototype.getTax = function() {
+    return (this.total * (8.64/100)).toFixed(2)
+  };
+
+  HipsterList.prototype.afterTax = function() {
+    return (+this.total + (+this.total * +(8.64/100))).toFixed(2)
+  };
+
   HipsterList.prototype.deleteItem = function(item){
     var index = this.list.indexOf(item);
     this.list.splice(index);
     this.price.splice(index);
     console.log(this.list)
-  }
+  };
   
 
 

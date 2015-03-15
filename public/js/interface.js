@@ -8,6 +8,9 @@ var validate = function(item, quantity, price) {
   else if (quantity == 0){
     $("#errorTill").text("Enter a Quantity");
   }
+  else {
+    $("#errorTill").text("We can't fill anymore orders");
+  }
 };
 
 var isRepeated = function(item, quantity, price) {
@@ -42,6 +45,12 @@ var appendList = function(item, quantity, price) {
 var calculateTotal = function(){
   $.get('/items', function(data) {
     $('#totalPrice').text("Total: £" + data.total)
+    $('#tax').text("Tax (8.64%): £" + data.tax)
+    $('#afterTax').text("After Tax: £" + data.after)
+
+    console.log(data.total)
+    console.log(data.tax)
+    console.log(data.after)
   });
 };
 
