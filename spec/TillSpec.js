@@ -33,12 +33,16 @@ describe ("Till", function(){
       expect(till.totalQuantity).toEqual(0);
     });
 
-    it("total price should be 0", function() {
-      expect(till.totalPrice).toEqual(0);
+    it("total price before taxes should be 0", function() {
+      expect(till.totalPriceBeforeTax).toEqual(0);
     });
 
     it("total tax should be 0", function() {
       expect(till.totalTax).toEqual(0);
+    });
+
+    it("total price before taxes should be 0", function() {
+      expect(till.totalPriceAfterTax).toEqual(0);
     });
 
   });
@@ -65,29 +69,29 @@ describe ("Till", function(){
 
   });
 
-  describe("prices", function() {
+  describe("prices before tax", function() {
 
     it("can add the price of the added product", function() {
       till.addProduct("Cafe Latte", quantityToChangeBy);
-      expect(till.totalPrice).toEqual(4.75)
+      expect(till.totalPriceBeforeTax).toEqual(4.75)
     });
 
     it("can sum more than one price", function() {
       till.addProduct("Cafe Latte", quantityToChangeBy);
       till.addProduct("Cappucino", quantityToChangeBy);
-      expect(till.totalPrice).toEqual(8.6)
+      expect(till.totalPriceBeforeTax).toEqual(8.6)
     });
 
     it("can remove the price of a removed product", function() {
       till.addProduct("Cafe Latte", quantityToChangeBy);
       till.addProduct("Cappucino", quantityToChangeBy);
       till.removeProduct("Cappucino", quantityToChangeBy);
-      expect(till.totalPrice).toEqual(4.75)
+      expect(till.totalPriceBeforeTax).toEqual(4.75)
     });
 
     it("cannot be negative", function() {
       till.removeProduct("Cafe Latte", quantityToChangeBy);
-      expect(till.totalPrice).toEqual(0);
+      expect(till.totalPriceBeforeTax).toEqual(0);
     });
 
   });
@@ -110,6 +114,33 @@ describe ("Till", function(){
       till.addProduct("Cappucino", quantityToChangeBy);
       till.removeProduct("Cappucino", quantityToChangeBy);
       expect(till.totalTax).toEqual(0.41)
+    });
+
+  });
+
+  describe("prices after tax", function() {
+
+    it("can add the tax to the price after tax", function() {
+      till.addProduct("Cafe Latte", quantityToChangeBy);
+      expect(till.totalPriceAfterTax).toEqual(5.16)
+    });
+
+    it("can sum more than one price", function() {
+      till.addProduct("Cafe Latte", quantityToChangeBy);
+      till.addProduct("Cappucino", quantityToChangeBy);
+      expect(till.totalPriceAfterTax).toEqual(9.34)
+    });
+
+    it("can remove the price of a removed product", function() {
+      till.addProduct("Cafe Latte", quantityToChangeBy);
+      till.addProduct("Cappucino", quantityToChangeBy);
+      till.removeProduct("Cappucino", quantityToChangeBy);
+      expect(till.totalPriceAfterTax).toEqual(5.16)
+    });
+
+    it("cannot be negative", function() {
+      till.removeProduct("Cafe Latte", quantityToChangeBy);
+      expect(till.totalPriceAfterTax).toEqual(0);
     });
 
   });
