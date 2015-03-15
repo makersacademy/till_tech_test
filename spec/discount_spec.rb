@@ -7,7 +7,7 @@ describe 'discounts' do
   describe 'calculating a discount amount' do
 
     it 'should calculate a discount based on amount to be discounted and discount rate' do
-      expect(dummy_receipt.calculate_discount(85, 10)).to eq(8.5)
+      expect(dummy_receipt.calc_discount(85, 10)).to eq(8.5)
     end
 
   end
