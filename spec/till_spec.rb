@@ -52,4 +52,8 @@ describe 'till' do
 		expect(till.tax_total(order.complete_list)).to eq(0.35)
 	end
 
+	it 'can show the time and date' do
+		expect(till.time_and_date).to eq(Time.now.strftime("%d/%m/%Y %H:%M"))
+	end
+
 end

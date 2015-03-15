@@ -32,3 +32,15 @@ Feature: Printing a receipt
 		When I input some cash
 		And I click "Open Till"
 		Then I see "The Coffee Connection 123 Lakeside Way 16503600708"
+
+	Scenario: The customer can see the total of the order
+		Given I am on the order page and I have ordered a "Cafe Latte" and a "Tea"
+		When I input some cash
+		And I click "Open Till"
+		Then I see "Total $9.13"
+
+	Scenario: The customer can see time and date of transaction for their records
+		Given I am on the order page and I have ordered a "Cafe Latte" and a "Tea"
+		When I input some cash
+		And I click "Open Till"
+		Then I see the current time and date

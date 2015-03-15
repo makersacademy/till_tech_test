@@ -4,7 +4,7 @@ class Till
 
 	def initialize
 		@discount_threshold = 50
-		@discount_rate = 0.95
+		@discount_rate = 0.95 #5% discount
 		@item_on_discount = "Muffin"
 		@item_discount_rate = 0.90 #10% discount
 		@tax = 1.0864
@@ -47,6 +47,10 @@ class Till
 
 	def tax_total(order)
 		(total_of(order) - discount(subtotal_of(order))).round(2)
+	end
+
+	def time_and_date
+		Time.now.strftime("%d/%m/%Y %H:%M")
 	end
 
 end

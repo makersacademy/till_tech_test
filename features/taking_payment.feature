@@ -26,4 +26,3 @@ Feature: Taking Payment
 		When I input "5.50" cash
 		And I click "Open Till"
 		Then I see "Cash: $5.5"
-

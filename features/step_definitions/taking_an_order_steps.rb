@@ -95,3 +95,7 @@ end
 When(/^I input sufficient cash$/) do
   fill_in('cash',with: 100)
 end
+
+Then(/^I see the current time and date$/) do
+  expect(page).to have_content(Time.now.strftime("%d/%m/%Y %H:%M"))
+end

@@ -2,6 +2,8 @@
 	Customer still owes $<%= -@change_owed.round(2)%>, go back"
 <% else %>
 	
+	<%= @time %>
+
 	<% @shop_details.each do |detail| %>
 		<ul>
 			<li><%= detail %></li>
@@ -17,7 +19,7 @@
 	<ul>
 
 		<% if @item_discount_total != nil %>
-			<li>Muffin Discount 10% from $<%= @item_discount_total %></li>
+			<li><%=@item_on_offer %> Discount 10% from $<%= @item_discount_total %></li>
 		<% end %>
 
 		<% if @subtotal > 50 %>
@@ -26,10 +28,12 @@
 
 		<li>Tax $<%= @tax %></li>
 
+		<li>Total $<%= @total %></li>
+
 		<li>Cash: $<%= @cash_taken %></li>
 
 		<li>Change: $<%= @change_owed.round(2) %></li>
 
 	</ul>
 
-	<% end %>
+<% end %>
