@@ -1,6 +1,7 @@
 require 'byebug'
 require './lib/tax'
 require './lib/discount'
+require './lib/payment'
 
 FLOAT = Transform /^\d*\.\d*$/ do |float_string|
   float_string.to_f
@@ -51,3 +52,17 @@ Then(/^my receipt shows a discounted grand total$/) do
   expect(receipt.print[:total] < receipt.print[:order][:total]).to eq true
 end
 
+Given(/^I have made a few orders$/) do
+  steps %{
+    Given I have ordered "Cafe Latte" at a cost of "3.0"    
+    And I have ordered "Spaghetti" at a cost of "5.0"
+  }
+end
+
+Given(/^I pay the balance of my bill$/) do
+  receipt(Payment.new(8.0))
+end
+
+Then(/^my receipt shows that I have paid$/) do
+    pending # express the regexp above with the code you wish you had
+end
