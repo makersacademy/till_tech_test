@@ -1,5 +1,5 @@
 When(/^I (?:make|have made) a GET request to "(.*?)"$/) do |address|
-  @json = get "/api/menu/#{address}"
+  get address 
 end
 
 Given(/^I receive the status "(\d*?)"$/) do |status|
@@ -7,6 +7,6 @@ Given(/^I receive the status "(\d*?)"$/) do |status|
 end
 
 Then(/^I should receive a JSON with a menu$/) do
-  pending # express the regexp above with the code you wish you had
+  expect_json({spaghetti: {name: 'Spaghetti', price: 5.0 }})
 end
 
