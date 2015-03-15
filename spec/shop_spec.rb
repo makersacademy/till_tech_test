@@ -14,6 +14,6 @@ describe "Shop" do
 
   it 'can return a list of items available' do
   	expect(shop.available_menu_items.length).to eq(15)
-	end
+  end
 
 end
