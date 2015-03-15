@@ -2,13 +2,16 @@ require 'sinatra/base'
 require 'erb'
 require "sinatra/json"
 require './lib/menu'
+require './lib/order_list'
+require './lib/order'
 
 class TillTechTest < Sinatra::Base
   set :root, File.dirname(__FILE__)
   helpers Sinatra::JSON
 
-  menu = Menu.new({latte: {name: 'Cafe Latte', price: 2.5 },
-                spaghetti: {name: 'Spaghetti', price: 5.0 }})
+  order_list = OrderList.new
+  menu       = Menu.new({latte: {name: 'Cafe Latte', price: 2.5 },
+                'spaghetti' => {name: 'Spaghetti', price: 5.0 }})
 
   get '/' do
     erb :index 
