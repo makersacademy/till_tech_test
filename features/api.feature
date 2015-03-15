@@ -11,7 +11,7 @@ Feature: API
     Then I receive the status "200" 
 
   Scenario: Retrieving a receipt
-    Given I have made a few orders
+    Given I have made PUT requests for a few orders
     And I make a GET request to "/api/order/1"
     Then I should receive a JSON receipt
     

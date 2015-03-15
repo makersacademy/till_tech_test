@@ -17,7 +17,7 @@ Given(/^I have made a PUT request with my order to "(.*?)"$/) do |address|
   put address, { itemname: :spaghetti }
 end
 
-Given(/^I have made a few orders$/) do
+Given(/^I have made PUT requests for a few orders$/) do
   steps %{
     And I have made a PUT request with my order to "api/order/1"
     And I have made a PUT request with my order to "api/order/1"
