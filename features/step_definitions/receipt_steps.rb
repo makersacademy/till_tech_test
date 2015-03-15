@@ -60,7 +60,7 @@ Given(/^I have made a few orders$/) do
 end
 
 Given(/^I pay the balance of my bill$/) do
-  receipt(Payment.new(8.0))
+  receipt(payment: Payment.new(8.0))
 end
 
 Then(/^my receipt shows that I have paid$/) do

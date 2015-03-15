@@ -2,8 +2,8 @@ def order_list
   @order_list ||= OrderList.new
 end
 
-def receipt
-  @receipt    ||= Receipt.new(order_list)
+def receipt evaluator_objects = {}
+  @receipt    ||= Receipt.new(order_list, evaluator_objects)
 end
 
 def menu
