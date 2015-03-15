@@ -18,11 +18,9 @@ module Helper
   def extractShop(json)
     result = {}
     json.each do |k,v|
-      result[k.to_sym]=v if v.class == String
-      result[k.to_sym]=extractMenu(v[0]) unless v.class == String
-      # puts v[0].class unless v.class == String
+      result[k.to_sym] = v if v.class == String
+      result[k.to_sym] = extractMenu(v[0]) unless v.class == String
     end
-    puts result
     result
   end  
 
