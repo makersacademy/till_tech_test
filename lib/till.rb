@@ -25,19 +25,28 @@ class Till
     (amount - order.total_sum*(1+@tax/100.0)).round(2)
   end
 
-  # eg.{50=>5,item1=>10} above 50  5% discount
+  # eg.{50=>5,item1=>10} above 50.0  5% discount
   #                         item1 10% discount
   def addDiscount(details)
     @discount = details
   end
 
-  def discountedBill(order)
+  def discountedList(order)
     itemsSum = order.items_sum
-    puts itemsSum
     itemsSum.each do |item,amount|
       itemsSum[item] = (amount*(1.0 - @discount[item]/100.0)).round(2) if @discount[item]
     end
     itemsSum    
   end
+
+  def discountedTotal(order)
+    listSums = discountedList(order)
+    totalDisc = @discount.select{|k,v| k.class == Float} #selects total discounts
+    totalWithoutDisount = listSums.reduce(0) { |sum,(item,value)| sum+=value} #calulate the sum
+    disc = totalDisc.select{|k,v| totalWithoutDisount > k}.max_by{|k,v| k} #takes the ap. discout pct
+    totalWithoutDisount *= (1.0 - disc[1]/100.0) if disc
+    totalWithoutDisount 
+  end
+
 
 end
