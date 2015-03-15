@@ -36,8 +36,8 @@ function HipsterList(cBack) {
 //functions for list
   HipsterList.prototype.add = function(item, quantity) {
      this.list.push(item);
-     var price = (this.shopInfo.prices[item] * quantity).toFixed(2)
-     this.price.push(price)
+     var price = (this.shopInfo.prices[item] * quantity).toFixed(2);
+     this.price.push(price);
     };
 
   HipsterList.prototype.getAll = function() {
@@ -45,10 +45,20 @@ function HipsterList(cBack) {
   };
 
   HipsterList.prototype.getTotal = function() {
-    this.total = eval(this.price.join('+')).toFixed(2)
-    console.log(this.total)
-    return this.total
+    if (this.price.length > 0)
+      this.total = eval(this.price.join('+')).toFixed(2);
+    else {
+      this.total = 0
+    }
+    return this.total;
   };
+
+  HipsterList.prototype.deleteItem = function(item){
+    var index = this.list.indexOf(item);
+    this.list.splice(index);
+    this.price.splice(index);
+    console.log(this.list)
+  }
   
 
 

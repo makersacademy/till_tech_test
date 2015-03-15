@@ -13,6 +13,11 @@ function routes(app, db) {
   app.get('/items', function(req, res){
     res.send({total: db.getTotal()});
   });
+
+  app.delete('/items', function(req, res){
+    db.deleteItem(req.body.item);
+    res.sendStatus(200);
+  });
 }
 
 module.exports = routes;

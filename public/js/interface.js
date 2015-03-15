@@ -1,6 +1,6 @@
 var validate = function(item, quantity, price) {
   var _this = this;
-  var count = $('#tillNumbers').children() .length
+  var count = $('#tillNumbers').children().length
   if (quantity != 0 && count < 6) {
     addToList(item, quantity, price);
     calculateTotal();   
@@ -28,6 +28,14 @@ var calculateTotal = function(){
   });
 };
 
+var deleteItem = function(item){
+ $.ajax({
+        url: '/items',
+        type: 'DELETE',
+        data: {item: item},
+      });
+  };
+
 $(document).on('ready', function() {
 
   $(document).on('click', '#buttonForAdd', function(e) {
@@ -35,8 +43,7 @@ $(document).on('ready', function() {
       $('.receiptPlacement').addClass('receipt1')
       $('#printReceipt').removeAttr('hidden')
       validate($( "#itemselect" ).val(), $("#quantityInput").val(),
-       $("#itemselect :selected").attr("id"));
-      
+       $("#itemselect :selected").attr("id"));     
     });
   
   $(document).on('click', '.receiptPlacement', function(e) {
@@ -51,8 +58,9 @@ $(document).on('ready', function() {
 
   $(document).on('click', '.x', function(e) {
    e.preventDefault();
-   $(this).parent().remove();
-   $('#entryTill').removeAttr('disabled');
-  });
-
+     var item = $(this).attr("id")
+     deleteItem(item);
+     $(this).parent().remove();
+     calculateTotal(); 
+  });  
 });
