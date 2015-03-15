@@ -1,4 +1,6 @@
 require 'byebug'
+require './lib/tax'
+require './lib/discount'
 
 FLOAT = Transform /^\d*\.\d*$/ do |float_string|
   float_string.to_f
