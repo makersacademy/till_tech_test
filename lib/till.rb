@@ -41,7 +41,7 @@ class Till
 
   def discountedTotal(order)
     listSums = discountedList(order)
-    totalDisc = @discount.select{|k,v| k.class == Float} #selects total discounts
+    totalDisc = @discount.select{|k,v| (k.class == Float || k.class == Fixnum)} #selects total discounts
     totalWithoutDisount = listSums.reduce(0) { |sum,(item,value)| sum+=value} #calulate the sum
     disc = totalDisc.select{|k,v| totalWithoutDisount > k}.max_by{|k,v| k} #takes the ap. discout pct
     totalWithoutDisount *= (1.0 - disc[1]/100.0) if disc

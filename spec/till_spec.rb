@@ -53,7 +53,7 @@ describe Till do
   end  
 
   it 'can calculated a total discounted tkn total disc as well' do 
-    till.addDiscount({5.0=>10,item2=>10})
+    till.addDiscount({5.0=>10,50=>15,item2=>10})
     expect(till.discountedTotal(order2)).to eq(8.64)
   end
 end
