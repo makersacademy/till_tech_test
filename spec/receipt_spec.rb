@@ -9,5 +9,11 @@ describe Receipt do
     it 'Returns a price for each item' do
       expect(receipt.price_for('Cafe Latte')).to eq 4.75
     end
+
+    it 'Returns a line price for an item and quantity' do
+      two_choc_mousses = {item: 'Choc Mousse', quantity: 2}
+      
+      expect(receipt.line_price_for(two_choc_mousses)).to eq 16.40
+    end
   end
 end

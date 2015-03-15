@@ -15,4 +15,8 @@ class Receipt
     price_list[item]
   end
 
+  def line_price_for line
+    price_list[line[:item]] * line[:quantity]
+  end
+
 end
