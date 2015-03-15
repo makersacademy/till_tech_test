@@ -26,4 +26,9 @@ Feature: Receipt
     Given I am at a cafe with a discount on orders over "50.0"
     And I have spent over "50.0" 
     Then my receipt shows a discounted grand total
+
+  Scenario: Payment
+    Given I have made a few orders
+    And I pay the balance of my bill
+    Then my receipt shows that I have paid
     
