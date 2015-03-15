@@ -27,4 +27,15 @@ describe Receipt do
     end
 
   end
+
+  context 'Generating the receipt' do
+    
+    
+    it 'Returns an itemized receipt' do
+    order = [{item: "Cafe Latte", quantity: 1}, {item: "Blueberry Muffin", quantity: 3}]
+    receipt = Receipt.new(order)
+
+      expect(receipt.generate).to eq ['Cafe Latte 1x 4.75', 'Blueberry Muffin 3x 4.05', 'Total 16.90']
+    end
+  end
 end
