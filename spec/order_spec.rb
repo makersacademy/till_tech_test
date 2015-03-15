@@ -22,7 +22,7 @@ describe Order do
     expect(order.items_sum).to eq({item1=>2.99,item2=>1.98})
   end  
 
-  it "can add order to list of tilt orders" do 
+  it "can add order to list of till orders" do 
     till.add_order(order)
     expect(till.orders.length).to eq(1)
   end
