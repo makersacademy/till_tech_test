@@ -27,7 +27,7 @@ var isRepeated = function(item, quantity, price) {
 var addToList = function(item, quantity, price) {
   $('#errorTill').empty();  
       button = item + " x" + quantity + "= £" + (price*quantity).toFixed(2)
-       + " " + '<button class="btn x '+ item.replace(/\s+/g, '') +'" id="'+ quantity
+       + " " + '<button class="btn x" value="'+ item.replace(/\s+/g, '') +'" id="'+ quantity
        +'">x</button>';
     $('<div />',{html: button}).appendTo('#tillNumbers');    
 };
@@ -38,7 +38,7 @@ var appendList = function(item, quantity, price) {
   $("."+item.replace(/\s+/g, '')).parent().remove()
    button = item + " x" + (+quantity + +id) + "= £"
    + (price*(+quantity + +id)).toFixed(2)
-   + " " + '<button class="btn x '+ item.replace(/\s+/g, '')
+   + " " + '<button class="btn x" value="'+ item.replace(/\s+/g, '')
    +'" id="'+ (+quantity + +id) +'">x</button>';
     $('<div />',{html: button}).appendTo('#tillNumbers');
 };
@@ -72,7 +72,8 @@ $(document).on('ready', function() {
 
   $(document).on('click', '.x', function(e) {
    e.preventDefault();
-     var item = $(this).attr("id")
+     var item = $(this).attr("value")
+     console.log()
      deleteItem(item);
      $(this).parent().remove();
   });  

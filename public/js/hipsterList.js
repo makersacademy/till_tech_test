@@ -49,6 +49,7 @@ function HipsterList(cBack) {
         * quantity).toFixed(2);
        this.quantity[index] = +this.quantity[index] + +quantity
     }
+    console.log(this.list)
   };
 
   HipsterList.prototype.getTotal = function() {
@@ -70,8 +71,8 @@ function HipsterList(cBack) {
 
   HipsterList.prototype.deleteItem = function(item){
     var index = this.list.indexOf(item);
-    this.list.splice(index);
-    this.price.splice(index);
+    this.list.splice(index, 1);
+    this.price.splice(index, 1);
     console.log(this.list)
   };
   
