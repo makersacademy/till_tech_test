@@ -51,16 +51,8 @@ function HipsterList(cBack) {
     }
   };
 
-  HipsterList.prototype.getItems = function() {
-    return this.list;
-  };
-
-  HipsterList.prototype.getQuantities = function() {
-    console.log(this.quantity)
-    return this.quantity;
-  };
-
   HipsterList.prototype.getTotal = function() {
+    console.log(this.total)
     if (this.price.length > 0)
       this.total = eval(this.price.join('+')).toFixed(2);
     else {
