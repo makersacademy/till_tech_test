@@ -7,6 +7,7 @@ describe Till do
   let(:item1){Item.new(:name => "Latte",:price => 2.75)}
   let(:item2){Item.new(:name => "Muffin Of The Day",:price => 4.55)}
   let(:order){Order.new({item1=>2},1)}
+  let(:order2){Order.new({item2=>1},1)}
 
   it "can have the address" do 
     expect(till.address).to eq("123 Lakeside Way")
@@ -48,7 +49,7 @@ describe Till do
 
   it 'can take discounts into account' do 
     till.addDiscount({50=>5,item2=>10})
-    expect(till.dicountedBill).to eq({item2=>4.10})
+    expect(till.discountedBill(order2)).to eq({item2=>4.10})
   end  
 
 

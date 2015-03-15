@@ -31,5 +31,13 @@ class Till
     @discount = details
   end
 
+  def discountedBill(order)
+    itemsSum = order.items_sum
+    puts itemsSum
+    itemsSum.each do |item,amount|
+      itemsSum[item] = (amount*(1.0 - @discount[item]/100.0)).round(2) if @discount[item]
+    end
+    itemsSum    
+  end
 
 end
