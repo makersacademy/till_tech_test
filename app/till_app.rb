@@ -6,46 +6,46 @@ require './app/lib/adjustments'
 
 class TillApp < Sinatra::Base
 
-	set :views, Proc.new { File.join(root, "views") } 
+  set :views, Proc.new { File.join(root, "views") } 
 
-	shop = Shop.new
-	order = Order.new
-	till = Till.new
+  shop = Shop.new
+  order = Order.new
+  till = Till.new
   adjustments = Adjustments.new
   
 
   get '/' do
-  	@menu = shop.menu
-  	@order_so_far = order.list
-  	@order_confirmed = order.confirmed
+    @menu = shop.menu
+    @order_so_far = order.list
+    @order_confirmed = order.confirmed
     erb :index
   end
 
   get '/order' do
-  	@items = order.list
-  	@total = till.total_of(@items, adjustments)
-  	erb :order
+    @items = order.list
+    @total = till.total_of(@items, adjustments)
+    erb :order
   end
 
   post '/add_order' do
-  	@item_to_add = params[:item]
-  	@item_price = params[:price].to_f
-  	order.record_item("#{@item_to_add}", @item_price, 1)
-  	redirect '/'
+    @item_to_add = params[:item]
+    @item_price = params[:price].to_f
+    order.record_item("#{@item_to_add}", @item_price, 1)
+    redirect '/'
   end
 
   post '/clear_order' do
-  	order.clear_order
-  	redirect '/'
+    order.clear_order
+    redirect '/'
   end
 
   post '/confirm_order' do
-  	if order.list == {}
-  		redirect '/'
-  	else
-  		order.confirm_order?
-  		redirect '/order'
-  	end
+    if order.list == {}
+      redirect '/'
+    else
+      order.confirm_order?
+      redirect '/order'
+    end
   end
 
   get '/make_payment' do

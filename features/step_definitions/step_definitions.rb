@@ -8,7 +8,7 @@ When(/^I click on "(.*?)"$/) do |arg1|
 end
 
 Then(/^I should see "(.*?)" x "(.*?)"$/) do |arg1, arg2|
- 	expect(page).to have_content("#{arg1} x #{arg2}")
+  expect(page).to have_content("#{arg1} x #{arg2}")
 end
 
 When(/^I click on "(.*?)" twice$/) do |arg1|

@@ -1,29 +1,29 @@
 <% @menu.each do |item, price| %>
-	<ul>
-		<form action="/add_order" method="post">
-		 	<input type="hidden" name="item" value="<%= item %>" >
-		 	<input type="hidden" name="price" value=<%= price %>>
-			<button name="<%= item %>"><%= item %> <%= price %></button>
-		</form>
-	</ul>
+  <ul>
+    <form action="/add_order" method="post">
+      <input type="hidden" name="item" value="<%= item %>" >
+      <input type="hidden" name="price" value=<%= price %>>
+      <button name="<%= item %>"><%= item %> <%= price %></button>
+    </form>
+  </ul>
 <% end %>
 
 <% if @order_so_far != {} %>
-	Order so far:
-	<% @order_so_far.each do |item, details| %>
-		<ul>
-			<li><%= item %> x <%=details[0]%> = $<%=details[1].round(2) %></li>
-		</ul>
-	<% end %>
+  Order so far:
+  <% @order_so_far.each do |item, details| %>
+    <ul>
+      <li><%= item %> x <%=details[0]%> = $<%=details[1].round(2) %></li>
+    </ul>
+  <% end %>
 
-	<form action="/confirm_order" method="post">
-		<button>Confirm Order</button>
-	</form>
+  <form action="/confirm_order" method="post">
+    <button>Confirm Order</button>
+  </form>
 
 <% else %>
-	No order
+  No order
 <% end %>
 
 <form action="/clear_order" method="post">
-	<button>Clear Order</button>
+  <button>Clear Order</button>
 </form>
