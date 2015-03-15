@@ -3,6 +3,7 @@ describe ("Till", function(){
   var catalogue;
   var till;
   var quantityToChangeBy;
+  var tax;
 
   beforeEach(function() {
     catalogue =
@@ -22,6 +23,7 @@ describe ("Till", function(){
       ];
     till = new Till(catalogue);
     quantityToChangeBy = 1;
+    tax = 0.0864;
 
   });
 
@@ -33,6 +35,10 @@ describe ("Till", function(){
 
     it("total price should be 0", function() {
       expect(till.totalPrice).toEqual(0);
+    });
+
+    it("total tax should be 0", function() {
+      expect(till.totalTax).toEqual(0);
     });
 
   });
@@ -82,6 +88,28 @@ describe ("Till", function(){
     it("cannot be negative", function() {
       till.removeProduct("Cafe Latte", quantityToChangeBy);
       expect(till.totalPrice).toEqual(0);
+    });
+
+  });
+
+  describe("tax", function() {
+
+    it("can add tax for the added product", function() {
+      till.addProduct("Cafe Latte", quantityToChangeBy);
+      expect(till.totalTax).toEqual(0.41);
+    });
+
+    it("can sum more than one tax", function() {
+      till.addProduct("Cafe Latte", quantityToChangeBy);
+      till.addProduct("Cappucino", quantityToChangeBy);
+      expect(till.totalTax).toEqual(0.74);
+    });
+
+    it("can reduce the tax if a product is removed", function() {
+      till.addProduct("Cafe Latte", quantityToChangeBy);
+      till.addProduct("Cappucino", quantityToChangeBy);
+      till.removeProduct("Cappucino", quantityToChangeBy);
+      expect(till.totalTax).toEqual(0.41)
     });
 
   });
