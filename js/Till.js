@@ -7,7 +7,6 @@ var Till = function(catalogue) {
 
   this.prices = catalogue[0]["prices"][0];
   this.totalPriceBeforeTax = 0;
-  this.totalPriceAfterTax = 0;
 
   this.tax = 0.0864;
   this.totalTax = 0;
@@ -16,10 +15,9 @@ var Till = function(catalogue) {
 Till.prototype.addProduct = function(productName, quantityToChangeBy) {
   quantityToChangeBy = quantityToChangeBy || this.defaultQuantityChange;
   this.totalQuantity += quantityToChangeBy;
-  productCost = this.prices[productName] * quantityToChangeBy;
-  this.totalPriceBeforeTax += productCost;
-  this.totalTax += parseFloat((productCost * this.tax).toFixed(2));
-  this.totalPriceAfterTax = (this.totalPriceBeforeTax + this.totalTax)
+  pcost = this.productCost(productName, quantityToChangeBy)
+  this.totalPriceBeforeTax += pcost;
+  this.totalTax += parseFloat((pcost * this.tax).toFixed(2));
 };
 
 Till.prototype.removeProduct = function(productName, quantityToChangeBy) {
@@ -30,9 +28,16 @@ Till.prototype.removeProduct = function(productName, quantityToChangeBy) {
   }
   else {
     this.totalQuantity -= quantityToChangeBy;
-    productCost = this.prices[productName] * quantityToChangeBy;
-    this.totalPriceBeforeTax -= productCost;
-    this.totalTax -= parseFloat((productCost * this.tax).toFixed(2));
-    this.totalPriceAfterTax = (this.totalPriceBeforeTax + this.totalTax)
+    pcost = this.productCost(productName, quantityToChangeBy)
+    this.totalPriceBeforeTax -= pcost;
+    this.totalTax -= parseFloat((pcost * this.tax).toFixed(2));
   }
+};
+
+Till.prototype.totalPriceAfterTax = function() {
+  return this.totalPriceBeforeTax + this.totalTax;
+};
+
+Till.prototype.productCost = function(productName, quantityToChangeBy) {
+  return this.prices[productName] * quantityToChangeBy;
 };
