@@ -56,6 +56,9 @@ var deleteItem = function(item){
         url: '/items',
         type: 'DELETE',
         data: {item: item},
+        success: function() {
+          calculateTotal(); 
+        }
       });
   };
 
@@ -72,6 +75,5 @@ $(document).on('ready', function() {
      var item = $(this).attr("id")
      deleteItem(item);
      $(this).parent().remove();
-     calculateTotal(); 
   });  
 });
