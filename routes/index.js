@@ -10,13 +10,17 @@ function routes(app, db) {
     res.status(200).send({item: item});
   });
 
-  app.get('/items', function(req, res){
+  app.get('/total', function(req, res){
     res.send({total: db.getTotal()});
   });
 
   app.delete('/items', function(req, res){
     db.deleteItem(req.body.item);
     res.sendStatus(200);
+  });
+  
+  app.get('/items', function(req, res){
+    res.send({oldQuantity: db.getQuantities()})
   });
 }
 

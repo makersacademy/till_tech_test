@@ -28,6 +28,7 @@ function HipsterList(cBack) {
     this.list = []
     this.price = []
     this.total = []
+    this.quantity = []
 
     var cBack = (cBack || function() {})();
 
@@ -35,13 +36,28 @@ function HipsterList(cBack) {
 
 //functions for list
   HipsterList.prototype.add = function(item, quantity) {
-     this.list.push(item);
-     var price = (this.shopInfo.prices[item] * quantity).toFixed(2);
-     this.price.push(price);
-    };
+    if (this.list.indexOf(item) == -1) {
+       this.list.push(item);
+       var price = (this.shopInfo.prices[item] * quantity).toFixed(2);
+       this.price.push(price);
+       this.quantity.push(quantity);
+     }
+    else {
+       var index = this.list.indexOf(item)
+       // note this is a really good way convert strings to numbers and add
+       this.price[index] = +(this.price[index]) + +(this.shopInfo.prices[item]
+        * quantity).toFixed(2);
+       this.quantity[index] = +this.quantity[index] + +quantity
+    }
+  };
 
-  HipsterList.prototype.getAll = function() {
+  HipsterList.prototype.getItems = function() {
     return this.list;
+  };
+
+  HipsterList.prototype.getQuantities = function() {
+    console.log(this.quantity)
+    return this.quantity;
   };
 
   HipsterList.prototype.getTotal = function() {

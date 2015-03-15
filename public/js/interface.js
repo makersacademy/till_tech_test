@@ -2,7 +2,7 @@ var validate = function(item, quantity, price) {
   var _this = this;
   var count = $('#tillNumbers').children().length
   if (quantity != 0 && count < 6) {
-    addToList(item, quantity, price);
+    isRepeated(item, quantity, price);
     calculateTotal();   
   }
   else if (count == 6) {
@@ -13,17 +13,40 @@ var validate = function(item, quantity, price) {
    }
 };
 
+var isRepeated = function(item, quantity, price) {
+  $.post('/items', {item: item, quantity: quantity}, function(data) { 
+    if($("." + item.replace(/\s+/g, '')).length == 0) {
+      addToList(item, quantity, price)
+    }
+    else {
+      appendList(item, quantity, price)
+    }
+  });
+};
+
+
 var addToList = function(item, quantity, price) {
-  $('#errorTill').empty();
-    $.post('/items', {item: item, quantity: quantity}, function(data) { 
+  $('#errorTill').empty();  
       button = item + " x" + quantity + "= " + (price*quantity).toFixed(2)
-       + " " + '<button class="btn x" id="'+ item +'">x</button>';
+       + " " + '<button class="btn x '+ item.replace(/\s+/g, '') +'" id="'+ quantity
+       +'">x</button>';
+    $('<div />',{html: button}).appendTo('#tillNumbers');    
+};
+
+var appendList = function(item, quantity, price) {
+  var id = $("."+item.replace(/\s+/g, '')).attr('id') 
+  $("."+item.replace(/\s+/g, '')).parent().remove()
+  $.get('/items', function(data) {
+   button = item + " x" + (+quantity + +id) + "= "
+   + (price*(+quantity + +id)).toFixed(2)
+   + " " + '<button class="btn x '+ item.replace(/\s+/g, '')
+   +'" id="'+ (+quantity + +id) +'">x</button>';
     $('<div />',{html: button}).appendTo('#tillNumbers');
-    });
+  });
 };
 
 var calculateTotal = function(){
-  $.get('/items', function(data) {
+  $.get('/total', function(data) {
     $('#totalPrice').text("Total: " + data.total)
   });
 };
