@@ -8,6 +8,5 @@ class TillTechTest < Sinatra::Base
     erb :index 
   end
 
-
 end
 
