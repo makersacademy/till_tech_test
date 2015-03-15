@@ -1,4 +1,3 @@
-require './features/support/env'
 require 'byebug'
 
 FLOAT = Transform /^\d*\.\d*$/ do |float_string|

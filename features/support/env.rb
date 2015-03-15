@@ -1,12 +1,26 @@
-require 'json'
 
-require './features/support/helpers'
+ENV['RACK_ENV'] = 'test'
 
-require './lib/order'
-require './lib/order_list'
-require './lib/receipt'
-require './lib/tax'
-require './lib/menu'
-require './lib/discount'
-require './lib/modules/percentage'
+require File.join(File.dirname(__FILE__), '..', '..', './app/app.rb')
 
+require 'capybara'
+require 'capybara/cucumber'
+require 'rspec'
+require 'airborne'
+
+Airborne.configure do |config|
+  config.base_url = 'http://localhost:9292'
+end
+
+Capybara.app = TillTechTest
+
+class TillTechTestWorld
+  include Capybara::DSL
+  include RSpec::Expectations
+  include RSpec::Matchers
+  include Airborne
+end
+
+World do
+  TillTechTestWorld.new
+end
