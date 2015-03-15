@@ -10,28 +10,18 @@
 
 	<% @order.each do |item| %>
 		<ul>
-			<li><%= item %></li>
+			<%= item %>
 		</ul>
 	<% end %>
-	
-	<ul>
-
-		<% if @item_discount_total != nil %>
-			<li><%=@item_on_offer %> Discount 10% from $<%= @item_discount_total %></li>
-		<% end %>
 
 		<% if @subtotal > 50 %>
-			<li>Discount 5% from $<%= @subtotal %></li>
+			Discount 5% from $<%= @subtotal %>
 		<% end %>
 
-		<li>Tax $<%= @tax %></li>
-
-		<li>Total $<%= @total %></li>
-
-		<li>Cash: $<%= @cash_taken %></li>
-
-		<li>Change: $<%= @change_owed.round(2) %></li>
-
-	</ul>
+		<% @receipt_footer.each do |item| %>
+			<ul>
+				<%= item %>
+			</ul>
+		<% end %>
 
 <% end %>

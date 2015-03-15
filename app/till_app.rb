@@ -49,15 +49,12 @@ class TillApp < Sinatra::Base
   end
 
   get '/make_payment' do
-    @order = till.print_receipt_body(order.list)
-    @subtotal = till.subtotal_of(order.list)
-    @total = till.total_of(order.list, adjustments)
-    @tax = till.tax_total(order.list, adjustments)
-    @item_on_offer = adjustments.item_on_discount
     @cash_taken = params[:cash].to_f
-    @change_owed = till.calculate_change(@cash_taken, @total)
-    @item_discount_total = adjustments.item_discount_total(order.list)
+    @subtotal = till.subtotal_of(order.list)  
+    @change_owed = till.calculate_change(@cash_taken, till.total_of(order.list, adjustments))
     @shop_details = till.print_receipt_head(shop.array_of_details)
+    @order = till.print_receipt_body(order.list)
+    @receipt_footer = till.print_receipt_footer(order.list, adjustments, @cash_taken)
     erb :receipt
   end
 

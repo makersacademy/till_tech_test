@@ -40,4 +40,10 @@ describe 'till' do
 		expect(till.print_receipt_body(order.list).length).to eq 3
 	end
 
+	it 'can print a receipt footer with payment details' do
+		add_muffin
+		add_items
+		expect(till.print_receipt_footer(order.list, adjustments, 50).length).to eq 5
+	end
+
 end
