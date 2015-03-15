@@ -4,10 +4,11 @@ class Receipt
 
   include Menu
 
-  attr_reader :order
+  attr_reader :order, :tax
 
-  def initialize order
+  def initialize order, tax=0
     @order = order
+    @tax = tax
     load_price_list
   end
 
@@ -21,6 +22,10 @@ class Receipt
 
   def subtotal
     order.inject(0){|memo, line| memo + line_price_for(line)}.round(2)
+  end
+
+  def after_tax_total
+    (subtotal + (subtotal * (tax / 100))).round(2)
   end
 
   def generate

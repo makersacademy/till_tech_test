@@ -20,16 +20,19 @@ describe Receipt do
   context 'Calculating the total for a whole order' do
 
     order = [{item: 'Tea', quantity: 1},{item: 'Cappucino', quantity: 3}]
-    let(:receipt){Receipt.new(order)}
+    let(:receipt){Receipt.new(order, 8.64)}
 
     it 'Before taxes or discounts' do
       expect(receipt.subtotal).to eq 15.20
     end
 
+    it 'After tax' do
+      expect(receipt.after_tax_total).to eq 16.51
+    end
+
   end
 
   context 'Generating the receipt' do
-    
     
     it 'Returns an itemized receipt' do
     order = [{item: "Cafe Latte", quantity: 1}, {item: "Blueberry Muffin", quantity: 3}]
