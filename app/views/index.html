@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
     <link rel='stylesheet' type='text/css' href='http://necolas.github.com/normalize.css/3.0.2/normalize.css'>
     <link rel="stylesheet" type="text/css" href="../stylesheets/index.css">
     <script type="text/javascript" src="../scripts/jquery.js" ></script>
@@ -9,27 +10,32 @@
 
     <script id="receipt-template" type="text/x-handlebars-template" >
       <section id='receipt-box'>
-      
-      Items:
-       <ul>
-         {{#order.items}}
-         <li>{{name}} X {{quantity}} ::: {{cost}}</li>
-         {{/order.items}}
-       </ul>
-      Total: {{total}}
+        <img src='../public/images/coffee_logo.png'>
+
+        <p>{{time}}</p>
+        <p>The Coffee Connection</p>
+        
+        Items:
+        <ul id='order-list'>
+           {{#order.items}}
+           <li>{{name}} X {{quantity}} <span class="right"> {{#if discount }} {{ discount }} from {{/if}} {{cost}}</li></span>
+           {{/order.items}}
+         </ul>
+
+         <ul id='footer'>
+           <li><span class='left'>Discount: </span><span class="right">{{discount.discount}} of {{total}}</span></li>
+           <li><span class='left'>Total:</span><span class='right'>{{total}}</span></li>
+         </ul>
+
 
       </section>
-
-      
-      
     </script>
     
 
   </head>
   
   <body>
-    <section id='receipt-container'>
-          </section>
+    <section id='receipt-container'> </section>
   </body>
 </html>
 

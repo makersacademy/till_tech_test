@@ -14,7 +14,7 @@ describe Order do
   end
 
   it 'prints its details' do
-    expect(spaghetti.print).to eq({ name: 'spaghetti', price: 3.0, cost: 3.0 })
+    expect(spaghetti.print).to eq({ name: 'spaghetti', price: 3.0, cost: 3.0, discount: nil})
   end
 end
 
