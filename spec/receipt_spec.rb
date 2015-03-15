@@ -17,7 +17,7 @@ describe Receipt do
     end
   end
 
-  context 'Calculating the total for a whole order' do
+  context 'Calculating the total for an order' do
 
     order = [{item: 'Tea', quantity: 1},{item: 'Cappucino', quantity: 3}]
     let(:receipt){Receipt.new(order, 8.64)}
@@ -26,10 +26,30 @@ describe Receipt do
       expect(receipt.subtotal).to eq 15.20
     end
 
-    it 'After tax' do
+    it 'After taxes' do
       expect(receipt.after_tax_total).to eq 16.51
     end
 
+  end
+
+  context 'Calclating a discounted total' do
+
+
+    it '10% off when spending over £50' do
+      order = [{item: 'Choc Mudcake', quantity: 10}]
+      receipt = Receipt.new(order)
+
+      expect(receipt.subtotal).to eq 64
+      expect(receipt.discounted_total).to eq 60.80
+    end
+
+    it 'Item discount on muffins' do
+      order = [{item: 'Blueberry Muffin', quantity: 1}]
+      receipt = Receipt.new(order)
+      
+      expect(receipt.subtotal).to eq 4.05
+      expect(receipt.discounted_total).to eq 3.64
+    end
   end
 
   context 'Generating the receipt' do
