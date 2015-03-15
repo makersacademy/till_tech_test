@@ -25,7 +25,9 @@ class TillTechTest < Sinatra::Base
     json(menu.items)
   end
 
-  put '/api/orderlist/1' do
+  get '/api/order/1' do
+    receipt = Receipt.new(order_list)
+  end
     dish_name = params[:itemname].downcase
     order_list.receive_order(Order.new(menu.order(dish_name)))
   end
