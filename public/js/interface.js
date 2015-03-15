@@ -1,6 +1,6 @@
 var validate = function(item, quantity, price) {
   var count = $('#tillNumbers').children().length;
-  if (quantity != 0 && count < 5 ||
+  if (quantity != 0 && count < 7 ||
    $("." + item.replace(/\s+/g, '')).length != 0) {
     isRepeated(item, quantity, price);
     calculateTotal();   
@@ -33,6 +33,7 @@ var addToList = function(item, quantity, price) {
 };
 
 var appendList = function(item, quantity, price) {
+  $('#errorTill').empty();
   var id = $("."+item.replace(/\s+/g, '')).attr('id') 
   $("."+item.replace(/\s+/g, '')).parent().remove()
    button = item + " x" + (+quantity + +id) + "= £"

@@ -3,6 +3,10 @@ body {
   overflow-y: hidden;
 }
 
+select {
+  width: 10em;
+}
+
 .x {
   padding-left:.2em;
   padding-right:.2em;
@@ -37,8 +41,7 @@ body {
   position:absolute;
   z-index:1;
   background: none;
-  left:17%;
-  top:40.2%;
+  top:50%;
   width:100%;
   height:100%;
   font-size:1em;
@@ -48,8 +51,7 @@ body {
   position:absolute;
   z-index:1;
   background: none;
-  left:17%;
-  top:42.5%;
+  top:52%;
   width:100%;
   height:100%;
   font-size:1em;
@@ -59,8 +61,7 @@ body {
   position:absolute;
   z-index:1;
   background: none;
-  left:17%;
-  top:45%;
+  top:54%;
   width:100%;
   height:100%;
   font-size:1em;
@@ -118,10 +119,17 @@ body {
   height:100%;
 }
 
+#quantityInput {
+  width: 2.1em;
+}
+
 
 @media (max-width: 600px) {
   #quantity {
     font-size:1px;
+  }
+  select {
+    width: 5em;
   }
 }
 
