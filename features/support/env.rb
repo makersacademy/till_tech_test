@@ -9,7 +9,7 @@ require 'rspec'
 require 'airborne'
 
 Airborne.configure do |config|
-  config.base_url = 'http://localhost:9292'
+  config.rack_app = TillTechTest 
 end
 
 Capybara.app = TillTechTest
