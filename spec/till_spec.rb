@@ -25,4 +25,12 @@ describe Till do
       expect(till.current_order).to eq [{item: 'Cappucino', quantity: 4}]
     end
   end
+
+  context 'Accepting payment' do
+    it 'Can calculate the correct change' do
+      allow(till).to receive(:total_due).and_return(17.28)
+
+      expect(till.payment(20)).to eq 2.72
+    end
+  end
 end

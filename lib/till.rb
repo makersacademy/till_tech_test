@@ -1,5 +1,6 @@
 require 'menu'
 require 'order'
+require 'payment'
 
 class Till
 
@@ -27,6 +28,15 @@ class Till
 
   def generate_receipt
     @receipt = Receipt.new(order).generate
+  end
+
+  def total_due
+    receipt ? receipt.after_tax_total : 'Please generate a receipt!'
+  end
+
+  def payment(amount)
+    payment = Payment.new
+    payment.calculate_change(total_due, amount)
   end
 
 end
