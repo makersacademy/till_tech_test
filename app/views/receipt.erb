@@ -1,27 +1,25 @@
 <% if @change_owed.round(2) < 0 %>
-  Customer still owes $<%= -@change_owed.round(2)%>, go back"
+  Customer still owes $<%= -@change_owed.round(2)%>, <a href="/order">go back</a>
 <% else %>
 
   <% @shop_details.each do |detail| %>
-    <ul>
-      <%= detail %>
-    </ul>
+    <h3><%= detail %></h3>
   <% end %>
 
-  <% @order.each do |item| %>
-    <ul>
-      <%= item %>
-    </ul>
+  <ul>
+
+    <% @order.each do |item| %>
+      <li><%= item %></li>
+    <% end %>
+
+  </ul>
+
+  <% if @subtotal > 50 %>
+    <h5>Discount 5% from $<%= @subtotal %></h5>
   <% end %>
 
-    <% if @subtotal > 50 %>
-      Discount 5% from $<%= @subtotal %>
-    <% end %>
-
-    <% @receipt_footer.each do |item| %>
-      <ul>
-        <%= item %>
-      </ul>
-    <% end %>
+  <% @receipt_footer.each do |item| %>
+    <h5><%= item %></h5>
+  <% end %>
 
 <% end %>

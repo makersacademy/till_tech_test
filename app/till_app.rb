@@ -15,14 +15,14 @@ class TillApp < Sinatra::Base
   
   get '/' do
     @menu = shop.menu
-    @order_so_far = order.list
+    @order_so_far = till.print_receipt_body(order.list)
     @order_confirmed = order.confirmed
     erb :index
   end
 
   get '/order' do
-    @items = order.list
-    @total = till.total_of(@items, adjustments)
+    @items = till.print_receipt_body(order.list)
+    @total = till.total_of(order.list, adjustments)
     erb :order
   end
 

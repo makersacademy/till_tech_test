@@ -8,12 +8,12 @@ module Receipt
 
   def print_receipt_body(order)
     receipt_body = []
-    order.each { |item, details| receipt_body << "#{item} #{details[0]} x $#{details[1].round(2)}" }
+    order.each { |item, details| receipt_body << "#{item} x #{details[0]} = $#{details[1].round(2)}" }
     receipt_body
   end
 
   def print_receipt_footer(order_list, adjustments, cash)
-    receipt_footer = ["#{adjustments.item_on_discount} Discount 10% from $#{adjustments.item_discount_total(order_list)}", 
+    receipt_footer = ["#{adjustments.item_on_discount} Discount 10% from $#{adjustments.item_discount_total(order_list).round(2)}", 
                       "Tax $#{tax_total(order_list, adjustments)}",
                       "Total $#{total_of(order_list, adjustments)}",
                       "Cash: $#{cash} ",

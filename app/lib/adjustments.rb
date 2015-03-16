@@ -21,7 +21,7 @@ class Adjustments
   end
 
   def item_discount_total(order)
-    total = []
+    total = [0]
     order.each do |item, array| 
       total << order[item].last if item.include?(item_on_discount)
     end

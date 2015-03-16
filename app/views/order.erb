@@ -1,9 +1,7 @@
-<% @items.each do |item, details| %>
-
+<% @items.each do |item| %>
   <ul>
-    <li><%= item %> x <%=details[0]%> = $<%=details[1].round(2) %></li>
+    <%= item %>
   </ul>
-
 <% end %>
 
 Total = $<%= @total %>

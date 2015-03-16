@@ -8,13 +8,14 @@
   </ul>
 <% end %>
 
-<% if @order_so_far != {} %>
+<% if @order_so_far != [] %>
   Order so far:
-  <% @order_so_far.each do |item, details| %>
+  <% @order_so_far.each do |item| %>
     <ul>
-      <li><%= item %> x <%=details[0]%> = $<%=details[1].round(2) %></li>
+      <%= item %>
     </ul>
   <% end %>
+ 
 
   <form action="/confirm_order" method="post">
     <button>Confirm Order</button>
