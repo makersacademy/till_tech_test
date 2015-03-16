@@ -2,8 +2,6 @@ require 'receipt'
 
 describe "Receipt" do
 
-  let(:muffin){double :product, name: "Blueberry Muffin", price: 4.05}
-  let(:cappucino){double :product, name: "Cappucino", price: 3.85}
   let(:order){double :order, items: ["Blueberry Muffin: 1 x 4.05", "Cappucino: 2 x 3.85", "Cappucino: 2 x 3.85"]}
   let(:receipt){Receipt.new(order)}
 
@@ -15,7 +13,8 @@ describe "Receipt" do
     expect(receipt.list_items).to include("Blueberry Muffin: 1 x 4.05") 
   end
 
-  xit "shows how many of each item have been ordered" do
+  it "displays the subtotal of the order" do
+    expect(receipt.subtotal).to be(11.75)
   end
 
 
