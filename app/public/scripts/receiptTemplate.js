@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
   var data;
 
   $.get('/api/order/1', function(data) {

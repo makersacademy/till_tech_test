@@ -33,9 +33,5 @@ end
 
 module KnowsTheUserInterface
 
-  def order_list
-    @order_list ||= Capybara.app.order_list
-  end
-
 end
 
