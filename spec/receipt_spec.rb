@@ -15,10 +15,21 @@ describe "Receipt" do
     expect(receipt.list_items).to include("Blueberry Muffin: 1 x 4.05") 
   end
 
-  it "displays subtotal of the order" do
-    allow(order).to receive(:number_of).with(muffin).and_return(1)
-    allow(order).to receive(:number_of).with(cappucino).and_return(2)
-    expect(receipt.subtotal).to be(11.75)
+  context 'via the calculator module' do
+
+    before do
+      allow(order).to receive(:number_of).with(muffin).and_return(1)
+      allow(order).to receive(:number_of).with(cappucino).and_return(2)
+    end
+
+    it "displays subtotal of the order" do
+      expect(receipt.subtotal).to be(11.75)
+    end
+
+    it "displays tax for order" do
+      expect(receipt.calculate_tax).to be(1.02)
+    end
+
   end
 
 

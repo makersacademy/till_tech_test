@@ -6,4 +6,8 @@ module Calculator
     cost
   end
 
+  def calculate_tax
+
+  end
+
 end
