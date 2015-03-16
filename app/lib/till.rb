@@ -1,6 +1,7 @@
 require_relative 'menu'
 require_relative 'order'
 require_relative 'payment'
+require_relative 'receipt'
 
 class Till
 
@@ -27,7 +28,7 @@ class Till
   end
 
   def generate_receipt
-    @receipt = Receipt.new(order).generate
+    @receipt = Receipt.new(order.current).generate
   end
 
   def total_due

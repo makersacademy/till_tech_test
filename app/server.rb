@@ -10,11 +10,12 @@ class TillApp < Sinatra::Base
 
   get '/' do
     @items = till.price_list
+    @receipt = till.generate_receipt
     erb :index
   end
 
-  get '/add_item/:item' do
-    till.add_item params[:item]
+  post '/add_item' do
+    till.add_item params[:item], params[:quantity].to_f
     redirect '/'
   end
 

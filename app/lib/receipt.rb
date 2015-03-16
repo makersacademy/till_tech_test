@@ -36,6 +36,7 @@ class Receipt
 
   def generate
     receipt = []
+
     order.each {|line| receipt << build_line_for(line)}
     receipt << "Total #{sprintf("%.2f", subtotal)}"
   end
@@ -43,7 +44,7 @@ class Receipt
   private
 
   def build_line_for line
-    "#{line[:item]} #{line[:quantity]}x #{price_for(line[:item])}"
+    "#{line[:item]} #{line[:quantity].to_i}x #{price_for(line[:item])}"
   end
 
 end
