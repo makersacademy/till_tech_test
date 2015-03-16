@@ -7,7 +7,7 @@ class Receipt
   end
 
   def list_items
-    
+    order.items.each {|item| puts item}
   end
 
 
