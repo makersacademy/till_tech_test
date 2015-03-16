@@ -35,6 +35,10 @@ describe "Receipt" do
       expect(receipt.calculate_tax).to be(0.91)
     end
 
+    it "displays the total" do
+      expect(receipt.total).to be(12.77)
+    end
+
   end
 
 
