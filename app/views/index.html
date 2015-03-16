@@ -36,8 +36,11 @@
     </script>
 
     <script id="menu-template" type="text/x-handlebars-template" >
-      <a href="/">Spaghetti</a>
-
+      <ul>
+        {{#menu_items}}
+        <li class='menu-item'>{{name}} ::: {{price}}</li>
+        {{/menu_items}}
+      </ul>
     </script>
 
   </head>
