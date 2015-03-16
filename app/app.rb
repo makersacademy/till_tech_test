@@ -23,7 +23,7 @@ class TillTechTest < Sinatra::Base
 
   # returns mock data, for now.
   get '/api/location/thecafe/menu/:id' do
-    json(settings.menu.items.values.to_a)
+    json(settings.menu.items)
   end
 
   get '/api/order/:id' do
@@ -32,7 +32,7 @@ class TillTechTest < Sinatra::Base
   end
 
   put '/api/order/:id' do
-    dish_name = params[:itemname].downcase
+    dish_name = params[:itemname].capitalize
     settings.order_list.receive_order(Order.new(settings.menu.order(dish_name)))
   end
 
