@@ -10,7 +10,7 @@ module KnowsTheDomain
   end
 
   def menu
-    @menu ||= Menu.new(spaghetti: {name: 'Spaghetti', price: 5.0 })
+    @menu ||= Menu.new([{ name: 'Spaghetti', price: 5.0 }])
   end
 
   def order=(order_details)
