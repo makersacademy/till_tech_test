@@ -11,3 +11,8 @@ Feature: Receipt UI
     And I am on the homepage 
     Then I should see my orders on my receipt
 
+  Scenario: Placing & Viewing Orders
+    Given I am on the homepage
+    And I choose an item from the menu
+    Then I should see my order on my receipt
+

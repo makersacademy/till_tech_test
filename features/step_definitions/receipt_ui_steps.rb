@@ -13,7 +13,7 @@ Then(/^it should appear in the OrderList$/) do
   expect(order_list.orders.count).to eq 1
 end
 
-Then(/^I should see my orders on my receipt$/) do
+Then(/^I should see my order(?:|s) on my receipt$/) do
   expect(page.find('#receipt-container')).to have_content order_list.orders.sample.name
 end
 
