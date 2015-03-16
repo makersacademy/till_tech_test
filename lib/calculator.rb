@@ -7,7 +7,7 @@ module Calculator
   end
 
   def calculate_tax
-
+    ("%.2f" % (subtotal * 8.64/100)).to_f
   end
 
 end
