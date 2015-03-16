@@ -2,7 +2,7 @@
 module KnowsTheDomain
 
   def order_list
-    @order_list ||= OrderList.new
+    @order_list ||= Capybara.app.order_list 
   end
 
   def receipt evaluator_objects = {}
@@ -10,7 +10,7 @@ module KnowsTheDomain
   end
 
   def menu
-    @menu ||= Menu.new([{ name: 'Spaghetti', price: 5.0 }])
+    @menu ||= (Capybara.app.menu =  Menu.new([{ name: 'Spaghetti', price: 5.0 }]))
   end
 
   def order=(order_details)
