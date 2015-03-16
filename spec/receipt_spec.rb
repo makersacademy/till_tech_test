@@ -30,6 +30,11 @@ describe "Receipt" do
       expect(receipt.calculate_tax).to be(1.02)
     end
 
+    it "tax is rounded to the nearest 2 decimal float" do
+      allow(receipt).to receive(:subtotal).and_return(10.55)
+      expect(receipt.calculate_tax).to be(0.91)
+    end
+
   end
 
 
