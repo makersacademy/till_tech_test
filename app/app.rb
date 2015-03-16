@@ -13,7 +13,12 @@ class TillTechTest < Sinatra::Base
   
   set :order_list, OrderList.new
   set :menu      , Menu.new([{name: 'Cafe Latte', price: 2.5 },
-                            {name: 'Spaghetti' , price: 5.0 }])
+                             {name: 'Cappucino' , price: 3.0 },
+                             {name: 'Flat White', price: 2.3 },
+                             {name: 'Lasange'   , price: 5.0 },
+                             {name: 'Risotto'   , price: 4.5 },
+                             {name: 'Tiramisu'  , price: 3.6 } 
+                            ])
 
   get '/' do
     send_file './app/views/index.html'
