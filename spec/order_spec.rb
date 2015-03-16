@@ -20,4 +20,8 @@ describe 'Order' do
     expect(big_order.number_of(cappucino)).to eq(2)
   end
 
+  it "shows the items and their prices" do
+    expect(big_order.items).to eq(["Blueberry Muffin: 1 x 4.05", "Cappucino: 2 x 3.85", "Cappucino: 2 x 3.85"])
+  end
+
 end

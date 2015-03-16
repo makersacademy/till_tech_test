@@ -12,7 +12,7 @@ describe "Receipt" do
   end
 
   xit "shows which items have been ordered" do
-    expect(receipt.items).to include("muffin") 
+    expect(receipt.list_items).to include("muffin") 
   end
 
   xit "shows how many of each item have been ordered" do

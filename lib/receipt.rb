@@ -6,6 +6,12 @@ class Receipt
     @order = order || []
   end
 
+  def list_items
+    
+  end
+
+
+
 
 
 end
