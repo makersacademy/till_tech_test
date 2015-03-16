@@ -12,8 +12,8 @@ class TillTechTest < Sinatra::Base
   set :static, true
   
   set :order_list, OrderList.new
-  set :menu      , Menu.new({'latte'    => {name: 'Cafe Latte', price: 2.5 },
-                             'spaghetti'=> {name: 'Spaghetti' , price: 5.0 }})
+  set :menu      , Menu.new([{name: 'Cafe Latte', price: 2.5 },
+                            {name: 'Spaghetti' , price: 5.0 }])
 
   get '/' do
     send_file './app/views/index.html'
