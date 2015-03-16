@@ -6,10 +6,12 @@
     <link rel='stylesheet' type='text/css' href='http://necolas.github.com/normalize.css/3.0.2/normalize.css'>
     <link rel='stylesheet' type='text/css' href='http://necolas.github.com/normalize.css/3.0.2/normalize.css'>
     <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+
     <script type="text/javascript" src="/scripts/jquery.js" ></script>
     <script type="text/javascript" src="/scripts/receiptTemplate.js"></script>
     <script type="text/javascript" src="/scripts/handlebars.js"></script> 
     <script type="text/javascript" src="/scripts/menuTemplate.js"></script>
+    <script type="text/javascript" src="/scripts/menu.js" ></script>
 
     <script id="receipt-template" type="text/x-handlebars-template" >
 
@@ -38,7 +40,7 @@
     <script id="menu-template" type="text/x-handlebars-template" >
       <ul>
         {{#menu_items}}
-        <li class='menu-item'>{{name}} ::: {{price}}</li>
+        <li class='menu-items' id='{{name}}'>{{name}} ::: {{price}}</li>
         {{/menu_items}}
       </ul>
     </script>
