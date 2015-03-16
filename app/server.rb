@@ -19,4 +19,9 @@ class TillApp < Sinatra::Base
     redirect '/'
   end
 
+  get '/clear_order' do
+    till.new_order
+    redirect '/'
+  end
+
 end
