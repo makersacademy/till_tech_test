@@ -1,14 +1,24 @@
 require 'sinatra/base'
-require 'erb'
 require "sinatra/json"
 require './lib/menu'
 require './lib/order_list'
 require './lib/order'
 require './lib/receipt'
 
+module MyHelpers
+
+  def reset setting_name
+    new_object = settings.send(setting_name).class.new
+    settings.send(((setting_name.to_s + '=').to_sym),new_object)
+  end
+
+
+end
+
 class TillTechTest < Sinatra::Base
   set :root, File.dirname(__FILE__)
   helpers Sinatra::JSON
+  include MyHelpers
   set :static, true
   
   set :order_list, OrderList.new
@@ -21,7 +31,7 @@ class TillTechTest < Sinatra::Base
                             ])
 
   get '/' do
-    self.settings.order_list = OrderList.new
+    reset :order_list
     send_file './app/views/index.html'
   end
 
@@ -42,5 +52,7 @@ class TillTechTest < Sinatra::Base
     settings.order_list.receive_order(Order.new(settings.menu.order(dish_name)))
   end
 
+  
 end
+
 
