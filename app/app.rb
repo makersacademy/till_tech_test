@@ -9,13 +9,14 @@ require './lib/receipt'
 class TillTechTest < Sinatra::Base
   set :root, File.dirname(__FILE__)
   helpers Sinatra::JSON
-
+  set :static, true
+  
   order_list = OrderList.new
   menu       = Menu.new({'latte'    => {name: 'Cafe Latte', price: 2.5 },
                         'spaghetti' => {name: 'Spaghetti', price: 5.0 }})
 
   get '/' do
-    send_file 'index.html'
+    send_file './app/views/index.html'
   end
 
   ### API ###

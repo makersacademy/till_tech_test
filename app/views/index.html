@@ -3,11 +3,13 @@
   <head>
     <link rel='stylesheet' type='text/css' href='http://necolas.github.com/normalize.css/3.0.2/normalize.css'>
     <link rel="stylesheet" type="text/css" href="../stylesheets/index.css">
-    <script type="text/javascript" src="../scripts/jquery.js" ></script>
-    <script type="text/javascript" src="../scripts/receiptTemplate.js"></script>
-    <script type="text/javascript" src="../scripts/handlebars.js"></script> 
+    <script type="text/javascript" src="/scripts/jquery.js" ></script>
+    <script type="text/javascript" src="/scripts/receiptTemplate.js"></script>
+    <script type="text/javascript" src="/scripts/handlebars.js"></script> 
+    <script type="text/javascript" src="/scripts/menuTemplate.js"></script>
 
     <script id="receipt-template" type="text/x-handlebars-template" >
+      <img src
       <section id='receipt-box'>
       
       Items:
@@ -19,9 +21,12 @@
       Total: {{total}}
 
       </section>
+      
+    </script>
 
-      
-      
+    <script id="menu-template" type="text/x-handlebars-template" >
+      <a href="/">Spaghetti</a>
+
     </script>
     
 
@@ -29,7 +34,10 @@
   
   <body>
     <section id='receipt-container'>
-          </section>
+    </section>
+
+    <section id='menu-container'>
+    </section>
   </body>
 </html>
 
