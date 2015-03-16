@@ -9,19 +9,27 @@
     <script type="text/javascript" src="/scripts/menuTemplate.js"></script>
 
     <script id="receipt-template" type="text/x-handlebars-template" >
-      <img src
+
       <section id='receipt-box'>
-      
-      Items:
-       <ul>
-         {{#order.items}}
-         <li>{{name}} X {{quantity}} ::: {{cost}}</li>
-         {{/order.items}}
-       </ul>
-      Total: {{total}}
+        <img src='../public/images/coffee_logo.png'>
+
+        <p>{{time}}</p>
+        <p>The Coffee Connection</p>
+        
+        Items:
+        <ul id='order-list'>
+          {{#order.items}}
+          <li>{{name}} X {{quantity}} <span class="right"> {{#if discount }} {{ discount }} from {{/if}} {{cost}}</li></span>
+          {{/order.items}}
+        </ul>
+
+        <ul id='footer'>
+          <li><span class='left'>Discount: </span><span class="right">{{discount.discount}} of {{total}}</span></li>
+          <li><span class='left'>Total:</span><span class='right'>{{total}}</span></li>
+        </ul>
+
 
       </section>
-      
     </script>
 
     <script id="menu-template" type="text/x-handlebars-template" >
