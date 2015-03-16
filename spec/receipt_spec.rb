@@ -39,6 +39,10 @@ describe "Receipt" do
       expect(receipt.total).to be(12.77)
     end
 
+    it "prints items, numbers, prices, subtotal, tax and total to console" do
+      expect(receipt.show_info).to include("Blueberry Muffin: 1 x 4.05", "Subtotal: 11.75", "Tax: 1.02", "Total: 12.77")
+    end
+
   end
 
 

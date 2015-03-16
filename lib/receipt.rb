@@ -11,7 +11,14 @@ class Receipt
   end
 
   def list_items
-    order.items.each {|item| puts item}
+    order.items.each {|item| item}
+  end
+
+  def displays_info
+    puts list_items
+    puts subtotal
+    puts calculate_tax
+    puts total
   end
 
 end
