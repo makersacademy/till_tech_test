@@ -15,7 +15,7 @@ class TillTechTest < Sinatra::Base
                         'spaghetti' => {name: 'Spaghetti', price: 5.0 }})
 
   get '/' do
-    erb :index 
+    send_file 'index.html'
   end
 
   ### API ###

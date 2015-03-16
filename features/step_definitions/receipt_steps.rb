@@ -3,6 +3,8 @@ require './lib/tax'
 require './lib/discount'
 require './lib/payment'
 
+World(KnowsTheDomain)
+
 FLOAT = Transform /^\d*\.\d*$/ do |float_string|
   float_string.to_f
 end

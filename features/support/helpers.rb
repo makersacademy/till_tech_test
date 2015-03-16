@@ -31,5 +31,9 @@ module KnowsTheDomain
 
 end
 
-World(KnowsTheDomain)
+module KnowsTheUserInterface
+  def place_order options
+
+  end
+end
 
