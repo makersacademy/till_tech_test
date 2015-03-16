@@ -21,6 +21,7 @@ class TillTechTest < Sinatra::Base
                             ])
 
   get '/' do
+    self.settings.order_list = OrderList.new
     send_file './app/views/index.html'
   end
 
