@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Main Menu</title>
+  <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script type='text/javascript' src='../src/CoffeeShop.js'></script>
+  <script type='text/javascript' src='../src/script.js'></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="mainStyle.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- Main restaurant details -->
+    <div class="row" id="resto-details">
+      <h3 id="resto-name"><!--Generated from JSON--></h3>
+      <p id="resto-address"><!--Generated from JSON--></p>
+    </div>
+    
+    <div class="row">
+  
+      <!-- Menu item buttons for choosing your order -->
+      <div class="col-md-6 left">
+        <!-- list of products buttons from js: class product-buttons -->
+      </div>
+
+      <div class="col-md-6 right">
+        <!-- Receipt with elements from js -->
+        <section id='receipt'>
+          <ul class="receipt-items"></ul>
+          <pre id='receipt-total'>Please click on the items you want to add..</pre>
+        </section>
+          <p id="payment-total"></p>
+        <form id="add-payment-form">
+          <input type="text" id="payment" name="payment">
+          <input type="submit" value="Add Payment">
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
