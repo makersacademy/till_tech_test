@@ -1,4 +1,4 @@
-require 'menu'
+require_relative '../app/lib/menu'
 
 class MenuWrapper
   include Menu

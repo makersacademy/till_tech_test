@@ -1,6 +1,6 @@
-require 'menu'
-require 'order'
-require 'payment'
+require_relative 'menu'
+require_relative 'order'
+require_relative 'payment'
 
 class Till
 

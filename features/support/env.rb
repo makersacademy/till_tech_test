@@ -8,7 +8,7 @@ require 'capybara'
 require 'capybara/cucumber'
 require 'rspec'
 
-Capybara.app = Till
+Capybara.app = TillApp
 
 class TillWorld
   include Capybara::DSL

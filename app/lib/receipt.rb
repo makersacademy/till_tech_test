@@ -1,5 +1,5 @@
-require 'menu'
-require 'discount'
+require_relative 'menu'
+require_relative 'discount'
 
 class Receipt
 

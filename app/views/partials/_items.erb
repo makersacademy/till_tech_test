@@ -1,0 +1,7 @@
+<ul
+<% @items.each do |item| %>
+  <li>
+    <a href='/add_item/<%= item[0] %>'><%= item[0] %></a>
+  </li>
+<% end %>
+</ul>

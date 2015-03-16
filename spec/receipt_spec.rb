@@ -1,4 +1,4 @@
-require 'receipt'
+require_relative '../app/lib/receipt'
 
 describe Receipt do
   context 'Calculating line prices' do

@@ -1,4 +1,4 @@
-require 'payment'
+require_relative '../app/lib/payment'
 
 describe Payment do
   context 'Calculating the correct amount of change' do

@@ -7,4 +7,3 @@ Feature: Viewing the till
     Given I am on the home page
     Then I should see "The Coffee Connection"
     And I should see "123 Lakeside Way"
-
