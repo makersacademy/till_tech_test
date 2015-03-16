@@ -1,3 +1,7 @@
+![build-badge](https://travis-ci.org/lukeclewlow/till_tech_test.svg?branch=master)
+[![Code Climate](https://codeclimate.com/github/lukeclewlow/till_tech_test/badges/gpa.svg)](https://codeclimate.com/github/lukeclewlow/till_tech_test)
+[![Test Coverage](https://codeclimate.com/github/lukeclewlow/till_tech_test/badges/coverage.svg)](https://codeclimate.com/github/lukeclewlow/till_tech_test)
+
 Till tech test
 ==============
 
