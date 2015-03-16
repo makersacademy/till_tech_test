@@ -1,4 +1,8 @@
+require 'calculator'
+
 class Receipt
+
+  include Calculator
 
   attr_reader :order
 
@@ -9,9 +13,5 @@ class Receipt
   def list_items
     order.items.each {|item| puts item}
   end
-
-
-
-
 
 end
