@@ -1,3 +1,4 @@
+@domain
 Feature: Receipt 
   As a customer
   I want to be given a receipt 

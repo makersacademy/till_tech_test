@@ -1,4 +1,4 @@
-@api
+@api, @domain
 Feature: API
 
   Scenario: Returns menu as JSON

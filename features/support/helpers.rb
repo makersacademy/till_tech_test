@@ -32,8 +32,10 @@ module KnowsTheDomain
 end
 
 module KnowsTheUserInterface
-  def place_order options
 
+  def order_list
+    @order_list ||= Capybara.app.order_list
   end
+
 end
 

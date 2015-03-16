@@ -7,6 +7,11 @@ require 'capybara'
 require 'capybara/cucumber'
 require 'rspec'
 require 'airborne'
+require 'launchy'
+
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
 
 Airborne.configure do |config|
   config.rack_app = TillTechTest 

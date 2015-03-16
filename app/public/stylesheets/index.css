@@ -2,9 +2,26 @@
   font-family: 'Bree Serif', serif;
   font-size: 1.0em;
 }
+
+#receipt-column {
+  width: 50%;
+  float: left;
+}
+
+#menu-column {
+  width: 50%;
+  float: right;
+}
+
+/* MENU    */
+#menu-container {
+}
+
+/* RECEIPT */
+
 #receipt-container {
-  margin: 5% 95% 5% 5%;
-  width: 30%;
+  margin: 5% 5% 5% 5%;
+  width: 50%;
 }
 
 #receipt-box {

@@ -11,9 +11,8 @@ class TillTechTest < Sinatra::Base
   helpers Sinatra::JSON
   set :static, true
   
-  order_list = OrderList.new
-  menu       = Menu.new({'latte'    => {name: 'Cafe Latte', price: 2.5 },
-                        'spaghetti' => {name: 'Spaghetti', price: 5.0 }})
+  set :order_list, OrderList.new
+  set :menu      , Menu.new({'latte'    => {name: 'Cafe Latte', price: 2.5 }})
 
   get '/' do
     send_file './app/views/index.html'
@@ -23,17 +22,17 @@ class TillTechTest < Sinatra::Base
 
   # returns mock data, for now.
   get '/api/location/thecafe/menu/:id' do
-    json(menu.items)
+    json(settings.menu.items)
   end
 
-  get '/api/order/1' do
-    receipt = Receipt.new(order_list)
+  get '/api/order/:id' do
+    receipt = Receipt.new(settings.order_list)
     json(receipt.print)
   end
 
-  put '/api/order/1' do
+  put '/api/order/:id' do
     dish_name = params[:itemname].downcase
-    order_list.receive_order(Order.new(menu.order(dish_name)))
+    settings.order_list.receive_order(Order.new(settings.menu.order(dish_name)))
   end
 
 end
