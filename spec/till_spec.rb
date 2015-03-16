@@ -4,9 +4,9 @@ require_relative '../app/lib/shop'
 
 describe 'till' do
 
-  let(:till)  {Till.new        }
-  let(:shop)  {Shop.new   }
-  let(:order) {Order.new   }
+  let(:till)        {Till.new       }
+  let(:shop)        {double(:shop)  }
+  let(:order)       {Order.new      }
   let(:adjustments) {Adjustments.new}
 
   it 'can calculate the subtotal of an order' do
@@ -31,6 +31,7 @@ describe 'till' do
 
   it 'can print a receipt header with all details' do
     add_muffin
+    allow(shop).to receive(:array_of_details).and_return(["The Coffee Connection", "123 Lakeside Way", "16503600708"])
     expect(till.print_receipt_head(shop.array_of_details).length).to eq(4)
   end
 

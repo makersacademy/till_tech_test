@@ -4,9 +4,9 @@ class Adjustments
 
   def initialize
     @discount_threshold = 50
-    @discount_rate = 0.95 #5% discount
+    @discount_rate = 0.95
     @item_on_discount = "Muffin"
-    @item_discount_rate = 0.90 #10% discount_threshold
+    @item_discount_rate = 0.90
   end
 
   def discount(order_subtotal)

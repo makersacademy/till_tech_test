@@ -13,7 +13,6 @@ class TillApp < Sinatra::Base
   till = Till.new
   adjustments = Adjustments.new
   
-
   get '/' do
     @menu = shop.menu
     @order_so_far = order.list

@@ -9,5 +9,6 @@ group :test do
   gem 'cucumber-sinatra'
   gem 'capybara'
   gem 'codeclimate-test-reporter', require: nil 
+  gem 'rake'
 
 end
