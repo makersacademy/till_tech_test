@@ -1,3 +1,4 @@
+
 module KnowsTheDomain
   def order_list
     @order_list ||= OrderList.new
@@ -18,6 +19,11 @@ module KnowsTheDomain
   def order
     @order
   end
+
+  def create_order options
+    Order.new(options)
+  end
+
 end
 
 World(KnowsTheDomain)
