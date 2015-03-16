@@ -10,4 +10,8 @@ module Calculator
     ("%.2f" % (subtotal * 8.64/100)).to_f
   end
 
+  def total
+    subtotal + calculate_tax
+  end
+
 end
