@@ -1,5 +1,6 @@
 
 module KnowsTheDomain
+
   def order_list
     @order_list ||= OrderList.new
   end
@@ -22,6 +23,10 @@ module KnowsTheDomain
 
   def create_order options
     Order.new(options)
+  end
+
+  def place_order options
+    order_list.receive_order create_order(options)
   end
 
 end

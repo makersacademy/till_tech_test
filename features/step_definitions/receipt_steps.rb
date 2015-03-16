@@ -19,17 +19,17 @@ end
 
 Given(/^I (?:have ordered|order) "(.*?)"(?:$| at a cost of "(#{FLOAT})"$)/) do |order, cost|
   @cost = cost || 3
-  order_list.receive_order create_order({name: order, price: @cost})
+  place_order({name: order, price: @cost})
 end
 
 Given(/^I have ordered a discounted "(.*?)"$/) do |order|
   @price_to_be_discounted = 5.0
-  order_list.receive_order create_order({name: "Muffin", price: @price_to_be_discounted,
+  place_order({name: "Muffin", price: @price_to_be_discounted,
                                      discount: "5%"}) 
 end
 
 Given(/^I have spent over "(#{FLOAT})"$/) do |total_spent|
-  order_list.receive_order create_order({name: "Champagne", price: total_spent*2})
+  place_order({name: "Champagne", price: total_spent*2})
 end
 
 Then(/^my receipt shows an itemized list of my order$/) do
