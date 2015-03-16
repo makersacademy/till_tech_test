@@ -40,7 +40,8 @@ describe "Receipt" do
     end
 
     it "prints items, numbers, prices, subtotal, tax and total to console" do
-      expect(receipt.show_info).to include("Blueberry Muffin: 1 x 4.05", "Subtotal: 11.75", "Tax: 1.02", "Total: 12.77")
+      expect(STDOUT).to receive(:puts).with("Blueberry Muffin: 1 x 4.05\nCappucino: 2 x 3.85\nSubtotal: 11.75\nTax: 1.02\nTotal: 12.77")
+      receipt.displays_info
     end
 
   end
