@@ -1,5 +1,5 @@
 require 'json'
-require 'module'
+require_relative './module.rb'
 
 class Menu
 

@@ -1,6 +1,6 @@
 require 'receipt'
 
-describe 'Receipt' do
+describe 'The receipt' do
 
   let(:receipt){Receipt.new(Order.new({menu: Menu.new, customer: 'Matteo'}))}
 
@@ -32,6 +32,12 @@ describe 'Receipt' do
       receipt.order.add(2, 'Cappuccino')
       receipt.order.add(1, 'Choc Mudcake')
       expect(receipt.total).to eq 15.32
+    end
+
+    it 'should make a discount of 5% when the order is more than 50£' do
+      receipt.order.add(5, 'Tiramisu')
+      expect(receipt.cost).to eq 57
+      expect(receipt.amount).to eq 54.15
     end
 
   end

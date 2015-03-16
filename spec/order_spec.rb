@@ -3,7 +3,8 @@ require 'menu'
 
 describe 'Order' do
 
-  let(:order){ Order.new({menu: Menu.new, customer: 'Matteo'}) }
+  let(:order){ Order.new({menu: Menu.new}) }
+  before {order.customer = 'Matt'}
 
   context 'by default' do
     it 'should have an empty total' do
@@ -11,7 +12,7 @@ describe 'Order' do
     end
 
     it 'could have a name' do
-      expect(order.customer).to eq 'Matteo'
+      expect(order.customer).to eq 'Matt'
     end
   end
 

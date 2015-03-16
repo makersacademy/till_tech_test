@@ -1,10 +1,10 @@
 class Order
 
   attr_reader :menu, :bill, :customer, :item, :quantity, :price
+  attr_accessor :customer, :cashier
 
   def initialize(options = {menu: Menu.new})
     @menu = options[:menu]
-    @customer = options[:customer]
     @bill = []
   end
 

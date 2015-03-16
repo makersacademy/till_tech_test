@@ -1,4 +1,4 @@
-require 'module'
+require_relative './module.rb'
 
 class Receipt
 
@@ -17,8 +17,12 @@ class Receipt
     order.price * order.quantity
   end
 
-  def amount
+  def cost
     order.bill.reduce(:+)
+  end
+
+  def amount(discount = 5)
+    cost > 50 ? (cost - ((cost * discount) / 100)) : cost
   end
 
   def taxes(bill = amount, percentage = 8.64)
@@ -34,7 +38,4 @@ class Receipt
     "Sorry, you still have to pay #{(total - money).round(2)}£ !" if money < total
   end
 
-  # def over_fifty_pound_discount_of(percentage)
-
-  # end
 end
