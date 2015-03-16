@@ -13,7 +13,7 @@ class Receipt
     @shop_phone = header['phone']
   end
 
-  def items_total
+  def items_total(percentage = 10)
     order.price * order.quantity
   end
 

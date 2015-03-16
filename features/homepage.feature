@@ -11,4 +11,5 @@ Feature: Using the till
     Given I am on the homepage
     When I fill in "cashier-name" with "Matteo"
     And I press "ENTER"
-    Then I should see the till
+    Then I should see "Matteo"
+    And I should see "1 2 3 4 5 6 7 8 9 0 Cafe Latte Flat White Cappuccino Single Espresso Double Espresso Americano Cortado Tea Choc Mudcake Choc Mousse Affogato Tiramisu Blueberry Muffin Chocolate Chip Muffin Muffin Of The Day"

@@ -1,4 +1,5 @@
 <section id='till-header'>
+<h3><%= @order.cashier %></h3>
   <section id='till-screen'>
   </section>
 </section>
@@ -31,5 +32,11 @@
   <% @menu.list.each do |item|%>
     <li><%= item[0] %></li>
   <% end %>
+  </section>
+</section>
+
+<section id='till-footer'>
+  <section id='total'>
+
   </section>
 </section>
