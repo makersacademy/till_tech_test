@@ -18,10 +18,10 @@ Then(/^I should see my order(?:|s) on my receipt$/) do
 end
 
 When(/^I enter a payment$/) do
-    pending # express the regexp above with the code you wish you had
+  enter_payment_of_value 20.0
 end
 
 Then(/^I should see the payment on my receipt$/) do
-    pending # express the regexp above with the code you wish you had
+  expect(payment_has_been_made?).to eq true
 end
 

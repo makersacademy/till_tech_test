@@ -50,6 +50,10 @@ class TillTechTest < Sinatra::Base
     settings.order_list.receive_order(Order.new(settings.menu.order(dish_name)))
   end
 
+  put '/api/order/:id' do
+
+  end
+
 end
 
 
