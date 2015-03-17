@@ -2,9 +2,10 @@
 source "https://rubygems.org"
 
 gem 'sinatra', '~> 1.4.5'
-gem 'sinatra-handlebars', '~> 0.0.4'
+gem 'sinatra-contrib'
 
 group :development, :test do
+  gem 'byebug'
   gem 'rspec'
   gem 'cucumber'
   gem 'capybara'
