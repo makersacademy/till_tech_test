@@ -6,11 +6,11 @@ class Tax
   end
 
   def total value
-    (value * (1 * tax_rate.to_f/100.0))
+    tax_rate.percent_of value 
   end
 
   def total_after_tax value
-    (value * (1 + tax_rate.to_f/100.0)).round(2)
+    (tax_rate.percent_of value) + value
   end
 
   def print value

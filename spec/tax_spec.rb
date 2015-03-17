@@ -1,4 +1,5 @@
 require './lib/tax'
+require './lib/modules/percentage'
 
 describe Tax do
 
