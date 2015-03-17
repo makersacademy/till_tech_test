@@ -14,7 +14,13 @@
 }
 
 /* MENU    */
+
 #menu-container {
+  margin: 30% 40% 30% 10%;
+}
+
+#menu-container ul {
+  list-style: none;
 }
 
 /* RECEIPT */
