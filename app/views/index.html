@@ -29,7 +29,9 @@
         </ul>
 
         <ul id='footer'>
-          <li><span class='left'>Discount: </span><span class="right">{{discount.discount}}</span></li>
+          <li><span class='left'>Subtotal: </span><span class='right'>{{order.total}}</span>
+          {{#if discount.total }}<li><span class='left'>Discount: </span><span class="right">{{discount.discount}} ({{discount.total}})</span></li>{{/if}}
+          <li><span class='left'>Tax ({{tax.tax_rate}}):      </span><span class="right">{{tax.total}}</span></li>
           <li><span class='left'>Total:</span><span class='right'>{{total}}</span></li>
         </ul>
 

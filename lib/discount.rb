@@ -1,12 +1,13 @@
 require './lib/modules/percentage'
 
 class Discount 
-  attr_reader :discount
+  attr_reader :discount, :description
   include Percentage
 
   def initialize options
     @discount               = options[:discount]
     @discountable_evaluator = options[:discountable?]
+    @description            = options[:description]
   end
 
   def total amount

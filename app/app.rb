@@ -3,17 +3,11 @@ require "sinatra/json"
 require './lib/menu'
 require './lib/order_list'
 require './lib/order'
+require './lib/tax'
+require './lib/discount'
 require './lib/receipt'
+require './app/modules/my_helpers'
 
-module MyHelpers
-
-  def reset setting_name
-    new_object = settings.send(setting_name).class.new
-    settings.send(((setting_name.to_s + '=').to_sym),new_object)
-  end
-
-
-end
 
 class TillTechTest < Sinatra::Base
   set :root, File.dirname(__FILE__)
@@ -43,7 +37,7 @@ class TillTechTest < Sinatra::Base
   end
 
   get '/api/order/:id' do
-    receipt = Receipt.new(settings.order_list)
+    receipt = Receipt.new(settings.order_list, utilities)
     json(receipt.print)
   end
 
@@ -52,7 +46,14 @@ class TillTechTest < Sinatra::Base
     settings.order_list.receive_order(Order.new(settings.menu.order(dish_name)))
   end
 
-  
+  helpers do
+
+    def utilities
+      { tax: Tax.new("17.5%"),
+        discount: Discount.new(discount: '10%', discountable?: proc {|value| value > 30 }) }
+    end
+
+  end
 end
 
 
