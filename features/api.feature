@@ -14,5 +14,9 @@ Feature: API
     Given I have made POST requests for a few orders
     And I make a GET request to "/api/order/1"
     Then I should receive a JSON receipt
+
+  Scenario: Making a Payment
+    Given I have made a PUT request making a payment 
+    Then my receipt JSON should be updated with the payment 
     
     

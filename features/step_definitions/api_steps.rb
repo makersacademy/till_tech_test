@@ -1,3 +1,5 @@
+World(KnowsTheApi)
+
 When(/^I (?:make|have made) a GET request to "(.*?)"$/) do |address|
   get address 
   expect_status 200
@@ -24,5 +26,13 @@ end
 
 Then(/^I should receive a JSON receipt$/) do
   expect_json_keys [:order, :total] 
+end
+
+Given(/^I have made a PUT request making a payment$/) do
+  make_api_request_with_payment_of_value 20.0
+end
+
+Then(/^my receipt JSON should be updated with the payment$/) do
+    pending # express the regexp above with the code you wish you had
 end
 
