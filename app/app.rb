@@ -46,11 +46,13 @@ class TillTechTest < Sinatra::Base
   end
 
   post '/api/order/:id' do
+    puts "POST route"
     dish_name = params[:itemname]
     settings.order_list.receive_order(Order.new(settings.menu.order(dish_name)))
   end
 
   put '/api/order/:id' do
+    add_to_utilities({ payment: Payment.new(params[:payment]) })
 
   end
 
