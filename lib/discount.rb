@@ -15,7 +15,7 @@ class Discount
   end
 
   def print amount 
-    {total: total(amount), discount: @discount}
+    {total: total(amount), discount: @discount, description: description }
   end
 
   def calculate_discount amount
