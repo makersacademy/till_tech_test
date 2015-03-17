@@ -8,6 +8,7 @@
 
     <script type="text/javascript" src="/scripts/jquery.js" >   </script>
     <script type="text/javascript" src="/scripts/handlebars.js"></script> 
+    <script type="text/javascript" src="/scripts/handlebarsTemplateFetcher.js"> </script>
     <script type="text/javascript" src="/scripts/script.js" >   </script>
 
     <script id="receipt-template" type="text/x-handlebars-template" >
@@ -38,14 +39,7 @@
       </section>
     </script>
 
-    <script id="menu-template" type="text/x-handlebars-template" >
-      <ul>
-        {{#menu_items}}
-        <li class='menu-items' id='{{name}}'>{{name}} <span class="right">{{price}}</span></li>
-        {{/menu_items}}
-      </ul>
-    </script>
-
+    
   </head>
   
   <body>

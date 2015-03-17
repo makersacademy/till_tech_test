@@ -49,9 +49,11 @@ class TillTechTest < Sinatra::Base
   helpers do
 
     def utilities
-      { tax: Tax.new("17.5%"),
-        discount: Discount.new(discount: '10%', discountable?: proc {|value| value > 30 }) },
-                               description: '10% discount if you spend over 30.0!')
+      {
+      tax: Tax.new("17.5%"),
+      discount: Discount.new(discount: '10%', discountable?: proc{|value| value > 30},
+                             description: '10% discount if you spend over 30.0!')
+      }
     end
 
   end

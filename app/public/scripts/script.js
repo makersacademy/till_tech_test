@@ -1,8 +1,6 @@
 $(document).ready(function() {
   var receiptSource   = $('#receipt-template').html();
   var receiptTemplate = Handlebars.compile(receiptSource);
-  var menuSource      = $('#menu-template').html();
-  var menuTemplate    = Handlebars.compile(menuSource);
 
 
   function refreshReceipt() {
@@ -19,10 +17,12 @@ $(document).ready(function() {
     });
   })
 
-
   $.get('/api/location/thecafe/menu/1', function(menu_items) {
     var data = { menu_items: menu_items } 
-    $('#menu-container').html(menuTemplate(data));
+ 
+    T.render('menuTemplate', function(menuTemplate) {
+      $('#menu-container').html( menuTemplate(data) );
+    });
   });
 
   refreshReceipt();
