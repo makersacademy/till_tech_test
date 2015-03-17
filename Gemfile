@@ -5,6 +5,7 @@ gem 'sinatra', '~> 1.4.5'
 gem 'sinatra-handlebars', '~> 0.0.4'
 
 group :development, :test do
+  gem 'rspec'
   gem 'cucumber'
   gem 'capybara'
   gem 'airborne'
