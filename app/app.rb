@@ -22,7 +22,8 @@ class TillTechTest < Sinatra::Base
                              {name: 'Flat White', price: 2.3 },
                              {name: 'Lasange'   , price: 5.0 },
                              {name: 'Risotto'   , price: 4.5 },
-                             {name: 'Tiramisu'  , price: 3.6 } 
+                             {name: 'Tiramisu'  , price: 3.6 },
+                             {name: 'Muffin'    , price: 3.8, discount: "5%" }
                             ])
   set :utilities, { tax: Tax.new("8.64%"), discount: Discount.new(discount: '10%', discountable?: proc{|value| value > 30}, description: '10% discount if you spend over 30.0!') }
   set :payments, {}
