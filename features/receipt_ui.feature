@@ -16,3 +16,9 @@ Feature: Receipt UI
     And I choose an item from the menu
     Then I should see my order on my receipt
 
+  Scenario: Making Payments
+    Given I am on the homepage
+    And I have made a few orders 
+    When I enter a payment
+    Then I should see the payment on my receipt
+

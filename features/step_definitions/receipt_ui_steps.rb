@@ -17,3 +17,11 @@ Then(/^I should see my order(?:|s) on my receipt$/) do
   expect(page.find('#receipt-container')).to have_content order_list.orders.sample.name
 end
 
+When(/^I enter a payment$/) do
+    pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I should see the payment on my receipt$/) do
+    pending # express the regexp above with the code you wish you had
+end
+
