@@ -1,4 +1,4 @@
-@javascript 
+@javascript
 Feature: Receipt UI
 
   Scenario: Placing an Order

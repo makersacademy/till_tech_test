@@ -5,11 +5,12 @@ Given(/^I am on the homepage$/) do
 end
 
 Given(/^I choose an item from the menu$/) do
+  wait_for_ajax(1) 
   page.first('.menu-items').click;
 end
 
 Then(/^it should appear in the OrderList$/) do
-  sleep(1) # to allows time for Ajax calls. (crude).
+  wait_for_ajax(1) 
   expect(order_list.orders.count).to eq 1
 end
 

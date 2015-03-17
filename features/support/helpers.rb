@@ -42,5 +42,9 @@ module KnowsTheUserInterface
     expect(page.find('#receipt-container')).to have_content 'Payment'
   end
 
+  def wait_for_ajax timeout
+    sleep(timeout)
+  end
+
 end
 
