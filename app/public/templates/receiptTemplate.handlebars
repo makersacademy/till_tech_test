@@ -1,25 +1,24 @@
 <section id='receipt-box'>
-        <img src='/images/coffee_logo.png'>
+  <img src='/images/coffee_logo.png'>
 
-        <p>{{time}}</p>
-        <p>The Coffee Connection</p>
-        
-        Items:
-        <ul id='order-list'>
-          {{#order.items}}
-          <li>{{name}} X {{quantity}} <span class="right"> {{#if discount }} {{ discount }} from {{/if}} {{cost}}</li></span>
-          {{/order.items}}
-        </ul>
+  <p>{{time}}</p>
+  <p>The Coffee Connection</p>
+      
+  Items:
+  <ul id='order-list'>
+    {{#order.items}}
+    <li>{{name}} X {{quantity}} <span class="right"> {{#if discount }} {{ discount }} from {{/if}} {{cost}}</li></span>
+    {{/order.items}}
+  </ul>
 
-        <ul id='footer'>
-          <li>Subtotal: <span class='right'>{{order.total}}</span>
-          {{#if discount.total }}
-          <li>Discount: <span class="right">{{discount.discount}} ({{discount.total}})</span></li>
-          {{/if}}
-          <li>Tax ({{tax.tax_rate}}): <span class="right">{{tax.total}}</span></li>
-          <li>Total:    <span class='right'>{{total}}</span></li>
-        </ul>
+  <ul id='footer'>
+    <li>Subtotal: <span class='right'>{{order.total}}</span>
+    {{#if discount.total }}
+    <li>Discount: <span class="right">{{discount.discount}} ({{discount.total}})</span></li>
+    {{/if}}
+    <li>Tax ({{tax.tax_rate}}): <span class="right">{{tax.total}}</span></li>
+    <li>Total:    <span class='right'>{{total}}</span></li>
+  </ul>
 
-
-      </section>
+</section>
 
