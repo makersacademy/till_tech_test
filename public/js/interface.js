@@ -1,8 +1,9 @@
 var validate = function(item, quantity, price) {
   var count = $('#tillNumbers').children().length;
-  if (quantity != 0 && count < 7 ||
-   $("." + item.replace(/\s+/g, '')).length != 0) {
-    isRepeated(item, quantity, price);     
+  if (quantity != 0 && count < 7) {
+    $.post('/items', {item: item, quantity: quantity}, function(data) { 
+      addToList();
+    });
   }
   else if (quantity == 0){
     $("#errorTill").text("Enter a Quantity");
@@ -10,62 +11,49 @@ var validate = function(item, quantity, price) {
   else {
     $("#errorTill").text("We can't fill anymore orders");
   }
+  calculateTotal();
 };
 
-var isRepeated = function(item, quantity, price) {
-  $.post('/items', {item: item, quantity: quantity}, function(data) { 
-    if($("." + item.replace(/\s+/g, '')).length == 0) {
-      addToList(item, quantity, price)
-    }
-    else {
-      appendList(item, quantity, price)
-    }
-   calculateTotal();
-  });
-};
-
-var addToList = function(item, quantity, price) {
-  $('#errorTill').empty();  
-      button = item + " x" + quantity + "= £" + (price*quantity).toFixed(2)
-       + " " + '<button value="'+ item
-   +'" class="x '+ item.replace(/\s+/g, '') +'" id="'+ quantity
+var addToList = function(){
+  $.get('/items', function(data) {
+     $('#errorTill').empty();  
+     $('#tillNumbers').empty();
+    var size = +data.item.length;
+    for (var i = 0; i < size; i++) {
+      button = data.item[i] + " x" + data.quantity[i] + "= £" + (+data.price[i]).toFixed(2)
+       + " " + '<button value="'+ data.item[i]
+       +'" class="x '+ data.item[i].replace(/\s+/g, '') +'" id="'+ data.quantity[i]
        +'">x</button>';
-    $('<div />',{html: button}).appendTo('#tillNumbers');    
-};
-
-var appendList = function(item, quantity, price) {
-  $('#errorTill').empty();
-  var id = $("."+item.replace(/\s+/g, '')).attr('id') 
-  $("."+item.replace(/\s+/g, '')).parent().remove()
-   button = item + " x" + (+quantity + +id) + "= £"
-   + (price*(+quantity + +id)).toFixed(2)
-   + " " + '<button value="'+ item
-   +'" class="x '+ item.replace(/\s+/g, '')
-   +'" id="'+ (+quantity + +id) +'">x</button>';
-    $('<div />',{html: button}).appendTo('#tillNumbers');
+       $('<div />',{html: button}).appendTo('#tillNumbers');    
+    }
+  });   
 };
 
 var calculateTotal = function(){
-  $.get('/items', function(data) {
-    $('#totalPrice').text("Total: £" + data.total)
-    $('#tax').text("Tax (8.64%): £" + data.tax)
-    $('#afterTax').text("After Tax: £" + data.after)
+  $.get('/total', function(data) {
+    $('#totalPrice').text("Total: £" + data.total);
+    $('#tax').text("Tax (8.64%): £" + data.tax);
+    $('#afterTax').text("After Tax: £" + data.after);
   });
 };
 
 var deleteItem = function(item){
- $.ajax({
-        url: '/items',
-        type: 'DELETE',
-        data: {item: item},
-        success: function() {
-          calculateTotal(); 
-        }
-      });
-  };
+  $.ajax({
+    url: '/items',
+    type: 'DELETE',
+    data: {item: item},
+    success: function() {
+      calculateTotal(); 
+    }
+  });
+};
+
 
 $(document).on('ready', function() {
-
+ 
+  addToList();
+  calculateTotal();
+  
   $(document).on('click', '#buttonForAdd', function(e) {
       e.preventDefault();
       validate($( "#itemselect" ).val(), $("#quantityInput").val(),
@@ -74,8 +62,7 @@ $(document).on('ready', function() {
 
   $(document).on('click', '.x', function(e) {
    e.preventDefault();
-     var item = $(this).attr("value")
-     console.log($(this).attr("value"))
+     var item = $(this).attr("value");
      deleteItem(item);
      $(this).parent().remove();
   });  

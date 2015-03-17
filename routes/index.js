@@ -10,13 +10,18 @@ function routes(app, db) {
     res.status(200).send({item: item});
   });
 
-  app.get('/items', function(req, res){
-    res.send({total: db.getTotal(), tax: db.getTax(), after: db.afterTax()});
+  app.get('/items', function(req, res) {
+     res.send({price: db.getAllPrice(), item: db.getAllItems(),
+     quantity: db.getAllQuantity()});
   });
 
   app.delete('/items', function(req, res){
     db.deleteItem(req.body.item);
     res.sendStatus(200);
+  });
+
+   app.get('/total', function(req, res){
+    res.send({total: db.getTotal(), tax: db.getTax(), after: db.afterTax()});
   });
 
 }

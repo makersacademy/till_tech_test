@@ -49,7 +49,19 @@ function HipsterList(cBack) {
         * quantity).toFixed(2);
        this.quantity[index] = +this.quantity[index] + +quantity
     }
-    console.log(this.list)
+  };
+  
+  HipsterList.prototype.getAllPrice = function() {
+    console.log(this.price)
+    return this.price
+  };
+
+  HipsterList.prototype.getAllItems = function() {
+    return this.list
+  };
+
+  HipsterList.prototype.getAllQuantity = function() {
+    return this.quantity
   };
 
   HipsterList.prototype.getTotal = function() {
