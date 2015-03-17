@@ -6,6 +6,7 @@ require './lib/order'
 require './lib/tax'
 require './lib/discount'
 require './lib/receipt'
+require './lib/payment'
 require './app/modules/my_helpers'
 
 
@@ -46,14 +47,13 @@ class TillTechTest < Sinatra::Base
   end
 
   post '/api/order/:id' do
-    puts "POST route"
     dish_name = params[:itemname]
     settings.order_list.receive_order(Order.new(settings.menu.order(dish_name)))
   end
 
   put '/api/order/:id' do
     add_to_utilities({ payment: Payment.new(params[:payment]) })
-
+    {}
   end
 
 end

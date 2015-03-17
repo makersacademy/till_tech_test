@@ -26,6 +26,18 @@ $(document).ready(function() {
     });
   })
 
+  $('#payment-form').submit(function( event ) {
+    event.preventDefault();
+    var paymentValue = $('#payment-form input').first().val();
+
+    $.ajax({
+      url: '/api/order/1',
+      method: 'PUT',
+      data: { 'payment': paymentValue }
+    }).done(function() {
+      refreshReceipt();
+    });
+  });
   
   refreshReceipt();
 });
