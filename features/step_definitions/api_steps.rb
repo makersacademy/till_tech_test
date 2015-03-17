@@ -33,6 +33,6 @@ Given(/^I have made a PUT request making a payment$/) do
 end
 
 Then(/^my receipt JSON should be updated with the payment$/) do
-    pending # express the regexp above with the code you wish you had
+  expect(receipt_json).to have_key :payment 
 end
 
