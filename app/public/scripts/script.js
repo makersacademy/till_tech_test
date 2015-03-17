@@ -1,10 +1,10 @@
 $(document).ready(function() {
 
   function refreshReceipt() {
-    $.get('/api/order/1', function(data) {
+    $.get('/api/order/1', function(receiptData) {
 
       T.render('receiptTemplate', function(receiptTemplate) {
-        $('#receipt-container').html( receiptTemplate(data) );
+        $('#receipt-container').html( receiptTemplate(receiptData) );
       });
     });
   }

@@ -12,7 +12,7 @@ class OrderList
   end
 
   def print value=nil
-    { order: { items: itemized_list, total: total }}
+    { order: { items: itemized_list, total: total.round(2) }}
   end
 
   def total

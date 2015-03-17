@@ -15,7 +15,7 @@ class Order
   end
 
   def print value=nil
-    { name: name, price: price, cost: cost.round(2), discount: discount } 
+    { name: name, price: price.round(2), cost: (cost).round(2), discount: discount } 
   end
 
 end

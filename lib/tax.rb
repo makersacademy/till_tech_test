@@ -15,6 +15,6 @@ class Tax
 
   def print value
     { total: total(value).round(2), tax_rate: tax_rate,
-      total_after_tax: total_after_tax(value) }
+      total_after_tax: total_after_tax(value).round(2) }
   end
 end

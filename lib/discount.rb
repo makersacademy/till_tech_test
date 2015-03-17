@@ -19,7 +19,7 @@ class Discount
   end
 
   def calculate_discount amount
-    0 - (@discount.percent_of(amount)) if discountable? amount
+    (0 - (@discount.percent_of(amount))).round(2) if discountable? amount
   end
 
   def discountable? amount
