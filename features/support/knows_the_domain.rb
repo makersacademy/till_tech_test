@@ -38,4 +38,3 @@ module KnowsTheDomain
 
 end
 
-

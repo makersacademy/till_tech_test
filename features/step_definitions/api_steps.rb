@@ -10,7 +10,7 @@ Given(/^I receive the status "(\d*?)"$/) do |status|
 end
 
 Then(/^I should receive a JSON with a menu$/) do
-  pending "getting weird errors when trying to test for the menu items array"
+  expect_json [] 
 end
 
 Given(/^I have made a POST request with my order to "(.*?)"$/) do |address|
