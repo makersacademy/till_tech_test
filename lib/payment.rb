@@ -1,12 +1,14 @@
 
 class Payment
-  attr_reader :sum
+  attr_reader :sum, :total_with_tax
 
-  def initialize sum 
+  def initialize sum, total_with_tax=nil
     @sum = sum.to_f
+    @total_with_tax = total_with_tax
   end
 
   def print total=nil
+    total = total_with_tax || total
     { payment: sum, remaining_balance: calculate_remaining_balance(total),
       change: calculate_change(total) }
   end

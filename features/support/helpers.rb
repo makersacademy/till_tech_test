@@ -34,7 +34,7 @@ module KnowsTheDomain
   end
 
   def pay_bill_with_money_of_value value
-    add_to_receipt(payment: Payment.new(value))
+    add_to_receipt(payment: Payment.new(value, receipt.print[:total]))
   end
 
 end
