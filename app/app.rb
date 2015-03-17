@@ -23,6 +23,9 @@ class TillTechTest < Sinatra::Base
                              {name: 'Risotto'   , price: 4.5 },
                              {name: 'Tiramisu'  , price: 3.6 } 
                             ])
+  set :utilities, { tax: Tax.new("17.5%"),
+               discount: Discount.new(discount: '10%', discountable?: proc{|value| value > 30},
+                                      description: '10% discount if you spend over 30.0!') }
 
   get '/' do
     reset :order_list
@@ -37,7 +40,7 @@ class TillTechTest < Sinatra::Base
   end
 
   get '/api/order/:id' do
-    receipt = Receipt.new(settings.order_list, utilities)
+    receipt = Receipt.new(settings.order_list, settings.utilities)
     json(receipt.print)
   end
 
@@ -46,17 +49,6 @@ class TillTechTest < Sinatra::Base
     settings.order_list.receive_order(Order.new(settings.menu.order(dish_name)))
   end
 
-  helpers do
-
-    def utilities
-      {
-      tax: Tax.new("17.5%"),
-      discount: Discount.new(discount: '10%', discountable?: proc{|value| value > 30},
-                             description: '10% discount if you spend over 30.0!')
-      }
-    end
-
-  end
 end
 
 
