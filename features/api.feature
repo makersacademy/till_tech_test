@@ -1,5 +1,8 @@
 @api, @domain
 Feature: API
+  As a computer
+  I want to access a receipt as a JSON
+  In order to easily consume its data 
 
   Scenario: Returns menu as JSON
     Given I have made a GET request to "/api/location/thecafe/menu/1" 
