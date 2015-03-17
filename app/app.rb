@@ -52,7 +52,7 @@ class TillTechTest < Sinatra::Base
   end
 
   put '/api/order/:id' do
-    add_to_payments({ payment: Payment.new(params[:payment]) })
+    add_to_payments({ payment: Payment.new( params[:payment]) })
     {}
   end
 

@@ -69,3 +69,10 @@ Then(/^my receipt shows that I have paid$/) do
   expect(receipt.print[:payment][:remaining_balance]).to eq 0.0
 end
 
+Given(/^I pay "(#{FLOAT})" towards my bill$/) do |payment|
+  pay_bill_with_money_of_value(payment)
+end
+
+Then(/^my receipt shows I am owed "(#{FLOAT})" in change$/) do |change|
+  expect(receipt.print[:payment][:change]).to eq change 
+end
