@@ -24,8 +24,7 @@ class TillTechTest < Sinatra::Base
                              {name: 'Risotto'   , price: 4.5 },
                              {name: 'Tiramisu'  , price: 3.6 } 
                             ])
-  
-  set :utilities, { tax: Tax.new("17.5%"), discount: Discount.new(discount: '10%', discountable?: proc{|value| value > 30}, description: '10% discount if you spend over 30.0!') }
+  set :utilities, { tax: Tax.new("8.64%"), discount: Discount.new(discount: '10%', discountable?: proc{|value| value > 30}, description: '10% discount if you spend over 30.0!') }
   set :payments, {}
 
   get '/' do
@@ -42,7 +41,6 @@ class TillTechTest < Sinatra::Base
   end
 
   get '/api/order/:id' do
-    receipt = Receipt.new(settings.order_list, settings.utilities.dup.merge(settings.payments))
     json(receipt.print)
   end
 
@@ -52,9 +50,18 @@ class TillTechTest < Sinatra::Base
   end
 
   put '/api/order/:id' do
-    add_to_payments({ payment: Payment.new( params[:payment]) })
+    add_to_payments({ payment: Payment.new( params[:payment], receipt.print[:total]) })
     {}
   end
+
+  helpers do
+    
+    def receipt
+      Receipt.new(settings.order_list, settings.utilities.dup.merge(settings.payments))
+    end
+
+  end
+
 
 end
 
