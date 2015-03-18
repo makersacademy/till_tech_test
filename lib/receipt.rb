@@ -1,4 +1,3 @@
-require 'byebug'
 class Receipt
   attr_reader :orders, :location
   attr_accessor :evaluators
