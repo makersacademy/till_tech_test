@@ -23,7 +23,7 @@ that matching capture groups will get passed to.
 ## Still to complete/refactor
 
 - Values for menu are presently hardcoded. An integration with a database is needed.
-
+- Find/Write some neat middleware that can process JSON and round off all numbers to 2 decimal places.
 ## Takeaway
 
 I learned that step definitions should depend on abstract interfaces to interact with
