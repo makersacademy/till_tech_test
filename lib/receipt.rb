@@ -2,9 +2,7 @@ require 'calculator'
 
 class Receipt
 
-  include Calculator
-
-  attr_reader :order
+  attr_reader :order, :calculator
 
   def initialize(order)
     @order = order || []
@@ -14,8 +12,8 @@ class Receipt
     order.items.uniq.each {|item| item}.join("\n")
   end
 
-  def displays_info
-    puts "#{list_items}\nSubtotal: #{subtotal}\nTax: #{calculate_tax}\nTotal: #{total}"
+  def displays_info(subtotal, tax, total)
+    puts "#{list_items}\nSubtotal: #{subtotal}\nTax: #{tax}\nTotal: #{total}"
   end
 
 end

@@ -1,4 +1,4 @@
-module Calculator
+class Calculator
 
   def subtotal
     cost = 0

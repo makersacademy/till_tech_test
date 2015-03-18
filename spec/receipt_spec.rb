@@ -15,36 +15,9 @@ describe "Receipt" do
     expect(receipt.list_items).to include("Blueberry Muffin: 1 x 4.05") 
   end
 
-  context 'via the calculator module' do
-
-    before do
-      allow(order).to receive(:number_of).with(muffin).and_return(1)
-      allow(order).to receive(:number_of).with(cappucino).and_return(2)
-    end
-
-    it "displays subtotal of the order" do
-      expect(receipt.subtotal).to be(11.75)
-    end
-
-    it "displays tax for order" do
-      expect(receipt.calculate_tax).to be(1.02)
-    end
-
-    it "tax is rounded to the nearest 2 decimal float" do
-      allow(receipt).to receive(:subtotal).and_return(10.55)
-      expect(receipt.calculate_tax).to be(0.91)
-    end
-
-    it "displays the total" do
-      expect(receipt.total).to be(12.77)
-    end
-
-    it "prints items, numbers, prices, subtotal, tax and total to console" do
-      expect(STDOUT).to receive(:puts).with("Blueberry Muffin: 1 x 4.05\nCappucino: 2 x 3.85\nSubtotal: 11.75\nTax: 1.02\nTotal: 12.77")
-      receipt.displays_info
-    end
-
+  it "prints items, numbers, prices, subtotal, tax and total to console" do
+    expect(STDOUT).to receive(:puts).with("Blueberry Muffin: 1 x 4.05\nCappucino: 2 x 3.85\nSubtotal: 11.75\nTax: 1.02\nTotal: 12.77")
+    receipt.displays_info
   end
-
 
 end
