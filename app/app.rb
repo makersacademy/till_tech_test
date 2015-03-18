@@ -20,7 +20,7 @@ class TillTechTest < Sinatra::Base
   set :menu      , Menu.new([{name: 'Cafe Latte', price: 2.5 },
                              {name: 'Cappucino' , price: 3.0 },
                              {name: 'Flat White', price: 2.3 },
-                             {name: 'Lasange'   , price: 5.0 },
+                             {name: 'Lasagne'   , price: 5.0 },
                              {name: 'Risotto'   , price: 4.5 },
                              {name: 'Tiramisu'  , price: 3.6 },
                              {name: 'Muffin'    , price: 3.8, discount: "5%" }
