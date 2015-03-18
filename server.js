@@ -3,6 +3,7 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var server = require('http').createServer(app);
+var io = require('socket.io')(server);
 var hipsterList = require('./public/js/hipsterList');
 var bodyParser = require('body-parser');
 
@@ -17,6 +18,8 @@ app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
+io.on('connection', function(socket) {
+});
 
 function Server(dBase) {
   this.db = dBase;
@@ -24,7 +27,7 @@ function Server(dBase) {
 
 Server.prototype.init = function(port, cBack) {
   _this = this;
-  require('./routes/index')(app, _this.db);
+  require('./routes/index')(app, _this.db, io);
   server.listen(port, cBack);
 };
 
