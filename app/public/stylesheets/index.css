@@ -1,0 +1,67 @@
+* {
+  font-family: 'Bree Serif', serif;
+  font-size: 1.0em;
+}
+
+#receipt-column {
+  width: 50%;
+  float: left;
+}
+
+#menu-column {
+  width: 50%;
+  float: right;
+}
+
+/* MENU    */
+
+#menu-container {
+  margin: 30% 40% 30% 10%;
+}
+
+#menu-container ul {
+  list-style: none;
+}
+
+/* RECEIPT */
+
+#receipt-container {
+  margin: 5% 5% 5% 5%;
+  width: 50%;
+}
+
+#receipt-box {
+  background-color: ;
+  width: 100%;
+  padding: 10%;
+  border: solid black 5px;
+}
+
+#receipt-box img {
+  width: 60%;
+  display: block;
+  margin: 0 auto; 
+  border-radius: 40%;
+}
+
+/* ORDER LIST */
+ul#order-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+
+/* FOOTER */
+ul#footer {
+ list-style: none; 
+ padding-left: 0;
+}
+
+#footer li {
+  clear: both;
+}
+
+.right {
+  float: right;
+}
+
