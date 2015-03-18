@@ -1,4 +1,4 @@
-Title
+Till Tech Test
 =======================
 
 ## Synopsis
@@ -16,7 +16,7 @@ was to model a typical till, with tax, discount, and payment features.
 
 ## Favourite Code Snippet
 
-![Code Snippet](http://oi58.tinypic.com/hs5agw.jpg)
+![Code Snippet](http://oi58.tinypic.com/hs5agw.jpg)  
 I learned from the Cucumber Book that it's possible to define transformations within your step definitions
 that matching capture groups will get passed to.
 
