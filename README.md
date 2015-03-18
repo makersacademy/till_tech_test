@@ -6,6 +6,9 @@ Till Tech Test
 The [original](https://github.com/makersacademy/till_tech_test) aim of this project 
 was to model a typical till, with tax, discount, and payment features.   
 
+## Deployment
+[TTT on Heroku](https://till-tech-test.herokuapp.com/)
+
 <img src='http://s27.postimg.org/6iudrrh1v/coffeeresize.png' alt='receipt' style='width: 200px;'>
 
 ## Technologies Used  
