@@ -1,4 +1,10 @@
+require 'calculator'
+
 describe 'Calculator' do
+  let(:order){double :order, contents: [muffin, cappucino, cappucino], items: ["Blueberry Muffin: 1 x 4.05", "Cappucino: 2 x 3.85", "Cappucino: 2 x 3.85"]}
+  let(:calculator){Calculator.new(order)}
+  let(:muffin){double :product, name: "Blueberry Muffin", price: 4.05}
+  let(:cappucino){double :product, name: "Cappucino", price: 3.85}
 
   before do
     allow(order).to receive(:number_of).with(muffin).and_return(1)

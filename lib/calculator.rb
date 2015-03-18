@@ -1,4 +1,12 @@
+require 'order'
+
 class Calculator
+
+  attr_reader :order
+  
+  def initialize(order)
+    @order = order || []
+  end
 
   def subtotal
     cost = 0
