@@ -60,7 +60,6 @@ function HipsterList(cBack) {
   };
 
   HipsterList.prototype.getAllQuantity = function() {
-    console.log(this.quantity)
     return this.quantity
   };
 
@@ -86,7 +85,6 @@ function HipsterList(cBack) {
     this.list.splice(index, 1);
     this.price.splice(index, 1);
     this.quantity.splice(index, 1);
-    console.log(this.list)
   };
   
 

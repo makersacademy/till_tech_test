@@ -11,11 +11,11 @@ var validate = function(item, quantity, price) {
   else {
     $("#errorTill").text("We can't fill anymore orders");
   }
-  calculateTotal();
 };
 
 var addToList = function(){
   $.get('/items', function(data) {
+     calculateTotal();
      $('#errorTill').empty();  
      $('#tillNumbers').empty();
     var size = +data.item.length;
@@ -24,7 +24,8 @@ var addToList = function(){
        + " " + '<button value="'+ data.item[i]
        +'" class="x '+ data.item[i].replace(/\s+/g, '') +'" id="'+ data.quantity[i]
        +'">x</button>';
-       $('<div />',{html: button}).appendTo('#tillNumbers');    
+       $('<div />',{html: button}).appendTo('#tillNumbers');
+
     }
   });   
 };
