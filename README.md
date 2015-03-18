@@ -30,7 +30,7 @@ Here are some sample orders you can try - whether you use this information is up
 > 2 x Tiramisu  
 > 5 x Blueberry Muffin  
 
-Your receipt must calculate and show the correct amount of tax (in this shop's case, 8.64%), as well as correct line totals and and total amount. Do not worry about calculating discounts or change yet. Consider what output formats may be suitable.
+Your receipt must calculate and show the correct amount of tax (in this shop's case, 8.64%), as well as correct line totals and total amount. Do not worry about calculating discounts or change yet. Consider what output formats may be suitable.
 
 Version 2
 ---------
