@@ -6,7 +6,7 @@ Till Tech Test
 The [original](https://github.com/makersacademy/till_tech_test) aim of this project 
 was to model a typical till, with tax, discount, and payment features.   
 
-![Receipt](http://postimg.org/image/7ntb7yqkj/)
+![Receipt](http://s16.postimg.org/564gow4x1/coffeeresize2.png)
 
 ## Technologies Used  
 
