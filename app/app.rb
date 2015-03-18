@@ -8,7 +8,6 @@ require './lib/discount'
 require './lib/receipt'
 require './lib/payment'
 require './app/modules/my_helpers'
-
 class TillTechTest < Sinatra::Base
   set :root, File.dirname(__FILE__)
   helpers Sinatra::JSON
