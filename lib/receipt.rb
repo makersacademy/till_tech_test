@@ -13,12 +13,21 @@ class Receipt
   end
 
   def run_and_print_calculations 
-    @evaluators.map {|key, eval| [key, eval.print(orders.total)] }.to_h 
+    @evaluators.map { |key, eval| [key, eval.print(orders.total)] }.to_h 
   end
 
   def total receipt_elements
-    {total: receipt_elements.values.inject(0) {|memo, hash| memo + (hash[:total] || 0 )}.round(2)}
+    grand_total = calculate_grand_total receipt_elements
+    { total: grand_total.round(2) }
   end
+
+  def calculate_grand_total receipt_elements
+    receipt_elements.values.inject(0) do |memo, hash| 
+      memo + (hash[:total] || 0 )
+    end
+  end
+
+
 
 end
 

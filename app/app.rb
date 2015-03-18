@@ -8,8 +8,10 @@ require './lib/discount'
 require './lib/receipt'
 require './lib/payment'
 require './app/modules/my_helpers'
+
 class TillTechTest < Sinatra::Base
   set :root, File.dirname(__FILE__)
+  alias_method :s, :settings
   helpers Sinatra::JSON
   include MyHelpers
   set :static, true
@@ -24,13 +26,12 @@ class TillTechTest < Sinatra::Base
                              ])
   set :utilities, tax: Tax.new("8.64%"),
              discount: Discount.new(discount: '10%', 
-                               discountable?: proc { |value| value > 30 }, 
-                                 description: "10% off when you spend over 30.0!")
+                               discountable?: proc { |value| value > 30 })
   set :payments, {}
 
   get '/' do
     reset :order_list
-    settings.payments.clear 
+    s.payments.clear 
     send_file './app/views/index.html'
   end
 
@@ -38,7 +39,7 @@ class TillTechTest < Sinatra::Base
 
   # returns mock data, for now.
   get '/api/location/thecafe/menu/:id' do
-    json(settings.menu.items)
+    json(s.menu.items)
   end
 
   get '/api/order/:id' do
@@ -47,17 +48,18 @@ class TillTechTest < Sinatra::Base
 
   post '/api/order/:id' do
     dish_name = params[:itemname]
-    settings.order_list.receive_order(Order.new(settings.menu.order(dish_name)))
+    s.order_list.receive_order Order.new(s.menu.order(dish_name))
   end
 
   put '/api/order/:id' do
-    add_to_payments(payment: Payment.new(params[:payment], receipt.print[:total]))
+    add_to_payments(payment: Payment.new(params[:payment], 
+                                         receipt.print[:total]))
     {}
   end
 
   helpers do
     def receipt
-      Receipt.new(settings.order_list, settings.utilities.merge(settings.payments))
+      Receipt.new(s.order_list, s.utilities.merge(s.payments))
     end
   end
 end
