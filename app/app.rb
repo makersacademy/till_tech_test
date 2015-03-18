@@ -9,23 +9,24 @@ require './lib/receipt'
 require './lib/payment'
 require './app/modules/my_helpers'
 
-
 class TillTechTest < Sinatra::Base
   set :root, File.dirname(__FILE__)
   helpers Sinatra::JSON
   include MyHelpers
   set :static, true
-  
   set :order_list, OrderList.new
-  set :menu      , Menu.new([{name: 'Cafe Latte', price: 2.5 },
-                             {name: 'Cappucino' , price: 3.0 },
-                             {name: 'Flat White', price: 2.3 },
-                             {name: 'Lasagne'   , price: 5.0 },
-                             {name: 'Risotto'   , price: 4.5 },
-                             {name: 'Tiramisu'  , price: 3.6 },
-                             {name: 'Muffin'    , price: 3.8, discount: "5%" }
+  set :menu,       Menu.new([{ name: 'Cafe Latte', price: 2.5 },
+                             { name: 'Cappucino',  price: 3.0 },
+                             { name: 'Flat White', price: 2.3 },
+                             { name: 'Lasagne',    price: 5.0 },
+                             { name: 'Risotto',    price: 4.5 },
+                             { name: 'Tiramisu',   price: 3.6 },
+                             { name: 'Muffin',     price: 3.8, discount: "5%" }
                             ])
-  set :utilities, { tax: Tax.new("8.64%"), discount: Discount.new(discount: '10%', discountable?: proc{|value| value > 30}, description: '10% discount if you spend over 30.0!') }
+  set :utilities, tax: Tax.new("8.64%"),
+             discount: Discount.new(discount: '10%', 
+                               discountable?: proc { |value| value > 30 }, 
+                                 description: "10% off when you spend over 30.0!")
   set :payments, {}
 
   get '/' do
@@ -51,19 +52,14 @@ class TillTechTest < Sinatra::Base
   end
 
   put '/api/order/:id' do
-    add_to_payments({ payment: Payment.new( params[:payment], receipt.print[:total]) })
+    add_to_payments(payment: Payment.new(params[:payment], receipt.print[:total]))
     {}
   end
 
   helpers do
-    
     def receipt
-      Receipt.new(settings.order_list, settings.utilities.dup.merge(settings.payments))
+      Receipt.new(settings.order_list, settings.utilities.merge(settings.payments))
     end
-
   end
-
-
 end
-
 
