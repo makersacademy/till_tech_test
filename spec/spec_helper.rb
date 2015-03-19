@@ -17,3 +17,4 @@ CodeClimate::TestReporter.start
     allow(shop).to receive(:options).and_return(4.05)
     order.record_item("Blueberry Muffin", shop.options("Blueberry Muffin"), 1)
   end
+  
