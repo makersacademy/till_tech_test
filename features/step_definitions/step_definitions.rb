@@ -36,14 +36,10 @@ Then(/^I should not be able to see "(.*?)"$/) do |arg1|
   expect(page).not_to have_content(arg1)
 end
 
-When(/^I click on "(.*?)" (\d+) times$/) do |arg1, arg2|
+When(/^I click on "(.*?)" 3 times$/) do |arg1|
   click_button(arg1)
   click_button(arg1)
   click_button(arg1)
-end
-
-Then(/^I should see Blueberry Muffin x (\d+) = \$(\d+)\.(\d+)$/) do |arg1, arg2, arg3|
-  expect(page).to have_content("Blueberry Muffin x 3 = $12.15")
 end
 
 Given(/^I am on order page and I have ordered a Cafe Latte$/) do
@@ -77,19 +73,11 @@ When(/^I input some cash$/) do
   fill_in('cash',with: 50)
 end
 
-Then(/^I see Muffin Discount (\d+)% from \$(\d+)\.(\d+)$/) do |arg1, arg2, arg3|
-  expect(page).to have_content("Muffin Discount 10% from $4.05")
-end
-
-Given(/^I am on the order page and I have ordered (\d+) Cafe Latte's$/) do |arg1|
+Given(/^I am on the order page and I have ordered 20 Cafe Latte's$/) do
   visit('/')
   click_button("Clear Order")
   20.times { click_button("Cafe Latte") }
   click_button('Confirm Order')
-end
-
-Then(/^I see Discount (\d+)% from \$(\d+)$/) do |arg1, arg2|
-  expect(page).to have_content("Discount 5% from $95")
 end
 
 When(/^I input sufficient cash$/) do

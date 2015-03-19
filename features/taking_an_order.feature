@@ -22,4 +22,4 @@ Feature: Taking an order
 	Scenario: Displaying prices (should only see to two decimal places)
 		Given I am on the homepage
 		When I click on "Blueberry Muffin" 3 times
-		Then I should see Blueberry Muffin x 3 = $12.15
+		Then I see "Blueberry Muffin x 3 = $12.15"
