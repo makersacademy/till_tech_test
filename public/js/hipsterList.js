@@ -63,15 +63,12 @@ function HipsterList() {
 
   HipsterList.prototype.getTotal = function() {
     if (this.price.length > 0) {
-       var total=0;
-      for(var i in this.price) {
-        this.total = total += this.price[i];
-      } 
+      this.total = eval(this.price.join("+")).toFixed(2);
     }
     else {
       this.total = 0;
     }
-    return (+this.total).toFixed(2);
+    return this.total;
   };
 
   HipsterList.prototype.getTax = function() {

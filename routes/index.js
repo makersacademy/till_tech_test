@@ -1,8 +1,8 @@
-var path = require('path');
+
 
 function routes(app, db) {
   app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, '../views', '/index.html'));
+    res.sendFile('path'.join(__dirname, '../views', '/index.html'));
   });
 
   app.post('/items', function(req, res) {
@@ -25,7 +25,7 @@ function routes(app, db) {
   });
   
   app.post('/pay', function(req, res){
-    var money = db.getMoney(req.body.money)
+    var money = db.getMoney(req.body.money);
     res.status(200).send({money: money});
   });
 
@@ -36,6 +36,6 @@ function routes(app, db) {
   app.get('/new', function(req, res) {
     res.send({total: db.clearDB()});
   });
-};
+}
 
 module.exports = routes;
