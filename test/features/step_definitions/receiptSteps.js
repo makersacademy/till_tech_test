@@ -32,4 +32,13 @@ module.exports = function() {
     callback();
   });
 
+  this.When(/^I delete an item from the list$/, function(callback) {
+    myList.deleteItem(listItem);
+    callback();
+  });
+
+  this.Then(/^I do not see the item in my list$/, function(callback) {
+    assert.notEqual(myList.getAllItems(), 'Cafe Latte', 'Hipster List should not contain Cafe Latte.');
+    callback();
+  });
 };
