@@ -60,13 +60,13 @@ var showTotal = function() {
 };
 
 var payTotal = function(money) {
-   $.post("/pay", {money: money}, function(data) {
+   $.post("/pay", {money: money}, function() {
      showTotal();
    }); 
 };
 
 var nextCustomer = function() {
-  $.get("/new", function(data) {
+  $.get("/new", function() {
     calculateTotal();
     addToList();
   });
