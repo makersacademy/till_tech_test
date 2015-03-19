@@ -12,6 +12,7 @@ class Order
       update_item(item_name, price, quantity)
     else
       list.store(item_name, [quantity, price * quantity])
+    end
   end
 
   def list_of_item_names
