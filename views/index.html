@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+     <meta name="viewport" content="width=device-width">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+     <link href="css/tillScreen.css" rel="stylesheet">
+    <title>The Coffee Connection</title>
+</head>
+
+<body>
+
+<!-- background image -->
+
+<div id="background">
+    <img src='images/till.png' id="backgroundimage" alt='[]' />
+</div>
+
+<!-- results form -->
+
+<section class="numberBox">
+    <section id="errorTill"></section>
+    <section id="tillNumbers"></section>
+    <section id="totalPrice"></section>
+    <section id="tax"></section>
+    <section id="afterTax"></section>
+</section>
+
+<!-- order form -->
+
+<div class="entryBox">
+    <form>
+        <div id="entryTill">
+          <select id="itemselect" class="btn btn-mini">                
+          <optgroup label="Coffee">
+              <option id="4.75">Cafe Latte</option>
+              <option id="4.75">Flat White</option>
+              <option id="3.85">Cappucino</option>
+              <option id="2.05">Single Espresso</option>
+              <option id="3.75">Double Espresso</option>
+              <option id="3.75">Americano</option>
+          </optgroup>
+          <optgroup label="Drinks">
+              <option id="4.55">Cortado</option>
+              <option id="3.65">Tea</option>
+          </optgroup>
+          <optgroup label="Desserts">
+              <option id="6.40">Choc Mudcake</option>
+              <option id="8.20">Choc Mousse</option>
+              <option id="14.80">Affogato</option>
+              <option id="11.40">Tiramisu</option>
+              <option id="4.05">Blueberry Muffin</option>
+              <option id="4.05">Chocolate Chip Muffin</option>
+              <option id="4.55">Muffin Of The Day</option>
+          </optgroup>
+          </select>
+
+         <!-- add order -->
+
+          <label for="Quantity" id="quantity">Quantity:</label>
+          <input type="number" min="0" max="9" value="quantityInput" id='quantityInput'>
+      </div>
+      <div id="addToRecepit">
+          <input type="submit" href="#" id="buttonForAdd" value="add" id='add'>
+          <input type="submit" href="#" value="pay" id="pay">
+      </div>
+   
+
+    <!-- add payment -->
+
+      <div class="payForm"  hidden="hidden">
+          <label for="Pay" id="quantity">Amount: £</label>
+          <input type="number" min="0.01" step="0.01" max="2500" value="00.00" id='payInput'>
+          <input type="submit" href="#" value="pay" id="getChange">
+          <section id="change"></section>
+          <input type="submit" href="#" value="next customer" id="nextCustomer">
+      </div>
+   </form>    
+</div>
+
+
+<script src="js/jquery.js"></script>
+<script src="js/hipsterList.js"></script>
+<script src="js/interface.js"></script>
+
+</body>
+</html>
