@@ -74,7 +74,7 @@ When(/^I input some cash$/) do
 end
 
 Given(/^I am on the order page and I have ordered 20 Cafe Latte's$/) do
-  visit('/')
+  visit("/")
   click_button("Clear Order")
   20.times { click_button("Cafe Latte") }
   click_button("Confirm Order")
