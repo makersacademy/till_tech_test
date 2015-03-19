@@ -15,10 +15,10 @@ module Receipt
 
   def print_receipt_footer(order_list, adjustments, cash)
     ["#{adjustments.item_on_discount} Discount 10% from $#{adjustments.item_discount_total(order_list).round(2)}",
-      "Tax $#{tax_total(order_list, adjustments)}",
-      "Total $#{total_of(order_list, adjustments)}",
-      "Cash: $#{cash} ",
-      "Change: $#{calculate_change(cash, total_of(order_list, adjustments)).round(2)}"
+     "Tax $#{tax_total(order_list, adjustments)}",
+     "Total $#{total_of(order_list, adjustments)}",
+     "Cash: $#{cash} ",
+     "Change: $#{calculate_change(cash, total_of(order_list, adjustments)).round(2)}"
     ]
   end
 

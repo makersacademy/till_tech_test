@@ -1,4 +1,4 @@
-require_relative 'receipt'
+require_relative "receipt"
 
 class Till
 	include Receipt
@@ -10,8 +10,8 @@ class Till
 	end
 
 	def total_of(order, adjustments)
-		order_after_discount = adjustments.discount(subtotal_of(order))
-		(order_after_discount * tax).round(2)
+	  order_after_discount = adjustments.discount(subtotal_of(order))
+	  (order_after_discount * tax).round(2)
 	end
 
 	def subtotal_of(order)

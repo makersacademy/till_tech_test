@@ -1,10 +1,10 @@
-require 'json'
+require "json"
 
 class Shop
   attr_reader :menu, :all_shop_information, :shop_file
 
   def initialize
-    @shop_file = 'hipstercoffee.json'
+    @shop_file = "hipstercoffee.json"
     @all_shop_information = open_shop_info
     @menu = open_menu
   end
