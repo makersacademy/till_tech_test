@@ -1,5 +1,4 @@
 class Adjustments
-
   attr_reader :discount_threshold, :discount_rate, :item_discount_rate, :item_on_discount
 
   def initialize
@@ -10,22 +9,26 @@ class Adjustments
   end
 
   def discount(order_subtotal)
-    order_subtotal > discount_threshold ? 
-    (order_subtotal * discount_rate).round(2) : order_subtotal
+    if order_subtotal > discount_threshold
+      (order_subtotal * discount_rate).round(2)
+    else
+      order_subtotal
+    end
   end
 
-  def item_discount(order)  
-    order.each do |item, array| 
-      (order[item] = [ array.first, (array.last*item_discount_rate).round(2) ]) if item.include?(item_on_discount)
+  def item_discount(order)
+    order.each do |item, array|
+      if item.include?(item_on_discount)
+        (order[item] = [array.first, (array.last * item_discount_rate).round(2)])
+      end
     end
   end
 
   def item_discount_total(order)
     total = [0]
-    order.each do |item, array| 
+    order.each do |item, _array|
       total << order[item].last if item.include?(item_on_discount)
     end
     total.inject(:+)
   end
-
 end

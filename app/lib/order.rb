@@ -8,8 +8,10 @@ class Order
   end
 
   def record_item(item_name, price, quantity)
-    list.has_key?(item_name) ? 
-    update_item(item_name, price, quantity) : list.store(item_name, [quantity, price*quantity])
+    if list.has_key?(item_name)
+      update_item(item_name, price, quantity)
+    else
+      list.store(item_name, [quantity, price * quantity])
   end
 
   def list_of_item_names
