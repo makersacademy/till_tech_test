@@ -1,4 +1,4 @@
-require './lib/order'
+require "./lib/order"
 
 class Menu
   attr_reader :items

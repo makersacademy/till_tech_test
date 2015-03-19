@@ -1,8 +1,8 @@
-require './lib/payment'
+require "./lib/payment"
 
 describe Payment do
 
-  it 'outputs information about payment' do
+  it "outputs information about payment" do
     payment = Payment.new(30.0)
     expect(payment.print(35.0)).to eq({
       payment: 30.0,

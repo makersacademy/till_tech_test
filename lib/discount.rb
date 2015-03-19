@@ -1,4 +1,4 @@
-require './lib/modules/percentage'
+require "./lib/modules/percentage"
 
 class Discount 
   attr_reader :discount, :description

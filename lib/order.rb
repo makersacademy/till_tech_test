@@ -1,4 +1,4 @@
-require './lib/modules/percentage'
+require "./lib/modules/percentage"
 
 class Order
   attr_reader   :name, :cost
