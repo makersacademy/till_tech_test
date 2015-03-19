@@ -18,12 +18,12 @@ module.exports = function() {
   });
 
   this.Then(/^The hipster list contains a single item$/, function(callback) {
-    assert.equal(myList.getAll().length, 1, 'Hipster List should grow by one item.');
+    assert.equal(myList.getAllItems().length, 1, 'Hipster List should grow by one item.');
     callback();
   });
 
   this.Then(/^The hipster list contains two items$/, function(callback) {
-    assert.equal(myList.getAll().length, 2, 'Hipster List should grow by two items.');
+    assert.equal(myList.getAllQuantity(), 2, 'Hipster List should grow by two items.');
     callback();
   });
 

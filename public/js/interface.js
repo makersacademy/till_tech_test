@@ -57,12 +57,19 @@ var payTotal = function(money) {
 
 var showTotal = function() {
   $.get('/pay', function(data) {
-    if (data.money > 0.00) {
+    if (data.money >= 0.00) {
       $('#change').text("Change: £" + data.money);
     }
     else {
       $('#change').text("Not enough money");
     }
+  });
+};
+
+var nextCustomer = function() {
+  $.get('/new', function(data) {
+    calculateTotal();
+    addToList();
   });
 };
 
@@ -107,5 +114,6 @@ $(document).on('ready', function() {
      $('#buttonForAdd').removeAttr('hidden');
      $('#pay').removeAttr('hidden');
      $('.payForm').prop('hidden', 'hidden')
+     nextCustomer();
   });
 });

@@ -54,23 +54,28 @@
               <option id="4.55">Muffin Of The Day</option>
           </optgroup>
           </select>
-          <label for="Quantity" id="quantity">Quantity:</label>
-             <input type="number" min="0" max="9" value="quantityInput" id='quantityInput'>
-        </div>
-        <div id="addToRecepit">
-            <input type="submit" href="#" id="buttonForAdd" value="add" id='add'>
-            <input type="submit" href="#" value="pay" id="pay">
-        </div>
-    </form>
-    <div class="payForm"  hidden="hidden">
-      <label for="Pay" id="quantity">Amount: £</label>
-      <input type="number" min="0.01" step="0.01" max="2500" value="00.00" id='payInput'>
-      <input type="submit" href="#" value="pay" id="getChange">
-      <section id="change"></section>
-      <input type="submit" href="#" value="next customer" id="nextCustomer">
-    </div>
 
-     
+         <!-- add order -->
+
+          <label for="Quantity" id="quantity">Quantity:</label>
+          <input type="number" min="0" max="9" value="quantityInput" id='quantityInput'>
+      </div>
+      <div id="addToRecepit">
+          <input type="submit" href="#" id="buttonForAdd" value="add" id='add'>
+          <input type="submit" href="#" value="pay" id="pay">
+      </div>
+   
+
+    <!-- add payment -->
+
+      <div class="payForm"  hidden="hidden">
+          <label for="Pay" id="quantity">Amount: £</label>
+          <input type="number" min="0.01" step="0.01" max="2500" value="00.00" id='payInput'>
+          <input type="submit" href="#" value="pay" id="getChange">
+          <section id="change"></section>
+          <input type="submit" href="#" value="next customer" id="nextCustomer">
+      </div>
+   </form>    
 </div>
 
 

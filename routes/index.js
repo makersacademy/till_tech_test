@@ -32,6 +32,10 @@ function routes(app, db) {
   app.get('/pay', function(req, res){
     res.send({money: db.getChange()});
   });
+
+  app.get('/new', function(req, res) {
+    res.send({total: db.clearDB()});
+  });
 };
 
 module.exports = routes;

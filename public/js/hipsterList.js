@@ -98,6 +98,14 @@ function HipsterList(cBack) {
     return (+this.payment - (+this.total + (+this.total * +(8.64/100)))).toFixed(2)
 
   };
+
+  HipsterList.prototype.clearDB = function(){
+    this.list = []
+    this.price = []
+    this.total = []
+    this.quantity = []
+    return this.payment = []
+  };
   
 
 
