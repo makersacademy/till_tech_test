@@ -1,5 +1,5 @@
 
-function HipsterList(cBack) {
+function HipsterList() {
 //menu items
  this.shopInfo =
       {
@@ -43,8 +43,8 @@ function HipsterList(cBack) {
      }
     else {
        var index = this.list.indexOf(item);
-       // note this is a really good way convert strings to numbers and add
-       this.price[index] = +(this.price[index]) + +(this.shopInfo.prices[item] * quantity).toFixed(2);
+       var amount = this.shopInfo.prices[item] * quantity
+       this.price[index] = +(this.price[index]) + +(amount).toFixed(2);
        this.quantity[index] = +this.quantity[index] + +quantity;
     }
   };
@@ -87,14 +87,15 @@ function HipsterList(cBack) {
   };
 
   HipsterList.prototype.getMoney = function(money) {
-    if (money != undefined) {
+    if (money !== undefined) {
       this.payment = [];
       this.payment.push(money);
     }
   };
 
   HipsterList.prototype.getChange = function(){
-    return (+this.payment - (+this.total + (+this.total * +(8.64/100)))).toFixed(2);
+    var change = +this.total + (+this.total * +(8.64/100));
+    return (+this.payment - (change)).toFixed(2);
 
   };
 
@@ -103,7 +104,7 @@ function HipsterList(cBack) {
     this.price = [];
     this.total = [];
     this.quantity = [];
-    return this.payment = [];
+    this.payment = [];
   };
   
 
