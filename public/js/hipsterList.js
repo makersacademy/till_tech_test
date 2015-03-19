@@ -25,13 +25,11 @@ function HipsterList(cBack) {
             "Muffin Of The Day": 4.55
           }
       };
-    this.list = []
-    this.price = []
-    this.total = []
-    this.quantity = []
-    this.payment = []
-
-    var cBack = (cBack || function() {})();
+    this.list = [];
+    this.price = [];
+    this.total = [];
+    this.quantity = [];
+    this.payment = [];
 
 }
 

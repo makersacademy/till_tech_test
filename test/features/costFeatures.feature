@@ -7,4 +7,4 @@ Feature: Shopper knows how much item costs
     Given I have an empty hipster list
     When I add an item to the list
     When I add an item to the list
-    Then I can pay for the total
+    Then I can see the total
