@@ -63,7 +63,7 @@ function HipsterList() {
 
   HipsterList.prototype.getTotal = function() {
     if (this.price.length > 0) {
-      this.total = eval(this.price.join("+")).toFixed(2);
+      this.total = Function('return ' + this.price.join('+'))();
     }
     else {
       this.total = 0;

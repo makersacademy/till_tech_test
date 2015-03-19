@@ -22,14 +22,14 @@ var addToList = function(){
   });   
 };
 
-var validate = function(item, quantity, price) {
+var validate = function(item, quantity) {
   var count = $("#tillNumbers").children().length;
-  if (quantity !== 0 && count < 7) {
-    $.post("/items", {item: item, quantity: quantity}, function(data) { 
+  if (+quantity !== 0 && count < 7) {
+    $.post("/items", {item: item, quantity: quantity}, function() { 
       addToList();
     });
   }
-  else if (quantity === 0){
+  else if (+quantity === 0){
     $("#errorTill").text("Enter a Quantity");
   }
   else {
@@ -79,8 +79,7 @@ $(document).on("ready", function() {
   
   $(document).on("click", "#buttonForAdd", function(e) {
       e.preventDefault();
-      validate($( "#itemselect" ).val(), $("#quantityInput").val(),
-       $("#itemselect :selected").attr("id"));     
+      validate($( "#itemselect" ).val(), $("#quantityInput").val());     
     });
 
   $(document).on("click", ".x", function(e) {
@@ -111,7 +110,7 @@ $(document).on("ready", function() {
      $("#entryTill").removeAttr("hidden");
      $("#buttonForAdd").removeAttr("hidden");
      $("#pay").removeAttr("hidden");
-     $('.payForm').prop("hidden", "hidden"); 
+     $(".payForm").prop("hidden", "hidden"); 
      nextCustomer();
   });
 });
