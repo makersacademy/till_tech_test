@@ -43,7 +43,7 @@ function HipsterList() {
      }
     else {
        var index = this.list.indexOf(item);
-       var amount = this.shopInfo.prices[item] * quantity
+       var amount = this.shopInfo.prices[item] * quantity;
        this.price[index] = +(this.price[index]) + +(amount).toFixed(2);
        this.quantity[index] = +this.quantity[index] + +quantity;
     }

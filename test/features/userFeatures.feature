@@ -34,6 +34,7 @@ Feature: Shopper can delete an item
     Given I have an empty hipster list
     When I add an item to the list
     Then I can pay for the total
+    Then I get the price including tax
     When I give the cashier money
     Then I should get change
 

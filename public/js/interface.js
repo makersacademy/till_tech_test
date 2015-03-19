@@ -1,3 +1,27 @@
+var addToList = function(){
+  $.get("/items", function(data) {
+     calculateTotal();
+     $("#errorTill").empty();  
+     $("#tillNumbers").empty();
+    var size = +data.item.length;
+    for (var i = 0; i < size; i++) {
+      var button = data.item[i] + " x" + data.quantity[i] + "= £" +
+       (+data.price[i]).toFixed(2) + " " + '<button value="' +
+       data.item[i] +'" class="x '+ data.item[i].replace(/\s+/g, '') +
+       '" id="' + data.quantity[i] +'">x</button>';
+       $('<div />',{html: button}).appendTo("#tillNumbers");
+    }
+  });   
+};
+
+var calculateTotal = function(){
+  $.get("/total", function(data) {
+    $("#totalPrice").text("Total: £" + data.total);
+    $("#tax").text("Tax (8.64%): £" + data.tax);
+    $("#afterTax").text("After Tax: £" + data.after);
+  });
+};
+
 var validate = function(item, quantity, price) {
   var count = $("#tillNumbers").children().length;
   if (quantity !== 0 && count < 7) {
@@ -13,31 +37,6 @@ var validate = function(item, quantity, price) {
   }
 };
 
-var addToList = function(){
-  $.get("/items", function(data) {
-     calculateTotal();
-     $("#errorTill").empty();  
-     $("#tillNumbers").empty();
-    var size = +data.item.length;
-    for (var i = 0; i < size; i++) {
-      button = data.item[i] + " x" + data.quantity[i] + "= £" + (+data.price[i]).toFixed(2)
-       + " " + '<button value="'+ data.item[i]
-       +'" class="x '+ data.item[i].replace(/\s+/g, '') +'" id="'+ data.quantity[i]
-       +'">x</button>';
-       $('<div />',{html: button}).appendTo("#tillNumbers");
-
-    }
-  });   
-};
-
-var calculateTotal = function(){
-  $.get("/total", function(data) {
-    $("#totalPrice").text("Total: £" + data.total);
-    $("#tax").text("Tax (8.64%): £" + data.tax);
-    $("#afterTax").text("After Tax: £" + data.after);
-  });
-};
-
 var deleteItem = function(item){
   $.ajax({
     url: "/items",
@@ -49,12 +48,6 @@ var deleteItem = function(item){
   });
 };
 
-var payTotal = function(money) {
-   $.post("/pay", {money: money}, function(data) {
-     showTotal()
-   }); 
-};
-
 var showTotal = function() {
   $.get("/pay", function(data) {
     if (data.money >= 0.00) {
@@ -64,6 +57,12 @@ var showTotal = function() {
       $("#change").text("Not enough money");
     }
   });
+};
+
+var payTotal = function(money) {
+   $.post("/pay", {money: money}, function(data) {
+     showTotal()
+   }); 
 };
 
 var nextCustomer = function() {
@@ -98,8 +97,7 @@ $(document).on("ready", function() {
      $("#entryTill").prop("hidden", "hidden");
      $("#buttonForAdd").prop("hidden", "hidden");
      $("#pay").prop("hidden", "hidden");
-     $(".payForm").removeAttr("hidden");
-     
+     $(".payForm").removeAttr("hidden");    
   });
 
   $(document).on("click", "#getChange", function(e) {
