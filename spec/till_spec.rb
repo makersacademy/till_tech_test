@@ -3,10 +3,10 @@ require_relative "../app/lib/order"
 require_relative "../app/lib/shop"
 
 describe "till" do
-  let(:till)        {Till.new       }
-  let(:shop)        {double(:shop)  }
-  let(:order)       {Order.new      }
-  let(:adjustments) {Adjustments.new}
+  let(:till){ Till.new }
+  let(:shop){ double(:shop) }
+  let(:order){ Order.new }
+  let(:adjustments){ Adjustments.new }
 
   it "can calculate the subtotal of an order" do
     add_items
