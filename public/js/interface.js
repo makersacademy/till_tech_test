@@ -1,3 +1,11 @@
+var calculateTotal = function(){
+  $.get("/total", function(data) {
+    $("#totalPrice").text("Total: £" + data.total);
+    $("#tax").text("Tax (8.64%): £" + data.tax);
+    $("#afterTax").text("After Tax: £" + data.after);
+  });
+};
+
 var addToList = function(){
   $.get("/items", function(data) {
      calculateTotal();
@@ -12,14 +20,6 @@ var addToList = function(){
        $('<div />',{html: button}).appendTo("#tillNumbers");
     }
   });   
-};
-
-var calculateTotal = function(){
-  $.get("/total", function(data) {
-    $("#totalPrice").text("Total: £" + data.total);
-    $("#tax").text("Tax (8.64%): £" + data.tax);
-    $("#afterTax").text("After Tax: £" + data.after);
-  });
 };
 
 var validate = function(item, quantity, price) {
@@ -61,7 +61,7 @@ var showTotal = function() {
 
 var payTotal = function(money) {
    $.post("/pay", {money: money}, function(data) {
-     showTotal()
+     showTotal();
    }); 
 };
 
@@ -102,8 +102,8 @@ $(document).on("ready", function() {
 
   $(document).on("click", "#getChange", function(e) {
    e.preventDefault();
-     var money = $( "#payInput").val()
-     payTotal(money)
+     var money = $( "#payInput").val();
+     payTotal(money);
   });
 
    $(document).on("click", "#nextCustomer", function(e) {
@@ -111,7 +111,7 @@ $(document).on("ready", function() {
      $("#entryTill").removeAttr("hidden");
      $("#buttonForAdd").removeAttr("hidden");
      $("#pay").removeAttr("hidden");
-     $('.payForm').prop("hidden", "hidden")
+     $('.payForm').prop("hidden", "hidden"); 
      nextCustomer();
   });
 });
