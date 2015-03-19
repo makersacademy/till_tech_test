@@ -21,7 +21,7 @@ Then(/^I should not see "(.*?)" x "(.*?)"$/) do |arg1, arg2|
 end
 
 Then(/^I should see an input field$/) do
-  expect(page).to have_selector('input')
+  expect(page).to have_selector("input")
 end
 
 Then(/^I should see Total = "(.*?)"$/) do |arg1|
@@ -45,8 +45,8 @@ end
 Given(/^I am on order page and I have ordered a Cafe Latte$/) do
   visit('/')
   click_button("Clear Order")
-  click_button('Cafe Latte')
-  click_button('Confirm Order')
+  click_button("Cafe Latte")
+  click_button("Confirm Order")
 end
 
 When(/^I click "(.*?)"$/) do |arg1|
@@ -62,11 +62,11 @@ When(/^I input "(.*?)" cash$/) do |arg1|
 end
 
 Given(/^I am on the order page and I have ordered a "(.*?)" and a "(.*?)"$/) do |arg1, arg2|
-  visit('/')
+  visit("/")
   click_button("Clear Order")
   click_button(arg1)
   click_button(arg2)
-  click_button('Confirm Order')
+  click_button("Confirm Order")
 end
 
 When(/^I input some cash$/) do
@@ -77,11 +77,11 @@ Given(/^I am on the order page and I have ordered 20 Cafe Latte's$/) do
   visit('/')
   click_button("Clear Order")
   20.times { click_button("Cafe Latte") }
-  click_button('Confirm Order')
+  click_button("Confirm Order")
 end
 
 When(/^I input sufficient cash$/) do
-  fill_in('cash',with: 100)
+  fill_in("cash", with: 100)
 end
 
 Then(/^I see the current time and date$/) do
