@@ -33,7 +33,7 @@ Then(/^I should see No items, reset order$/) do
 end
 
 Then(/^I should not be able to see "(.*?)"$/) do |arg1|
-  expect(page).not_to have_content("Confirm Order")
+  expect(page).not_to have_content(arg1)
 end
 
 When(/^I click on "(.*?)" (\d+) times$/) do |arg1, arg2|

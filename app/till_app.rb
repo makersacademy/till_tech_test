@@ -5,13 +5,13 @@ require "./app/lib/till"
 require "./app/lib/adjustments"
 
 class TillApp < Sinatra::Base
-  set :views, Proc.new { File.join(root, "views") } 
+  set :views, Proc.new { File.join(root, "views") }
 
   shop = Shop.new
   order = Order.new
   till = Till.new
   adjustments = Adjustments.new
-  
+
   get "/" do
     @menu = shop.menu
     @order_so_far = till.print_receipt_body(order.list)
