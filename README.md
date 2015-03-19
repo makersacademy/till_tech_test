@@ -13,6 +13,7 @@ Screenshot
 </div>
 <div align="center">
        <a href="https://codeclimate.com/github/HannahCarney/till_tech_test"><img src="https://codeclimate.com/github/HannahCarney/till_tech_test/badges/gpa.svg" /></a>
+       <a href="https://codeclimate.com/github/HannahCarney/till_tech_test"><img src="https://travis-ci.org/HannahCarney/till_tech_test.svg?branch=master" /></a>
 </div>
 
 Technologies used
