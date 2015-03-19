@@ -23,6 +23,7 @@ class Till
   end
 
   def tax_total(order, adjustments)
-    (total_of(order, adjustments) - adjustments.discount(subtotal_of(order))).round(2)
+    order_total = total_of(order, adjustments)
+    (order_total - adjustments.discount(subtotal_of(order))).round(2)
   end
 end
