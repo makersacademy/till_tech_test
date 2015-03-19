@@ -42,41 +42,41 @@ function HipsterList(cBack) {
        this.quantity.push(quantity);
      }
     else {
-       var index = this.list.indexOf(item)
+       var index = this.list.indexOf(item);
        // note this is a really good way convert strings to numbers and add
-       this.price[index] = +(this.price[index]) + +(this.shopInfo.prices[item]
-        * quantity).toFixed(2);
-       this.quantity[index] = +this.quantity[index] + +quantity
+       this.price[index] = +(this.price[index]) + +(this.shopInfo.prices[item] * quantity).toFixed(2);
+       this.quantity[index] = +this.quantity[index] + +quantity;
     }
   };
   
   HipsterList.prototype.getAllPrice = function() {
-    return this.price
+    return this.price;
   };
 
   HipsterList.prototype.getAllItems = function() {
-    return this.list
+    return this.list;
   };
 
   HipsterList.prototype.getAllQuantity = function() {
-    return this.quantity
+    return this.quantity;
   };
 
   HipsterList.prototype.getTotal = function() {
-    if (this.price.length > 0)
-      this.total = eval(this.price.join('+')).toFixed(2);
+    if (this.price.length > 0) {
+      this.total = eval(this.price.join("+")).toFixed(2);
+    }
     else {
-      this.total = 0
+      this.total = 0;
     }
     return this.total;
   };
 
   HipsterList.prototype.getTax = function() {
-    return (this.total * (8.64/100)).toFixed(2)
+    return (this.total * (8.64/100)).toFixed(2);
   };
 
   HipsterList.prototype.afterTax = function() {
-    return (+this.total + (+this.total * +(8.64/100))).toFixed(2)
+    return (+this.total + (+this.total * +(8.64/100))).toFixed(2);
   };
 
   HipsterList.prototype.deleteItem = function(item){
@@ -87,22 +87,23 @@ function HipsterList(cBack) {
   };
 
   HipsterList.prototype.getMoney = function(money) {
-    if (money != undefined)
-      this.payment = []
+    if (money != undefined) {
+      this.payment = [];
       this.payment.push(money);
+    }
   };
 
   HipsterList.prototype.getChange = function(){
-    return (+this.payment - (+this.total + (+this.total * +(8.64/100)))).toFixed(2)
+    return (+this.payment - (+this.total + (+this.total * +(8.64/100)))).toFixed(2);
 
   };
 
   HipsterList.prototype.clearDB = function(){
-    this.list = []
-    this.price = []
-    this.total = []
-    this.quantity = []
-    return this.payment = []
+    this.list = [];
+    this.price = [];
+    this.total = [];
+    this.quantity = [];
+    return this.payment = [];
   };
   
 
