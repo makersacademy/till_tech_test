@@ -1,5 +1,5 @@
 Given(/^I am on the homepage$/) do
-  visit('/')
+  visit("/")
   click_button("Clear Order")
 end
 
@@ -43,7 +43,7 @@ When(/^I click on "(.*?)" 3 times$/) do |arg1|
 end
 
 Given(/^I am on order page and I have ordered a Cafe Latte$/) do
-  visit('/')
+  visit("/")
   click_button("Clear Order")
   click_button("Cafe Latte")
   click_button("Confirm Order")
