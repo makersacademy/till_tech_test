@@ -1,7 +1,6 @@
 require_relative 'receipt'
 
 class Till
-
 	include Receipt
 
 	attr_reader :tax
@@ -26,5 +25,4 @@ class Till
 	def tax_total(order, adjustments)
 		(total_of(order, adjustments) - adjustments.discount(subtotal_of(order))).round(2)
 	end
-
 end

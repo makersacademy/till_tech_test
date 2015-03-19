@@ -1,5 +1,4 @@
 class Order
-
   attr_reader :list, :confirmed
 
   def initialize
@@ -20,11 +19,11 @@ class Order
   end
 
   def list_of_item_quantities
-    list.values.collect(&:first)
+    list.values.map(&:first)
   end
 
   def list_of_item_prices
-    list.values.collect(&:last)
+    list.values.map(&:last)
   end
 
   def clear_order
@@ -35,11 +34,12 @@ class Order
     @confirmed = true
   end
 
-private
+  private
 
   def update_item(item_name, price_to_add, quantity_to_add)
-    old_quantity, old_price = list[item_name].first, list[item_name].last
-    list[item_name] = [(old_quantity + quantity_to_add), (old_price + (price_to_add*quantity_to_add))]
+    old_quantity = list[item_name].first
+    old_price = list[item_name].last
+    list[item_name] = [(old_quantity + quantity_to_add),
+                       (old_price + (price_to_add * quantity_to_add))]
   end
-
 end
