@@ -58,7 +58,7 @@ Then(/^I see "(.*?)"$/) do |arg1|
 end
 
 When(/^I input "(.*?)" cash$/) do |arg1|
-  fill_in('cash',with: arg1)
+  fill_in("cash", with: arg1)
 end
 
 Given(/^I am on the order page and I have ordered a "(.*?)" and a "(.*?)"$/) do |arg1, arg2|
@@ -70,7 +70,7 @@ Given(/^I am on the order page and I have ordered a "(.*?)" and a "(.*?)"$/) do 
 end
 
 When(/^I input some cash$/) do
-  fill_in('cash',with: 50)
+  fill_in("cash", with: 50)
 end
 
 Given(/^I am on the order page and I have ordered 20 Cafe Latte's$/) do
