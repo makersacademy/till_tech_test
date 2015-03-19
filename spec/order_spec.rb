@@ -12,12 +12,12 @@ describe "order" do
 
   it "can provide a list of the quantities ordered" do
     add_items
-    expect(order.list_of_item_quantities).to eq([2,1])
+    expect(order.list_of_item_quantities).to eq([2, 1])
   end
 
   it "can provide a list of the prices of items ordered" do
     add_items
-    expect(order.list_of_item_prices).to eq([9.50,3.85])
+    expect(order.list_of_item_prices).to eq([9.50, 3.85])
   end
 
   it "if the same item has been previously added, it updates the quantity" do
