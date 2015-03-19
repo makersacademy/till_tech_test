@@ -1,11 +1,10 @@
-require 'sinatra/base'
-require './app/lib/shop'
-require './app/lib/order'
-require './app/lib/till'
-require './app/lib/adjustments'
+require "sinatra/base"
+require "./app/lib/shop"
+require "./app/lib/order"
+require "./app/lib/till"
+require "./app/lib/adjustments"
 
 class TillApp < Sinatra::Base
-
   set :views, Proc.new { File.join(root, "views") } 
 
   shop = Shop.new
@@ -13,43 +12,43 @@ class TillApp < Sinatra::Base
   till = Till.new
   adjustments = Adjustments.new
   
-  get '/' do
+  get "/" do
     @menu = shop.menu
     @order_so_far = till.print_receipt_body(order.list)
     @order_confirmed = order.confirmed
     erb :index
   end
 
-  get '/order' do
+  get "/order" do
     @items = till.print_receipt_body(order.list)
     @total = till.total_of(order.list, adjustments)
     erb :order
   end
 
-  post '/add_order' do
+  post "/add_order" do
     @item_to_add = params[:item]
     @item_price = params[:price].to_f
     order.record_item("#{@item_to_add}", @item_price, 1)
-    redirect '/'
+    redirect "/"
   end
 
-  post '/clear_order' do
+  post "/clear_order" do
     order.clear_order
-    redirect '/'
+    redirect "/"
   end
 
-  post '/confirm_order' do
+  post "/confirm_order" do
     if order.list == {}
-      redirect '/'
+      redirect "/"
     else
       order.confirm_order?
-      redirect '/order'
+      redirect "/order"
     end
   end
 
-  get '/make_payment' do
+  get "/make_payment" do
     @cash_taken = params[:cash].to_f
-    @subtotal = till.subtotal_of(order.list)  
+    @subtotal = till.subtotal_of(order.list)
     @change_owed = till.calculate_change(@cash_taken, till.total_of(order.list, adjustments))
     @shop_details = till.print_receipt_head(shop.array_of_details)
     @order = till.print_receipt_body(order.list)
