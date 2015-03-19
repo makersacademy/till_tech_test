@@ -49,6 +49,22 @@ var deleteItem = function(item){
   });
 };
 
+var payTotal = function(money) {
+   $.post('/pay', {money: money}, function(data) {
+     showTotal()
+   }); 
+};
+
+var showTotal = function() {
+  $.get('/pay', function(data) {
+    if (data.money > 0.00) {
+      $('#change').text("Change: £" + data.money);
+    }
+    else {
+      $('#change').text("Not enough money");
+    }
+  });
+};
 
 $(document).on('ready', function() {
  
@@ -67,4 +83,29 @@ $(document).on('ready', function() {
      deleteItem(item);
      $(this).parent().remove();
   });  
+
+
+  $(document).on('click', '#pay', function(e) {
+   e.preventDefault();
+     $('#change').empty();
+     $('#entryTill').prop('hidden', 'hidden');
+     $('#buttonForAdd').prop('hidden', 'hidden');
+     $('#pay').prop('hidden', 'hidden');
+     $('.payForm').removeAttr('hidden')
+     
+  });
+
+  $(document).on('click', '#getChange', function(e) {
+   e.preventDefault();
+     var money = $( "#payInput").val()
+     payTotal(money)
+  });
+
+   $(document).on('click', '#nextCustomer', function(e) {
+   e.preventDefault();
+     $('#entryTill').removeAttr('hidden');
+     $('#buttonForAdd').removeAttr('hidden');
+     $('#pay').removeAttr('hidden');
+     $('.payForm').prop('hidden', 'hidden')
+  });
 });

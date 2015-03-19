@@ -29,6 +29,7 @@ function HipsterList(cBack) {
     this.price = []
     this.total = []
     this.quantity = []
+    this.payment = []
 
     var cBack = (cBack || function() {})();
 
@@ -85,6 +86,17 @@ function HipsterList(cBack) {
     this.list.splice(index, 1);
     this.price.splice(index, 1);
     this.quantity.splice(index, 1);
+  };
+
+  HipsterList.prototype.getMoney = function(money) {
+    if (money != undefined)
+      this.payment = []
+      this.payment.push(money);
+  };
+
+  HipsterList.prototype.getChange = function(){
+    return (+this.payment - (+this.total + (+this.total * +(8.64/100)))).toFixed(2)
+
   };
   
 

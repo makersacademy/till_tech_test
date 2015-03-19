@@ -23,7 +23,15 @@ function routes(app, db) {
    app.get('/total', function(req, res){
     res.send({total: db.getTotal(), tax: db.getTax(), after: db.afterTax()});
   });
+  
+  app.post('/pay', function(req, res){
+    var money = db.getMoney(req.body.money)
+    res.status(200).send({money: money});
+  });
 
-}
+  app.get('/pay', function(req, res){
+    res.send({money: db.getChange()});
+  });
+};
 
 module.exports = routes;
