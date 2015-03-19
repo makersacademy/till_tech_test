@@ -1,10 +1,10 @@
 require_relative "../app/lib/adjustments"
 
 describe "adjustments" do
-  let(:shop){ double(:shop) }
-  let(:order){ Order.new }
-  let(:adjustments){ Adjustments.new }
-  let(:till){ Till.new }
+  let(:shop) { double(:shop) }
+  let(:order) { Order.new }
+  let(:adjustments) { Adjustments.new }
+  let(:till) { Till.new }
 
   it "can calculate a 5% discount for orders over $50" do
     add_many_items

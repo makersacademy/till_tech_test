@@ -1,7 +1,7 @@
 require_relative "../app/lib/shop"
 
 describe "Shop" do
-  let(:shop){ Shop.new }
+  let(:shop) { Shop.new }
 
   it "has a menu/hash for storing products and prices" do
     expect(shop.menu).to be_a Hash

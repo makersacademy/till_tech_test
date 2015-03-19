@@ -2,8 +2,8 @@ require_relative "../app/lib/order"
 require_relative "spec_helper"
 
 describe "order" do
-  let(:shop){ double("shop")  }
-  let(:order){ Order.new }
+  let(:shop) { double("shop") }
+  let(:order) { Order.new }
 
   it "can provide a list of the item names ordered" do
     add_items
