@@ -10,10 +10,10 @@ Screenshot
 ---
 <div align="center">
         <img width="45%" src="public/images/screenshot.png">
-        <a href="https://codeclimate.com/github/HannahCarney/till_tech_test"><img src="https://codeclimate.com/github/HannahCarney/till_tech_test/badges/gpa.svg" /></a>
-
 </div>
-
+<div align="center">
+       <a href="https://codeclimate.com/github/HannahCarney/till_tech_test"><img src="https://codeclimate.com/github/HannahCarney/till_tech_test/badges/gpa.svg" /></a>
+</div>
 
 Technologies used
 ----------
@@ -34,6 +34,7 @@ cd ReceiptTechTest
 How to run feature tests with cucumber.js
 ----
 ```sh
+npm install
 make cucumber
 ```
 How to run locally
@@ -41,6 +42,7 @@ How to run locally
 Open browser to http://localhost:3000/
 
 ```sh
+npm install
 npm start
 ```
 
