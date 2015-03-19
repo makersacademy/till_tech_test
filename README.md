@@ -6,6 +6,25 @@ Heroku
 [coffee]:https://thecoffeeconnection.herokuapp.com/
 [coffee]
 
+Screenshot
+---
+<div align="center">
+        <img width="45%" src="public/images/screenshot.png">
+        <a href="https://codeclimate.com/github/HannahCarney/till_tech_test"><img src="https://codeclimate.com/github/HannahCarney/till_tech_test/badges/gpa.svg" /></a>
+
+</div>
+
+
+Technologies used
+----------
+* Javascript
+* JQuery
+* Node
+* Cucumber
+* Html
+* CSS
+* Ajax
+
 How to clone
 ----
 ```sh
@@ -25,4 +44,7 @@ Open browser to http://localhost:3000/
 npm start
 ```
 
-
+Me
+----
+I am [Hannah] from the December 2014 cohort of Makers Academy, London!
+[Hannah]:https://github.com/HannahCarney
