@@ -27,8 +27,9 @@ that matching capture groups will get passed to.
 
 - Values for menu are presently hardcoded. An integration with a database is needed.
 - Find/Write some neat middleware that can process JSON and round off all numbers to 2 decimal places.
-## Takeaway
-
+  
+## Takeaway  
+  
 I learned that step definitions should depend on abstract interfaces to interact with
 the system under test, rather than have those interactions coded inline. This is important because
 it makes step definitions much less brittle.
