@@ -44,3 +44,34 @@ Version 3
 Implement an user interface that can actually be used as a till.
 
 You may use whatever technologies you see fit.
+
+
+CRC/Domain Model
+----------------
+
+Receipt
+Products
+Order
+Calculator (module?)
+
+
+A receipt
+- displays the order
+- displays the number of items contained in the order
+- displays the cost of each item
+- displays the subtotal
+- displays the amount of tax owed
+- displays the total cost
+
+An Order
+- contains a number of products
+- contains the number of each item required
+
+A Calculator
+- calculates the subtotal
+- calculates the tax
+- calculates the cost
+
+A Product
+- has a name
+- has a price
