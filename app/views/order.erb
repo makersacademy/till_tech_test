@@ -1,0 +1,12 @@
+<% @items.each do |item| %>
+  <ul>
+    <%= item %>
+  </ul>
+<% end %>
+
+Total = $<%= @total %>
+
+<form action="/make_payment" method="get">
+  <input type="text" name="cash" id="amount_received">
+  <button type="submit">Open Till</button>
+</form>

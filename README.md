@@ -1,16 +1,22 @@
+![build-badge](https://travis-ci.org/lukeclewlow/till_tech_test.svg?branch=master)
+[![Code Climate](https://codeclimate.com/github/lukeclewlow/till_tech_test/badges/gpa.svg)](https://codeclimate.com/github/lukeclewlow/till_tech_test)
+[![Test Coverage](https://codeclimate.com/github/lukeclewlow/till_tech_test/badges/coverage.svg)](https://codeclimate.com/github/lukeclewlow/till_tech_test)
+
 Till tech test
 ==============
 
-![a till](/images/till.jpg)
+![a till](/app/public/images/till.jpg)
 
 We want to sell tills to local hipster coffee shop who are finally embracing the 21st century. We need a new till to replace their vintage machines - unfortunately, hipster staff are too cool to learn a new system, so we need you to build something that they will understand.
+
+Please see bottom of page for comments
 
 Specification
 -------------
 
 This is what a sample receipt looks like:
 
-![a receipt](/images/receipt.jpg)
+![a receipt](/app/public/images/receipt.jpg)
 
 
 Version 1
@@ -44,3 +50,11 @@ Version 3
 Implement an user interface that can actually be used as a till.
 
 You may use whatever technologies you see fit.
+
+Things I would do differently if i had time
+-------------------------------------------
+
+- I would double for all tests and stub methods where neccessary as I think this would make me think more carefully about how different classes are interacting
+- I would not use float to represent the prices as this causes the need for lots of rounding and I have been reading about possible problems with this. I have seen there are some relevant gems I could use to monetise values.
+- Make adjustments a module instead of a class, I kept it as a class because I wanted to have the initialized variables easily accessible, but really it is just doing calculations and perhaps these details should belong elsewhere
+- I struggled to keep my controller skinny for the receipt page as there were lots of variables I needed to render on the page. I managed to extract some of the logic to the till, but I would also split that out to another class if I had time.
