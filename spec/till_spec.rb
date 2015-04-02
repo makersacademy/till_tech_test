@@ -27,22 +27,4 @@ describe "till" do
     add_muffin
     expect(till.tax_total(order.list, adjustments)).to eq(0.35)
   end
-
-  it "can print a receipt header with all details" do
-    add_muffin
-    allow(shop).to receive(:array_of_details).and_return(["The Coffee Connection", "123 Lakeside Way", "16503600708"])
-    expect(till.print_receipt_head(shop.array_of_details).length).to eq(4)
-  end
-
-  it "can print a receipt body with order details" do
-    add_muffin
-    add_items
-    expect(till.print_receipt_body(order.list).length).to eq 3
-  end
-
-  it "can print a receipt footer with payment details" do
-    add_muffin
-    add_items
-    expect(till.print_receipt_footer(order.list, adjustments, 50).length).to eq 5
-  end
 end

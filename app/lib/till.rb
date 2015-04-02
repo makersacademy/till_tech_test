@@ -1,8 +1,4 @@
-require_relative "receipt"
-
 class Till
-  include Receipt
-
   attr_reader :tax
 
   def initialize

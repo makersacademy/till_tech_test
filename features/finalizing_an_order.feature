@@ -3,10 +3,6 @@ Feature: Finalizing an order
 	I want to be able to finalize a customers order
 	So that they can know how much to pay
 
-	Scenario: Confirming an order (before selecting anything)
-		Given I am on the homepage
-		Then I should not be able to see "Confirm Order"
-
 	Scenario: Confirming order complete (show confirmed total)
 		Given I am on the homepage
 		When I click on "Cafe Latte"
