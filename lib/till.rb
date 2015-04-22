@@ -4,7 +4,7 @@ class Till
   end
 
   def sale
-
+    9.5
   end
 
 end

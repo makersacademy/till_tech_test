@@ -1,6 +1,7 @@
 describe 'Till' do
 
-  it 'accepts lattes' do
+  it 'accepts orders for lattes' do
+    9.5
   end
 
 end
