@@ -7,7 +7,12 @@ feature 'As a customer I want to be able to order items from a coffee shop' do
     expect(till.cash_out).to eq 9.50
   end
 
-  xscenario 'John orders 4 Americanos'
+  scenario 'John orders 4 Americanos' do
+    till = Till.new
+    4.times { till.order :americano }
+    expect(till.cash_out).to eq 15.00
+
+  end
 
 
 end

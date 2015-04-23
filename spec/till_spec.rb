@@ -15,6 +15,7 @@ describe Till do
   end
 
   it 'returns the total' do
+    2.times { subject.order :latte }
     expect(subject.cash_out).to eq 9.50
   end
 
