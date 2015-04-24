@@ -2,6 +2,7 @@ class Till
   TAX=0.0864
 
   attr_accessor :total
+  attr_reader :TAX
 
   def initialize
     @total = 0

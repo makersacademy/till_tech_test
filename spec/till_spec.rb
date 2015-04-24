@@ -10,8 +10,6 @@ describe 'Till' do
     end
   end
 
-
-
   context 'product order' do
     it 'accepts orders for latte' do
       expect(till.order :latte).to eq 4.75
