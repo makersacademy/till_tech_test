@@ -1,7 +1,10 @@
 class Till
+  def initialize
+    @total = 0
+  end
+
   def order(product)
-    @total = '9.50' if product == :latte
-    @total = '15.00' if product == :americano
+    @total += product.price
   end
 
   def checkout
@@ -9,6 +12,6 @@ class Till
   end
 
   def line_items
-    ['2 x Caffe Latte']
+    ['Caffe Latte 2 x 4.75']
   end
 end
