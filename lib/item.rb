@@ -1,9 +1,16 @@
 class Item
 
-  attr_accessor :name, :price
+attr_accessor :name, :price
 
-  def initialize(name_of_item, price=0)
-    @name = name_of_item
-    @price = price
-  end
+def initialize(name, price)
+  @name = name
+  @price = price
+end
+
+# def muffin_discount
+#   if self.name.include("Muffin")
+#     self.price = self.price * 0.9
+#   end
+# end
+
 end

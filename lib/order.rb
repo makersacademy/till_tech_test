@@ -1,4 +1,10 @@
+require 'tax'
+require 'discount'
+
 class Order
+
+include Tax
+include Discount
 
   attr_accessor :current_order
 
@@ -22,6 +28,11 @@ class Order
     end
   end
 
+  def total_price_per_item(customer, item)
+    item_discounts(item)
+    @current_order[customer][item] * item.price * @discount_factor
+  end
+
   def total_price_per_customer(customer)
     total = 0
     @current_order[customer].each {|item, qty| total += item.price * qty }
@@ -32,5 +43,13 @@ class Order
     total = 0
     @current_order.each {|customer, item, quantity| total += total_price_per_customer(customer)}
     total
+  end
+
+  def total_tax
+    calculate_tax(total_pretax_price) 
+  end
+
+  def total_posttax_price
+    total_pretax_price - total_tax
   end
 end
