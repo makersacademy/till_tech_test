@@ -5,7 +5,6 @@ describe PriceList do
   tea = Product.new('Tea', 1.75)
   latte = Product.new('Caffe Latte', 4.75)
 
-
   it 'has no products when created' do
     pricelist = described_class.new
     expect(pricelist.products.length).to eq 0
@@ -39,5 +38,15 @@ describe PriceList do
     subject.add(latte)
     expect(subject.cost('Tea')).to eq 1.75
     expect(subject.cost('Caffe Latte')).to eq 4.75
+  end
+
+  describe 'can read' do
+    it 'the product details from a JSON file' do
+      subject.read_file('hipstercoffee.json')
+      expect(subject.cost('Affogato')).to eq 14.80
+      expect(subject.cost('Cortado')).to eq 4.55
+      expect(subject.cost('Choc Mousse')).to eq 8.20
+      expect(subject.products.length).to eq 15
+    end
   end
 end
