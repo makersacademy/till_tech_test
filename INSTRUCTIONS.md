@@ -1,36 +1,7 @@
-# Till Technical Test
+Till tech test
+==============
 
-[![Code Climate](https://codeclimate.com/github/StephanMusgrave/VM/badges/gpa.svg)](https://codeclimate.com/github/StephanMusgrave/VM)
-
-A system for a coffee shop till.
-
-## Developed by
-[Steve Musgrave]
-
-## Technologies used
-|Technology                 |Used for                       |
-|--------------------------|--------------------------------|
-|Ruby 2.2.1                |Programming language|
-|Rspec 3.1.7               |Test Driven Development - unit testing  |
-
-## How to run the program:
-
-### From your terminal:
-
-  $ git clone ?????????????????????
-  $ cd ?????
-
-### To run the program from the command line:
-  $ ruby ???.rb
-
-### To run the unit tests:
-  $ rspec
-
-## Logic:
-
-## To do
-
-## Objective
+![a till](/images/till.jpg)
 
 We want to sell tills to local hipster coffee shop who are finally embracing the 21st century. We need a new till to replace their vintage machines - unfortunately, hipster staff are too cool to learn a new system, so we need you to build something that they will understand.
 
@@ -73,6 +44,3 @@ Version 3
 Implement an user interface that can actually be used as a till.
 
 You may use whatever technologies you see fit.
-
-
-[Steve Musgrave]:https://github.com/StephanMusgrave
