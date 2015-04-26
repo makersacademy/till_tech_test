@@ -1,5 +1,6 @@
 require 'till'
 require 'product'
+require 'price_list'
 
 describe Till do
   latte = Product.new('Caffe Latte', 4.75)

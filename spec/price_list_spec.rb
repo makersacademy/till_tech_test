@@ -43,10 +43,10 @@ describe PriceList do
   describe 'can read' do
     it 'the product details from a JSON file' do
       subject.read_file('hipstercoffee.json')
+      expect(subject.products.length).to eq 15
       expect(subject.cost('Affogato')).to eq 14.80
       expect(subject.cost('Cortado')).to eq 4.55
       expect(subject.cost('Choc Mousse')).to eq 8.20
-      expect(subject.products.length).to eq 15
     end
   end
 end

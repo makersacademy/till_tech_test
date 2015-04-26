@@ -3,8 +3,11 @@ require_relative 'product'
 class PriceList
   attr_reader :products
 
-  def initialize
+  def initialize(*file_name)
     @products = []
+    # self.read_file('hipstercoffee.json')
+    # read_file(file_name) if file_name.length > 0
+    # puts file_name if file_name != nil
   end
 
   def add(product)
@@ -24,7 +27,7 @@ class PriceList
     data_hash = JSON.parse(file)
     list = data_hash[0]['prices']
     list[0].each do |name, price|
-      products << Product.new(name, price)
+      self.add(Product.new(name, price))
     end
   end
 end

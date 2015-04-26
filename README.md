@@ -1,6 +1,6 @@
 # Till Technical Test
 
-[![Code Climate](https://codeclimate.com/github/StephanMusgrave/VM/badges/gpa.svg)](https://codeclimate.com/github/StephanMusgrave/VM)
+[![Code Climate](https://codeclimate.com/github/StephanMusgrave/till_tech_test/badges/gpa.svg)](https://codeclimate.com/github/StephanMusgrave/till_tech_test)
 
 A system for a coffee shop till.
 
