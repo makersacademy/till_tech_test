@@ -35,18 +35,18 @@ describe Till do
   describe 'calculates' do
     it 'the correct total for 2 Cafe Lattes' do
       2.times { subject.order(latte) }
-      expect(subject.checkout).to eq 9.50
+      expect(subject.checkout).to eq '£9.50'
     end
 
     it 'the correct total for 4 Americanos' do
       4.times { subject.order(americano) }
-      expect(subject.checkout).to eq 15.00
+      expect(subject.checkout).to eq '£15.00'
     end
 
     it 'the correct total for 4 Americanos and 2 Tiramasus' do
       4.times { subject.order(americano) }
       2.times { subject.order(tiramasu) }
-      expect(subject.checkout).to eq 37.80
+      expect(subject.checkout).to eq '£37.80'
     end
   end
 

@@ -10,7 +10,7 @@ class Till
   end
 
   def checkout
-    @total
+    '£' + (format '%.2f', @total)
   end
 
   def count_all_items
@@ -26,8 +26,8 @@ class Till
   def line_items
     line_items = []
     @items.uniq.each do |item|
-      line_items << item.name  + " " + count(item.name).to_s + ' x £' + (sprintf "%.2f", item.price)
-      # line_items << [item.name, " \t", count(item.name).to_s, ' x £ ', (sprintf "%.2f", item.price)].join('')
+      line_items << item.name + ' ' + count(item.name).to_s +
+        ' x £' + (format '%.2f', item.price)
     end
     line_items
   end
