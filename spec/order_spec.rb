@@ -70,6 +70,12 @@ describe 'Order' do
     expect(order.total_pretax_price).to eq(18)
   end
 
+  it "can apply a discount for orders over $50" do
+    order.add_item_to_order(customer1, item1, 1)
+    order.increase_item_quantity(customer1, item1,19)
+    expect(order.total_pretax_price).to eq(57)
+  end
+
   it "can calculate the tax due" do
     order_items
     expect(order.calculate_tax(order.total_pretax_price)).to eq(1.56)
@@ -77,9 +83,18 @@ describe 'Order' do
 
   it "can calculate the after-tax price" do
     order_items
-    expect(order.total_posttax_price).to eq(16.44)
+    expect(order.total_posttax_price).to eq(19.56)
   end
 
+  it "can calculate the change due" do
+    order_items
+    expect(order.calculate_change(20)).to eq(0.44)
+  end
+
+  it "will raise an error if insufficient money is paid" do
+    order_items
+    expect{order.calculate_change(10)}.to raise_error
+  end
 end
 
 

@@ -1,5 +1,5 @@
-require 'tax'
-require 'discount'
+require_relative 'tax'
+require_relative 'discount'
 
 class Order
 
@@ -21,11 +21,7 @@ include Discount
   end
 
   def decrease_item_quantity(customer, item, quantity=1)
-    if @current_order[customer][item] >= quantity
-      @current_order[customer][item] -= quantity
-      else
-    raise "quantity can't be negative"
-    end
+    @current_order[customer][item] >= quantity ? (@current_order[customer][item] -= quantity) : (raise "Quantity can't be negative")
   end
 
   def total_price_per_item(customer, item)
@@ -42,7 +38,7 @@ include Discount
   def total_pretax_price
     total = 0
     @current_order.each {|customer, item, quantity| total += total_price_per_customer(customer)}
-    total
+    total_discounts(total)
   end
 
   def total_tax
@@ -50,6 +46,10 @@ include Discount
   end
 
   def total_posttax_price
-    total_pretax_price - total_tax
+    total_pretax_price + total_tax
+  end
+
+  def calculate_change(payment)
+    payment >= total_posttax_price ? (payment - total_posttax_price).round(2) : (raise "Payment doesn't cover the price, cough up more dough!")
   end
 end
