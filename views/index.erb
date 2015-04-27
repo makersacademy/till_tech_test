@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bootstrap Example</title>
+   <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+</head>
+<body>
+
+<h2>Make Your Selection....</h2>
+
+<table border="1" class="menu">
+  <tr>
+    <th>Item</th>
+    <th>Price</th> 
+    <th></th>
+    <th></th>
+    <th></th>    
+  </tr>
+    <% [0...@menu_items.count].each do |row| %>
+    <% row.each do |n| %>
+      <tr>
+      
+      <td id="item<%=n%>"><%= @menu_items[n] %> </td>
+      <td id="price<%=n%>"><%= @menu_prices[n].round(2) %></td>
+      
+
+      <td><button type="button" class="button_add" name="button_add">+</button></td>
+
+
+
+
+      <td><button type="button" class="button_rem">-</button></td>
+      <td><button type="button" class="button_del">x</button></td>
+      </tr>
+      <tr></tr>
+    <% end %>  
+  <% end %>
+</table>
+
+<table border="1" class="receipt">
+  <tr>
+    <th>Item</th>
+    <th>Quantity</th>
+    <th>Price</th> 
+  </tr>
+
+      <tr></tr>
+</table>
+
+<div>
+Item selected: <input type="text" name="item" id="order"><br>
+Quantity: <input type="text" name="qty" id="qty"><br>
+Item price: <input type="text" name="price" id="price"><br>
+</div>
+
+<script>
+
+
+
+$(document).ready(function(){
+  var qty = 0
+
+
+  $(".button_add").click(function(){
+
+    var n = ($(this).closest('td').parent()[0].sectionRowIndex - 1 )/2;
+    
+    var item_name = $("#item"+n).text();
+    $("#item"+n).val("<%= params[:item_name] %>");
+
+// console.log($("#item"+n).val("<%= params[:item_name] %>"))
+
+    var item_price = $("#price"+n).text()
+    // $("#price"+n).val("<%= params[:item_price] %>");
+
+    qty = 1
+
+    $('.receipt').append('<tr><td id=>' + item_name +
+                        '</td><td>' + qty +
+                        '</td><td>' + item_price +
+                        '</tr>');
+
+
+  });
+
+
+  $(".button_rem").click(function(){
+    qty = $('#qty').val() - 1;
+    $('#qty').val(qty);
+    });
+
+  $(".button_del").click(function(){
+    $('#order').val("");
+    $('#qty').val(0);
+    $('#price').val("");
+    });
+});
+
+
+
+</script>
+
+
+</body>
+</html>
