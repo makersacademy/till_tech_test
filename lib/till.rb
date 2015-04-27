@@ -1,11 +1,13 @@
 class Till
 
-  def order(product)
-    @total = '4.75' if product == :latte 
+  attr_reader :items
+
+  def initialize
+    @items = []
   end
 
-  def checkout
-    @total
+  def add item
+    items << item
   end
 
 end
