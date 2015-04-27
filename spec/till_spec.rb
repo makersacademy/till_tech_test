@@ -1,14 +1,28 @@
 require 'till'
 require 'product'
-require 'price_list'
+# require 'price_list'
 
 describe Till do
   latte = Product.new('Caffe Latte', 4.75)
   americano = Product.new('Americano', 3.75)
   tiramasu = Product.new('Tiramasu', 11.40)
 
+  it 'can read the price list from a JSON file' do
+    subject.read_file('hipstercoffee.json')
+    # subject.price_list.each { |product| print product.name, "\t", product.price, "\n" }
+    expect(subject.price_list.length).to eq 15
+  end
+
+  it 'can find the cost of a named product' do
+    subject.read_file('hipstercoffee.json')
+    expect(subject.cost('Affogato')).to eq 14.80
+    expect(subject.cost('Cortado')).to eq 4.55
+    expect(subject.cost('Choc Mousse')).to eq 8.20
+  end
+
   describe 'counts' do
     it 'the number of each item on an order' do
+    subject.read_file('hipstercoffee.json')
       subject.order(americano)
       subject.order(tiramasu)
       subject.order(americano)
@@ -50,5 +64,4 @@ describe Till do
       expect(subject.checkout).to eq '£37.80'
     end
   end
-
 end

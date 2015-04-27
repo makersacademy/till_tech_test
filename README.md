@@ -11,7 +11,7 @@ A system for a coffee shop till.
 |Technology                 |Used for                       |
 |--------------------------|--------------------------------|
 |Ruby 2.2.1                |Programming language|
-|Rspec 3.1.7               |Test Driven Development - unit testing  |
+|Rspec 3.2.3               |Test Driven Development - unit testing  |
 
 ## How to run the program:
 
