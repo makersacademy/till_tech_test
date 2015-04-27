@@ -1,4 +1,3 @@
-# require_relative 'price_list'
 
 class Till
   attr_reader :total, :order_items,  :price_list
@@ -6,13 +5,12 @@ class Till
   def initialize
     @total = 0
     @order_items = []
-    # @price_list = PriceList.new
     @price_list = []
     # @order = Order.new
   end
 
   def order(product)
-    @total += product.price
+    @total += cost(product)
     order_items << product
   end
 
@@ -22,11 +20,12 @@ class Till
 
   def count_all_items
     counts = Hash.new(0)
-    order_items.each { |item| counts[item.name] += 1 }
+    order_items.each { |item| counts[item] += 1 }
     counts
   end
 
   def cost(name)
+    # (price_list.find { |product| product.name == name }).price
     (price_list.find { |product| product.name == name }).price
   end
 
@@ -37,8 +36,8 @@ class Till
   def line_items
     line_items = []
     order_items.uniq.each do |item|
-      line_items << item.name + ' ' + count(item.name).to_s +
-        ' x £' + (format '%.2f', item.price)
+      line_items << item + ' ' + count(item).to_s +
+        ' x £' + (format '%.2f', cost(item))
     end
     line_items
   end
