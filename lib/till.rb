@@ -1,8 +1,10 @@
+require 'product_loader'
+
 class Till
+
   TAX=0.0864
 
   attr_accessor :total
-  attr_reader :TAX
 
   def initialize
     @total = 0
@@ -21,11 +23,12 @@ class Till
     @total += order(product) * quantity
   end
 
-  def tax
+  def calculate_tax total
+    (total * TAX).round(2)
   end
 
   def sale
-    @total
+    @total + calculate_tax(@total)
   end
 
 end
