@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Coffe Shop Till</title>
+    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' type='text/css' href="css/interface.css">
+    <meta name="viewport" content="width=device=width, height=device-height, initial-scale=1, user-scalable=no">
+    <meta charset='UTF-8'>
+    <meta name='description' content='Tech Test Challenge'>
+  </head>
+
+  <header>
+    <h1>Welcome to The Coffee Connection</h1>
+    <a href='/clear_order'>Clear current order</a>
+  </header>
+
+  <body>
+
+    <section class='col-1-2'>
+
+      <section class='row' id='add-order-items'>
+        <%= erb :_add_order_items %>
+      </section>
+
+      <section class='row' id='order-items'>
+        <%= erb :_order_items %>
+      </section>
+
+    </section>
+
+    <section class='col-1-2'>
+
+      <section class='row' id='receipt-display'>
+        <%= erb :_receipt_display %>
+      </section>
+
+      <section class='row' id='payment'>
+        <%= erb :_take_payment %>
+      </section>
+
+    </section>
+
+  </body>
+
+</html>
