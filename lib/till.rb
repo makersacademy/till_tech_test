@@ -1,22 +1,19 @@
 require 'product_loader'
+require 'json'
 
 class Till
-
+  include Product_list
   TAX=0.0864
 
   attr_accessor :total
 
   def initialize
     @total = 0
+    super
   end
 
   def order product
-    if product == :latte then
-      4.75
-    elsif
-      product == :americano
-       3.75
-    end
+    data_hash[0]['prices'][0][product]
   end
 
   def line_order product, quantity

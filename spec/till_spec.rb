@@ -13,17 +13,17 @@ describe 'Till' do
 
   context 'product order' do
     it 'accepts orders for latte' do
-      expect(till.order :latte).to eq 4.75
+      expect(till.order 'Cafe Latte').to eq 4.75
     end
 
     it 'accepts orders for americano' do
-      expect(till.order :americano).to eq 3.75
+      expect(till.order 'Americano').to eq 3.75
     end
   end
 
   context 'calculates pre tax sale' do
     it 'for 2 lattes of 9.50' do
-      expect(till.line_order :latte, 2).to eq 9.50
+      expect(till.line_order 'Cafe Latte', 2).to eq 9.50
     end
   end
 
