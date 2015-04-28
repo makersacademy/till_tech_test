@@ -1,5 +1,5 @@
 describe 'Till' do
-  let(:till){Till.new}
+  let(:till){Till.new Receipt}
 
   context 'created with' do
     it 'a total of 0' do
@@ -50,5 +50,4 @@ describe 'Till' do
       expect(till.sale).to eq 5.16
     end
   end
-
 end

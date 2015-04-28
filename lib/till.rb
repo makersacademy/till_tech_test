@@ -5,13 +5,14 @@ class Till
 
   TAX=0.0864
 
-  attr_accessor :total, :tax_total, :ordered_items
+  attr_reader :total, :tax_total, :ordered_items
 
-  def initialize
+  def initialize receipt
+    super()
+    @receipt = receipt
     @total = 0
     @tax_total = 0
     @ordered_items = {}
-    super
   end
 
   def product_price product
@@ -19,8 +20,8 @@ class Till
   end
 
   def line_order product, quantity
-    total = line_total(product, quantity)
-    @ordered_items[product.to_sym] = {total: total, quantity: quantity}
+    calc_total = line_total(product, quantity)
+    @ordered_items[product.to_sym] = {total: calc_total, quantity: quantity}
   end
 
   def line_total product, quantity
@@ -43,9 +44,9 @@ class Till
     end
   end
 
-  def create_receipt receipt
-    make_receipt = receipt.new
-    make_receipt.customer_receipt(total, tax_total ,ordered_items)
+  def create_receipt
+    sale
+    make_receipt = @receipt.new
+    make_receipt.customer_receipt(@total, @tax_total ,@ordered_items)
   end
-
 end
