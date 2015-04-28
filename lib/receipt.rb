@@ -12,9 +12,7 @@ class Receipt
   end
 
   def display
-    receipt << business
-    receipt << address
-    receipt << phone
+    receipt << business << address << phone
     line_items.each { |line_item| receipt << line_item }
     receipt << 'Tax          £' + @tax
     receipt << 'Total        £' + @total
@@ -40,5 +38,4 @@ class Receipt
     @address = data_hash[0]['address']
     @phone = data_hash[0]['phone']
   end
-
 end

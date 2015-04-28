@@ -1,6 +1,13 @@
 require 'receipt'
 
 describe Receipt do
+  it 'is empty when created' do
+    receipt = described_class.new
+    expect(receipt.line_items.length).to eq 0
+    expect(receipt.total).to eq ''
+    expect(receipt.tax).to eq ''
+  end
+
   it 'has line_items' do
     expect(subject).to respond_to :line_items
   end
@@ -11,13 +18,6 @@ describe Receipt do
 
   it 'has a total' do
     expect(subject).to respond_to :total
-  end
-
-  it 'is empty when created' do
-    receipt = described_class.new
-    expect(receipt.line_items.length).to eq 0
-    expect(receipt.total).to eq ''
-    expect(receipt.tax).to eq ''
   end
 
   it 'responds to display method' do
@@ -69,7 +69,7 @@ describe Receipt do
     expect(receipt.display).to include 'Americano 4 x £3.75'
     expect(receipt.display).to include 'Total        £22.80'
     expect(receipt.display).to include 'Tax          £0.90'
-    # puts receipt.display
-    end
+
+  end
 
 end
