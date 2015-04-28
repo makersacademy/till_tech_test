@@ -27,8 +27,15 @@ A system for a coffee shop till.
   $ rspec
 
 ## Logic:
+- The Till Class performs the calculations and reads the pricelist
+- The Receipt class is a dumb holder for the various items that make up a receipt
+- The Order class is an array of products
+- The Prodcut class holds the name an price fo a product
 
 ## To do
+- A method to checke the an item requested is on the prodcut list
+- Version 2: give change and apply discounts
+- Version 3: A user interface
 
 ## Objective
 

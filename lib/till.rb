@@ -14,7 +14,7 @@ class Till
 
   def order(product)
     @total += cost(product)
-    @tax += (TAXRATE/100) * cost(product)
+    @tax += (TAXRATE / 100) * cost(product)
     order_items << product
   end
 
@@ -51,7 +51,6 @@ class Till
     list = data_hash[0]['prices']
     list[0].each do |name, price|
       price_list << Product.new(name, price)
-      # price_list.add(Product.new(name, price))
     end
   end
 

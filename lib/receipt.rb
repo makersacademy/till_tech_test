@@ -1,14 +1,14 @@
 class Receipt
-  attr_accessor :line_items, :tax, :total
+  attr_accessor :receipt, :line_items, :tax, :total
 
   def initialize
+    @receipt = []
     @line_items = []
     @tax = ''
     @total = ''
   end
 
   def display
-    receipt = []
     line_items.each { |line_item| receipt << line_item }
     receipt << 'Tax          £' + @tax
     receipt << 'Total        £' + @total

@@ -5,7 +5,6 @@ require 'receipt'
 describe Till do
   before(:each) do
     subject.read_file('hipstercoffee.json')
-    # subject.price_list.each { |product| print product.name, '\t', product.price, "\n" }
   end
 
   it 'can read the product list from a JSON file' do
@@ -53,15 +52,33 @@ describe Till do
     end
   end
 
-  describe 'can display' do
-    it 'the correct receipt for an order' do
+  describe 'can provide' do
+    it "the correct receipt for John's order" do
       receipt = Receipt.new
       2.times { subject.order('Tiramisu') }
       4.times { subject.order('Americano') }
       5.times { subject.order('Blueberry Muffin') }
-      puts receipt.display, '-------'
       subject.complete_receipt(receipt)
-      puts '-------',receipt.display
+      expect(receipt.display).to include 'Tiramisu 2 x £11.40'
+      expect(receipt.display).to include 'Americano 4 x £3.75'
+      expect(receipt.display).to include 'Blueberry Muffin 5 x £4.05'
+      expect(receipt.display).to include 'Tax          £5.02'
+      expect(receipt.display).to include 'Total        £63.07'
+      # puts receipt.display
+    end
+
+    it "the correct receipt for Janes's order" do
+      receipt = Receipt.new
+      2.times { subject.order('Cafe Latte') }
+      1.times { subject.order('Choc Mudcake') }
+      1.times { subject.order('Blueberry Muffin') }
+      subject.complete_receipt(receipt)
+      expect(receipt.display).to include 'Cafe Latte 2 x £4.75'
+      expect(receipt.display).to include 'Choc Mudcake 1 x £6.40'
+      expect(receipt.display).to include 'Blueberry Muffin 1 x £4.05'
+      expect(receipt.display).to include 'Tax          £1.72'
+      expect(receipt.display).to include 'Total        £21.67'
+      # puts receipt.display
     end
   end
 end
