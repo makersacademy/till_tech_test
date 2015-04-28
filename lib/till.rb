@@ -25,7 +25,6 @@ class Till
   end
 
   def cost(name)
-    # (price_list.find { |product| product.name == name }).price
     (price_list.find { |product| product.name == name }).price
   end
 

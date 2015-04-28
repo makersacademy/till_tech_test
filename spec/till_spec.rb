@@ -5,7 +5,7 @@ require 'product'
 describe Till do
   before(:each) do
     subject.read_file('hipstercoffee.json')
-    # subject.price_list.each { |product| print product.name, "\t", product.price, "\n" }
+    # subject.price_list.each { |product| print product.name, '\t', product.price, "\n" }
   end
 
   it 'can read the product list from a JSON file' do
@@ -19,37 +19,36 @@ describe Till do
     expect(subject.cost('Choc Mousse')).to eq 8.20
   end
 
-  describe 'shows' do
-    it 'the correct line item for 2 caffe lattes' do
+  describe 'can show' do
+    it 'the correct line item for a product' do
       subject.read_file('hipstercoffee.json')
-      2.times { subject.order('Cafe Latte') }
-      expect(subject.line_items).to include 'Cafe Latte 2 x £4.75'
+      subject.order('Cafe Latte')
+      expect(subject.line_items).to include 'Cafe Latte 1 x £4.75'
     end
 
-    it 'the correct line items for 4 Americanos and 2 Tiramasus' do
+    it 'the correct line items for an order of several products' do
       subject.read_file('hipstercoffee.json')
-      2.times { subject.order("Tiramisu") }
-      4.times { subject.order("Americano") }
-      expect(subject.line_items).to include 'Americano 4 x £3.75'
+      2.times { subject.order('Tiramisu') }
+      4.times { subject.order('Americano') }
+      5.times { subject.order('Blueberry Muffin') }
       expect(subject.line_items).to include 'Tiramisu 2 x £11.40'
+      expect(subject.line_items).to include 'Americano 4 x £3.75'
+      expect(subject.line_items).to include 'Blueberry Muffin 5 x £4.05'
     end
   end
 
-  describe 'calculates' do
+  describe 'can calculate' do
     it 'the correct total for 2 Cafe Lattes' do
       2.times { subject.order('Cafe Latte') }
       expect(subject.checkout).to eq '£9.50'
     end
 
-    it 'the correct total for 4 Americanos' do
-      4.times { subject.order('Americano') }
-      expect(subject.checkout).to eq '£15.00'
-    end
-
-    it 'the correct total for 4 Americanos and 2 Tiramisus' do
+    it 'the correct total for for an order of several products' do
       4.times { subject.order('Americano') }
       2.times { subject.order('Tiramisu') }
-      expect(subject.checkout).to eq '£37.80'
+      5.times { subject.order('Blueberry Muffin') }
+      expect(subject.checkout).to eq '£58.05'
     end
   end
+
 end
