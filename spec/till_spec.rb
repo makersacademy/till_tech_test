@@ -7,13 +7,18 @@ describe Till do
   end
 
   it 'can add an item to an order' do
-    subject.add(:latte)
-    expect(subject.items).to eq [{:item=>:latte, :quantity=>1}]
+    subject.add(item: "Cafe Latte", quantity: 1)
+    expect(subject.items).to eq [{item: "Cafe Latte", quantity: 1}]
   end
 
   it 'knows the price of an item' do
-    subject.add(:latte)
-    expect(subject.individual_price('Cafe Latte')).to eq(4.75)
+    subject.add(item: "Cafe Latte", quantity: 1)
+    expect(subject.price_of('Cafe Latte')).to eq(4.75)
+  end
+
+  it 'can calculate the price of multiple orders' do
+    subject.add(item: "Cafe Latte", quantity: 2)
+    expect(subject.net_total).to eq(9.50)
   end
 
 end

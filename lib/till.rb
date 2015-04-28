@@ -5,20 +5,30 @@ class Till
 
   def initialize
     @items = []
-    @prices = list_prices
+    list_prices
   end
 
-  def add item, quantity=1
+  def add args
+    item = args[:item]
+    quantity = args[:quantity]
     items.push({item: item, quantity: quantity})
-  end
-
-  def individual_price item
-    @prices[item]
   end
 
   def list_prices
     file = File.read('itemlist.json')
     @prices = JSON.parse(file).first['prices'].first
+  end
+
+  def price_of item 
+    list_prices[item]
+  end
+
+  def order_price new_item_order
+    new_item_order[:quantity] * price_of(new_item_order[:item])
+  end
+
+  def net_total
+    items.inject(0) { | memo, n | memo + order_price(n) }
   end
 
 end
