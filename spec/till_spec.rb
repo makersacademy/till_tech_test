@@ -21,4 +21,9 @@ describe Till do
     expect(subject.net_total).to eq(9.50)
   end
 
+  it 'adds the correct rate of tax to an item' do
+    subject.add(item: "Caffe Latte", quantity: 2)
+    expect(subject.tax(9.50)).to eq(0.82)
+  end
+
 end

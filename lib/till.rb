@@ -1,7 +1,6 @@
 class Till
 
-  attr_reader :items
-  attr_reader :prices
+  attr_reader :items, :prices
 
   def initialize
     @items = []
@@ -29,6 +28,10 @@ class Till
 
   def net_total
     items.inject(0) { | memo, n | memo + order_price(n) }
+  end
+
+  def tax net_total
+    (net_total * 8.64 / 100).round(2)
   end
 
 end
