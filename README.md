@@ -2,6 +2,8 @@
 
 [![Code Climate](https://codeclimate.com/github/StephanMusgrave/till_tech_test/badges/gpa.svg)](https://codeclimate.com/github/StephanMusgrave/till_tech_test)
 
+[![Build Status](https://travis-ci.org/StephanMusgrave/till_tech_test.svg?branch=master)](https://travis-ci.org/StephanMusgrave/till_tech_test)
+
 A system for a coffee shop till.
 
 ## Developed by
@@ -80,6 +82,5 @@ Version 3
 Implement an user interface that can actually be used as a till.
 
 You may use whatever technologies you see fit.
-
 
 [Steve Musgrave]:https://github.com/StephanMusgrave
