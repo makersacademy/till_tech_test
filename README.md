@@ -34,12 +34,15 @@ A system for a coffee shop till.
 - The Till Class performs the calculations and reads the pricelist
 - The Receipt class is a dumb holder for the various items that make up a receipt
 - The Order class is an array of products
-- The Prodcut class holds the name an price fo a product
+- The Product class holds the name an price of a product
 
 ## To do
-- A method to checke the an item requested is on the prodcut list
+- A method to check that the an item requested is on the product list
 - Version 2: give change and apply discounts
 - Version 3: A user interface
+- Get Travis to work properly
+- get Code Climate coverage working
+
 
 ## Objective
 
