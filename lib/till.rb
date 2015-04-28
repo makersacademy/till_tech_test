@@ -55,6 +55,8 @@ class Till
   end
 
   def complete_receipt(receipt)
+    # receipt = []
+    receipt.read_header('hipstercoffee.json')
     receipt.line_items = line_items
     receipt.tax = tax.round(2).to_s
     receipt.total = (total + tax).round(2).to_s

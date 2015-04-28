@@ -48,31 +48,28 @@ describe Receipt do
     expect(subject.display).to include 'Tax          £0.70'
   end
 
-  describe 'it can display' do
-    it 'the business name' do
-
-    end
-
-    it 'the address' do
-
-    end
-
-    it 'the phone number' do
-
-    end
-
-    it 'a receipt with line_items, tax and total' do
-      receipt = described_class.new
-      receipt.add_line('Tiramisu 1 x £11.40')
-      receipt.add_line('Americano 4 x £3.75')
-      receipt.add_tax(0.90)
-      receipt.add_total(22.80)
-      expect(receipt.display).to include 'Tiramisu 1 x £11.40'
-      expect(receipt.display).to include 'Americano 4 x £3.75'
-      expect(receipt.display).to include 'Total        £22.80'
-      expect(receipt.display).to include 'Tax          £0.90'
-      # puts receipt.display
-    end
+  it 'it can get header information from a JSON file' do
+    subject.read_header('hipstercoffee.json')
+    expect(subject.business).to eq 'The Coffee Connection'
+    expect(subject.address).to eq '123 Lakeside Way'
+    expect(subject.phone).to eq '16503600708'
   end
+
+  it 'can provide a receipt with line_items, tax and total' do
+    receipt = described_class.new
+    receipt.read_header('hipstercoffee.json')
+    receipt.add_line('Tiramisu 1 x £11.40')
+    receipt.add_line('Americano 4 x £3.75')
+    receipt.add_tax(0.90)
+    receipt.add_total(22.80)
+    expect(receipt.business).to eq 'The Coffee Connection'
+    expect(receipt.address).to eq '123 Lakeside Way'
+    expect(receipt.phone).to eq '16503600708'
+    expect(receipt.display).to include 'Tiramisu 1 x £11.40'
+    expect(receipt.display).to include 'Americano 4 x £3.75'
+    expect(receipt.display).to include 'Total        £22.80'
+    expect(receipt.display).to include 'Tax          £0.90'
+    # puts receipt.display
+    end
 
 end

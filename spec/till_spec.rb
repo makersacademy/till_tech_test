@@ -54,17 +54,17 @@ describe Till do
 
   describe 'can provide' do
     it "the correct receipt for John's order" do
-      receipt = Receipt.new
       2.times { subject.order('Tiramisu') }
       4.times { subject.order('Americano') }
       5.times { subject.order('Blueberry Muffin') }
+      receipt = Receipt.new
       subject.complete_receipt(receipt)
+      # puts receipt.display
       expect(receipt.display).to include 'Tiramisu 2 x £11.40'
       expect(receipt.display).to include 'Americano 4 x £3.75'
       expect(receipt.display).to include 'Blueberry Muffin 5 x £4.05'
       expect(receipt.display).to include 'Tax          £5.02'
       expect(receipt.display).to include 'Total        £63.07'
-      # puts receipt.display
     end
 
     it "the correct receipt for Janes's order" do
@@ -78,7 +78,6 @@ describe Till do
       expect(receipt.display).to include 'Blueberry Muffin 1 x £4.05'
       expect(receipt.display).to include 'Tax          £1.72'
       expect(receipt.display).to include 'Total        £21.67'
-      # puts receipt.display
     end
   end
 end
