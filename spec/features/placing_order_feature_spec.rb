@@ -13,5 +13,11 @@ feature'As a customer the till' do
     expect(till.sale).to eq 16.30
   end
 
+  scenario "produces a receipt for Jane's order of 2 x Cafe Latte, 1 x Blueberry Muffin and 1 x Choc Mudcake" do
+    till.line_order 'Cafe Latte', 2
+    till.line_order 'Blueberry Muffin', 1
+    till.line_order 'Choc Mudcake', 1
+    expect(till.create_receipt(Receipt)).to eq 'test'
+  end
 
 end
