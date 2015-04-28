@@ -10,12 +10,8 @@ class Receipt
   def display
     receipt = []
     line_items.each { |line_item| receipt << line_item }
-    # tax = 'Tax: £'
-    # total = 'Total: '
     receipt << 'Tax          £' + @tax
     receipt << 'Total        £' + @total
-    # puts @tax, @total
-    puts receipt
     receipt.flatten
   end
 

@@ -17,11 +17,11 @@ A system for a coffee shop till.
 
 ### From your terminal:
 
-  $ git clone ?????????????????????
-  $ cd ?????
+  $ git clone git@github.com:StephanMusgrave/till_tech_test.git
+  $ cd till_tech_test
 
 ### To run the program from the command line:
-  $ ruby ???.rb
+  $ ruby till.rb
 
 ### To run the unit tests:
   $ rspec

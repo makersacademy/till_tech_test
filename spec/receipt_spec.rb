@@ -31,7 +31,7 @@ describe Receipt do
 
   it 'displays line_items' do
     receipt = described_class.new
-    receipt.line_items = ['Tiramisu 2 x £11.40','Americano 4 x £3.75']
+    receipt.line_items = ['Tiramisu 2 x £11.40', 'Americano 4 x £3.75']
     expect(receipt.display).to include 'Americano 4 x £3.75'
   end
 
@@ -43,7 +43,7 @@ describe Receipt do
 
   it 'can have the tax added' do
     subject.add_tax(0.70)
-    # subject.add_line('Tiramisu 1 x £11.40')
+    subject.add_line('Tiramisu 1 x £11.40')
     expect(subject.tax).to eq '0.70'
     expect(subject.display).to include 'Tax          £0.70'
   end
@@ -54,7 +54,7 @@ describe Receipt do
     receipt.add_line('Americano 4 x £3.75')
     receipt.add_tax(0.90)
     receipt.add_total(22.80)
-    receipt.display
+    puts receipt.display
   end
 
 end

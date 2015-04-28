@@ -1,20 +1,24 @@
+require_relative 'receipt'
 
 class Till
-  attr_reader :total, :order_items,  :price_list
+  attr_reader :total, :tax, :order_items,  :price_list
+
+  TAXRATE = 8.64
 
   def initialize
     @total = 0
+    @tax = 0
     @order_items = []
     @price_list = []
-    # @order = Order.new
   end
 
   def order(product)
     @total += cost(product)
+    @tax += (TAXRATE/100) * cost(product)
     order_items << product
   end
 
-  def checkout
+  def subtotal
     '£' + (format '%.2f', @total)
   end
 
@@ -49,5 +53,11 @@ class Till
       price_list << Product.new(name, price)
       # price_list.add(Product.new(name, price))
     end
+  end
+
+  def complete_receipt(receipt)
+    receipt.line_items = line_items
+    receipt.tax = tax.round(2).to_s
+    receipt.total = (total + tax).round(2).to_s
   end
 end
