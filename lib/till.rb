@@ -34,4 +34,8 @@ class Till
     (net_total * 8.64 / 100).round(2)
   end
 
+  def full_total 
+    (net_total + tax(net_total)).round(2)
+  end
+
 end
