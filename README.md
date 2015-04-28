@@ -21,11 +21,12 @@ A system for a coffee shop till.
 
 ### From your terminal:
 
-  $ git clone git@github.com:StephanMusgrave/till_tech_test.git
-  $ cd till_tech_test
+$ git clone git@github.com:StephanMusgrave/till_tech_test.git
+
+$ cd till_tech_test
 
 ### To run the program from the command line:
-  $ ruby till.rb
+  - coming soon
 
 ### To run the unit tests:
   $ rspec
@@ -34,10 +35,10 @@ A system for a coffee shop till.
 - The Till Class performs the calculations and reads the pricelist
 - The Receipt class is a dumb holder for the various items that make up a receipt
 - The Order class is an array of products
-- The Product class holds the name an price of a product
+- The Product class holds the name and price of a product
 
 ## To do
-- A method to check that the an item requested is on the product list
+- A method to check that the item requested is on the product list
 - Version 2: give change and apply discounts
 - Version 3: A user interface
 - Get Travis to work properly
