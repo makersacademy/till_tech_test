@@ -1,11 +1,10 @@
 require 'till'
 
 describe Till do
-
   let(:latte) { double :item, name: 'latte', price: 4.75 }
 
   it 'responds to the method order' do
-    expect(subject).to respond_to (:order)
+    expect(subject).to respond_to :order
   end
 
   it 'can receive an order for a latte' do
@@ -13,7 +12,7 @@ describe Till do
   end
 
   it 'responds to the method cash_out' do
-    expect(subject).to respond_to (:cash_out)
+    expect(subject).to respond_to :cash_out
   end
 
   it 'returns the total' do

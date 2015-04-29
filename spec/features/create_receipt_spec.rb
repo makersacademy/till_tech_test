@@ -1,5 +1,4 @@
 feature 'As a customer I want to be able to order items from a coffee shop' do
-
   let(:till) { Till.new }
   let(:latte) { double :item, name: 'latte', price: 4.75 }
   let(:americano) { double :item, name: 'amercano', price: 3.75 }
@@ -27,5 +26,4 @@ feature 'As a customer I want to be able to order items from a coffee shop' do
     till.order muffin
     expect(till.item_total(americano)).to eq 15.00
   end
-
 end
