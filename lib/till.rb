@@ -1,6 +1,6 @@
 class Till
-
   TAX_RATE = 0.0864
+
   def initialize
     @order_items = []
   end
