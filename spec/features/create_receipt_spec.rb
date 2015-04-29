@@ -26,4 +26,11 @@ feature 'As a customer I want to be able to order items from a coffee shop' do
     till.order muffin
     expect(till.item_total(americano)).to eq 15.00
   end
+
+  scenario 'Chris orders 3 cafe lattes an Americano and 2 blueberry muffins' do
+    3.times { till.order latte }
+    till.order americano
+    2.times { till.order muffin }
+    expect(till.tax).to eq 2.26
+  end
 end
