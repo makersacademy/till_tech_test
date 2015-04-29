@@ -22,4 +22,10 @@ feature 'As a customer I want to be able to order items from a coffee shop' do
     expect(till.cash_out).to eq 13.55
   end
 
+  scenario 'John orders 4 Americanos and a muffin' do
+    4.times { till.order americano }
+    till.order muffin
+    expect(till.item_total(americano)).to eq 15.00
+  end
+
 end

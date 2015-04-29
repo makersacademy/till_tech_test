@@ -9,10 +9,11 @@ class Till
   end
 
   def cash_out
-    order_total
+    @order_items.map { |item| item.price }.inject(:+)
   end
 
-  def order_total
-   @order_items.map{|item| item.price}.inject(:+)
+  def item_total(type)
+    @order_items.select { |item| item == type }.map { |item| item.price }.inject(:+)
   end
+
 end

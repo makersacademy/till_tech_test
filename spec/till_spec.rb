@@ -20,4 +20,9 @@ describe Till do
     2.times { subject.order latte }
     expect(subject.cash_out).to eq 9.50
   end
+
+  it 'returns the item total' do
+    3.times { subject.order latte }
+    expect(subject.item_total(latte)).to eq 14.25
+  end
 end
