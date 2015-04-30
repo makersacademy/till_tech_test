@@ -1,6 +1,6 @@
 require 'json'
 
-module Product_list
+module ProductList
   attr_reader :data_hash
 
   def initialize

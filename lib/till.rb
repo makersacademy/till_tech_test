@@ -1,7 +1,7 @@
-require 'product_loader'
+require_relative 'product_list'
 
 class Till
-  include Product_list
+  include ProductList
 
   TAX=0.0864
 

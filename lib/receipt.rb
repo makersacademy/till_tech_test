@@ -1,7 +1,7 @@
 require 'json'
 
 class Receipt
-  include Product_list
+  include ProductList
 
   def header
     {shopName: data_hash[0]['shopName'], address: data_hash[0]['address'], phone: data_hash[0]['phone']}

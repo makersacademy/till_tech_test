@@ -1,11 +1,11 @@
-require'product_loader'
+require'product_list'
 
-describe 'Product_List' do
+describe 'ProductList' do
   class Dummy_class
-    include Product_list
+    include ProductList
   end
 
-  let(:product_class) { Dummy_class.new { include Product_list } }
+  let(:product_class) { Dummy_class.new { include ProductList } }
 
   context 'json file loads' do
     it 'returns The Coffee Connection for the shop name.' do
