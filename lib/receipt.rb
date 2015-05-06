@@ -1,41 +1,38 @@
+require_relative 'product'
+
 class Receipt
-  attr_accessor :receipt, :business, :address, :phone, :line_items, :tax, :total
+  attr_reader :business, :address, :phone, :items, :tax, :total
 
   def initialize
-    @receipt = []
     @business = ''
     @address = ''
     @phone = ''
-    @line_items = []
-    @tax = ''
-    @total = ''
+    @items = []
+    @tax = 0
+    @total = 0
   end
 
-  def display
-    receipt << business << address << phone
-    line_items.each { |line_item| receipt << line_item }
-    receipt << 'Tax          £' + @tax
-    receipt << 'Total        £' + @total
-    receipt.flatten
+  def add_business(name)
+    @business = name
   end
 
-  def add_line(line)
-    line_items << line
+  def add_address(address)
+    @address = address
+  end
+
+  def add_phone(number)
+    @phone = number
+  end
+
+  def add_item(item, quantity)
+    quantity.times { items << item }
   end
 
   def add_total(amount)
-    @total = (format '%.2f', amount)
+    @total = amount
   end
 
   def add_tax(amount)
-    @tax = (format '%.2f', amount)
-  end
-
-  def read_header(file_name)
-    file = File.read(file_name)
-    data_hash = JSON.parse(file)
-    @business = data_hash[0]['shopName']
-    @address = data_hash[0]['address']
-    @phone = data_hash[0]['phone']
+    @tax = amount
   end
 end

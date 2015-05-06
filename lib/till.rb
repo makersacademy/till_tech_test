@@ -1,3 +1,4 @@
+require 'json'
 require_relative 'receipt'
 
 class Till
@@ -6,6 +7,9 @@ class Till
   TAXRATE = 8.64
 
   def initialize
+    @business = ''
+    @address = ''
+    @phone = ''
     @total = 0
     @tax = 0
     @order_items = []
@@ -54,11 +58,27 @@ class Till
     end
   end
 
-  def complete_receipt(receipt)
-    # receipt = []
-    receipt.read_header('hipstercoffee.json')
-    receipt.line_items = line_items
-    receipt.tax = tax.round(2).to_s
-    receipt.total = (total + tax).round(2).to_s
+  def read_header(file_name) # move this to till.rb
+    file = File.read(file_name)
+    data_hash = JSON.parse(file)
+    @business = data_hash[0]['shopName']
+    @address = data_hash[0]['address']
+    @phone = data_hash[0]['phone']
+  end
+
+  # def complete_receipt(receipt)
+  #   receipt = []
+  #   receipt.read_header('hipstercoffee.json')
+  #   receipt.line_items = line_items
+  #   receipt.tax = tax.round(2).to_s
+  #   receipt.total = (total + tax).round(2).to_s
+  # end
+
+  def display_receipt # move to till
+    receipt << business << address << phone
+    line_items.each { |line_item| receipt << line_item }
+    receipt << 'Tax          £' + @tax
+    receipt << 'Total        £' + @total
+    receipt.flatten
   end
 end

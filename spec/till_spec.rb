@@ -1,6 +1,5 @@
 require 'till'
 require 'product'
-# require 'receipt'
 
 describe Till do
   before(:each) do
@@ -18,18 +17,39 @@ describe Till do
   end
 
   describe 'can show' do
-    it 'the correct line item for a product' do
+    # xit 'responds to display method' do
+    #   expect(subject).to respond_to :display
+    # end
+
+    xit 'the correct line item for a product' do
       subject.order('Cafe Latte')
       expect(subject.line_items).to include 'Cafe Latte 1 x £4.75'
     end
 
-    it 'the correct line items for an order of several products' do
+    xit 'the correct line items for an order of several products' do
+      till.read_file('hipstercoffee.json')
       2.times { subject.order('Tiramisu') }
       4.times { subject.order('Americano') }
       5.times { subject.order('Blueberry Muffin') }
       expect(subject.line_items).to include 'Tiramisu 2 x £11.40'
       expect(subject.line_items).to include 'Americano 4 x £3.75'
       expect(subject.line_items).to include 'Blueberry Muffin 5 x £4.05'
+    end
+
+    xit 'can provide a receipt with line_items, tax and total' do
+      receipt = described_class.new
+      subject.read_header('hipstercoffee.json')
+      receipt.add_line('Tiramisu 1 x £11.40')
+      receipt.add_line('Americano 4 x £3.75')
+      receipt.add_tax(0.90)
+      receipt.add_total(22.80)
+      expect(receipt.business).to eq 'The Coffee Connection'
+      expect(receipt.address).to eq '123 Lakeside Way'
+      expect(receipt.phone).to eq '16503600708'
+      expect(receipt.display).to include 'Tiramisu 1 x £11.40'
+      expect(receipt.display).to include 'Americano 4 x £3.75'
+      expect(receipt.display).to include 'Total        £22.80'
+      expect(receipt.display).to include 'Tax          £0.90'
     end
   end
 

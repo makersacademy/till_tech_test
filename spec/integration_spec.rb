@@ -8,7 +8,6 @@ describe 'integrations' do
   #   till.read_file('hipstercoffee.json')
   # end
 
-
   describe 'can provide' do
     it "the correct receipt for John's order" do
       till = Till.new
@@ -17,7 +16,6 @@ describe 'integrations' do
       2.times { till.order('Tiramisu') }
       4.times { till.order('Americano') }
       5.times { till.order('Blueberry Muffin') }
-      receipt = Receipt.new
       till.complete_receipt(receipt)
       # puts receipt.display
       expect(receipt.display).to include 'Tiramisu 2 x £11.40'
