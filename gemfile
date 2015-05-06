@@ -6,4 +6,4 @@ ruby '2.2.1'
 gem 'rspec'
 gem 'capybara'
 gem 'guard-rspec', require: false
-gem "codeclimate-test-reporter", group: :test, require: nil
+gem 'codeclimate-test-reporter', group: :test, require: nil
