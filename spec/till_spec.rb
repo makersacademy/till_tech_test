@@ -14,7 +14,7 @@ describe Till do
     expect(till.phone).to eq '16503600708'
   end
 
-  it 'can read the product list from a JSON file' do
+  it 'can read a product list from a JSON file' do
     till = described_class.new
     till.read_product_list('hipstercoffee.json')
     expect(till.product_list.length).to eq 15
@@ -39,7 +39,7 @@ describe Till do
   end
 
   describe 'can calculate' do
-    it 'the correct subtotal for 2 Cafe Lattes' do
+    it 'the correct subtotal for an order' do
       2.times { subject.order('Cafe Latte') }
       expect(subject.subtotal.round(2)).to eq 9.50
     end
@@ -49,7 +49,7 @@ describe Till do
       expect(subject.tax.round(2)).to eq 0.82
     end
 
-    it 'the correct total (incl tax) for 2 Cafe Lattes' do
+    it 'the correct total (incl tax) for an order' do
       2.times { subject.order('Cafe Latte') }
       expect(subject.total.round(2)).to eq 10.32
     end

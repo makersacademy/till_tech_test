@@ -4,12 +4,12 @@ require 'receipt'
 
 describe 'integration tests' do
 
-  describe 'can show' do
+  describe 'till can' do
     before(:each) do
       till = Till.new
       till.read_product_list('hipstercoffee.json')
     end
-    it 'can add information to a receipt' do
+    it 'add information to a receipt' do
       till = Till.new
       till.read_product_list('hipstercoffee.json')
       till.read_header('hipstercoffee.json')
@@ -29,7 +29,7 @@ describe 'integration tests' do
       expect(receipt.tax).to eq 1
     end
 
-    it 'can add items to a receipt' do
+    it 'add items to a receipt' do
       till = Till.new
       till.read_header('hipstercoffee.json')
       till.read_product_list('hipstercoffee.json')
@@ -46,7 +46,7 @@ describe 'integration tests' do
       expect(receipt.tax.round(2)).to eq 1.98
     end
 
-    it "the correct receipt for John's order" do
+    it " show the correct receipt for John's order" do
       till = Till.new
       till.read_header('hipstercoffee.json')
       till.read_product_list('hipstercoffee.json')
@@ -64,7 +64,7 @@ describe 'integration tests' do
       expect(output).to include 'Total £63.07'
     end
 
-    it "the correct receipt for Janes's order" do
+    it "show the correct receipt for Janes's order" do
       till = Till.new
       till.read_header('hipstercoffee.json')
       till.read_product_list('hipstercoffee.json')

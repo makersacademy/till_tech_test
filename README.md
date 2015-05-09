@@ -4,8 +4,6 @@
 
 [![Test Coverage](https://codeclimate.com/github/StephanMusgrave/till_tech_test/badges/coverage.svg)](https://codeclimate.com/github/StephanMusgrave/till_tech_test)
 
-[![Build Status](https://travis-ci.org/StephanMusgrave/till_tech_test.svg?branch=master)](https://travis-ci.org/StephanMusgrave/till_tech_test)
-
 A system for a coffee shop till.
 
 ## Developed by
@@ -42,8 +40,6 @@ $ cd till_tech_test
 - Version 2: give change and apply discounts
 - Version 3: A user interface
 - Get Travis to work properly
-- get Code Climate coverage working
-
 
 ## Objective
 
