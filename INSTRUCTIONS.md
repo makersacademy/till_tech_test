@@ -1,47 +1,7 @@
-# Till Technical Test
+Till tech test
+==============
 
-[![Code Climate](https://codeclimate.com/github/StephanMusgrave/till_tech_test/badges/gpa.svg)](https://codeclimate.com/github/StephanMusgrave/till_tech_test)
-
-[![Test Coverage](https://codeclimate.com/github/StephanMusgrave/till_tech_test/badges/coverage.svg)](https://codeclimate.com/github/StephanMusgrave/till_tech_test)
-
-A system for a coffee shop till.
-
-## Developed by
-[Steve Musgrave]
-
-## Technologies used
-|Technology                 |Used for                       |
-|--------------------------|--------------------------------|
-|Ruby 2.2.1                |Programming language|
-|Rspec 3.2.3               |Test Driven Development - unit testing  |
-
-## How to run the program:
-
-### From your terminal:
-
-$ git clone git@github.com:StephanMusgrave/till_tech_test.git
-
-$ cd till_tech_test
-
-### To run the program from the command line:
-  - coming soon
-
-### To run the unit tests:
-  $ rspec
-
-## Logic:
-- The Till Class performs the calculations and reads the pricelist
-- The Receipt class is a dumb holder for the various items that make up a receipt
-- The Order class is an array of products
-- The Product class holds the name and price of a product
-
-## To do
-- A method to check that the item requested is on the product list
-- Version 2: give change and apply discounts
-- Version 3: A user interface
-- Get Travis to work properly
-
-## Objective
+![a till](/images/till.jpg)
 
 We want to sell tills to local hipster coffee shop who are finally embracing the 21st century. We need a new till to replace their vintage machines - unfortunately, hipster staff are too cool to learn a new system, so we need you to build something that they will understand.
 
@@ -84,4 +44,3 @@ Version 3
 Implement an user interface that can actually be used as a till.
 
 You may use whatever technologies you see fit.
-[Steve Musgrave]:https://github.com/StephanMusgrave
