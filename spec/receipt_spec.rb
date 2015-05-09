@@ -1,4 +1,5 @@
 require 'receipt'
+require 'product'
 
 describe Receipt do
   it 'is empty when created' do
@@ -26,17 +27,18 @@ describe Receipt do
     expect(subject.phone).to eq '123456789'
   end
 
-  it 'has items' do
-    subject.add_item(:Tea, 3)
+  it 'can have items' do
+    tea = Product.new('Tea', '1.50')
+    3.times { subject.add_item(tea) }
     expect(subject.items.length).to eq 3
   end
 
-  it 'has a tax amount' do
+  it 'can have a tax amount' do
     subject.add_tax(10)
     expect(subject.tax).to eq 10
   end
 
-  it 'has a total' do
+  it 'can have a total' do
     subject.add_total(35)
     expect(subject.total).to eq(35)
   end

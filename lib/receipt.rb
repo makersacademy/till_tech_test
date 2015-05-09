@@ -24,8 +24,18 @@ class Receipt
     @phone = number
   end
 
-  def add_item(item, quantity)
-    quantity.times { items << item }
+  def add_header(name, address, number)
+    add_business(name)
+    add_address(address)
+    add_phone(number)
+  end
+
+  def add_item(item)
+    items << item
+  end
+
+  def add_items(list)
+    list.each { |item| items << item }
   end
 
   def add_total(amount)
