@@ -1,0 +1,7 @@
+<% if @receipt %>
+  <ul>
+    <% @receipt.each do |line| %>
+      <li><%= line %></li>
+    <% end %>
+  </ul>
+<% end %>
