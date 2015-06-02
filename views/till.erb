@@ -1,0 +1,42 @@
+<section id='till-header'>
+<h3><%= @order.cashier %></h3>
+  <section id='till-screen'>
+  </section>
+</section>
+
+</section id='till-body'>
+  <section id='till-grid'>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <br/>
+    <tr>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <br/>
+    <tr>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+    <br/>
+    <tr>
+      <td>0</td>
+    </tr>
+  </section>
+  <section id='till-items'>
+  <% @menu.list.each do |item|%>
+    <li><%= item[0] %></li>
+  <% end %>
+  </section>
+</section>
+
+<section id='till-footer'>
+  <section id='total'>
+
+  </section>
+</section>
