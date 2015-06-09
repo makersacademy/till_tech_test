@@ -1,5 +1,5 @@
 class Order
-  
+
   attr_reader :items
 
   def initialize
@@ -21,5 +21,5 @@ class Order
   def empty?
     @items.empty?
   end
-  
+
 end

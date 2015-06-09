@@ -1,5 +1,5 @@
 class OrderPrinter
-  
+
   def self.print order
     if order.empty?
       "Nothing ordered yet"
@@ -9,5 +9,5 @@ class OrderPrinter
       end.join("\n")
     end
   end
-  
+
 end
