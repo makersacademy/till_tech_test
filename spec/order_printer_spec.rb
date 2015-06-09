@@ -14,4 +14,9 @@ describe OrderPrinter do
     order = double(:order, items: {cappucino: 1}, empty?: false)
     expect(described_class.print order).to eq "1 x cappucino"
   end
+
+  it 'says that 1 cappucino and 1 cortado was ordered' do
+    order = double(:order, items: {cappucino: 1, cortado: 1}, empty?: false)
+    expect(described_class.print order).to eq "1 x cappucino\n1 x cortado"
+  end
 end

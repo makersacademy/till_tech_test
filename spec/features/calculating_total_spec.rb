@@ -1,6 +1,6 @@
 require 'capybara/rspec'
 
-feature 'calculating total' do
+feature 'total is calculated correctly' do
   let(:order) { Order.new }
   
   scenario 'when customer orders nothing' do

@@ -5,7 +5,7 @@ class OrderPrinter
     else
       order.items.map do |item, quantity|
         "#{quantity} x #{item}"
-      end.join("/n")
+      end.join("\n")
     end
   end
 end
