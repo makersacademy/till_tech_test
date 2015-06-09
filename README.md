@@ -1,46 +1,9 @@
-Till tech test
-==============
+Good news: I have actually put together something that seems to be working (Version 1), and I have done it in a BDD way (I think).
 
-![a till](/images/till.jpg)
+Bad news: I was so carried way by the process tha commits are very few. The code could be DRYed out, particularly in the test suite, but it is late at night and I'd better stop now. 
 
-We want to sell tills to local hipster coffee shop who are finally embracing the 21st century. We need a new till to replace their vintage machines - unfortunately, hipster staff are too cool to learn a new system, so we need you to build something that they will understand.
+I did very little upfront design but one thing that was constantly preent in my mind was SRP which is why I tried to break the app into small components. I know that printing and calculating can be separated further but the 'late at night' argument applies here as well.
 
-Specification
--------------
-
-This is what a sample receipt looks like:
-
-![a receipt](/images/receipt.jpg)
+I roughly understand how to deal with the JSON file provided but my priority was to submit something that can be code-reviewed by end of day Tuesday, so in this sorry hipster coffee shop there is only cappucino and cortado.  
 
 
-Version 1
----------
-
-Implement a system that contains the business logic to produce receipts similar to this, based on a `json` price list and test orders. A sample `.json` file has been provided with the list of products sold at this particular coffee shop. 
-
-Here are some sample orders you can try - whether you use this information is up to you:
-
-> **Jane**  
-> 2 x Cafe Latte  
-> 1 x Blueberry Muffin  
-> 1 x Choc Mudcake  
->
-> **John**  
-> 4 x Americano  
-> 2 x Tiramisu  
-> 5 x Blueberry Muffin  
-
-Your receipt must calculate and show the correct amount of tax (in this shop's case, 8.64%), as well as correct line totals and total amount. Do not worry about calculating discounts or change yet. Consider what output formats may be suitable.
-
-Version 2
----------
-
-- Add functionality to take payment and calculate correct change.  
-- Add functionality to handle discounts - in this example, a 5% discount on orders over $50, and a 10% muffin discount.
-
-Version 3
----------
-
-Implement an user interface that can actually be used as a till.
-
-You may use whatever technologies you see fit.
