@@ -45,22 +45,30 @@ Till.prototype.add = function (item) {
   this.total += this.priceList[0].prices[0][item];
 };
 
+Till.prototype.applyAnyDiscounts = function (total) {
+  if (this.applyMuffinDiscount) {
+    total = this.calculateMuffinDiscount(total);
+  }
+  if (this.over50Discount) {
+    total = this.calculateOver50Discount(total);
+  }
+  return total;
+};
+
 Till.prototype.getTotal = function () {
+  var total;
+  total = this.applyAnyDiscounts(this.sumCurrentOrder());
+  return total.toFixed(2);
+};
+
+Till.prototype.sumCurrentOrder = function () {
   var total;
   var key;
   total = 0;
   for (key in this.currentOrder) {
     total += this.priceList[0].prices[0][key] * this.currentOrder[key];
   }
-  if (this.applyMuffinDiscount) {
-    total = this.calculateMuffinDiscount(total);
-  }
-
-  if (this.over50Discount) {
-    total = this.calculateOver50Discount(total);
-  }
-
-  return total.toFixed(2);
+  return total;
 };
 
 Till.prototype.calculateMuffinDiscount = function (total) {
