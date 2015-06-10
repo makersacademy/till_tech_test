@@ -30,10 +30,42 @@ priceList = [
 
 
 Till = function () {
-  this.total = 0;
   this.priceList = priceList;
+  this.taxRate = 8.64;
+  this.currentOrder = {};
 };
 
 Till.prototype.add = function (item) {
+  if (this.currentOrder[item]) { this.currentOrder[item] += 1;
+    } else {
+    this.currentOrder[item] = 1;
+  }
   this.total += this.priceList[0].prices[0][item];
+};
+
+Till.prototype.getTotal = function () {
+  var total;
+  var key;
+  total = 0;
+
+  for (key in this.currentOrder) {
+    total += this.priceList[0].prices[0][key] * this.currentOrder[key];
+  }
+  return total.toFixed(2);
+};
+
+Till.prototype.getTax = function () {
+  var tax = (this.getTotal() / 100) * this.taxRate;
+  return tax.toFixed(2);
+};
+
+Till.prototype.getLineTotals = function () {
+  var returnString;
+  var key;
+
+  returnString = "";
+  for (key in this.currentOrder) {
+    returnString += key + " " + this.currentOrder[key] + " x " + this.priceList[0].prices[0][key].toFixed(2) + "\n";
+  }
+  return returnString;
 };
