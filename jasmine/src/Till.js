@@ -42,22 +42,23 @@ Till.prototype.add = function (item) {
     } else {
     this.currentOrder[item] = 1;
   }
-  this.total += this.priceList[0].prices[0][item];
 };
 
-Till.prototype.applyAnyDiscounts = function (total) {
+Till.prototype.applyAnyDiscounts = function () {
+  var totalDiscount;
+  totalDiscount = 0;
   if (this.applyMuffinDiscount) {
-    total = this.calculateMuffinDiscount(total);
+    totalDiscount += this.calculateMuffinDiscount();
   }
   if (this.over50Discount) {
-    total = this.calculateOver50Discount(total);
+    totalDiscount += this.calculateOver50Discount();
   }
-  return total;
+  return totalDiscount;
 };
 
 Till.prototype.getTotal = function () {
   var total;
-  total = this.applyAnyDiscounts(this.sumCurrentOrder());
+  total = this.sumCurrentOrder() - this.applyAnyDiscounts();
   return total.toFixed(2);
 };
 
@@ -71,7 +72,7 @@ Till.prototype.sumCurrentOrder = function () {
   return total;
 };
 
-Till.prototype.calculateMuffinDiscount = function (total) {
+Till.prototype.calculateMuffinDiscount = function () {
   var totalDiscount;
   var itemTotal;
   var key;
@@ -83,17 +84,16 @@ Till.prototype.calculateMuffinDiscount = function (total) {
       totalDiscount += (itemTotal / 100) * 10;
     }
   }
-  return (total - totalDiscount);
+  return totalDiscount;
 };
 
-Till.prototype.calculateOver50Discount = function (total) {
-  var fivePercent;
-
+Till.prototype.calculateOver50Discount = function () {
+  var total;
+  total = this.sumCurrentOrder();
   if (total > 50) {
-    fivePercent = (total / 100) * 5;
-    return (total - fivePercent);
+    return (total / 100) * 5;
   }
-  return total;
+  return 0;
 };
 
 Till.prototype.getTax = function () {
