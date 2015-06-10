@@ -38,4 +38,13 @@ describe("Version 1", function () {
     expect(till.pay(20.00)).toEqual('0.05');
   });
 
+  it("is able to give 10% discount on muffins", function () {
+    till.add("Cafe Latte");
+    till.add("Cafe Latte");
+    till.add("Blueberry Muffin");
+    till.add("Choc Mudcake");
+    till.muffinDiscount();
+    expect(till.getTotal()).toEqual('19.55');
+  });
+
 });

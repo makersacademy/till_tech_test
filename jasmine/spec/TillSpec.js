@@ -44,4 +44,16 @@ describe("Till", function () {
     expect(till.pay(20.00)).toEqual('0.05');
   });
 
+  it("is able to give 10% discount on muffins", function () {
+    till.add("Blueberry Muffin");
+    till.muffinDiscount();
+    expect(till.getTotal()).toEqual('3.64');
+  });
+
+  it("has an option to turn on muffin discount", function() {
+    expect(till.applyMuffinDiscount).toEqual(false);
+    till.muffinDiscount();
+    expect(till.applyMuffinDiscount).toEqual(true);
+  });
+
 });
