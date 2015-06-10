@@ -36,4 +36,12 @@ describe("Till", function () {
     expect(till.getLineTotals()).toMatch('Cafe Latte 2 x 4.75\nBlueberry Muffin 1 x 4.05\nChoc Mudcake 1 x 6.40\n');
   });
 
+  it("must be able to take payment and calculate change correctly", function () {
+    till.add("Cafe Latte");
+    till.add("Cafe Latte");
+    till.add("Blueberry Muffin");
+    till.add("Choc Mudcake");
+    expect(till.pay(20.00)).toEqual('0.05');
+  });
+
 });

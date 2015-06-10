@@ -69,3 +69,7 @@ Till.prototype.getLineTotals = function () {
   }
   return returnString;
 };
+
+Till.prototype.pay = function (amount) {
+  return (amount - this.getTotal()).toFixed(2);
+};
