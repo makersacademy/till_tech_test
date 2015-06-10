@@ -34,6 +34,7 @@ Till = function () {
   this.taxRate = 8.64;
   this.currentOrder = {};
   this.applyMuffinDiscount = false;
+  this.applyOver50Discount = false;
 };
 
 Till.prototype.add = function (item) {
@@ -42,6 +43,24 @@ Till.prototype.add = function (item) {
     this.currentOrder[item] = 1;
   }
   this.total += this.priceList[0].prices[0][item];
+};
+
+Till.prototype.getTotal = function () {
+  var total;
+  var key;
+  total = 0;
+  for (key in this.currentOrder) {
+    total += this.priceList[0].prices[0][key] * this.currentOrder[key];
+  }
+  if (this.applyMuffinDiscount) {
+    total = this.calculateMuffinDiscount(total);
+  }
+
+  if (this.over50Discount) {
+    total = this.calculateOver50Discount(total);
+  }
+
+  return total.toFixed(2);
 };
 
 Till.prototype.calculateMuffinDiscount = function (total) {
@@ -59,19 +78,15 @@ Till.prototype.calculateMuffinDiscount = function (total) {
   return (total - totalDiscount);
 };
 
-Till.prototype.getTotal = function () {
-  var total;
-  var key;
-  total = 0;
-  for (key in this.currentOrder) {
-    total += this.priceList[0].prices[0][key] * this.currentOrder[key];
-  }
-  if (this.applyMuffinDiscount) {
-    total = this.calculateMuffinDiscount(total);
-  }
-  return total.toFixed(2);
-};
+Till.prototype.calculateOver50Discount = function (total) {
+  var fivePercent;
 
+  if (total > 50) {
+    fivePercent = (total / 100) * 5;
+    return (total - fivePercent);
+  }
+  return total;
+};
 
 Till.prototype.getTax = function () {
   var tax = (this.getTotal() / 100) * this.taxRate;
@@ -95,4 +110,8 @@ Till.prototype.pay = function (amount) {
 
 Till.prototype.muffinDiscount = function () {
   this.applyMuffinDiscount = true;
+};
+
+Till.prototype.over50Discount = function () {
+  this.applyOver50Discount = true;
 };

@@ -56,4 +56,19 @@ describe("Till", function () {
     expect(till.applyMuffinDiscount).toEqual(true);
   });
 
+  it("is able to give 5% discount on orders over 50", function () {
+    till.add("Affogato");
+    till.add("Affogato");
+    till.add("Affogato");
+    till.add("Affogato");
+    till.over50Discount();
+    expect(till.getTotal()).toEqual('56.24');
+  });
+
+  it("has an option to turn on over 50 discount", function() {
+    expect(till.applyOver50Discount).toEqual(false);
+    till.over50Discount();
+    expect(till.applyOver50Discount).toEqual(true);
+  });
+
 });
