@@ -20,8 +20,9 @@
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
+    <script src="js/tillTechCtrl.js"></script>
   </head>
-  <body ng-app="hiptillio">
+  <body ng-app="hiptillio" ng-controller="HipTillioController as HipTillCtrl">
 
     <ion-pane>
       <ion-header-bar class="bar-stable">
@@ -29,6 +30,22 @@
       </ion-header-bar>
       <ion-content>
         <h1 id="hiptillio"> HipTillio </h1>
+
+        <div class="list">
+          <label class="item item-input">
+            <input type="text" placeholder="Order" ng-model="HipTillCtrl.item">
+          </label>
+            <input type="submit" ng-click="HipTillCtrl.addItem(HipTillCtrl.item)"></input>
+        </div>
+
+        <ion-list>
+          <ion-item ng-repeat="item in HipTillCtrl.orderItems">
+            {{item.itemName}}, {{item.price}}, {{HipTillCtrl.allOrders[item.itemName]}}
+          </ion-item>
+        </ion-list>
+        <button class="button button-positive" ng-click="HipTillCtrl.completeOrder()">
+          Complete Order
+        </button>
       </ion-content>
     </ion-pane>
   </body>
