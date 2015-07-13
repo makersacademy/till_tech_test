@@ -7,12 +7,11 @@ describe('Till', function(){
     till.ring("Cafe Latte");
     till.ring("Flat White");
 
-    expect(till.receipt).toContain('Cafe Latte');
-    expect(till.receipt).toContain('Flat White');
+    expect(till.receipt).toEqual({'Cafe Latte': 4.75, 'Flat White': 4.75})
 
   });
 
-  it('produces a line total with items', function(){
+  xit('produces a line total with items', function(){
 
     till.ring("Cafe Latte");
 
