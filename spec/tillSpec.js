@@ -1,21 +1,32 @@
 describe('Till', function(){
 
-  var till = new Till();
+  describe('first block', function(){
 
-  it('produces a receipt with a list of items bought', function(){
+      var till = new Till();
 
-    till.ring("Cafe Latte");
-    till.ring("Flat White");
+      it('produces a receipt with a list of items bought', function(){
 
-    expect(till.receipt).toEqual({'Cafe Latte': 4.75, 'Flat White': 4.75})
+      till.ring("Cafe Latte");
+      till.ring("Flat White");
+
+      expect(till.receipt).toEqual({'Cafe Latte': 4.75, 'Flat White': 4.75})
+
+    });
 
   });
 
-  xit('produces a line total with items', function(){
+  describe('second block', function(){
 
-    till.ring("Cafe Latte");
+      var till = new Till();
 
-    expect(till.receipt).toContain(4.75);
+      it('produces a line total with items', function(){
+
+      till.ring("Cafe Latte");
+      till.ring("Cafe Latte");
+
+      expect(till.receipt).toEqual({'Cafe Latte': 4.75})
+
+    });
 
   });
 

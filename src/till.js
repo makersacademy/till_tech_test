@@ -4,6 +4,7 @@ function Till(){
 
 }
 
-Till.prototype.ring = function(item) {
-  this.receipt[item] = shopInfo[0].prices[0][item]
+Till.prototype.ring = function(item, quantity) {
+  quantity = quantity || 1
+  this.receipt[item] = quantity + ' x ' + shopInfo[0].prices[0][item]
 };
