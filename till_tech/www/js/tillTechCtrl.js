@@ -2,26 +2,24 @@ hiptillio.controller('HipTillioController', [function() {
   var self = this;
 
   self.orderItems = []
-  self.allOrders = {}
+  self.orderCount = {}
+  self.confirmedItems = []
 
   self.addItem = function(newItem) {
     self.newItem = {itemName: newItem, price: self.menu[0].prices[0][newItem]}
     self.orderItems.push(self.newItem);
-    // self.orderItems.forEach(function(item) {
-    //   //count number of duplicate objects in an array
-    //   var key = JSON.stringify(item)
-    //   self.allOrders[key] = (self.allOrders[key] || 0) + 1
-    // });
-    // console.log(self.allOrders)
   }
 
   self.completeOrder = function() {
     self.orderItems.forEach(function(item) {
-      //count number of duplicate objects in an array - why doesn't it work here?
-      var key = JSON.stringify(item.itemName)
-      self.allOrders[key] = (self.allOrders[key] || 0) + 1
+      var key = item.itemName
+      self.orderCount[key] = (self.orderCount[key] || 0) + 1
     });
-    console.log(self.allOrders.Americano) //not picking up the object for some reason - may be string issue
+
+    for (item in self.orderCount) {
+      var finalOrderItem = {itemName: item, price: self.menu[0].prices[0][item], quantity: self.orderCount[item]}
+      self.confirmedItems.push(finalOrderItem)
+    }
   }
 
   self.menu = [

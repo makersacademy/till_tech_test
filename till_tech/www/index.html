@@ -40,12 +40,17 @@
 
         <ion-list>
           <ion-item ng-repeat="item in HipTillCtrl.orderItems">
-            {{item.itemName}}, {{item.price}}, {{HipTillCtrl.allOrders[item.itemName]}}
+            {{item.itemName}}, {{item.price}}
           </ion-item>
         </ion-list>
         <button class="button button-positive" ng-click="HipTillCtrl.completeOrder()">
           Complete Order
         </button>
+        <ion-list>
+          <ion-item ng-repeat="item in HipTillCtrl.confirmedItems">
+            {{item.itemName}}, {{item.price}} * {{item.quantity}}
+          </ion-item>
+        </ion-list>
       </ion-content>
     </ion-pane>
   </body>
