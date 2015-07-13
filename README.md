@@ -1,3 +1,30 @@
+User Stories (Version 1)
+------------
+
+```
+As a coffee toting hipster
+So that my hipster customers will remember where they got this receipt
+I would like my till receipt to show the name of my hipster coffee shop
+
+As a coffee toting hipster
+So that my hipster customers can see what they've been charged for each item
+I would like my till receipt to show each item they've ordered and their price
+
+As a coffee toting hipster
+So that I can charge my hipster customers the right amount
+I would like my till receipt to show me the total that they owe
+
+As a coffee toting hipster
+So that I can adhere to the law
+I would like my till receipt to have the 8.64% tax added on
+```
+
+
+
+
+
+
+
 Till tech test
 ==============
 
@@ -37,6 +64,7 @@ Version 2
 
 - Add functionality to take payment and calculate correct change.  
 - Add functionality to handle discounts - in this example, a 5% discount on orders over $50, and a 10% muffin discount.
+- Add functionality to print date and time on receipt
 
 Version 3
 ---------
