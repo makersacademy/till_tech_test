@@ -1,48 +1,102 @@
+[![Build Status](https://travis-ci.org/andygout/till_tech_test.png)](https://travis-ci.org/andygout/till_tech_test)
+
+
 Till tech test
 ==============
 
-*Instructions*: Please fork this repo and submit a pull request once you've finished. Then prepare for code review!
 
-![a till](/images/till.jpg)
+Brief
+-------
 
-We want to sell tills to local hipster coffee shop who are finally embracing the 21st century. We need a new till to replace their vintage machines - unfortunately, hipster staff are too cool to learn a new system, so we need you to build something that they will understand.
+Implement a coffe shop till system that contains the business logic to produce receipts similar to the below sample, based on a `json` price list and test orders.
 
-Specification
--------------
+The receipt must:-
 
-This is what a sample receipt looks like:
+- Calculate and show the correct amount of tax (in this shop's case, 8.64%, which is charged prior to any discounts), as well as correct item totals and total amount.
+
+- Take payment and calculate the correct change.
+
+- Handle discounts: a 5% discount on orders over $50, and a 10% muffin discount.
+
+- Have a user interface that can actually be used as a till.
+
+
+Sample receipt:
+-------
 
 ![a receipt](/images/receipt.jpg)
 
 
-Version 1
----------
+Sample order:
+-------
 
-Implement a system that contains the business logic to produce receipts similar to this, based on a `json` price list and test orders. A sample `.json` file has been provided with the list of products sold at this particular coffee shop. 
-
-Here are some sample orders you can try - whether you use this information is up to you:
-
-> **Jane**  
-> 2 x Cafe Latte  
-> 1 x Blueberry Muffin  
-> 1 x Choc Mudcake  
+> **Jane**
+> 2 x Cafe Latte
+> 1 x Blueberry Muffin
+> 1 x Choc Mudcake
 >
-> **John**  
-> 4 x Americano  
-> 2 x Tiramisu  
-> 5 x Blueberry Muffin  
+> **John**
+> 4 x Americano
+> 2 x Tiramisu
+> 5 x Blueberry Muffin
 
-Your receipt must calculate and show the correct amount of tax (in this shop's case, 8.64%), as well as correct line totals and total amount. Do not worry about calculating discounts or change yet. Consider what output formats may be suitable.
 
-Version 2
----------
+User stories:
+-------
 
-- Add functionality to take payment and calculate correct change.  
-- Add functionality to handle discounts - in this example, a 5% discount on orders over $50, and a 10% muffin discount.
+```
+As a coffee shop vendor
+I want to be able to tally up the order of a customer
+So that I can charge them the correct amount
 
-Version 3
----------
+As a coffee shop customer
+I want to be able to review my order
+So that I can be assured I have been charged the correct amount
 
-Implement an user interface that can actually be used as a till.
+As a pedant
+I want to see the amount and total value for each ordered item
+So that I can understand how the total amount is comprised
 
-You may use whatever technologies you see fit.
+As a skinflint
+I want to see the discount (if any) received on my order
+So that I can relish the savings
+
+As a customer with an awareness and interest in the economy
+I want to see the tax amount of my order on my receipt
+So that I can appreciate how much is feeding back in to the budget
+
+As a bargain lover
+I want to be able to view details of offers
+So that I can be aware of them for future visits
+
+As someone who doesn't trust tradespeople
+I want the receipt to display the cash given and change due
+So that I can ensure it tallies up with what I've been given
+
+As a freelancer
+I want the receipt to display the date and time of the purchase
+So that I can claim it on my tax return
+
+As a forgetful type
+I want the receipt to display the shop's name and address
+So that I can revisit in the future
+```
+
+
+Technologies Used:
+-------
+
+- Javascript (language) with jQuery (Javascript library).
+- Tested using Jasmine (behavior-driven development framework for testing JavaScript code).
+
+
+Links:
+-------
+
+[Github - Makers Academy: Till Tech Test](https://github.com/makersacademy/till_tech_test)
+
+
+Images:
+-------
+
+![a till](/images/till.jpg)
