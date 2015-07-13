@@ -16,12 +16,24 @@ hiptillio.controller('HipTillioController', [function() {
       self.orderCount[key] = (self.orderCount[key] || 0) + 1
     });
 
+    //refactor out method > build final order
     for (item in self.orderCount) {
       var finalOrderItem = {itemName: item, price: self.menu[0].prices[0][item], quantity: self.orderCount[item]}
       self.confirmedItems.push(finalOrderItem)
     }
+
+    //refactor out method > calculate total cost
+    self.costs = []
+    self.confirmedItems.forEach(function(item) {
+      var itemCost = item.price * item.quantity
+      self.costs.push(itemCost)
+    })
+    self.totalItemCost = self.costs.reduce(function(x,y) {
+      return x + y;
+    })
   }
 
+  //refactor into an API
   self.menu = [
       {
         "shopName": "The Coffee Connection",
