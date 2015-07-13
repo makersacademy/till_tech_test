@@ -14,4 +14,11 @@ describe('Till', function(){
     });
   });
 
+  describe('can add to order', function() {
+    it('1 x Cafe Latte', function() {
+      till.addItem('Cafe Latte');
+      expect(till.callTotal()).toEqual(4.75);
+    });
+  });
+
 });
