@@ -90,10 +90,23 @@ Technologies Used:
 - Tested using Jasmine (behavior-driven development framework for testing JavaScript code).
 
 
+Setup:
+-------
+
+- Simple HTTP server using Connect and ServeStatic: `npm install connect serve-static`
+- Create server.js file as included.
+- Run with Node.js: `node server.js`
+- Visit `http://localhost:8080/till/html`
+
+
 Links:
 -------
 
 [Github - Makers Academy: Till Tech Test](https://github.com/makersacademy/till_tech_test)
+
+[Connect](https://www.npmjs.com/package/connect)
+
+[Serve Static](https://github.com/expressjs/serve-static)
 
 
 Images:
