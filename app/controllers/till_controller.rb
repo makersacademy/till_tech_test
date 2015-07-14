@@ -19,4 +19,9 @@ class TillController < ApplicationController
     @receipt = till.print_receipt
   end
 
+  def destroy
+    Item.destroy_all
+    redirect_to root_path
+  end
+
 end

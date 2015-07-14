@@ -30,8 +30,4 @@ $(document).ready(function(){
     });
   });
 
-  $('#print-receipt').click(function() {
-
-  });
-
 });
