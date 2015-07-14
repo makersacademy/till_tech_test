@@ -35,10 +35,10 @@
           <label class="item item-input">
             <input type="text" placeholder="Order" ng-model="HipTillCtrl.item">
           </label>
-            <input type="submit" ng-click="HipTillCtrl.addItem(HipTillCtrl.item)"></input>
+            <input type="submit" ng-click="HipTillCtrl.addItem(HipTillCtrl.item)" id="addOrder"></input>
         </div>
 
-        <ion-list>
+        <ion-list class="longlist">
           <ion-item ng-repeat="item in HipTillCtrl.orderItems">
             {{item.itemName}}, {{item.price}}
           </ion-item>
@@ -46,12 +46,14 @@
         <button class="button button-positive" ng-click="HipTillCtrl.completeOrder()">
           Complete Order
         </button>
-        <ion-list>
+        <ion-list class="finalorder">
           <ion-item ng-repeat="item in HipTillCtrl.confirmedItems">
             {{item.itemName}}, {{item.price}} * {{item.quantity}}
           </ion-item>
         </ion-list>
-        <span> Total Cost: {{HipTillCtrl.totalItemCost}} </span>
+        <span id="taxcost">Tax: {{HipTillCtrl.taxCost}}</span>
+        <br>
+        <span id="totalcost"> Total Cost: {{HipTillCtrl.totalItemCost}} </span>
       </ion-content>
     </ion-pane>
   </body>
