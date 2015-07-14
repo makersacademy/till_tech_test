@@ -47,8 +47,35 @@ describe('Till', function(){
 
       till.calculateTax();
 
-      expect(till.receipt.tax).toEqual(1.6848);
+      expect(till.receipt.tax).toEqual(1.68);
+      expect(till.receipt.totalCost).toEqual(21.18);
     })
+  })
+
+  describe('handling payment', function(){
+
+    it('can receive payment', function(){
+
+      expect(till.receivePayment).toBeDefined();
+
+    })
+
+    it('can calculate change', function(){
+
+      till.ring('Tiramisu');
+      till.ring('Blueberry Muffin', 2);
+
+      till.calculateTax();
+
+      expect(till.receipt.totalCost).toEqual(21.18);
+
+      till.receivePayment(25);
+
+      expect(till.receipt.change).toEqual(3.82);
+
+    })
+
+
   })
 
 })

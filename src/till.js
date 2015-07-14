@@ -4,6 +4,7 @@ function Till(){
 
   this.receipt.totalCost = 0;
   this.receipt.tax = 0;
+  this.receipt.change = 0;
 
   tax_rate = 0.0864;
 
@@ -19,6 +20,10 @@ Till.prototype.ring = function(item, quantity) {
 };
 
 Till.prototype.calculateTax = function(){
-  this.receipt.tax = tax_rate*this.receipt.totalCost
-  return this.receipt.tax;
+  this.receipt.tax = +(tax_rate*this.receipt.totalCost).toFixed(2);
+  this.receipt.totalCost += this.receipt.tax
+}
+
+Till.prototype.receivePayment = function(payment){
+  this.receipt.change = +(payment - this.receipt.totalCost).toFixed(2);
 }
