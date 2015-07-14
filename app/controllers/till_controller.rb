@@ -1,0 +1,2 @@
+class TillController < ApplicationController
+end
