@@ -10,6 +10,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+# Use postgresql as the database for Active Record
+gem 'pg'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -47,4 +49,5 @@ group :test do
   gem 'capybara'
   gem 'poltergeist'
   gem 'selenium-webdriver', '2.46.2'
+  gem 'database_cleaner'
 end

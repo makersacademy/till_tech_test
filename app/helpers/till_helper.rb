@@ -13,7 +13,7 @@ module TillHelper
 
     def initialize
       @order = []
-      file = open('./app/assets/javascripts/hipstercoffee.json')
+      file = open('./public/hipstercoffee.json')
       json = file.read
       @items = JSON.parse(json).first
       file.close

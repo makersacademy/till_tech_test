@@ -12,17 +12,15 @@ $(document).ready(function(){
 
   $('#flat-white').click(function() {
     $('#display').text('4.75');
-    order.push('Flat White');
+      $.ajax({ url: '/till',
+      type: 'POST',
+      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+      data: { "item" : 'Flat White' }
+    });
   });
 
   $('#print-receipt').click(function() {
-    $.ajax({ url: '/till',
-      type: 'POST',
-      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-      data: {
-              "items" : order
-            }
-          });
+
   });
 
 });
