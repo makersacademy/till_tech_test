@@ -1,6 +1,7 @@
-  var items;
 $(document).ready(function(){
 
+  var items;
+  var order = [];
 
   $.getJSON('/hipstercoffee.json', function(data) {
     items = data;
@@ -9,8 +10,19 @@ $(document).ready(function(){
     $('#shop-name').text(items[0].shopName);
   })
 
-
   $('#flat-white').click(function() {
     $('#display').text('4.75');
+    order.push('Flat White');
   });
+
+  $('#print-receipt').click(function() {
+    $.ajax({ url: '/till',
+      type: 'POST',
+      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+      data: {
+              "items" : order
+            }
+          });
+  });
+
 });
