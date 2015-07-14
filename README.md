@@ -10,13 +10,13 @@ User Stories (Version 1)
 	So that my hipster customers can see what they've ordered
 	I would like my till receipt to show each hipster item they've ordered
 
-As a coffee selling hipster
-So that my hipster customers can see what they've ordered
-I would like my till receipt to show the price alongside each hipster item they've ordered
+	As a coffee selling hipster
+	So that my hipster customers can see what they've ordered
+	I would like my till receipt to show the price alongside each hipster item they've ordered
 
-As a coffee selling hipster
-So that I can charge my hipster customers the right amount
-I would like my till receipt to show me the total that my hipster customers owe
+	As a coffee selling hipster
+	So that I can charge my hipster customers the right amount
+	I would like my till receipt to show me the total that my hipster customers owe
 
 As a coffee selling hipster
 So that I can adhere to the not-quite-hipster law

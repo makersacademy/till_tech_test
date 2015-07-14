@@ -12,20 +12,39 @@ describe('Till receipt', function() {
   });
 
   it('starts off with no items on it', function() {
-    expect(tillReceipt.order).toEqual([]);
+    expect(tillReceipt.orderItemsWithPrices).toEqual([]);
   });
 
   it('shows the name of each individual item', function() {
     tillReceipt.addToOrder('Cafe Latte');
-    expect(tillReceipt.order).toEqual(['Cafe Latte']);
+    expect(tillReceipt.orderItemsWithPrices[0]).toEqual({'Cafe Latte': 4.75 });
   });
 
-  // it('shows the price alongside each item', function() {
-  //   tillReceipt.addToOrder('Cafe Latte');
-  //   expect(tillReceipt.orderItemsWithPrices).toEqual({'Cafe Latte': 4.75});
-  // });
+  it('shows the price alongside each item', function() {
+    tillReceipt.addToOrder('Cafe Latte');
+    expect(tillReceipt.orderItemsWithPrices).toEqual([{'Cafe Latte': 4.75 }]);
+  });
 
-  // it('will not let you add something that the coffee shop doesn\'t sell', function() {
+  it('will not let you add something that the coffee shop doesn\'t sell', function() {
+    tillReceipt.addToOrder('Definitely not on the menu...');
+    expect(tillReceipt.orderItemsWithPrices).toEqual([]);
+  });
 
+  it('lets you add different items to order', function() {
+    tillReceipt.addToOrder('Cafe Latte');
+    tillReceipt.addToOrder('Flat White');
+    expect(tillReceipt.orderItemsWithPrices).toEqual([{'Cafe Latte': 4.75 },{'Flat White': 4.75 }]);
+  });
+
+  it('adds up the total of each item on the order', function() {
+    tillReceipt.addToOrder('Cafe Latte');
+    tillReceipt.addToOrder('Flat White');
+    tillReceipt.confirmOrder();
+    expect(tillReceipt.confirmedOrderTotal).toEqual(9.50);
+  });
+
+  // it('lets you add multiple amounts of the same item to the order', function() {
+  //   tillReceipt.addToOrder('Cafe Latte', 2);
+  //   expect(tillReceipt.orderItemsWithPrices).toEqual([{'Cafe Latte': 4.75 },{'Cafe Latte': 4.75 }]);
   // });
 });
