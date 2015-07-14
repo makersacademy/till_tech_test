@@ -44,4 +44,19 @@ describe('Till', function(){
 
   })
 
+  describe('tax', function(){
+
+    var till = new Till();
+
+    it('calculates amount to be paid in tax ', function(){
+
+      till.ring('Tiramisu');
+      till.ring('Blueberry Muffin', 2);
+
+      till.calculateTax();
+
+      expect(till.tax).toEqual(1.6848);
+    })
+  })
+
 })
