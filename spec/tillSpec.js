@@ -73,6 +73,16 @@ describe('Till', function(){
 
       expect(till.receipt.change).toEqual(3.82);
 
+    });
+
+    it('gives discounts on purchases over 30', function(){
+
+      till.ring('Tiramisu', 3);
+
+      expect(till.receipt.discount).toEqual('5% discount for purchases over 30');
+
+      expect(till.receipt.totalCost).toEqual(32.49);
+
     })
 
 
