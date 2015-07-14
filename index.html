@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html>
+
+  <head>
+
+    <title>Hipster Coffee Till</title>
+
+    <script src="hipstercoffee.json"></script>
+    <script src="src/till.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <style>
+      * {text-align: center; font-family: Helvetica}
+    </style>
+
+  </head>
+
+  <body>
+
+    <header>
+      <h1> Hipster Coffee Till </h1>
+    </header>
+
+    <div class="items-container">
+    </div>
+
+  </body>
+
+  <script>
+
+    var till = new Till();
+
+    for (key in shopInfo[0].prices[0]){
+      $('.items-container').append(key + ' : ' + shopInfo[0].prices[0][key] + '<input type=text>' + '<input type=submit class="add" value="add" name='+key+'>' + '</br>');
+    }
+    $('.add').click(function(){
+        var choice = $(this).attr('name');
+        till.ring(choice);
+      });
+
+  </script>
+
+</html>
