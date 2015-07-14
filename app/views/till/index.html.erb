@@ -1,10 +1,22 @@
 <div id='shop-name'></div>
 <br>
-<div id='display'>~</div>
+<div id='display'></div>
 <br>
 <%= link_to 'New order', till_path(1), method: :delete %>
 <br>
 <br>
-<%= link_to 'Print Receipt', new_till_path %>
+<button id="print-receipt">Print Receipt</button>
 <br>
 <br>
+<div id="receipt-message" title="Receipt">
+  <% @receipt.each do |line| %>
+    <%= line %>
+    <br>
+  <% end %>
+  <%= link_to 'New order', till_path(1), method: :delete %>
+</div>
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4" id='middle-col'></div>
+  <div class="col-md-4"></div>
+</div>

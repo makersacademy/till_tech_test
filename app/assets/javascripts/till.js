@@ -1,7 +1,8 @@
-  var items;
 $(document).ready(function(){
 
-  var order = [];
+  var items;
+
+  $('#receipt-message').hide();
 
   $.getJSON('/hipstercoffee.json', function(data) {
     items = data;
@@ -15,7 +16,7 @@ $(document).ready(function(){
         value: items[i]
       });
       button.html(items[i])
-      $('body').append(button);
+      $('#middle-col').append(button);
     }
   });
 
@@ -27,6 +28,18 @@ $(document).ready(function(){
       type: 'POST',
       beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
       data: { "item" : item }
+    });
+      $('#display').append(button[0].value + ", ")
+  });
+
+  $('#print-receipt').click(function() {
+    $( "#receipt-message" ).dialog({
+      modal: true,
+      position: {
+          my: "right bottom",
+          at: "right bottom",
+          of: window
+        }
     });
   });
 
