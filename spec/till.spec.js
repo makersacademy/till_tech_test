@@ -51,6 +51,21 @@ describe('Till receipt', function() {
     expect(tillReceipt.confirmedPostTaxOrderTotal).toEqual(10.32);
   });
 
+  it('records how much the customer has paid and calculates the change due back to the customer', function() {
+    tillReceipt.addToOrder('Cafe Latte');
+    tillReceipt.addToOrder('Flat White');
+    tillReceipt.confirmOrder();
+    tillReceipt.customerPayment(20.00);
+    expect(tillReceipt.changeDueToCustomer).toEqual(9.68);
+  });
+
+  it('throws an error if the customer has underpaid', function() {
+    tillReceipt.addToOrder('Cafe Latte');
+    tillReceipt.addToOrder('Flat White');
+    tillReceipt.confirmOrder();
+    expect(function(){tillReceipt.customerPayment(2.00)}).toThrow(new Error("Yo mama"));
+  });
+
   // it('lets you add multiple amounts of the same item to the order', function() {
   //   tillReceipt.addToOrder('Cafe Latte', 2);
   //   expect(tillReceipt.orderItemsWithPrices).toEqual([{'Cafe Latte': 4.75 },{'Cafe Latte': 4.75 }]);

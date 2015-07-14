@@ -28,6 +28,8 @@ User Stories (Version 1)
 
 
 
+
+
 Testing
 -------
 
@@ -48,9 +50,9 @@ User Stories (Version 2)
 ------------
 
 ```
-As a helpful hipster coffee seller
-So that I don't shortchange my hipster customers
-I would like my till receipt to show how much my hipster customers have paid and how much change they are owed
+	As a helpful hipster coffee seller
+	So that I don't shortchange my hipster customers
+	I would like my till receipt to show how much my hipster customers have paid and how much change they are owed
 
 As a business-minded hipster coffee seller
 So that my hipster customers can enjoy the financial perks of my super hipster coffee shop

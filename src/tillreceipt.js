@@ -1,15 +1,12 @@
 function TillReceipt() {
 
   var nameOfShop;
-  var calculatedTax;
-  var orderItemsWithPrices;
-  var individualOrderPrices;
-  var confirmedPreTaxOrderTotal;
   this.confirmedPostTaxOrderTotal = 0;
   this.confirmedPreTaxOrderTotal = 0;
   this.individualOrderPrices = [];
   this.orderItemsWithPrices = [];
   this.calculatedTax = 0;
+  this.changeDueToCustomer = 0;
 
 // representing json object
   this.items = {"Cafe Latte": 4.75, "Flat White": 4.75, "Cappucino": 3.85,}; 
@@ -37,8 +34,6 @@ function TillReceipt() {
     var itemToAddToOrder = this.createHashOfItemAndPrice(itemName);
     this.orderItemsWithPrices.push(itemToAddToOrder);
   };
-
-// to confirm order, we want to add up and output the values in the orderItemsWithPrices and also
 
   TillReceipt.prototype.confirmOrder = function() {
     this.findOrderTotalBeforeTax();
@@ -69,6 +64,14 @@ function TillReceipt() {
     var itemToAddToOrder = {};
     itemToAddToOrder[itemName] = this.items[itemName];
     return itemToAddToOrder;
+  };
+
+  TillReceipt.prototype.customerPayment = function(amountPaid) {
+    if (amountPaid >= this.confirmedPostTaxOrderTotal) {
+      this.changeDueToCustomer = amountPaid - this.confirmedPostTaxOrderTotal;
+    } else {
+      throw new Error("Yo mama");
+    };
   };
 
 };
