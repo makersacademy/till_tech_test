@@ -5,14 +5,29 @@
     <link rel="stylesheet" href="bower_components/jasmine/lib/jasmine-core/jasmine.css">
   </head>
   <body>
+
     <script src="bower_components/jasmine/lib/jasmine-core/jasmine.js"></script>
     <script src="bower_components/jasmine/lib/jasmine-core/jasmine-html.js"></script>
     <script src="bower_components/jasmine/lib/jasmine-core/boot.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+
+    <script type="text/javascript">
+
+      $(document).ready(function () {
+        details();
+      });
+    </script>
+
+
+    <script src="/src/till.js"></script>
+    <script src="/test/spec/tillSpec.js"></script>
+  </body>
+
+
 
     <!-- include source files here... -->
 
     <!-- include spec files here... -->
-    <script type="text/javascript" src="src/till.js"></script>
-    <script src="test/spec/tillSpec.js"></script>
-  </body>
+
 </html>

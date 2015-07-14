@@ -1,0 +1,26 @@
+{
+  "name": "till_tech_test",
+  "version": "1.0.0",
+  "description": "till tech test ==============",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bagolol/till_tech_test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bagolol/till_tech_test/issues"
+  },
+  "homepage": "https://github.com/bagolol/till_tech_test#readme",
+  "dependencies": {
+    "express": "^4.13.1"
+  }
+}
