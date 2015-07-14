@@ -15,3 +15,11 @@ User Stories for Till Tech Test
 * As a law-abiding citizen
   So that I fund the govt
   I would like to pay tax
+
+* As a money-conscious customer
+  So I can take what is mine
+  I would like to receive change from the till
+
+* As a customer looking to capitalize on promotions
+  So that I can achieve greater satisfaction from my purchase
+  I would like to be able to receive the discounts that the store offers
