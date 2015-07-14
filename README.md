@@ -18,9 +18,9 @@ User Stories (Version 1)
 	So that I can charge my hipster customers the right amount
 	I would like my till receipt to show me the total that my hipster customers owe
 
-As a coffee selling hipster
-So that I can adhere to the not-quite-hipster law
-I would like my till receipt to have a not-too-hipster 8.64% tax added on
+	As a coffee selling hipster
+	So that I can adhere to the not-quite-hipster law
+	I would like my till receipt to have a not-too-hipster 8.64% tax added on
 ```
 
 
@@ -33,6 +33,8 @@ Testing
 
 Tested in Jasmine! To run Jasmine tests from the command line, navigate to the folder that the SpecRunner.html is in and run the command "open SpecRunner.html" to run the Jasmine tests.
 
+
+CURRENTLY WANT TO GET TRAVIS WORKING FOR JAVASCRIPT BUILDS - have bookmarked pages for later
 
 
 

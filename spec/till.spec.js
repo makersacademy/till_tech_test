@@ -36,11 +36,19 @@ describe('Till receipt', function() {
     expect(tillReceipt.orderItemsWithPrices).toEqual([{'Cafe Latte': 4.75 },{'Flat White': 4.75 }]);
   });
 
-  it('adds up the total of each item on the order', function() {
+  it('adds up the total of each item on the order before tax', function() {
     tillReceipt.addToOrder('Cafe Latte');
     tillReceipt.addToOrder('Flat White');
     tillReceipt.confirmOrder();
-    expect(tillReceipt.confirmedOrderTotal).toEqual(9.50);
+    expect(tillReceipt.confirmedPreTaxOrderTotal).toEqual(9.50);
+  });
+
+  it('calculates 8.64% tax to 2dp and adds that to the total', function() {
+    tillReceipt.addToOrder('Cafe Latte');
+    tillReceipt.addToOrder('Flat White');
+    tillReceipt.confirmOrder();
+    expect(tillReceipt.calculatedTax).toEqual(0.82);
+    expect(tillReceipt.confirmedPostTaxOrderTotal).toEqual(10.32);
   });
 
   // it('lets you add multiple amounts of the same item to the order', function() {
