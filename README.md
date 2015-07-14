@@ -1,6 +1,11 @@
 Till tech test
 ==============
 
+
+[![Build Status](https://travis-ci.org/DanielJohnston/till_tech_test.svg)](https://travis-ci.org/DanielJohnston/till_tech_test)
+
+[![Stories in Done](https://badge.waffle.io/DanielJohnston/till_tech_test.svg?label=done&title=Done)](http://waffle.io/DanielJohnston/till_tech_test)
+
 ![a till](/images/till.jpg)
 
 We want to sell tills to local hipster coffee shop who are finally embracing the 21st century. We need a new till to replace their vintage machines - unfortunately, hipster staff are too cool to learn a new system, so we need you to build something that they will understand.
