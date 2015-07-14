@@ -1,4 +1,4 @@
-hiptillio.controller('HipTillioController', [function() {
+hiptillio.controller('HipTillioController', ['$http', 'GetShopDetails', function($http, GetShopDetails) {
   var self = this;
 
   self.orderItems = []
@@ -6,6 +6,13 @@ hiptillio.controller('HipTillioController', [function() {
   self.confirmedItems = []
   self.customerDiscount = 0
   var taxRate = 0.0864
+
+  GetShopDetails.success(function(data) {
+    self.menu = data
+    console.log(self.menu)
+  }).error(function(data, status){
+      console.log("Error")
+  });
 
   self.addItem = function(newItem) {
     self.newItem = {itemName: newItem, price: self.menu[0].prices[0][newItem]}
@@ -18,7 +25,7 @@ hiptillio.controller('HipTillioController', [function() {
       self.orderCount[key] = (self.orderCount[key] || 0) + 1
     });
 
-    //refactor out method > build final order
+    //how refactor this out into separate method whilst still handling asychronicity?
     for (item in self.orderCount) {
       var finalOrderItem = {itemName: item, price: self.menu[0].prices[0][item], quantity: self.orderCount[item]}
       self.confirmedItems.push(finalOrderItem)
@@ -35,7 +42,6 @@ hiptillio.controller('HipTillioController', [function() {
     })
 
     self.totalItemCost = parseFloat(self.totalItemCost * (1 - self.customerDiscount/100)).toFixed(2)
-    console.log(self.totalItemCost);
 
     //refactor out method > calculate proportion that is tax
     self.taxCost = parseFloat(self.totalItemCost * taxRate).toFixed(2);
@@ -44,31 +50,10 @@ hiptillio.controller('HipTillioController', [function() {
     self.change = parseFloat(self.customerPayment - self.totalItemCost).toFixed(2);
   }
 
-  //refactor into an API
-  self.menu = [
-      {
-        "shopName": "The Coffee Connection",
-        "address": "123 Lakeside Way",
-        "phone": "16503600708",
-        "prices": [
-          {
-            "Cafe Latte": 4.75,
-            "Flat White": 4.75,
-            "Cappucino": 3.85,
-            "Single Espresso": 2.05,
-            "Double Espresso": 3.75,
-            "Americano": 3.75,
-            "Cortado": 4.55,
-            "Tea": 3.65,
-            "Choc Mudcake": 6.40,
-            "Choc Mousse": 8.20,
-            "Affogato": 14.80,
-            "Tiramisu": 11.40,
-            "Blueberry Muffin": 4.05,
-            "Chocolate Chip Muffin": 4.05,
-            "Muffin Of The Day": 4.55
-          }
-        ]
-      }
-    ]
+  // function buildFinalOrder(orderCount) {
+  //   for (item in orderCount) {
+  //     var finalOrderItem = {itemName: item, price: self.menu[0].prices[0][item], quantity: self.orderCount[item]}
+  //     self.confirmedItems.push(finalOrderItem)
+  //   }
+  // }
 }])
