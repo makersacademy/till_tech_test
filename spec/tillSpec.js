@@ -1,30 +1,26 @@
 describe('Till', function(){
 
+  beforeEach(function(){
+    till = new Till();
+  });
 
-  describe('first block', function(){
-
-      var till = new Till();
+  describe('list of items on receipt', function(){
 
       it('produces a receipt with a list of items bought', function(){
 
       till.ring('Cafe Latte');
       till.ring('Flat White');
 
-      //expect(till.receipt).toHaveMember('Cafe Latte');
+      expect(Object.keys(till.receipt)).toContain('Cafe Latte');
+      //turns receipt object into an array that toContain can be called on
 
     });
 
-  });
-
-  describe('second block', function(){
-
-      var till = new Till();
-
       it('produces a line total with items', function(){
 
-      till.ring('Cafe Latte', 2);
+      till.ring('Tea', 2);
 
-      expect(till.receipt).toEqual({'Cafe Latte': '2 x 4.75'})
+      expect(till.receipt.Tea).toEqual('2 x 3.65')
 
     });
 
@@ -32,21 +28,17 @@ describe('Till', function(){
 
   describe('total cost', function(){
 
-    var till = new Till();
-
     it('calculates the total cost of all items', function(){
 
       till.ring('Chocolate Chip Muffin', 2);
       till.ring('Tea');
 
-      expect(till.totalCost).toEqual(11.75);
+      expect(till.receipt.totalCost).toEqual(11.75);
     })
 
   })
 
   describe('tax', function(){
-
-    var till = new Till();
 
     it('calculates amount to be paid in tax ', function(){
 
@@ -55,7 +47,7 @@ describe('Till', function(){
 
       till.calculateTax();
 
-      expect(till.tax).toEqual(1.6848);
+      expect(till.receipt.tax).toEqual(1.6848);
     })
   })
 

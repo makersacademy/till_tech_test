@@ -1,11 +1,11 @@
 function Till(){
 
   this.receipt = {};
-  this.totalCost = 0;
+
+  this.receipt.totalCost = 0;
+  this.receipt.tax = 0;
 
   tax_rate = 0.0864;
-
-  this.tax = 0;
 
 }
 
@@ -15,10 +15,10 @@ Till.prototype.ring = function(item, quantity) {
 
   this.receipt[item] = quantity + ' x ' + price
 
-  this.totalCost += quantity*price
+  this.receipt.totalCost += quantity*price
 };
 
 Till.prototype.calculateTax = function(){
-  this.tax = tax_rate*this.totalCost
-  return this.tax;
+  this.receipt.tax = tax_rate*this.receipt.totalCost
+  return this.receipt.tax;
 }
