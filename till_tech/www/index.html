@@ -43,6 +43,18 @@
             {{item.itemName}}, {{item.price}}
           </ion-item>
         </ion-list>
+
+        <div class="customerpays">
+          <label class="item item-input">
+            <input type="text" placeholder="Customer Payment" ng-model="HipTillCtrl.customerPayment">
+          </label>
+          Customer Discount %
+          <label class="item item-input">
+            <input type="text" placeholder="Customer Discount" ng-model="HipTillCtrl.customerDiscount">
+          </label>
+            <input type="submit" id="addPayment"></input>
+        </div>
+
         <button class="button button-positive" ng-click="HipTillCtrl.completeOrder()">
           Complete Order
         </button>
@@ -51,9 +63,15 @@
             {{item.itemName}}, {{item.price}} * {{item.quantity}}
           </ion-item>
         </ion-list>
+
+        <span id='totalcost'>Total: {{HipTillCtrl.totalItemCost}}</span>
+        <br>
         <span id="taxcost">Tax: {{HipTillCtrl.taxCost}}</span>
         <br>
-        <span id="totalcost"> Total Cost: {{HipTillCtrl.totalItemCost}} </span>
+        <span id="cash"> Cash: {{HipTillCtrl.customerPayment}} </span>
+        <br>
+        <span id="change"> Change: {{HipTillCtrl.change}} </span>
+
       </ion-content>
     </ion-pane>
   </body>

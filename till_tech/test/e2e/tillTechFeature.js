@@ -8,6 +8,8 @@ describe('HipTillio', function() {
    var addOrderButton = element(by.id('addOrder'))
    var addOrderField = element(by.model('HipTillCtrl.item'))
    var confirmOrderButton = element(by.className('button-positive'))
+   var addCustomerPaymentButton = element(by.id('addPayment'))
+   var addCustomerPaymentField = element(by.model('HipTillCtrl.customerPayment'))
    var longlistItems = element.all(by.repeater('item in HipTillCtrl.orderItems'));
    var finalorderItems = element.all(by.repeater('item in HipTillCtrl.confirmedItems'));
 
@@ -33,6 +35,7 @@ describe('HipTillio', function() {
    });
 
    xit('displays the total cost of food items before tax when order is completed', function() {
+      //asychronicity issue - how resolve?
       addOrderField.sendKeys('Americano')
       addOrderButton.click()
       addOrderField.sendKeys('Cafe Latte')
@@ -52,7 +55,31 @@ describe('HipTillio', function() {
        expect(taxCost.getText()).toContain('0.32')
    });
 
-   xit('displays the amount of change due after customer has provided payment', function() {
+   it('displays the amount of cash given and change due after customer has provided payment', function() {
+       addOrderField.sendKeys('Americano')
+       addOrderButton.click()
+       addCustomerPaymentField.sendKeys('4.00')
+       addCustomerPaymentButton.click()
+       confirmOrderButton.click()
+       var cash = element(by.id('cash'))
+       var change = element(by.id('change'))
 
+       expect(cash.getText()).toContain('4.00')
+       expect(change.getText()).toContain('0.25')
+   });
+
+   it('displays total after a discount is applied', function() {
+       var addCustomerDiscountField = element(by.model('HipTillCtrl.customerDiscount'))
+       addOrderField.sendKeys('Americano')
+       addOrderButton.click()
+       addCustomerPaymentField.sendKeys('4.00')
+       addCustomerDiscountField.sendKeys('5')
+       addCustomerPaymentButton.click()
+       confirmOrderButton.click()
+       var totalCost = element(by.id('totalcost'))
+       expect(totalCost.getText()).toContain('3.56')
    });
 });
+
+
+

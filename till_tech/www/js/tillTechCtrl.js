@@ -4,6 +4,7 @@ hiptillio.controller('HipTillioController', [function() {
   self.orderItems = []
   self.orderCount = {}
   self.confirmedItems = []
+  self.customerDiscount = 0
   var taxRate = 0.0864
 
   self.addItem = function(newItem) {
@@ -33,8 +34,14 @@ hiptillio.controller('HipTillioController', [function() {
       return x + y;
     })
 
+    self.totalItemCost = parseFloat(self.totalItemCost * (1 - self.customerDiscount/100)).toFixed(2)
+    console.log(self.totalItemCost);
+
     //refactor out method > calculate proportion that is tax
     self.taxCost = parseFloat(self.totalItemCost * taxRate).toFixed(2);
+
+    //refactor out method > calculate change
+    self.change = parseFloat(self.customerPayment - self.totalItemCost).toFixed(2);
   }
 
   //refactor into an API
