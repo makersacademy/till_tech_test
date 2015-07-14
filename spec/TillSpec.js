@@ -1,24 +1,32 @@
 describe('Till', function(){
 
+  var till;
+
   beforeEach(function() {
     till = new Till();
   });
 
-  describe('has a default', function() {
-    it('total of 0', function() {
-      expect(till.total).toBe(0);
+  describe('can display', function() {
+    it('the shop name', function(done) {
+      till.loadDetails().done(function() {
+        expect(till.shopName).toEqual('The Coffee Connection');
+        done();
+      });
     });
 
-    it('empty order', function() {
-      expect(till.order).toEqual([]);
+    it('the address', function(done) {
+      till.loadDetails().done(function() {
+        expect(till.address).toEqual('123 Lakeside Way');
+        done();
+      });
+    });
+
+    it('the phone number', function(done) {
+      till.loadDetails().done(function() {
+        expect(till.phone).toEqual('16503600708');
+        done();
+      });
     });
   });
-
-  // describe('can add to order', function() {
-  //   it('1 x Cafe Latte', function() {
-  //     till.addItem('Cafe Latte');
-  //     expect(till.callTotal()).toEqual(4.75);
-  //   });
-  // });
 
 });

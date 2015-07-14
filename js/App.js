@@ -1,5 +1,8 @@
 $(document).ready(function() {
-  till = new Till;
-  till.addItem('Cafe Latte');
-  till.callTotal();
+  var till = new Till;
+  till.loadDetails()
+  .done(function() {
+    var order = new Order;
+    order.addItem('Cafe Latte');
+  });
 });
