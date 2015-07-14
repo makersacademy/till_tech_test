@@ -1,18 +1,22 @@
 Till tech test
 ==============
 
+## Completion status
 
-[![Build Status](https://travis-ci.org/DanielJohnston/till_tech_test.svg)](https://travis-ci.org/DanielJohnston/till_tech_test)
+Travis CI status: [![Build Status](https://travis-ci.org/DanielJohnston/till_tech_test.svg)](https://travis-ci.org/DanielJohnston/till_tech_test)
 
-[![Stories in Done](https://badge.waffle.io/DanielJohnston/till_tech_test.svg?label=done&title=Done)](http://waffle.io/DanielJohnston/till_tech_test)
+Waffle.io status: [![Stories in Done](https://badge.waffle.io/DanielJohnston/till_tech_test.svg?label=done&title=Done)](http://waffle.io/DanielJohnston/till_tech_test)
+
+The project uses Travis CI to test features as they were being built and submitted, Hound to check styling, and Waffle.io to manage the user stories and development tasks. The following user stories have been completed, in order:
+
+[] As a customer, so I can select the items I would like to purchase, I would like to see a price list for the coffee shop
+[] As a staff member, so I can calculate an order total, I would like to place an order using the price list and see the total
+
+## Original tech test specification
 
 ![a till](/images/till.jpg)
 
 We want to sell tills to local hipster coffee shop who are finally embracing the 21st century. We need a new till to replace their vintage machines - unfortunately, hipster staff are too cool to learn a new system, so we need you to build something that they will understand.
-
-
-
-## Original tech test specification
 
 Specification
 -------------
