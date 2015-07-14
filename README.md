@@ -4,6 +4,7 @@ Till tech test
 
 [![Build Status](https://travis-ci.org/DanielJohnston/till_tech_test.svg)](https://travis-ci.org/DanielJohnston/till_tech_test)
 
+[![Stories in Done](https://badge.waffle.io/DanielJohnston/till_tech_test.svg?label=done&title=Done)](http://waffle.io/DanielJohnston/till_tech_test)
 
 ![a till](/images/till.jpg)
 
