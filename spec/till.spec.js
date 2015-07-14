@@ -66,8 +66,8 @@ describe('Till receipt', function() {
     expect(function(){tillReceipt.customerPayment(2.00)}).toThrow(new Error("Yo mama"));
   });
 
-  // it('lets you add multiple amounts of the same item to the order', function() {
-  //   tillReceipt.addToOrder('Cafe Latte', 2);
-  //   expect(tillReceipt.orderItemsWithPrices).toEqual([{'Cafe Latte': 4.75 },{'Cafe Latte': 4.75 }]);
-  // });
+  it('lets you add multiple amounts of the same item to the order', function() {
+    tillReceipt.addToOrder('Cafe Latte', 2);
+    expect(tillReceipt.orderItemsWithPrices).toEqual([{'Cafe Latte': 4.75 },{'Cafe Latte': 4.75 }]);
+  });
 });

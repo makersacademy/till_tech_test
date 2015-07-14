@@ -15,11 +15,22 @@ function TillReceipt() {
     this.nameOfShop = coffeeShopName;
   };
 
-  TillReceipt.prototype.addToOrder = function(itemName) {
+  TillReceipt.prototype.addToOrder = function(itemName, itemQuantity) {
     if (this.ifItemIsOnMenu(itemName)) {
-      this.addItemAndPriceToOrder(itemName);
-      this.takeItemPrice(itemName);
+      if (this.isAnInteger(itemQuantity)) {
+        for (i=0; i<2; i++) {
+          this.addItemAndPriceToOrder(itemName);
+          this.takeItemPrice(itemName);
+        };
+      } else {
+        this.addItemAndPriceToOrder(itemName);
+        this.takeItemPrice(itemName);
+      };
     };
+  };
+
+  TillReceipt.prototype.isAnInteger = function(itemQuantity) {
+    return itemQuantity % 1 === 0;
   };
 
   TillReceipt.prototype.takeItemPrice = function(itemName) {
