@@ -36,6 +36,11 @@ feature 'Hipster using the till' do
       expect(current_path).to eq '/till/new'
     end
 
+    scenario 'Cannot take payment if insufficient funds', js: true do
+      click_button '5'
+      expect(page).not_to have_button'Pay'
+    end
+
     scenario 'Prints the receipt for the order', js: true do
       click_button '1'
       click_button '5'
