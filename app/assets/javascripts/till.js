@@ -41,6 +41,11 @@ $(document).ready(function(){
         price -= discount
       }
       total += price
+      if(total > 50) {
+        var discount = (total / 100) * 5
+        $('#item-display').append('5% Discount -£' + discount.toFixed(2))
+        total -= discount
+      }
       $('#total').html('<h3>' + 'Total: £' + total.toFixed(2) + '</h3>')
       $('.number').removeAttr('disabled');
       var amount = $('#payment').html();

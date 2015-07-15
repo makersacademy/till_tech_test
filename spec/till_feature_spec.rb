@@ -28,6 +28,12 @@ feature 'Hipster using the till' do
       expect(page).to have_content 'Total: £3.64'
     end
 
+    scenario 'Discounts for orders over £50', js: true do
+      4.times { click_button 'Affogato' }
+      expect(page).to have_content '5% Discount -£2.96'
+      expect(page).to have_content 'Total: £56.24'
+    end
+
   end
 
   context 'Payments' do
