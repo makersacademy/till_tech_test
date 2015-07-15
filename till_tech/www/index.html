@@ -73,20 +73,34 @@
             </div>
         </div>
 
-        <div class="list list-inset">
-          <div class="item" ng-repeat="item in HipTillCtrl.confirmedItems">
-            {{item.itemName}}, {{item.price}} * {{item.quantity}}
+        <div class="list card">
+          <div class="item item-divider">
+            Receipt
           </div>
+
+          <div class="list list-inset">
+            <div class="item" ng-repeat="item in HipTillCtrl.confirmedItems">
+              {{item.itemName}}, {{item.price}} * {{item.quantity}}
+            </div>
+          </div>
+
+          <a href="#" class="item item-icon-left" id='totalcost'>
+            <i class="icon ion-card"></i>
+            Total: {{HipTillCtrl.totalItemCost}}
+          </a>
+          <a href="#" class="item item-icon-left" id='taxcost'>
+            <i class="icon ion-sad-outline"></i>
+            Tax: {{HipTillCtrl.taxCost}}
+          </a>
+          <a href="#" class="item item-icon-left" id='cash'>
+            <i class="icon ion-cash"></i>
+            Cash: {{HipTillCtrl.customerPayment}}
+          </a>
+          <a href="#" class="item item-icon-left" id='change'>
+            <i class="icon ion-happy-outline"></i>
+            Change: {{HipTillCtrl.change}}
+          </a>
         </div>
-
-        <span id='totalcost'>Total: {{HipTillCtrl.totalItemCost}}</span>
-        <br>
-        <span id="taxcost">Tax: {{HipTillCtrl.taxCost}}</span>
-        <br>
-        <span id="cash"> Cash: {{HipTillCtrl.customerPayment}} </span>
-        <br>
-        <span id="change"> Change: {{HipTillCtrl.change}} </span>
-
       </ion-content>
     </ion-pane>
   </body>
