@@ -1,1 +1,5 @@
-<%= @cafe_hash %>
+<ul>
+<% @cafe_prices.each do |item, price| %>
+  <li><%= item %> - <%= price %></li>
+<% end %>
+</ul>

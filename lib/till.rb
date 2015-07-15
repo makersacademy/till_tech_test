@@ -1,14 +1,19 @@
 require 'sinatra/base'
 require 'json'
 
+
 class Till < Sinatra::Base
 
+  set :public_folder, 'public'
   set :views, proc { File.join(root, '..', 'views') }
 
   get '/' do
-    'Hello Till!'
     file = File.read('hipstercoffee.json')
-    @cafe_hash = JSON.parse(file)
+    cafe_hash = JSON.parse(file).first
+    @cafe_name = cafe_hash["shopName"]
+    @cafe_address = cafe_hash["address"]
+    @cafe_phone = cafe_hash["phone"]
+    @cafe_prices = cafe_hash["prices"][0]
     erb :index
   end
 
