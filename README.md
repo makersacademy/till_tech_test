@@ -96,7 +96,8 @@ Setup:
 - Simple HTTP server using Connect and ServeStatic: `npm install connect serve-static`
 - Create server.js file as included.
 - Run with Node.js: `node server.js`
-- Visit `http://localhost:8080/till/html`
+- Visit `http://localhost:8080/till.html`
+- Run Jasmine tests on server `http://localhost:8080/SpecRunner.html`
 
 
 Links:

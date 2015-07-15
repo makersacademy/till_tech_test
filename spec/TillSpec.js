@@ -27,6 +27,14 @@ describe('Till', function(){
         done();
       });
     });
+
+    it('price of an item', function(done) {
+      till.loadDetails().done(function() {
+        expect(till.menu['Cafe Latte']).toEqual(4.75);
+        done();
+      });
+    });
+
   });
 
 });
