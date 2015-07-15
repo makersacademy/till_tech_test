@@ -4,7 +4,6 @@ describe('HipTillio', function() {
       browser.get('http://localhost:8100');
    });
 
-   var header = element(by.id('hiptillio'))
    var addOrderButton = element(by.id('addOrder'))
    var addOrderField = element(by.model('HipTillCtrl.item'))
    var confirmOrderButton = element(by.className('button-positive'))
@@ -12,10 +11,6 @@ describe('HipTillio', function() {
    var addCustomerPaymentField = element(by.model('HipTillCtrl.customerPayment'))
    var longlistItems = element.all(by.repeater('item in HipTillCtrl.orderItems'));
    var finalorderItems = element.all(by.repeater('item in HipTillCtrl.confirmedItems'));
-
-   it('has a header with HipTillio', function() {
-      expect(header.getText()).toContain('HipTillio');
-   });
 
    it('displays a list of added items with names and prices for an order as being built', function() {
       addOrderField.sendKeys('Americano')

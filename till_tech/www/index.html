@@ -26,44 +26,58 @@
   <body ng-app="hiptillio" ng-controller="HipTillioController as HipTillCtrl">
 
     <ion-pane>
-      <ion-header-bar class="bar-stable">
+      <ion-header-bar class="bar bar-header bar-stable">
         <h1 class="title">HipTillio</h1>
       </ion-header-bar>
       <ion-content>
-        <h1 id="hiptillio"> HipTillio </h1>
+      <div class="list">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Customer Order Items</span>
+          <input type="text" placeholder="What items were in the order?" ng-model="HipTillCtrl.item">
+        </label>
+        <div class="row">
+            <div class="col text-center">
+              <button class="button button-positive" ng-click="HipTillCtrl.addItem(HipTillCtrl.item)" id="addOrder"> Add Item
+              </button>
+            </div>
+         </div>
+      </div>
 
-        <div class="list">
-          <label class="item item-input">
-            <input type="text" placeholder="Order" ng-model="HipTillCtrl.item">
-          </label>
-            <input type="submit" ng-click="HipTillCtrl.addItem(HipTillCtrl.item)" id="addOrder"></input>
+        <div class="list list-inset">
+          <div class="item" ng-repeat="item in HipTillCtrl.orderItems">
+            {{item.itemName}}, {{item.price}}
+          </div>
         </div>
 
-        <ion-list class="longlist">
-          <ion-item ng-repeat="item in HipTillCtrl.orderItems">
-            {{item.itemName}}, {{item.price}}
-          </ion-item>
-        </ion-list>
-
-        <div class="customerpays">
-          <label class="item item-input">
-            <input type="text" placeholder="Customer Payment" ng-model="HipTillCtrl.customerPayment">
+        <div class="customerpays list">
+          <label class="item item-input item-stacked-label">
+          <span class="input-label">Customer Payment</span>
+            <input type="text" placeholder="How much cash did the customer give?" ng-model="HipTillCtrl.customerPayment">
           </label>
-          Customer Discount %
-          <label class="item item-input">
+          <label class="item item-input item-stacked-label">
+          <span class="input-label">Customer Discount (%)</span>
             <input type="text" placeholder="Customer Discount" ng-model="HipTillCtrl.customerDiscount">
           </label>
-            <input type="submit" id="addPayment"></input>
+          <div class="row">
+            <div class="col text-center">
+              <button class="center button button-positive" id="addPayment">Process Customer Details </button>
+            </div>
+          </div>
         </div>
 
-        <button class="button button-positive" ng-click="HipTillCtrl.completeOrder()">
-          Complete Order
-        </button>
-        <ion-list class="finalorder">
-          <ion-item ng-repeat="item in HipTillCtrl.confirmedItems">
+        <div class="row">
+            <div class="col text-center">
+                <button class="button button-assertive" ng-click="HipTillCtrl.completeOrder()">
+                  Complete Order
+                </button>
+            </div>
+        </div>
+
+        <div class="list list-inset">
+          <div class="item" ng-repeat="item in HipTillCtrl.confirmedItems">
             {{item.itemName}}, {{item.price}} * {{item.quantity}}
-          </ion-item>
-        </ion-list>
+          </div>
+        </div>
 
         <span id='totalcost'>Total: {{HipTillCtrl.totalItemCost}}</span>
         <br>

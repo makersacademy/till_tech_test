@@ -14,7 +14,7 @@ hiptillio.controller('HipTillioController', ['$http', 'GetShopDetails', function
       console.log("Error")
   });
 
-  self.addItem = function(newItem) {
+  self.addItem = function(newItem, quantity) {
     self.newItem = {itemName: newItem, price: self.menu[0].prices[0][newItem]}
     self.orderItems.push(self.newItem);
   }
