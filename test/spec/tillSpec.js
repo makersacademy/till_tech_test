@@ -15,6 +15,7 @@ describe ('Till', function(){
             "Cappucino": 3.85,
             "Single Espresso": 2.05,
             "Double Espresso": 3.75,
+            "Blueberry Muffin": 4.05
           }
         ]
       }
@@ -51,7 +52,7 @@ describe ('Till', function(){
   it ('can calculate the taxes on the total', function(){
     till.calculateTotal("Cappucino", 2);
     till.calculateTaxes();
-    expect(till.taxes).toEqual(0.7);
+    expect(till.taxes).toEqual(0.67);
   });
 
   it ('can show a list of ordered drinks', function(){
@@ -65,4 +66,50 @@ describe ('Till', function(){
     var note = 20;
     expect(till.calculateChange(note)).toEqual(12.3);
   });
+
+  it ('can apply a discount for orders over $50', function(){
+    till.calculateTotal("Flat White", 11);
+    expect(till.total).toEqual(49.64);
+  });
+
+  it ('can apply a discount to specific items (muffins)', function() {
+    till.calculateTotal("Blueberry Muffin", 2)
+    expect(till.total).toEqual(7.28);
+  });
+
+  it ('can apply a discount to specific items (muffins) and for orders over $50', function() {
+    till.calculateTotal("Blueberry Muffin", 2)
+    till.calculateTotal("Flat White", 5)
+    till.calculateTotal("Double Espresso", 7)
+    expect(till.total).toEqual(54.42);
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
