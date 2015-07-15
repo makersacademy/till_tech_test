@@ -21,3 +21,9 @@ Till.prototype.displayTotal = function(order) {
   }
   return total;
 };
+
+Till.prototype.displayTax = function(order) {
+  var total = this.displayTotal(order);
+  var tax = parseFloat((total / 100 * 8.64).toFixed(2));
+  return tax;
+};
