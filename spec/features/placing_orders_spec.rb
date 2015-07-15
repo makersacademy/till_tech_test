@@ -33,4 +33,11 @@ feature 'Placing An Order' do
     end
   end
 
+  scenario 'I can select an item from the list' do
+    visit '/'
+    @testmenu.each_key do |key|
+      expect(page).to have_selector(:link_or_button, key)
+    end
+  end
+
 end
