@@ -14,50 +14,31 @@ $(document).ready(function(){
   .done(function() {
     $('#shop-name').text(menu[0].shopName);
     var items = Object.keys(menu[0].prices[0])
-    for (i = 0; i < items.length; i ++) {
-      var button = $('<button/>').attr({
-        class: "shop-items",
-        value: items[i]
-      });
-      button.html(items[i])
-      $('#middle-col').append(button);
-    }
+    createItemButtons(items);
   });
 
   $('body').on('click', '.shop-items', function() {
-    var item = $(this)[0].value
-    $.ajax({ url: '/till',
-      type: 'POST',
-      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-      data: { "item" : item }
-    });
-      var price = menu[0].prices[0]
-      price = price[item]
-      $('#item-display').append(item + " £" + price.toFixed(2) + "<br>")
 
-      if($(this)[0].value.match(/Muffin/)) {
-        var discount = (price / 100) * 10
-        $('#item-display').append('10% Muffin Discount -£' + discount.toFixed(2) + "<br>")
-        price -= discount
-      }
-      total += price
-      if(total > 50) {
-        var discount = (total / 100) * 5
-        $('#item-display').append('5% Discount -£' + discount.toFixed(2))
-        total -= discount
-      }
-      $('#total').html('<h3>' + 'Total: £' + total.toFixed(2) + '</h3>')
-      $('.number').removeAttr('disabled');
-      var amount = $('#payment').html();
-      amount = amount.substring(1)
-      amount = parseFloat(amount)
-      if(amount < total) {
-        $('#pay').fadeOut(1000);
-      }
-  });
+    var item = $(this)[0].value;
+    sendData(item);
 
-  $('#print-receipt').click(function() {
-    $('#receipt-message').show();
+    var price = menu[0].prices[0]
+    price = price[item]
+    $('#item-display').append(item + " £" + price.toFixed(2) + "<br>")
+
+    if ($(this)[0].value.match(/Muffin/)) { price -= muffinDiscount(price); }
+
+    total += price
+
+    if (total > 50) { total -= bigOrderDiscount(total); }
+
+    $('#total').html('<h3>' + 'Total: £' + total.toFixed(2) + '</h3>')
+    $('.number').removeAttr('disabled');
+    var amount = $('#payment').html();
+    amount = parseFloat(amount.substring(1))
+    if(amount < total) {
+      $('#pay').fadeOut(1000);
+    }
   });
 
   $('.number').click(function() {
@@ -81,3 +62,34 @@ $(document).ready(function(){
   });
 
 });
+
+function createItemButtons(items) {
+  for (i = 0; i < items.length; i ++) {
+    var button = $('<button/>').attr({
+      class: "shop-items",
+      value: items[i]
+    });
+    button.html(items[i])
+    $('#middle-col').append(button);
+  }
+}
+
+function sendData(item) {
+  $.ajax({ url: '/till',
+    type: 'POST',
+    beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+    data: { "item" : item }
+  });
+}
+
+function muffinDiscount(price) {
+  var discount = (price / 100) * 10
+  $('#item-display').append('10% Muffin Discount -£' + discount.toFixed(2) + "<br>")
+  return discount;
+}
+
+function bigOrderDiscount(total) {
+  var discount = (total / 100) * 5
+  $('#discount').append('5% Discount -£' + discount.toFixed(2))
+  return discount
+}

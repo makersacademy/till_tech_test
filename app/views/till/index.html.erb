@@ -6,8 +6,15 @@
   <div class="col-md-4">
     <div id='total'></div>
     <div id='item-display'></div>
+    <br>
+    <div id='discount'></div>
   </div>
   <div class="col-md-4" id='middle-col'>
+    <button class='btb btn-success' id="pay">Pay</button> <%= link_to 'Cancel Order', till_path(1), method: :delete %>
+    <br>
+    <br>
+  </div>
+  <div class="col-md-4">
     <% for x in 1..9 %>
       <button class='number' value='<%= 10 - x %>'><%= 10 - x %></button>
       <% if x % 3 == 0 %>
@@ -17,13 +24,8 @@
     <button class='number' id='decimal' value='.'>.</button>
     <button class='number' id='zero' value='0'>0</button>
     <button class='number' id='double-zero' value='00'>00</button>
+    <br>
+    <br>
     <button class='number' id='clear'>Clear</button>
-    <br>
-    <br>
-    <button class='btb btn-success' id="pay">Pay</button> <%= link_to 'Cancel Order', till_path(1), method: :delete %>
-    <br>
-    <br>
-  </div>
-  <div class="col-md-4">
   </div>
 </div>
