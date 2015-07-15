@@ -13,12 +13,12 @@ describe('Order', function(){
   });
 
   describe('can add to order', function() {
-    it('one item and display quantity', function() {
+    it('1 x Cafe Latte and display quantity', function() {
       order.addItem('Cafe Latte');
       expect(order.items['Cafe Latte']).toEqual(1);
     });
 
-    it('two items and display quantity', function() {
+    it('2 x Cafe Lattes and display quantity', function() {
       order.addItem('Cafe Latte');
       order.addItem('Cafe Latte');
       expect(order.items['Cafe Latte']).toEqual(2);
