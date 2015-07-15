@@ -6,6 +6,7 @@ $(document).ready(function(){
 
   $('#receipt-message').hide();
   $('#pay').hide();
+  $('.number').attr('disabled', 'disabled');
 
   $.getJSON('/hipstercoffee.json', function(data) {
     menu = data;
@@ -35,6 +36,13 @@ $(document).ready(function(){
       $('#item-display').append(item + " £" + price.toFixed(2) + "<br>")
       total += price
       $('#total').html('<h3>' + 'Total: £' + total.toFixed(2) + '</h3>')
+      $('.number').removeAttr('disabled');
+      var amount = $('#payment').html();
+      amount = amount.substring(1)
+      amount = parseFloat(amount)
+      if(amount < total) {
+        $('#pay').fadeOut(1000);
+      }
   });
 
   $('#print-receipt').click(function() {
@@ -47,14 +55,13 @@ $(document).ready(function(){
       amount = amount.substring(1)
       amount = parseFloat(amount)
       if(amount >= total && total != 0) {
-        console.log('hello')
         $('#pay').fadeIn(1000);
       }
   });
 
   $('#pay').click(function() {
-    var amount = $('#payment').html();
-    window.location.href = "/till/new?amount=" + amount;
+    var tender = $('#payment').html();
+    window.location.href = "/till/new?tender=" + tender;
   })
 
 });

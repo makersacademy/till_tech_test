@@ -22,9 +22,9 @@ class TillController < ApplicationController
     @items.each do |i|
       till.add_item(i.description, 1)
     end
-    amount = params[:amount]
-    amount.slice!(0)
-    till.pay(amount.to_f)
+    tender = params[:tender]
+    tender.slice!(0)
+    till.pay(tender.to_f)
     @receipt = till.receipt
   end
 

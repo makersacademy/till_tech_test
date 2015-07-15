@@ -16,6 +16,9 @@ feature 'Hipster using the till' do
     expect(page).to have_content 'Flat White £4.75'
   end
 
+  scenario 'Cannot take payment before ordering', js: true do
+    expect(page).to have_button('5', disabled: true)
+  end
 
   context 'Payments' do
 
@@ -38,7 +41,15 @@ feature 'Hipster using the till' do
 
     scenario 'Cannot take payment if insufficient funds', js: true do
       click_button '5'
-      expect(page).not_to have_button'Pay'
+      expect(page).not_to have_button 'Pay'
+    end
+
+    scenario 'Hides pay button again if insufficient funds', js: true do
+      click_button '1'
+      click_button '5'
+      expect(page).to have_button 'Pay'
+      click_button 'Tea'
+      expect(page).not_to have_button 'Pay'
     end
 
     scenario 'Prints the receipt for the order', js: true do
