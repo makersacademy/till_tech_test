@@ -54,13 +54,13 @@ User Stories (Version 2)
 	So that I don't shortchange my hipster customers
 	I would like my till receipt to show how much my hipster customers have paid and how much change they are owed
 
-As a business-minded hipster coffee seller
-So that my hipster customers can enjoy the financial perks of my super hipster coffee shop
-I would like to give them a 5% discount on orders over £50
+	As a business-minded hipster coffee seller
+	So that my hipster customers can enjoy the financial perks of my super hipster coffee shop
+	I would like to give them a 5% discount on orders over £50
 
-As a business-minded hipster coffee seller
-So that my hipster customers can enjoy the financial perks of my super hipster coffee shop
-I would like to give them a 10% discount on their total order price when they buy a muffin
+	As a business-minded hipster coffee seller
+	So that my hipster customers can enjoy the financial perks of my super hipster coffee shop
+	I would like to give them a 10% discount on their total order price when they buy a muffin
 
 As a time travelling hipster coffee lord
 So that my hipster customers and I can keep track of our history together

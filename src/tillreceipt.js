@@ -3,13 +3,14 @@ function TillReceipt() {
   var nameOfShop;
   this.confirmedPostTaxOrderTotal = 0;
   this.confirmedPreTaxOrderTotal = 0;
+  this.individualOrderItems = [];
   this.individualOrderPrices = [];
   this.orderItemsWithPrices = [];
   this.calculatedTax = 0;
   this.changeDueToCustomer = 0;
 
 // representing json object
-  this.items = {"Cafe Latte": 4.75, "Flat White": 4.75, "Cappucino": 3.85,}; 
+  this.items = {"Cafe Latte": 4.75, "Flat White": 4.75, "Cappucino": 3.85, "Blueberry Muffin": 4.05, "Chocolate Chip Muffin": 4.05, "Muffin Of The Day": 4.55}; 
 
   TillReceipt.prototype.nameOfCoffeeShop = function(coffeeShopName) {
     this.nameOfShop = coffeeShopName;
@@ -18,15 +19,19 @@ function TillReceipt() {
   TillReceipt.prototype.addToOrder = function(itemName, itemQuantity) {
     if (this.ifItemIsOnMenu(itemName)) {
       if (this.isAnInteger(itemQuantity)) {
-        for (i=0; i<2; i++) {
-          this.addItemAndPriceToOrder(itemName);
-          this.takeItemPrice(itemName);
+        for (i=0; i<itemQuantity; i++) {
+          this.addItemToOrderAndNotePrice(itemName);
         };
       } else {
-        this.addItemAndPriceToOrder(itemName);
-        this.takeItemPrice(itemName);
+        this.addItemToOrderAndNotePrice(itemName);
       };
     };
+  };
+
+  TillReceipt.prototype.addItemToOrderAndNotePrice = function(itemName) {
+    this.addItemAndPriceToOrder(itemName);
+    this.takeItemPrice(itemName);
+    this.takeItemName(itemName);
   };
 
   TillReceipt.prototype.isAnInteger = function(itemQuantity) {
@@ -35,6 +40,10 @@ function TillReceipt() {
 
   TillReceipt.prototype.takeItemPrice = function(itemName) {
     this.individualOrderPrices.push(this.items[itemName]);
+  };
+
+  TillReceipt.prototype.takeItemName = function(itemName) {
+    this.individualOrderItems.push(itemName);
   };
 
   TillReceipt.prototype.ifItemIsOnMenu = function(itemName) {
@@ -47,15 +56,41 @@ function TillReceipt() {
   };
 
   TillReceipt.prototype.confirmOrder = function() {
-    this.findOrderTotalBeforeTax();
+    this.calcOrderTotalBeforeTax();
     this.calculateTax();
-    this.findOrderTotalWithTax();
+    this.calcOrderTotalWithTax();
   };
 
-  TillReceipt.prototype.findOrderTotalBeforeTax = function() {
+  TillReceipt.prototype.calcOrderTotalBeforeTax = function() {
     for (i=0; i<this.individualOrderPrices.length; i++) {
-      this.confirmedPreTaxOrderTotal = this.confirmedPreTaxOrderTotal + this.individualOrderPrices[i];
+      this.calcOrderTotalBeforeDiscount();
     };
+    if (this.confirmedPreTaxOrderTotal >= 50) {
+      this.calcFivePercentDiscount();
+    };
+    for (i=0; i<this.individualOrderItems.length; i++) {
+      if (this.individualOrderItems[i].includes("Muffin")) {
+        this.calcTenPercentDiscount();
+      };
+    };
+  };
+
+  TillReceipt.prototype.calcOrderTotalBeforeDiscount = function() {
+    this.confirmedPreTaxOrderTotal = this.confirmedPreTaxOrderTotal + this.individualOrderPrices[i];
+  };
+
+  TillReceipt.prototype.calcFivePercentDiscount = function() {
+    this.calcDiscount(0.95);
+    console.log("5% discount on orders over £50");
+  };
+
+  TillReceipt.prototype.calcTenPercentDiscount = function() {
+    this.calcDiscount(0.9);
+    console.log("10% discount on orders including muffins");
+  };
+
+  TillReceipt.prototype.calcDiscount = function(discountAmountPercent) {
+    this.confirmedPreTaxOrderTotal = this.roundToTwoDP(this.confirmedPreTaxOrderTotal * discountAmountPercent);
   };
 
   TillReceipt.prototype.calculateTax = function() {
@@ -63,7 +98,7 @@ function TillReceipt() {
     return this.calculatedTax;
   };
 
-  TillReceipt.prototype.findOrderTotalWithTax = function() {
+  TillReceipt.prototype.calcOrderTotalWithTax = function() {
     this.confirmedPostTaxOrderTotal = this.confirmedPreTaxOrderTotal + this.calculatedTax;
   };
 
@@ -81,7 +116,7 @@ function TillReceipt() {
     if (amountPaid >= this.confirmedPostTaxOrderTotal) {
       this.changeDueToCustomer = amountPaid - this.confirmedPostTaxOrderTotal;
     } else {
-      throw new Error("Yo mama");
+      throw new Error("This amount does not cover the bill");
     };
   };
 
