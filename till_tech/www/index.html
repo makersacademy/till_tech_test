@@ -30,17 +30,6 @@
         <h1 class="title">HipTillio</h1>
       </ion-header-bar>
       <ion-content>
-       <!-- <button class="button button-assertive" ng-click="HipTillCtrl.test()"> Test </button>
-       <button class="button button-assertive" onclick="tester()"> Test2 </button>
-
-        <div>
-          <button class="button button-assertive" ng-click="HipTillCtrl.test()"> Test3 </button>
-        </div>
-
-        <div>
-          <button class="button button-assertive" onclick="tester()"> Test4 </button>
-        </div>
- -->
       <div class="list">
         <label class="item item-input item-stacked-label">
           <span class="input-label">Customer Order Items</span>
@@ -80,6 +69,13 @@
             <div class="col text-center">
                 <button class="button button-assertive" ng-click="HipTillCtrl.completeOrder()">
                   Complete Order
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <button class="button button-dark" ng-click="HipTillCtrl.resetOrder()">
+                  Take New Order
                 </button>
             </div>
         </div>

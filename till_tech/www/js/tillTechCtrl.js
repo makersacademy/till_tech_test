@@ -7,9 +7,7 @@ hiptillio.controller('HipTillioController', ['$http', 'GetShopDetails', function
   self.customerDiscount = 0
   var taxRate = 0.0864
 
-  // self.test = function(){
-  //   alert("Working");
-  // }
+
 
   self.menu = [
   {
@@ -37,6 +35,17 @@ hiptillio.controller('HipTillioController', ['$http', 'GetShopDetails', function
     ]
   }
 ]
+  self.resetOrder = function() {
+    self.orderItems = []
+    self.orderCount = {}
+    self.confirmedItems = []
+    self.costs = []
+    self.totalItemCost = 0
+    self.taxCost = 0
+    self.change = 0
+    self.customerDiscount = 0
+    self.customerPayment = 0
+  }
 
   // GetShopDetails.success(function(data) {
   //   self.menu = data
@@ -88,7 +97,3 @@ hiptillio.controller('HipTillioController', ['$http', 'GetShopDetails', function
   //   }
   // }
 }])
-
-// function tester(){
-//      alert("Working");
-// }
