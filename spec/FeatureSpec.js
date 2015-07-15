@@ -4,11 +4,13 @@ describe('Features', function() {
   var order;
   var shopDetails;
 
-  beforeEach(function() {
+  beforeEach(function(done) {
     till = new Till();
-    order = new Order();
-    shopDetails = loadDetailsSpec();
-    till.menu = shopDetails[0]['prices'][0];
+    order = new Order;
+    till.loadDetails()
+    .done(function() {
+      done();
+    });
   });
 
   describe('till can display total of order', function() {
