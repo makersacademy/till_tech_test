@@ -7,6 +7,10 @@ hiptillio.controller('HipTillioController', ['$http', 'GetShopDetails', function
   self.customerDiscount = 0
   var taxRate = 0.0864
 
+  // self.test = function(){
+  //   alert("Working");
+  // }
+
   self.menu = [
   {
     "shopName": "The Coffee Connection",
@@ -84,3 +88,7 @@ hiptillio.controller('HipTillioController', ['$http', 'GetShopDetails', function
   //   }
   // }
 }])
+
+// function tester(){
+//      alert("Working");
+// }
