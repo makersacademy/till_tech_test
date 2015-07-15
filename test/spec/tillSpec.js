@@ -39,8 +39,8 @@ describe ('Till', function(){
 
   it ('can calculate the total for 2 products', function(){
     till.calculateTotal("Flat White", 1);
-    till.calculateTotal("Cappucino", 1);
-    expect(till.total).toEqual(8.6);
+    till.calculateTotal("Cafe Latte", 1);
+    expect(till.total).toEqual(9.5);
   });
 
   it ('can calculate the total 2 orders of the same product', function(){
@@ -48,10 +48,10 @@ describe ('Till', function(){
     expect(till.total).toEqual(7.7);
   });
 
-  it ('can calculate the total', function(){
+  it ('can calculate the taxes on the total', function(){
     till.calculateTotal("Cappucino", 2);
-    till.calculateTax();
-    expect(till.total).toEqual(8.4);
+    till.calculateTaxes();
+    expect(till.taxes).toEqual(0.7);
   });
 
   it ('can show a list of ordered drinks', function(){
@@ -62,8 +62,7 @@ describe ('Till', function(){
 
   it ('knows how much change to return the customer', function(){
     till.calculateTotal("Cappucino", 2);
-    till.calculateTax();
     var note = 20;
-    expect(till.calculateChange(note)).toEqual(11.6);
+    expect(till.calculateChange(note)).toEqual(12.3);
   });
 });

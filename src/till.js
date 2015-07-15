@@ -1,23 +1,22 @@
 function Till(details){
   this.details = details;
-  this.subtotal = 0;
+  this.taxes = 0;
   this.total = 0;
   this.date = new Date;
-  this.tax = 0.0864;
+  this.taxRate = 0.0864;
   this.receipt = [];
 };
 
 
 Till.prototype.calculateTotal = function(article, quantity) {
   var price = this.details[0].prices[0][article];
-  this.subtotal += price * quantity;
+  this.total += price * quantity;
   this.addToList(article, quantity, price);
 };
 
 
-Till.prototype.calculateTax = function() {
-  var taxes = +(this.subtotal * this.tax).toFixed(1);
-  this.total = taxes + this.subtotal;
+Till.prototype.calculateTaxes = function() {
+  this.taxes = +(this.total * this.taxRate).toFixed(1);
 };
 
 
