@@ -1,95 +1,3 @@
-User Stories (Version 1)
-------------
-
-```
-	As a coffee selling hipster
-	So that my hipster customers will remember where they got this receipt
-	I would like my till receipt to show the name of my hipster coffee shop
-
-	As a coffee selling hipster
-	So that my hipster customers can see what they've ordered
-	I would like my till receipt to show each hipster item they've ordered
-
-	As a coffee selling hipster
-	So that my hipster customers can see what they've ordered
-	I would like my till receipt to show the price alongside each hipster item they've ordered
-
-	As a coffee selling hipster
-	So that I can charge my hipster customers the right amount
-	I would like my till receipt to show me the total that my hipster customers owe
-
-	As a coffee selling hipster
-	So that I can adhere to the not-quite-hipster law
-	I would like my till receipt to have a not-too-hipster 8.64% tax added on
-```
-
-
-
-
-
-
-
-
-Testing
--------
-
-Tested in Jasmine! To run Jasmine tests from the command line, navigate to the folder that the SpecRunner.html is in and run the command "open SpecRunner.html" to run the Jasmine tests.
-
-
-CURRENTLY WANT TO GET TRAVIS WORKING FOR JAVASCRIPT BUILDS - have bookmarked pages for later
-
-
-
-
-
-
-
-
-
-User Stories (Version 2)
-------------
-
-```
-	As a helpful hipster coffee seller
-	So that I don't shortchange my hipster customers
-	I would like my till receipt to show how much my hipster customers have paid and how much change they are owed
-
-	As a business-minded hipster coffee seller
-	So that my hipster customers can enjoy the financial perks of my super hipster coffee shop
-	I would like to give them a 5% discount on orders over £50
-
-	As a business-minded hipster coffee seller
-	So that my hipster customers can enjoy the financial perks of my super hipster coffee shop
-	I would like to give them a 10% discount on their total order price when they buy a muffin
-
-As a time travelling hipster coffee lord
-So that my hipster customers and I can keep track of our history together
-I would like my receipt to print the date and time that their order was made
-```
-
-
-
-
-
-
-
-
-
-Till tech test
-==============
-
-![a till](/images/till.jpg)
-
-We want to sell tills to local hipster coffee shop who are finally embracing the 21st century. We need a new till to replace their vintage machines - unfortunately, hipster staff are too cool to learn a new system, so we need you to build something that they will understand.
-
-Specification
--------------
-
-This is what a sample receipt looks like:
-
-![a receipt](/images/receipt.jpg)
-
-
 Version 1
 ---------
 
@@ -115,6 +23,95 @@ Version 2
 - Add functionality to take payment and calculate correct change.  
 - Add functionality to handle discounts - in this example, a 5% discount on orders over $50, and a 10% muffin discount.
 - Add functionality to print date and time on receipt
+
+User Stories (Version 1)
+------------
+
+```
+	As a coffee selling hipster
+	So that my hipster customers will remember where they got this receipt
+	I would like my till receipt to show the name of my hipster coffee shop
+
+	As a coffee selling hipster
+	So that my hipster customers can see what they've ordered
+	I would like my till receipt to show each hipster item they've ordered
+
+	As a coffee selling hipster
+	So that my hipster customers can see what they've ordered
+	I would like my till receipt to show the price alongside each hipster item they've ordered
+
+	As a coffee selling hipster
+	So that I can charge my hipster customers the right amount
+	I would like my till receipt to show me the total that my hipster customers owe
+
+	As a coffee selling hipster
+	So that I can adhere to the not-quite-hipster law
+	I would like my till receipt to have a not-too-hipster 8.64% tax added on
+```
+
+User Stories (Version 2)
+------------
+
+```
+	As a helpful hipster coffee seller
+	So that I don't shortchange my hipster customers
+	I would like my till receipt to show how much my hipster customers have paid and how much change they are owed
+
+	As a business-minded hipster coffee seller
+	So that my hipster customers can enjoy the financial perks of my super hipster coffee shop
+	I would like to give them a 5% discount on orders over £50
+
+	As a business-minded hipster coffee seller
+	So that my hipster customers can enjoy the financial perks of my super hipster coffee shop
+	I would like to give them a 10% discount on their total order price when they buy a muffin
+
+If time:
+
+As a time travelling hipster coffee lord
+So that my hipster customers and I can keep track of our history together
+I would like my receipt to print the date and time that their hipster order was made
+```
+
+Testing
+-------
+
+Tested in Jasmine! To run Jasmine tests from the command line, navigate to the folder that the SpecRunner.html is in and run the command "open SpecRunner.html" to run the Jasmine tests.
+
+
+CURRENTLY WANT TO GET TRAVIS WORKING FOR JAVASCRIPT BUILDS - have bookmarked pages for later
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Till tech test
+==============
+
+![a till](/images/till.jpg)
+
+We want to sell tills to local hipster coffee shop who are finally embracing the 21st century. We need a new till to replace their vintage machines - unfortunately, hipster staff are too cool to learn a new system, so we need you to build something that they will understand.
+
+Specification
+-------------
+
+This is what a sample receipt looks like:
+
+![a receipt](/images/receipt.jpg)
+
+
+
 
 Version 3
 ---------
