@@ -1,22 +1,28 @@
-<div id='shop-name'></div>
+<h1><div id='shop-name'></div></h1>
 <br>
-<div id='display'></div>
+<h3><div id='payment'>£</div></h3>
 <br>
-<%= link_to 'New order', till_path(1), method: :delete %>
-<br>
-<br>
-<button id="print-receipt">Print Receipt</button>
-<br>
-<br>
-<div id="receipt-message" title="Receipt">
-  <% @receipt.each do |line| %>
-    <%= line %>
-    <br>
-  <% end %>
-  <%= link_to 'New order', till_path(1), method: :delete %>
-</div>
 <div class="row">
-  <div class="col-md-4"></div>
-  <div class="col-md-4" id='middle-col'></div>
-  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <div id='total'></div>
+    <div id='item-display'></div>
+  </div>
+  <div class="col-md-4" id='middle-col'>
+    <% for x in 1..9 %>
+      <button class='number' value='<%= 10 - x %>'><%= 10 - x %></button>
+      <% if x % 3 == 0 %>
+        <br>
+      <% end %>
+    <% end %>
+    <button class='number' id='decimal' value='.'>.</button>
+    <button class='number' id='zero' value='0'>0</button>
+    <button class='number' id='double-zero' value='00'>00</button>
+    <br>
+    <br>
+    <button id="pay">Pay</button> <%= link_to 'Cancel Order', till_path(1), method: :delete %>
+    <br>
+    <br>
+  </div>
+  <div class="col-md-4">
+  </div>
 </div>

@@ -1,15 +1,17 @@
 $(document).ready(function(){
-
   var items;
+  var menu;
+  var prices;
+  var total = 0;
 
   $('#receipt-message').hide();
 
   $.getJSON('/hipstercoffee.json', function(data) {
-    items = data;
+    menu = data;
   })
   .done(function() {
-    $('#shop-name').text(items[0].shopName);
-    items = Object.keys(items[0].prices[0])
+    $('#shop-name').text(menu[0].shopName);
+    items = Object.keys(menu[0].prices[0])
     for (i = 0; i < items.length; i ++) {
       var button = $('<button/>').attr({
         class: "shop-items",
@@ -29,18 +31,25 @@ $(document).ready(function(){
       beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
       data: { "item" : item }
     });
-      $('#display').append(button[0].value + ", ")
+      var price = menu[0].prices[0]
+      price = price[item]
+      $('#item-display').append(button[0].value + " " + price + ", " + "<br>")
+      total += price
+      $('#total').html('<h3>' + 'Total: £' + total.toFixed(2) + '</h3>')
   });
 
   $('#print-receipt').click(function() {
-    $( "#receipt-message" ).dialog({
-      modal: true,
-      position: {
-          my: "right bottom",
-          at: "right bottom",
-          of: window
-        }
-    });
+    $('#receipt-message').show();
   });
+
+  $('.number').click(function() {
+    $('#payment').append($(this)[0].value)
+  });
+
+  $('#pay').click(function() {
+    var amount = $('#payment').html();
+    // console.log(amount)
+    window.location.href = "/till/new?amount=" + amount;
+  })
 
 });

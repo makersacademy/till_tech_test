@@ -9,7 +9,7 @@ module TillHelper
     BULK = 50
     BULK_DISCOUNT = 5
 
-    attr_reader :order
+    attr_reader :order, :receipt
 
     def initialize
       @order = []
@@ -51,8 +51,8 @@ module TillHelper
 
     def print_totals
       @receipt.push("Tax: £#{tax}")
-      total = total_cost - (muffin_discount + bulk_discount)
-      @receipt.push('Total: £' + format('%.2f', total))
+      @total = total_cost - (muffin_discount + bulk_discount)
+      @receipt.push('Total: £' + format('%.2f', @total))
     end
 
     def search(item)
@@ -84,8 +84,8 @@ module TillHelper
 
     def pay(amount)
       print_receipt
-      return unless amount >= total_cost
-      change = format('%.2f', (amount - total_cost))
+      return unless amount >= @total
+      change = format('%.2f', (amount - @total))
       amount = format('%.2f', amount)
       @receipt.push("Cash: £#{amount}")
       @receipt.push("Change: £#{change}")

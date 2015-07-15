@@ -1,5 +1,7 @@
-<% @receipt.each do |line| %>
+<h3><% @receipt.each do |line| %>
   <%= line %>
   <br>
-<% end %>
-<%= link_to 'Play again?', till_path(1), method: :delete %>
+<% end %></h3>
+<br>
+<br>
+<%= link_to 'Thank you, come again', till_path(1), method: :delete %>
