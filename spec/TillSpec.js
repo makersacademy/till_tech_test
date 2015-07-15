@@ -1,40 +1,33 @@
-// describe('Till', function(){
+describe('Till', function(){
 
-//   var till;
+  var till;
+  var shopDetails;
 
-//   beforeEach(function() {
-//     till = new Till();
-//   });
+  beforeEach(function() {
+    till = new Till();
+    shopDetails = loadDetailsSpec();
+    till.shopName = shopDetails[0]['shopName'];
+    till.address = shopDetails[0]['address'];
+    till.phone = shopDetails[0]['phone'];
+    till.menu = shopDetails[0]['prices'][0];
+  });
 
-//   describe('can display', function() {
-//     it('the shop name', function(done) {
-//       till.loadDetails().done(function() {
-//         expect(till.shopName).toEqual('The Coffee Connection');
-//         done();
-//       });
-//     });
+  describe('can display', function() {
+    it('shop name', function() {
+      expect(till.shopName).toEqual('The Coffee Connection');
+    });
 
-//     it('the address', function(done) {
-//       till.loadDetails().done(function() {
-//         expect(till.address).toEqual('123 Lakeside Way');
-//         done();
-//       });
-//     });
+    it('address', function() {
+      expect(till.address).toEqual('123 Lakeside Way');
+    });
 
-//     it('the phone number', function(done) {
-//       till.loadDetails().done(function() {
-//         expect(till.phone).toEqual('16503600708');
-//         done();
-//       });
-//     });
+    it('phone', function() {
+      expect(till.phone).toEqual('16503600708');
+    });
 
-//     it('price of an item', function(done) {
-//       till.loadDetails().done(function() {
-//         expect(till.menu['Cafe Latte']).toEqual(4.75);
-//         done();
-//       });
-//     });
+    it('price of an item', function() {
+      expect(till.menu['Cafe Latte']).toEqual(4.75);
+    });
+  });
 
-//   });
-
-// });
+});
