@@ -39,6 +39,14 @@ feature 'Hipster using the till' do
       expect(current_path).to eq '/till/new'
     end
 
+    scenario 'Can clear payment', js: true do
+      click_button '1'
+      click_button '5'
+      expect(page.find('#payment')).to have_content '£15'
+      click_button 'Clear'
+      expect(page.find('#payment')).not_to have_content '£15'
+    end
+
     scenario 'Cannot take payment if insufficient funds', js: true do
       click_button '5'
       expect(page).not_to have_button 'Pay'
@@ -56,8 +64,7 @@ feature 'Hipster using the till' do
       click_button '1'
       click_button '5'
       click_button 'Pay'
-      t = Time.now.strftime("%Y.%m.%d %H:%M:%S")
-      expect(page).to have_content "#{t} The Coffee Connection 123 Lakeside Way
+      expect(page).to have_content "The Coffee Connection 123 Lakeside Way
       phone: 16503600708 Flat White 1x £4.75 Cafe Latte 1x £4.75 Cappucino 1x £3.85 Tax: £1.15 Total: £13.35 Cash: £15.00 Change: £1.65"
     end
 

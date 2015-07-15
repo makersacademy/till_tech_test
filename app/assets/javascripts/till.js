@@ -62,6 +62,11 @@ $(document).ready(function(){
   $('#pay').click(function() {
     var tender = $('#payment').html();
     window.location.href = "/till/new?tender=" + tender;
-  })
+  });
+
+  $('#clear').click(function() {
+    $('#payment').html('£');
+    $('#pay').fadeOut(1000);
+  });
 
 });
