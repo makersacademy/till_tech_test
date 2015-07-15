@@ -13,7 +13,7 @@ $(document).ready(function(){
   })
   .done(function() {
     $('#shop-name').text(menu[0].shopName);
-    var items = Object.keys(menu[0].prices[0])
+    var items = Object.keys(menu[0].prices[0]);
     createItemButtons(items);
   });
 
@@ -22,33 +22,28 @@ $(document).ready(function(){
     var item = $(this)[0].value;
     sendData(item);
 
-    var price = menu[0].prices[0]
-    price = price[item]
-    $('#item-display').append(item + " £" + price.toFixed(2) + "<br>")
+    var price = menu[0].prices[0];
+    price = price[item];
+    $('#item-display').append(item + " £" + price.toFixed(2) + "<br>");
 
     if ($(this)[0].value.match(/Muffin/)) { price -= muffinDiscount(price); }
 
-    total += price
+    total += price;
 
     if (total > 50) { total -= bigOrderDiscount(total); }
 
-    $('#total').html('<h3>' + 'Total: £' + total.toFixed(2) + '</h3>')
+    $('#total').html('<h3>' + 'Total: £' + total.toFixed(2) + '</h3>');
     $('.number').removeAttr('disabled');
     var amount = $('#payment').html();
-    amount = parseFloat(amount.substring(1))
-    if(amount < total) {
-      $('#pay').fadeOut(1000);
-    }
+    amount = parseFloat(amount.substring(1));
+    if(amount < total) { $('#pay').fadeOut(1000); }
   });
 
   $('.number').click(function() {
-    $('#payment').append($(this)[0].value)
-      var amount = $('#payment').html();
-      amount = amount.substring(1)
-      amount = parseFloat(amount)
-      if(amount >= total && total != 0) {
-        $('#pay').fadeIn(1000);
-      }
+    $('#payment').append($(this)[0].value);
+    var amount = $('#payment').html();
+    amount = parseFloat(amount.substring(1));
+    if (amount >= total && total != 0) { $('#pay').fadeIn(1000); }
   });
 
   $('#pay').click(function() {
@@ -69,10 +64,10 @@ function createItemButtons(items) {
       class: "shop-items",
       value: items[i]
     });
-    button.html(items[i])
+    button.html(items[i]);
     $('#middle-col').append(button);
   }
-}
+};
 
 function sendData(item) {
   $.ajax({ url: '/till',
@@ -80,16 +75,16 @@ function sendData(item) {
     beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
     data: { "item" : item }
   });
-}
+};
 
 function muffinDiscount(price) {
-  var discount = (price / 100) * 10
-  $('#item-display').append('10% Muffin Discount -£' + discount.toFixed(2) + "<br>")
+  var discount = (price / 100) * 10;
+  $('#item-display').append('10% Muffin Discount -£' + discount.toFixed(2) + "<br>");
   return discount;
-}
+};
 
 function bigOrderDiscount(total) {
-  var discount = (total / 100) * 5
-  $('#discount').append('5% Discount -£' + discount.toFixed(2))
-  return discount
-}
+  var discount = (total / 100) * 5;
+  $('#discount').append('5% Discount -£' + discount.toFixed(2));
+  return discount;
+};
