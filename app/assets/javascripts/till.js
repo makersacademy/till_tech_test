@@ -34,6 +34,12 @@ $(document).ready(function(){
       var price = menu[0].prices[0]
       price = price[item]
       $('#item-display').append(item + " £" + price.toFixed(2) + "<br>")
+
+      if($(this)[0].value.match(/Muffin/)) {
+        var discount = (price / 100) * 10
+        $('#item-display').append('10% Muffin Discount -£' + discount.toFixed(2) + "<br>")
+        price -= discount
+      }
       total += price
       $('#total').html('<h3>' + 'Total: £' + total.toFixed(2) + '</h3>')
       $('.number').removeAttr('disabled');

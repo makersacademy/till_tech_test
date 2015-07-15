@@ -20,6 +20,16 @@ feature 'Hipster using the till' do
     expect(page).to have_button('5', disabled: true)
   end
 
+  context 'Discounts' do
+
+    scenario 'Presses "Blueberry Muffin" and sees the discount', js: true do
+      click_button 'Blueberry Muffin'
+      expect(page).to have_content '10% Muffin Discount -£0.41'
+      expect(page).to have_content 'Total: £3.64'
+    end
+
+  end
+
   context 'Payments' do
 
     before(:each) do
