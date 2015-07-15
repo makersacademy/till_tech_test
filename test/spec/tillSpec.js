@@ -32,37 +32,37 @@ describe ('Till', function(){
     expect(till.date).toBeDefined();
   });
 
-  it ('can calculate the subtotal for one product', function(){
-    till.calculateSubtotal("Cafe Latte", 1);
-    expect(till.subtotal).toEqual(4.75);
+  it ('can calculate the total for one product', function(){
+    till.calculateTotal("Cafe Latte", 1);
+    expect(till.total).toEqual(4.75);
   });
 
-  it ('can calculate the subtotal for 2 products', function(){
-    till.calculateSubtotal("Flat White", 1);
-    till.calculateSubtotal("Cappucino", 1);
-    expect(till.subtotal).toEqual(8.6);
+  it ('can calculate the total for 2 products', function(){
+    till.calculateTotal("Flat White", 1);
+    till.calculateTotal("Cappucino", 1);
+    expect(till.total).toEqual(8.6);
   });
 
-  it ('can calculate the subtotal 2 orders of the same product', function(){
-    till.calculateSubtotal("Cappucino", 2);
-    expect(till.subtotal).toEqual(7.7);
+  it ('can calculate the total 2 orders of the same product', function(){
+    till.calculateTotal("Cappucino", 2);
+    expect(till.total).toEqual(7.7);
   });
 
   it ('can calculate the total', function(){
-    till.calculateSubtotal("Cappucino", 2);
-    till.calculateTotal();
+    till.calculateTotal("Cappucino", 2);
+    till.calculateTax();
     expect(till.total).toEqual(8.4);
   });
 
   it ('can show a list of ordered drinks', function(){
-    till.calculateSubtotal("Cappucino", 2);
-    till.calculateSubtotal("Flat White", 1);
+    till.calculateTotal("Cappucino", 2);
+    till.calculateTotal("Flat White", 1);
     expect(till.receipt.length).toEqual(2);
   });
 
   it ('knows how much change to return the customer', function(){
-    till.calculateSubtotal("Cappucino", 2);
-    till.calculateTotal();
+    till.calculateTotal("Cappucino", 2);
+    till.calculateTax();
     var note = 20;
     expect(till.calculateChange(note)).toEqual(11.6);
   });

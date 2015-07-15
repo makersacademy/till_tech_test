@@ -8,14 +8,14 @@ function Till(details){
 };
 
 
-Till.prototype.calculateSubtotal = function(article, quantity) {
+Till.prototype.calculateTotal = function(article, quantity) {
   var price = this.details[0].prices[0][article];
   this.subtotal += price * quantity;
   this.addToList(article, quantity, price);
 };
 
 
-Till.prototype.calculateTotal = function() {
+Till.prototype.calculateTax = function() {
   var taxes = +(this.subtotal * this.tax).toFixed(1);
   this.total = taxes + this.subtotal;
 };
