@@ -1,5 +1,5 @@
-<ul>
+<div class="list-group">
 <% @cafe_prices.each do |item, price| %>
-  <li><%= item %> - <%= price %></li>
+  <button type="button" class="list-group-item"><%= item %> - <%= price %></button>
 <% end %>
-</ul>
+</div>
