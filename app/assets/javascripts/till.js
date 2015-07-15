@@ -33,7 +33,7 @@ $(document).ready(function(){
     });
       var price = menu[0].prices[0]
       price = price[item]
-      $('#item-display').append(button[0].value + " " + price + ", " + "<br>")
+      $('#item-display').append(button[0].value + " £" + price.toFixed(2) + "<br>")
       total += price
       $('#total').html('<h3>' + 'Total: £' + total.toFixed(2) + '</h3>')
   });
