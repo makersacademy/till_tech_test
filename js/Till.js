@@ -13,6 +13,7 @@ Till.prototype.loadDetails = function() {
 };
 
 Till.prototype.displayTotal = function(order) {
+  console.log(this.menu);
   var total = 0;
   for(var item in order.items) {
     itemPrice = this.menu[item]
