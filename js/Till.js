@@ -1,5 +1,4 @@
 function Till () {
-  this.total = 0.00;
 }
 
 Till.prototype.loadDetails = function() {
@@ -16,7 +15,9 @@ Till.prototype.loadDetails = function() {
 Till.prototype.displayTotal = function(order) {
   var total = 0;
   for(var item in order.items) {
-    total += this.menu[item]
+    itemPrice = this.menu[item]
+    itemQuantity = order.items[item];
+    total += (itemPrice * itemQuantity);
   }
   return total;
 };
