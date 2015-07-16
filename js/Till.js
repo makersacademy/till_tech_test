@@ -22,6 +22,9 @@ Till.prototype.produceReceipt = function(order) {
     this.compileItemList(itemList, item, itemPrice, itemQuantity);
   }
   tax = this.calculateTax(total);
+  var muffinDiscount = this.calculateMuffinDiscount(order)[0];
+  total -= muffinDiscount;
+  total = this.priceFormat(total);
   return [itemList, total, tax];
 };
 
@@ -34,9 +37,30 @@ Till.prototype.compileItemList = function(itemList, item, itemPrice, itemQuantit
 };
 
 Till.prototype.calculateTax = function(total) {
-  return parseFloat((total / 100 * 8.64).toFixed(2));
+  return this.priceFormat(total / 100 * 8.64);
 };
 
 Till.prototype.calculateChange = function(total, payment) {
-  return parseFloat((payment - total).toFixed(2));
+  return this.priceFormat(payment - total);
+};
+
+Till.prototype.calculateMuffinDiscount = function(order) {
+  var muffinTotal = 0;
+  var muffinDiscount = 0;
+  for(var item in order.items) {
+    if(item.match(/Muffin/)) {
+      itemPrice = this.menu[item];
+      itemQuantity = order.items[item];
+      itemTotal = this.calculateItemTotal(itemPrice, itemQuantity);
+      muffinTotal += itemTotal;
+      muffinDiscount += this.priceFormat(itemTotal / 10);
+    }
+  }
+  muffinDiscount = this.priceFormat(muffinDiscount);
+  muffinTotal = this.priceFormat(muffinTotal);
+  return [muffinDiscount, muffinTotal];
+};
+
+Till.prototype.priceFormat = function(price) {
+  return parseFloat(price.toFixed(2));
 };
