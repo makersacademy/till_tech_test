@@ -6,4 +6,5 @@ gem 'json'
 group :test do
   gem 'rspec'
   gem 'capybara'
+  gem 'byebug'
 end

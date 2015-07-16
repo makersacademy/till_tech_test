@@ -2,11 +2,11 @@
   <div class="container">
   <div id="multiplier" class="row btn-group btn-group-lg btn-block" role="group" aria-label="multiplier" data-toggle="buttons">
     <label class="btn btn-primary col-md-2">
-      <input type="radio" name="multiplier" id="multiply-by-1" autocomplete="off" checked>1</input>
+      <input type="radio" name="multiplier" value="1" autocomplete="off" checked>1</input>
     </label>
     <% (2..9).each do |digit| %>
       <label class="btn btn-primary col-md-2">
-        <input type="radio" name="multiplier" id="multiply-by-<%= digit %>" autocomplete="off"><%= digit %></input>
+        <input type="radio" name="multiplier" value="<%= digit %>" autocomplete="off"><%= digit %></input>
       </label>
     <% end %>
   </div>
@@ -16,7 +16,7 @@
   <% @cafe_prices.each_with_index do |(item, price), index| %>
     <%= '<div class="row">' if index%4 == 0 %>
       <div class="col-md-3">
-        <input type="submit" name="item" class="btn btn-success btn-block" value="<%= item %> - <%= price %>">
+        <button type="submit" name="item" class="btn btn-success btn-block" value="<%= item %>"><%= item %> - <%= price %></button>
       </div>
     <%= '</div>' if index%4 == 3 || index == @cafe_prices.count - 1%>
   <% end %>
@@ -25,3 +25,13 @@
 </div>
 </form>
 <hr>
+<div class="container" id="order">
+  <h3>Your Order</h3>
+  <ul>
+    <% @cafe_prices.each do |item, price| %>
+      <% if session.has_key?(item)%>
+        <li><%= session[item].to_s + ' x ' + item + ' = £' + (session[item] * price).to_s%></li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

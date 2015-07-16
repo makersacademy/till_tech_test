@@ -37,8 +37,8 @@ feature 'Placing An Order' do
   scenario 'can select an item from the list' do
     visit '/'
     within('#menu') do
-      @testmenu.each do |key, value|
-        expect(page).to have_selector("input[type=submit][value='#{key} - #{value}']")
+      @testmenu.each_key do |key|
+        expect(page).to have_selector("button[type=submit][value='#{key}']")
       end
     end
   end
@@ -47,7 +47,7 @@ feature 'Placing An Order' do
     visit '/'
     within('#multiplier') do
       (1..9).each do |digit|
-        expect(page).to have_css("#multiply-by-#{digit}")
+        expect(page).to have_selector("input[type=radio][value='#{digit}']")
       end
     end
   end
