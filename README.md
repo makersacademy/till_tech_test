@@ -1,38 +1,37 @@
 Till tech test
 ==============
 
-*Instructions*: Please fork this repo and submit a pull request once you've finished. Then prepare for code review!
+*Status*
+
+I've completed stage 1 but the codebase needs significant refactoring. I'd like to have proper separation of concerns, separating the receipt, tax and total attributes into their own classes. The unit tests could also be more thorough and I plan to address these before moving on to V2.
+
+*Instructions*: 
+
+This till app is to be used locally in the Interactive Ruby environment (IRB) and assumes you have Ruby installed.
+
+If that's not the case please follow [this](https://rvm.io/rubies/installing).
+
+> Please fork and clone this repo locally.
+> Run ```bundle``` to install gem dependencies
+> Run ```irb```
+
+You can now play with the app using the following:
+
+> ```till = Till.new``` (creates new instance of the till Class)
+> ```till.menu``` (shows what's available on the menu)
+> ```till.place_order()``` (pass in the string of the customer's food/drink choice, repeat for each item)
+>```till.checkout```(when the customer has finished ordering, checkout)
+>```till.totals``` (this will calculate the total bill including tax)
+>```till.print_receipt``` (this will provide a basic receipt showing the items ordered, at what price, and the total bill with included tax)
+
+Brief
+=====
 
 ![a till](/images/till.jpg)
 
 We want to sell tills to local hipster coffee shop who are finally embracing the 21st century. We need a new till to replace their vintage machines - unfortunately, hipster staff are too cool to learn a new system, so we need you to build something that they will understand.
 
-Specification
--------------
-
-This is what a sample receipt looks like:
-
-![a receipt](/images/receipt.jpg)
-
-
-Version 1
----------
-
-Implement a system that contains the business logic to produce receipts similar to this, based on a `json` price list and test orders. A sample `.json` file has been provided with the list of products sold at this particular coffee shop. 
-
-Here are some sample orders you can try - whether you use this information is up to you:
-
-> **Jane**  
-> 2 x Cafe Latte  
-> 1 x Blueberry Muffin  
-> 1 x Choc Mudcake  
->
-> **John**  
-> 4 x Americano  
-> 2 x Tiramisu  
-> 5 x Blueberry Muffin  
-
-Your receipt must calculate and show the correct amount of tax (in this shop's case, 8.64%), as well as correct line totals and total amount. Do not worry about calculating discounts or change yet. Consider what output formats may be suitable.
+TO DO:
 
 Version 2
 ---------
@@ -44,5 +43,3 @@ Version 3
 ---------
 
 Implement an user interface that can actually be used as a till.
-
-You may use whatever technologies you see fit.
