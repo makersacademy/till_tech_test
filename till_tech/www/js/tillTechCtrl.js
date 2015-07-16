@@ -7,8 +7,6 @@ hiptillio.controller('HipTillioController', ['$http', 'GetShopDetails', function
   self.customerDiscount = 0
   var taxRate = 0.0864
 
-
-
   self.menu = [
   {
     "shopName": "The Coffee Connection",
@@ -56,7 +54,20 @@ hiptillio.controller('HipTillioController', ['$http', 'GetShopDetails', function
 
   self.addItem = function(newItem, quantity) {
     self.newItem = {itemName: newItem, price: self.menu[0].prices[0][newItem]}
-    self.orderItems.push(self.newItem);
+    console.log(self.newItem.price)
+    if (self.newItem.price == undefined) {
+      alert("That item is not on the menu - please check from Cafe Latte, Flat White, Cappucino, Single Espresso, Double Espresso, Americano, Cortado, Tea, Choc Mudcake, Choc Mousse, Affogato, Tiramisu, Blueberry Muffin, Chocolate Chip Muffin, Muffin Of The Day")
+    }else {
+      self.orderItems.push(self.newItem);
+    }
+  }
+
+  self.checkCustomerDetails = function() {
+    console.log(self.customerDiscount)
+    console.log(self.customerPayment)
+    if (isNaN(self.customerDiscount) || self.customerDiscount > 100 || self.customerDiscount < 0 || isNaN(self.customerPayment) || self.customerPayment < 0) {
+        alert("Please reset order and enter a valid Customer Payment or Discount")
+      }
   }
 
   self.completeOrder = function() {
@@ -81,19 +92,10 @@ hiptillio.controller('HipTillioController', ['$http', 'GetShopDetails', function
       return x + y;
     })
 
-    self.totalItemCost = parseFloat(self.totalItemCost * (1 - self.customerDiscount/100)).toFixed(2)
-
-    //refactor out method > calculate proportion that is tax
-    self.taxCost = parseFloat(self.totalItemCost * taxRate).toFixed(2);
-
-    //refactor out method > calculate change
-    self.change = parseFloat(self.customerPayment - self.totalItemCost).toFixed(2);
-  }
-
-  // function buildFinalOrder(orderCount) {
-  //   for (item in orderCount) {
-  //     var finalOrderItem = {itemName: item, price: self.menu[0].prices[0][item], quantity: self.orderCount[item]}
-  //     self.confirmedItems.push(finalOrderItem)
-  //   }
-  // }
+     self.totalItemCost = parseFloat(self.totalItemCost * (1 - self.customerDiscount/100)).toFixed(2)
+      //refactor out method > calculate proportion that is tax
+     self.taxCost = parseFloat(self.totalItemCost * taxRate).toFixed(2);
+      //refactor out method > calculate change
+     self.change = parseFloat(self.customerPayment - self.totalItemCost).toFixed(2);
+    }
 }])

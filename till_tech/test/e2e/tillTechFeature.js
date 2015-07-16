@@ -17,6 +17,8 @@ describe('HipTillio', function() {
    var taxCost = element(by.id('taxcost'))
    var totalCost = element(by.id('totalcost'))
    var resetOrderButton = element(by.className('button-dark'))
+   // var ptor = protractor.getInstance(),
+   //      button;
 
    it('displays a list of added items with names and prices for an order as being built', function() {
       addOrderField.sendKeys('Americano')
@@ -90,6 +92,12 @@ describe('HipTillio', function() {
        expect(taxCost.getText()).toContain('0')
        expect(cash.getText()).toContain('0')
        expect(change.getText()).toContain('0')
+   })
+
+   xit('prevents barista from adding an item that is not the menu to the order', function() {
+       addOrderField.sendKeys('Caffe Latte')
+       addOrderButton.click()
+
    })
 });
 
