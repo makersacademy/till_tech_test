@@ -8,10 +8,15 @@ describe Till do
     end
 
     it 'loads Tiramisu & price' do
-      expect(till.prices['Tiramisu']).to eq 11.40
+      expect(till.prices["Tiramisu"]).to eq 11.40
     end
 
     it 'shows a list of prices' do
       expect(till.prices.count).to eq 15
+    end
+
+    it 'prints a list of prices' do
+      expect(STDOUT).to receive(:puts).with('Flat White: 4.75')
+      till.printPrices
     end
 end

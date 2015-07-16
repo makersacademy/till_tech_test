@@ -11,4 +11,8 @@ class Till
     @phone = data[0]['phone']
     @prices = data[0]['prices'][0]
   end
+
+  def printPrices
+    self.prices.each {|k,v| puts "#{k}: #{v}"}
+  end
 end
