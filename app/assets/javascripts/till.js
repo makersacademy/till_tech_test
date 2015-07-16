@@ -85,6 +85,6 @@ function muffinDiscount(price) {
 
 function bigOrderDiscount(total) {
   var discount = (total / 100) * 5;
-  $('#discount').append('5% Discount -£' + discount.toFixed(2));
+  $('#discount').html('5% Discount -£' + discount.toFixed(2));
   return discount;
 };
