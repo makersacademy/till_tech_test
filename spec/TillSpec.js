@@ -53,6 +53,32 @@ describe('Till', function(){
     it('change due if total is covered', function() {
       expect(till.calculateChange(14.25, 16.00)).toEqual(1.75);
     });
+
+    it('total after muffin discount', function() {
+      expect(till.applyMuffinDiscount(21.95, 0.86)).toEqual(21.09);
+    });
+
+    it('no 5% discount if order < $50', function() {
+      expect(till.calculateFivepcDiscount(49.50)).toEqual(0);
+    });
+
+    it('no 5% discount if order = $50', function() {
+      expect(till.calculateFivepcDiscount(50.00)).toEqual(0);
+    });
+
+    it('5% discount if order > $50', function() {
+      expect(till.calculateFivepcDiscount(50.50)).toEqual(2.52);
+    });
+
+    it('total after 5% discount', function() {
+      expect(till.applyFivepcDiscount(50.50, 2.52)).toEqual(47.98);
+    });
+  });
+
+  describe('can set format', function() {
+    it('to two decimal places', function() {
+      expect(till.priceFormat(2.846352737)).toEqual(2.85);
+    });
   });
 
 });

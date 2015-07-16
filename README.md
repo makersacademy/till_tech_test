@@ -102,7 +102,11 @@ Setup:
 
 Process:
 -------
+
 - Jasmine tests currently use local JSON object in SpecHelper.js. Possible to make AJAX call to JSON object contained in hipstercoffe.json using below method in test files, but will *not* pass Travis CI (giving following error: `Error: Timeout - Async callback was not invoked within timeout specified by jasmine. DEFAULT_TIMEOUT_INTERVAL. (1)`).
+
+Advice for next steps:
+> That means the done (or end) function is not being called in, I think, 2000ms, which seems to imply the AJAX request is failing on Travis for some reason. jQuery’s deferred object also has a fail method (as well as a done), [example](https://api.jquery.com/deferred.fail/). You could use that to console.log the error, and see why it’s failing on Travis. Ultimately though, you don’t want to make any actual AJAX requests at all, so should mock them out. [Sinon](http://sinonjs.org/docs/#server_example) is good at that.
 
 ```
 beforeEach(function(done) {
@@ -115,6 +119,13 @@ beforeEach(function(done) {
 });
 
 ```
+
+
+Process:
+-------
+
+- Further unit tests for Till: `produceOrderTotal()` and `calculateMuffinDiscount()` (mock `order` to test functions).
+- Create `generateReceipt()` method in Till.js, calling other appropriate functions so that both discounts are applied automatically when generating receipt.
 
 
 Links:

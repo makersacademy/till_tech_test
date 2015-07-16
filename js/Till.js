@@ -12,7 +12,7 @@ Till.prototype.loadDetails = function() {
   });
 };
 
-Till.prototype.produceReceipt = function(order) {
+Till.prototype.produceOrderTotal = function(order) {
   var total = 0;
   var itemList = {};
   for(var item in order.items) {
@@ -21,11 +21,7 @@ Till.prototype.produceReceipt = function(order) {
     total += this.calculateItemTotal(itemPrice, itemQuantity);
     this.compileItemList(itemList, item, itemPrice, itemQuantity);
   }
-  tax = this.calculateTax(total);
-  var muffinDiscount = this.calculateMuffinDiscount(order)[0];
-  total -= muffinDiscount;
-  total = this.priceFormat(total);
-  return [itemList, total, tax];
+  return [itemList, total];
 };
 
 Till.prototype.calculateItemTotal = function(itemPrice, itemQuantity) {
@@ -59,6 +55,22 @@ Till.prototype.calculateMuffinDiscount = function(order) {
   muffinDiscount = this.priceFormat(muffinDiscount);
   muffinTotal = this.priceFormat(muffinTotal);
   return [muffinDiscount, muffinTotal];
+};
+
+Till.prototype.applyMuffinDiscount = function(total, muffinDiscount) {
+  return this.priceFormat(total - muffinDiscount);
+};
+
+Till.prototype.calculateFivepcDiscount = function(total) {
+  if(total > 50) {
+    return parseFloat(((total / 100) * 5).toFixed(2));
+  } else {
+    return 0;
+  }
+};
+
+Till.prototype.applyFivepcDiscount = function(total, fivepcDiscount) {
+  return this.priceFormat(total - fivepcDiscount);
 };
 
 Till.prototype.priceFormat = function(price) {
