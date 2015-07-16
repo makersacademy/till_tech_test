@@ -36,3 +36,7 @@ Till.prototype.compileItemList = function(itemList, item, itemPrice, itemQuantit
 Till.prototype.calculateTax = function(total) {
   return parseFloat((total / 100 * 8.64).toFixed(2));
 };
+
+Till.prototype.calculateChange = function(total, payment) {
+  return parseFloat((payment - total).toFixed(2));
+};

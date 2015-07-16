@@ -45,6 +45,14 @@ describe('Till', function(){
     it('individual tax amount', function() {
       expect(till.calculateTax(14.25)).toEqual(1.23);
     });
+
+    it('payment due if total is not covered', function() {
+      expect(till.calculateChange(14.25, 14.00)).toEqual(-0.25);
+    });
+
+    it('change due if total is covered', function() {
+      expect(till.calculateChange(14.25, 16.00)).toEqual(1.75);
+    });
   });
 
 });

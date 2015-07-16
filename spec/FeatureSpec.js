@@ -74,4 +74,19 @@ describe('Features', function() {
     });
   });
 
+  describe('till can calculate change due', function() {
+    it('2 x Cafe Lattes; 1 x Cappucino - total not covered', function() {
+      addItems(order, ['Cafe Latte', 'Cafe Latte', 'Cappucino']);
+      total = till.produceReceipt(order)[1];
+      expect(till.calculateChange(total, 12.00)).toEqual(-1.35);
+    });
+
+    it('2 x Cafe Lattes; 1 x Cappucino - total covered', function() {
+      addItems(order, ['Cafe Latte', 'Cafe Latte', 'Cappucino']);
+      total = till.produceReceipt(order)[1];
+      expect(till.calculateChange(total, 15.00)).toEqual(1.65);
+    });
+
+  });
+
 });
