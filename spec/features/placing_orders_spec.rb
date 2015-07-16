@@ -40,4 +40,13 @@ feature 'Placing An Order' do
     end
   end
 
+  scenario 'I can see quantities to select' do
+    visit '/'
+    within("#multiplier") do
+      (1..9).each do |digit|
+        expect(page).to have_selector(:radio, digit)
+      end
+    end
+  end
+
 end

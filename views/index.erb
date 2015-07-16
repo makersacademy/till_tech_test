@@ -1,5 +1,19 @@
-<div class="list-group">
-<% @cafe_prices.each do |item, price| %>
-  <button type="button" class="list-group-item"><%= item %> - <%= price %></button>
-<% end %>
+<div class="container">
+  <% @cafe_prices.each_with_index do |(item, price), index| %>
+    <%= '<div class="row">' if index%4 == 0 %>
+      <div class="col-md-4">
+        <button type="button" class="btn btn-default" data-toggle="button"><%= item %> - <%= price %></button>
+      </div>
+    <%= '</div>' if index%4 == 3 || index == @cafe_prices.count - 1%>
+  <% end %>
+</div>
+<div id="multiplier" class="btn-group btn-group-lg btn-block" role="group" aria-label="multiplier" data-toggle="buttons">
+  <label class="btn btn-primary">
+    <input type="radio" name="options" id="multiply-by-1" autocomplete="off" checked>1</input>
+  </label>
+  <% (2..9).each do |digit| %>
+    <label class="btn btn-primary">
+      <input type="radio" name="options" id="multiply-by-<%= digit %>" autocomplete="off"><%= digit %></input>
+    </label>
+  <% end %>
 </div>
