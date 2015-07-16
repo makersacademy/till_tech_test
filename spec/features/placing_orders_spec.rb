@@ -44,7 +44,7 @@ feature 'Placing An Order' do
     visit '/'
     within("#multiplier") do
       (1..9).each do |digit|
-        expect(page).to have_selector(:radio, digit)
+        expect(page).to have_css("#multiply-by-#{digit}")
       end
     end
   end
