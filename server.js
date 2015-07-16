@@ -1,8 +1,12 @@
 var express = require('express');
 var app = express();
 var fs = require('fs');
+var bodyParser = require('body-parser');
+var request = require('request')
 
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname +'/public'));
 
 app.get('/', function (req, res, err) {
@@ -25,17 +29,17 @@ app.get('/prices', function (req, res) {
   });
 });
 
+app.post('/', function(req, res, error) {
+  var data = req.body;
 
-app.get('/receipt', function(req, res) {
-  // if (!error && res.statusCode == 200) {
 
-    var data = "Cafe Latte";
-    var fileName = "test.csv";
-    res.setHeader('Content-disposition', 'attachment; filename=' + fileName);
-    res.set('Content-Type', 'text/csv');
-    res.charset = 'binary';
-    res.send(data);
-  // };
+  var fileName = "receipt.txt";
+  res.setHeader('Content-disposition', 'attachment; filename=' + fileName);
+  res.set('Content-Type', 'text/csv');
+  res.charset = 'binary';
+  res.send(data);
+  console.log(data);
+
 });
 
 app.get('/test', function (req, res) {
