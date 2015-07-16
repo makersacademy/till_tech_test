@@ -6,6 +6,7 @@ class Till
   attr_accessor :receipt
   attr_accessor :customer_bill
   attr_accessor :tax
+  attr_accessor :total
   attr_reader :menu
   
   def initialize 
@@ -20,11 +21,11 @@ class Till
   end
 
   def place_order(choice)
-      @menu[0]["prices"][0].select do |key,value|
-        if choice == key
-          @customer_order.push key => value
-        end
+    @menu[0]["prices"][0].select do |key,value|
+      if choice == key
+        @customer_order.push key => value
       end
+    end
   end
 
   def checkout
@@ -35,7 +36,7 @@ class Till
   end
 
 
-  def total
+  def totals
     total_bill = @customer_bill.inject(0) { |result, element| result + element }
     @total = total_bill
     tax = @total * 0.0864
@@ -44,8 +45,8 @@ class Till
 
   def print_receipt
     @customer_order.each do |hash|
-    @receipt.push hash
-  end
+      @receipt.push hash
+    end
 
     tax = {}
     total = {}
@@ -56,5 +57,3 @@ class Till
     @receipt.push tax, total
   end
 end
-
-
