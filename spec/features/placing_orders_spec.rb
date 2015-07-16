@@ -38,7 +38,7 @@ feature 'Placing An Order' do
     visit '/'
     within('#menu') do
       @testmenu.each do |key, value|
-        expect(page).to have_selector("input[type=button][value='#{key} - #{value}']")
+        expect(page).to have_selector("input[type=submit][value='#{key} - #{value}']")
       end
     end
   end
@@ -54,14 +54,11 @@ feature 'Placing An Order' do
 
   scenario 'can select an item and a quantity and add them to an order' do
     visit '/'
-    within('#menu') do
-      select('Flat White - 4.75')
-    end
     within('#multiplier') do
       choose('4')
     end
-    within('#add-to-total') do
-      click_link 'Add to order'
+    within('#menu') do
+      click_button('Flat White - 4.75')
     end
     within('#order') do
       expect(page).to have_content('19')

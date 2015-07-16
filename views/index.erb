@@ -1,28 +1,27 @@
 <form action="/add-to-order" method="post">
+  <div class="container">
+  <div id="multiplier" class="row btn-group btn-group-lg btn-block" role="group" aria-label="multiplier" data-toggle="buttons">
+    <label class="btn btn-primary col-md-2">
+      <input type="radio" name="multiplier" id="multiply-by-1" autocomplete="off" checked>1</input>
+    </label>
+    <% (2..9).each do |digit| %>
+      <label class="btn btn-primary col-md-2">
+        <input type="radio" name="multiplier" id="multiply-by-<%= digit %>" autocomplete="off"><%= digit %></input>
+      </label>
+    <% end %>
+  </div>
+  <hr>
+
 <div class="container" id="menu">
   <% @cafe_prices.each_with_index do |(item, price), index| %>
     <%= '<div class="row">' if index%4 == 0 %>
       <div class="col-md-3">
-        <input type="button" id="<%=  %>" class="btn btn-default btn-block" data-toggle="button" value="<%= item %> - <%= price %>">
+        <input type="submit" name="item" class="btn btn-success btn-block" value="<%= item %> - <%= price %>">
       </div>
     <%= '</div>' if index%4 == 3 || index == @cafe_prices.count - 1%>
   <% end %>
 </div>
-<hr>
-<div class="container">
-<div id="multiplier" class="row btn-group btn-group-lg btn-block" role="group" aria-label="multiplier" data-toggle="buttons">
-  <label class="btn btn-primary col-md-2">
-    <input type="radio" name="multiplier" id="multiply-by-1" autocomplete="off" checked>1</input>
-  </label>
-  <% (2..9).each do |digit| %>
-    <label class="btn btn-primary col-md-2">
-      <input type="radio" name="multiplier" id="multiply-by-<%= digit %>" autocomplete="off"><%= digit %></input>
-    </label>
-  <% end %>
-</div>
-</div>
-<hr>
-<div class="container" id="add-to-total">
-  <input type="submit" class="btn btn-success" value="Add to order">
+
 </div>
 </form>
+<hr>
