@@ -31,15 +31,16 @@ Summary - My Submission
 
 * I built the app using Ionic and Angular JS to enable cross operation system coverage (IOS and Android), quick prototype development and robust feature testing through Protractor
 
-* I followed Agile and TDD methodologies - created user stories across the 3 versions and created a waffle.io board to manage tickets
+* I followed Agile and TDD methodologies - created user stories across the 3 versions and created a waffle.io board to manage tickets >> [Waffle](https://waffle.io/AlexHandy1/till_tech_test)
 
 * To view locally, ensure you have node js installed and install the relevant npm packages including Ionic globally. It can also be viewed on your mobile device by downloading Ionic View and loading the app ID (refer to detailed instructions below)
 
 * Challenges and proposed improvements - the primary design challenges revolved around managing the implications of asynchronicity across my testing suite and when trying to refactor my controller methods. Additionaly, due to challenges in accessing the data on an external IOS device through Ionic View, I decided to host the menu data within a local controller variable vs an external API or file endpoint retrieved through an Angular factory method.
 
 ![Mobile App Pre Order](https://github.com/AlexHandy1/till_tech_test/blob/master/images/HipTillio-preorder.png)
+
+
 ![Mobile App Receipt](https://github.com/AlexHandy1/till_tech_test/blob/master/images/HipTillio-receipt.png)
-[Waffle](https://waffle.io/AlexHandy1/till_tech_test)
 
 Use Cases:
 -------
