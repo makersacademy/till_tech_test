@@ -17,6 +17,10 @@ class Till < Sinatra::Base
     erb :index
   end
 
+  post '/add-to-order' do
+    puts params
+  end
+
   # start the server if ruby file executed directly
   run! if app_file == $0
 end
