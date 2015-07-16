@@ -5,13 +5,18 @@ Till tech test
 
 Travis CI status: [![Build Status](https://travis-ci.org/DanielJohnston/till_tech_test.svg)](https://travis-ci.org/DanielJohnston/till_tech_test)
 
-Waffle.io status: [![Stories in Done](https://badge.waffle.io/DanielJohnston/till_tech_test.svg?label=done&title=Done)](http://waffle.io/DanielJohnston/till_tech_test)
+[Waffle.io status](http://waffle.io/DanielJohnston/till_tech_test)
 
 The project uses Travis CI to test features as they were being built and submitted, Hound to check styling, and Waffle.io to manage the user stories and development tasks. The following user stories have been completed, in order:
 
 - [x] As a customer, so I can select the items I would like to purchase, I would like to see a price list for the coffee shop
-- [ ] As a staff member, so I can start building an order, I would like to add a menu item and quantity to an order and see the line total
+- [x] As a staff member, so I can start building an order, I would like to add a menu item and quantity to an order and see the line total
 - [ ] As a staff member, so I can calculate an order total, I would like to place a multi-line order using the price list and see the order total
+- [ ] As a staff member, so I can give the right change, I would like to enter payment and be told how much to give
+- [ ] As a staff member, so I can honour our bulk discount, I would like a 5% discount on order total over £50
+- [ ] As a staff member, so I can honour our muffin discount, I would like a 10% discount on all muffins to be applied to the order total
+- [ ] As a staff member, so I can start a new order, I would like to press a button to finish or cancel the current order
+- [ ] As a staff member, so I can remove an incorrect order line, I would like order lines to have a 'cancel' button that gets rid of them
 
 ## Original tech test specification
 
