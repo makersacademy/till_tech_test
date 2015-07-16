@@ -55,7 +55,7 @@ Till.prototype.calculatePrice = function(item) {
 
 var till;
 
-function details() {
+function createTill() {
   $.ajax({ url: '/prices',
     type: 'GET'
   }).done(function(data){
