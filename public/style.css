@@ -13,11 +13,21 @@ h2 {
   text-align: center;
 }
 
+.menu {
+  border-style: solid;
+  border-width: 1px;
+  float: left;
+  margin-left: 5%;
+  width: 25%;
+  height: 200px;
+  overflow: auto;
+}
+
 .till {
   float: left;
-  width: 45%;
+  width: 35%;
   height: 200px;
-  margin-left: 200px;
+  margin-left: 5%;
   border-radius: 20px;
   background-image: url(retina_wood.png);
   box-shadow: 5px 5px 5px #888888;
@@ -27,7 +37,7 @@ h2 {
   float: right;
   width: 20%;
   height: 200px;
-  margin-right: 200px;
+  margin-right: 5%;
   background-image: url(linedpaper.png);
   box-shadow: 5px 5px 5px #888888;
 }
