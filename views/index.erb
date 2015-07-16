@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="menu">
   <% @cafe_prices.each_with_index do |(item, price), index| %>
     <%= '<div class="row">' if index%4 == 0 %>
       <div class="col-md-3">
@@ -6,7 +6,9 @@
       </div>
     <%= '</div>' if index%4 == 3 || index == @cafe_prices.count - 1%>
   <% end %>
-
+</div>
+<hr>
+<div class="container">
 <div id="multiplier" class="row btn-group btn-group-lg btn-block" role="group" aria-label="multiplier" data-toggle="buttons">
   <label class="btn btn-primary col-md-2">
     <input type="radio" name="options" id="multiply-by-1" autocomplete="off" checked>1</input>
@@ -17,4 +19,8 @@
     </label>
   <% end %>
 </div>
+</div>
+<hr>
+<div class="container" id="add-to-total">
+
 </div>

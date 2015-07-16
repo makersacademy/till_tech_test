@@ -10,7 +10,8 @@ Waffle.io status: [![Stories in Done](https://badge.waffle.io/DanielJohnston/til
 The project uses Travis CI to test features as they were being built and submitted, Hound to check styling, and Waffle.io to manage the user stories and development tasks. The following user stories have been completed, in order:
 
 - [x] As a customer, so I can select the items I would like to purchase, I would like to see a price list for the coffee shop
-- [ ] As a staff member, so I can calculate an order total, I would like to place an order using the price list and see the total
+- [ ] As a staff member, so I can start building an order, I would like to add a menu item and quantity to an order and see the line total
+- [ ] As a staff member, so I can calculate an order total, I would like to place a multi-line order using the price list and see the order total
 
 ## Original tech test specification
 

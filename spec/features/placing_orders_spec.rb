@@ -20,12 +20,12 @@ feature 'Placing An Order' do
     }
   end
 
-  scenario 'I can see the front page' do
+  scenario 'can see the front page' do
     visit '/'
     expect(page.status_code).to eq 200
   end
 
-  scenario 'I can see a price list stored in JSON' do
+  scenario 'can see a price list stored in JSON' do
     visit '/'
     @testmenu.each do |key, value|
       expect(page).to have_content(key)
@@ -33,19 +33,35 @@ feature 'Placing An Order' do
     end
   end
 
-  scenario 'I can select an item from the list' do
+  scenario 'can select an item from the list' do
     visit '/'
     @testmenu.each_key do |key|
       expect(page).to have_selector(:link_or_button, key)
     end
   end
 
-  scenario 'I can see quantities to select' do
+  scenario 'can see quantities to select' do
     visit '/'
     within("#multiplier") do
       (1..9).each do |digit|
         expect(page).to have_css("#multiply-by-#{digit}")
       end
+    end
+  end
+
+  scenario 'can select an item and a quantity and add them to an order' do
+    visit '/'
+    within('#menu') do
+      check('Flat White - 4.75')
+    end
+    within('#multiplier') do
+      choose('4')
+    end
+    within('#add-to-total') do
+      click_link 'Add to order'
+    end
+    within('#order') do
+      expect(page).to have_content('19')
     end
   end
 
