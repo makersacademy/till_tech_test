@@ -3,7 +3,7 @@ var app = express();
 var fs = require('fs');
 
 
-app.use(express.static(__dirname));
+app.use(express.static(__dirname +'/public'));
 
 app.get('/', function (req, res, err) {
     if (err) throw err;
@@ -40,7 +40,7 @@ app.get('/receipt', function(req, res, error) {
 
 app.get('/test', function (req, res) {
   var options = {
-    root: __dirname
+    root: (__dirname);
   };
   res.sendFile('test.html', options, function(err) {
     if(err) {
