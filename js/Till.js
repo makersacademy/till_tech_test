@@ -12,18 +12,27 @@ Till.prototype.loadDetails = function() {
   });
 };
 
-Till.prototype.displayTotal = function(order) {
+Till.prototype.produceReceipt = function(order) {
   var total = 0;
+  var itemList = {};
   for(var item in order.items) {
     itemPrice = this.menu[item]
     itemQuantity = order.items[item];
-    total += (itemPrice * itemQuantity);
+    total += this.calculateItemTotal(itemPrice, itemQuantity);
+    this.compileItemList(itemList, item, itemPrice, itemQuantity);
   }
-  return total;
+  tax = this.calculateTax(total);
+  return [itemList, total, tax];
 };
 
-Till.prototype.displayTax = function(order) {
-  var total = this.displayTotal(order);
-  var tax = parseFloat((total / 100 * 8.64).toFixed(2));
-  return tax;
+Till.prototype.calculateItemTotal = function(itemPrice, itemQuantity) {
+  return itemPrice * itemQuantity;
+};
+
+Till.prototype.compileItemList = function(itemList, item, itemPrice, itemQuantity) {
+  itemList[item] = {'price': itemPrice, 'quantity': itemQuantity};
+};
+
+Till.prototype.calculateTax = function(total) {
+  return parseFloat((total / 100 * 8.64).toFixed(2));
 };

@@ -100,6 +100,23 @@ Setup:
 - Run Jasmine tests on server `http://localhost:8080/SpecRunner.html`
 
 
+Process:
+-------
+- Jasmine tests currently use local JSON object in SpecHelper.js. Possible to make AJAX call to JSON object contained in hipstercoffe.json using below method in test files, but will *not* pass Travis CI (giving following error: `Error: Timeout - Async callback was not invoked within timeout specified by jasmine. DEFAULT_TIMEOUT_INTERVAL. (1)`).
+
+```
+beforeEach(function(done) {
+  till = new Till();
+  order = new Order;
+  till.loadDetails()
+  .done(function() {
+    done();
+  });
+});
+
+```
+
+
 Links:
 -------
 

@@ -28,6 +28,23 @@ describe('Till', function(){
     it('price of an item', function() {
       expect(till.menu['Cafe Latte']).toEqual(4.75);
     });
+
+    it('item from an order', function() {
+      var itemList = {};
+      till.compileItemList(itemList, 'Cafe Latte', 4.75, 2);
+      expect(itemList['Cafe Latte']['price']).toEqual(4.75);
+      expect(itemList['Cafe Latte']['quantity']).toEqual(2);
+    });
+  });
+
+  describe('can calculate', function() {
+    it('individual item total', function() {
+      expect(till.calculateItemTotal(4.75, 3)).toEqual(14.25);
+    });
+
+    it('individual tax amount', function() {
+      expect(till.calculateTax(14.25)).toEqual(1.23);
+    });
   });
 
 });
