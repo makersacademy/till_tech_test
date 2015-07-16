@@ -40,7 +40,7 @@ app.get('/receipt', function(req, res, error) {
 
 app.get('/test', function (req, res) {
   var options = {
-    root: (__dirname);
+    root: (__dirname + '/public')
   };
   res.sendFile('test.html', options, function(err) {
     if(err) {
