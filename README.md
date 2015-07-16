@@ -1,3 +1,6 @@
+Till
+====
+
 Version 1
 ---------
 
@@ -76,6 +79,11 @@ Testing
 -------
 
 Tested in Jasmine! To run Jasmine tests from the command line, navigate to the folder that the SpecRunner.html is in and run the command "open SpecRunner.html" to run the Jasmine tests.
+
+Use Karma to run the unit Jasmine tests
+
+
+
 
 
 CURRENTLY WANT TO GET TRAVIS WORKING FOR JAVASCRIPT BUILDS - have bookmarked pages for later

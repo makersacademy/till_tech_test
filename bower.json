@@ -1,0 +1,17 @@
+{
+  "name": "till_tech_test",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ashleigh090990/till_tech_test",
+  "authors": [
+    "Ashleigh Maund <ashleighmaund@gmail.com>"
+  ],
+  "description": "creating a till that prints a receipt",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

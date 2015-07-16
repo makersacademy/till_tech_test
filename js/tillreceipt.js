@@ -35,15 +35,15 @@ function TillReceipt() {
     if (this.ifItemIsOnMenu(itemName)) {
       if (this.isAnInteger(itemQuantity)) {
         for (i=0; i<itemQuantity; i++) {
-          this.addItemToOrderAndNotePrice(itemName);
+          this.addItemToOrderAndNotePriceAndName(itemName);
         };
       } else {
-        this.addItemToOrderAndNotePrice(itemName);
+        this.addItemToOrderAndNotePriceAndName(itemName);
       };
     };
   };
 
-  TillReceipt.prototype.addItemToOrderAndNotePrice = function(itemName) {
+  TillReceipt.prototype.addItemToOrderAndNotePriceAndName = function(itemName) {
     this.addItemAndPriceToOrder(itemName);
     this.takeItemPrice(itemName);
     this.takeItemName(itemName);
