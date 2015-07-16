@@ -26,9 +26,9 @@ app.get('/prices', function (req, res) {
 });
 
 
-app.get('/receipt', function(req, res, error) {
-  console.log(error);
+app.get('/receipt', function(req, res) {
   // if (!error && res.statusCode == 200) {
+
     var data = "Cafe Latte";
     var fileName = "test.csv";
     res.setHeader('Content-disposition', 'attachment; filename=' + fileName);
