@@ -21,7 +21,9 @@ feature 'Placing An Order' do
 
   def order_item(item, quantity = 1)
     visit '/'
-    choose(quantity)
+    within('#multiplier') do
+      choose("add-#{quantity}")
+    end
     click_button(item)
   end
 
@@ -61,7 +63,7 @@ feature 'Placing An Order' do
   scenario 'can select an item and a quantity and add them to an order' do
     visit '/'
     within('#multiplier') do
-      choose('4')
+      choose('add-4')
     end
     within('#menu') do
       click_button('Flat White - £4.75')
@@ -79,6 +81,17 @@ feature 'Placing An Order' do
     within('#order') do
       expect(page).to have_content('58.05')
       expect(page).to have_content('63.06')
+    end
+  end
+
+  scenario 'enter payment and show change due', :js => true do
+    order_item('Flat White')
+    order_item('Tea', 4)
+    order_item('Muffin Of The Day', 2)
+    order_item('Affogato', 2)
+    fill_in('paid', :with => '7000')
+    within('#change') do
+      expect(page).to have_content('£6.94')
     end
   end
 
