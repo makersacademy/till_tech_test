@@ -79,8 +79,12 @@ feature 'Placing An Order' do
     order_item('Muffin Of The Day', 2)
     order_item('Affogato', 2)
     within('#order') do
+      # Subtotal on these should always be 5805
       expect(page).to have_content('£58.05')
-      expect(page).to have_content('£59.91')
+      # Muffin discount 10% of 910 => 91 discount => 5714
+      # Volume discount 5% *after* muffin discount => 5428
+      # Tax rate 8.64% => 5897
+      expect(page).to have_content('£58.98')
     end
   end
 
@@ -91,7 +95,7 @@ feature 'Placing An Order' do
     order_item('Affogato', 2)
     fill_in('paid', with: '7000')
     within('#change') do
-      expect(page).to have_content('£10.09')
+      expect(page).to have_content('£11.02')
     end
   end
 

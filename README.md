@@ -17,12 +17,18 @@ The project uses Travis CI to test features as they were being built and submitt
 - [x] As a staff member, so I can use the product in a real world environment, I would like the till's functionality to be presented through a user interface that I can interact with
 - [x] As a staff member, so I can give the right change, I would like to enter payment and be told how much to give
 - [x] As a staff member, so I can honour our bulk discount, I would like a 5% discount on order total over £50
-- [ ] As a staff member, so I can honour our muffin discount, I would like a 10% discount on all muffins to be applied to the order total
+- [x] As a staff member, so I can honour our muffin discount, I would like a 10% discount on all muffins to be applied to the order total
 - [ ] As a staff member, so I can start a new order, I would like to press a button to finish or cancel the current order
 - [ ] As a staff member, so I can remove an incorrect order line, I would like order lines to have a 'cancel' button that gets rid of them
 - [ ] As a customer, so I have a receipt for my order, I would like a printable display of the order to be produced
 - [ ] As a staff member, so I know whose order I'm preparing, I would like to be able to enter names of customers into the order screen and show them on the receipt
 - [ ] As a store manager, so I can track sales, I would like completed, paid-for orders to be stored and retrievable
+
+### Screenshot of actual bill
+
+![actual till](/images/till_actual.png)
+
+Note that the totals are different from the example image in the original spec. This appears to be because the original spec till appears to take tax off before discount, rather than taxing at the final discounted rate.
 
 ## Original tech test specification
 
