@@ -86,13 +86,9 @@ feature 'Placing An Order' do
 
   scenario 'enter payment and show change due', :js => true do
     order_item('Flat White')
-    # sleep 3
     order_item('Tea', 4)
-    # sleep 3
     order_item('Muffin Of The Day', 2)
-    # sleep 3
     order_item('Affogato', 2)
-    # sleep 3
     fill_in('paid', :with => '7000')
     within('#change') do
       expect(page).to have_content('£6.94')

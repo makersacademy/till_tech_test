@@ -1,13 +1,13 @@
 <form action="/add-to-order" method="post">
   <div class="container">
     <div id="multiplier" class="row btn-group btn-group-lg btn-block" role="group" aria-label="multiplier">
-      <div class="form-group">
-        <input id="add-<%= 1 %>" class="btn btn-primary col-md-2" type="radio" name="multiplier" value="1" autocomplete="off" checked>1</input>
-      </div>
+      <label class="btn btn-primary col-md-2">
+        <input id="add-<%= 1 %>" type="radio" name="multiplier" value="1" autocomplete="off" checked>1
+      </label>
       <% (2..9).each do |digit| %>
-        <div class="form-group">
-          <input id="add-<%= digit %>" class="btn btn-primary col-md-2" type="radio" name="multiplier" value="<%= digit %>" autocomplete="off"><%= digit %></input>
-        </div>
+        <label class="btn btn-primary col-md-2">
+          <input id="add-<%= digit %>" type="radio" name="multiplier" value="<%= digit %>" autocomplete="off"><%= digit %>
+        </label>
       <% end %>
     </div>
   </div>
