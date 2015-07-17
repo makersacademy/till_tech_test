@@ -7,6 +7,8 @@ Travis CI status: [![Build Status](https://travis-ci.org/DanielJohnston/till_tec
 
 [Waffle.io status](http://waffle.io/DanielJohnston/till_tech_test)
 
+[Live demo site](https://tilltech.herokuapp.com/)
+
 The project uses Travis CI to test features as they were being built and submitted, Hound to check styling, and Waffle.io to manage the user stories and development tasks. The following user stories have been completed, in order:
 
 - [x] As a customer, so I can select the items I would like to purchase, I would like to see a price list for the coffee shop
