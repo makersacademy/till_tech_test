@@ -15,8 +15,8 @@ describe Till do
       expect(till.prices.count).to eq 15
     end
 
-    it 'prints a list of prices' do
-      expect(STDOUT).to receive(:puts).with('Flat White: 4.75')
+    xit 'prints a list of prices' do
+      expect(STDOUT).to receive(:puts).to include('Cafe Latte: 4.75')
       till.printPrices
     end
 end
