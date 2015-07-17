@@ -1,7 +1,6 @@
 require 'sinatra/base'
 require 'json'
 
-
 class Till < Sinatra::Base
 
   set :public_folder, 'public'
@@ -9,7 +8,7 @@ class Till < Sinatra::Base
   enable :sessions
 
   configure do
-    #Tax rate is a magic number so set outside of main code
+    # Tax rate is a magic number so set outside of main code
     set :tax_rate, 8.64
   end
 
@@ -28,13 +27,13 @@ class Till < Sinatra::Base
     @cafe_address = cafe_hash["address"]
     @cafe_phone = cafe_hash["phone"]
     @cafe_prices = cafe_hash["prices"][0].map do |item, price|
-      [item, price.to_s.ljust(price.to_s.index('.')+3,'0').delete('.').to_i]
+      [item, price.to_s.ljust(price.to_s.index('.') + 3, '0').delete('.').to_i]
     end
     @order_items = []
     @order_quantities = {}
     @order_line_totals = {}
     @cafe_prices.each do |item, price|
-      if session.has_key?(item)
+      if session.key?(item)
         @order_items << item
         @order_quantities[item] = session[item]
         @order_line_totals[item] = (session[item] * price)
@@ -55,5 +54,6 @@ class Till < Sinatra::Base
   end
 
   # start the server if ruby file executed directly
-  run! if app_file == $0
+  run! if app_file == $PROGRAM_NAME
+
 end
