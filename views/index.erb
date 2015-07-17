@@ -2,11 +2,11 @@
   <div class="container">
     <div id="multiplier" class="row btn-group btn-group-lg btn-block" role="group" aria-label="multiplier" data-toggle="buttons">
       <label class="btn btn-primary col-md-2">
-        <input id="<%= 1 %>" type="radio" name="multiplier" value="1" autocomplete="off" checked>1</input>
+        <input id="add-<%= 1 %>" type="radio" name="multiplier" value="1" autocomplete="off" checked>1</input>
       </label>
       <% (2..9).each do |digit| %>
         <label class="btn btn-primary col-md-2">
-          <input id="<%= digit %>" type="radio" name="multiplier" value="<%= digit %>" autocomplete="off"><%= digit %></input>
+          <input id="add-<%= digit %>" type="radio" name="multiplier" value="<%= digit %>" autocomplete="off"><%= digit %></input>
         </label>
       <% end %>
     </div>

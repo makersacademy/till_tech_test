@@ -21,11 +21,9 @@ feature 'Placing An Order' do
 
   def order_item(item, quantity = 1)
     visit '/'
-    # choose(quantity)
-    # find(:css, "input[type='radio'][value='#{quantity}']").click
-    # page.find_field(quantity).click
-    # find('input #5').click
-    choose("multiplier", option: quantity)
+    within('#multiplier') do
+      choose("add-#{quantity}")
+    end
     click_button(item)
   end
 
