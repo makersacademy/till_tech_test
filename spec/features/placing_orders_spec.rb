@@ -19,6 +19,12 @@ feature 'Placing An Order' do
     }
   end
 
+  def order_item(item, quantity = 1)
+    visit '/'
+    choose(quantity)
+    click_button(item)
+  end
+
   scenario 'can see the front page' do
     visit '/'
     expect(page.status_code).to eq 200
@@ -64,4 +70,16 @@ feature 'Placing An Order' do
       expect(page).to have_content('19')
     end
   end
+
+  scenario 'add multiple line items and show subtotal, tax and total' do
+    order_item('Flat White')
+    order_item('Tea', 4)
+    order_item('Muffin Of The Day', 2)
+    order_item('Affogato', 2)
+    within('#order') do
+      expect(page).to have_content('58.05')
+      expect(page).to have_content('63.07')
+    end
+  end
+
 end

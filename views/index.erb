@@ -28,10 +28,13 @@
 <div class="container" id="order">
   <h3>Your Order</h3>
   <ul>
-    <% @cafe_prices.each do |item, price| %>
-      <% if session.has_key?(item)%>
-        <li><%= session[item].to_s + ' x ' + item + ' = £' + (session[item] * price).to_s%></li>
-      <% end %>
+    <% @order_items.each do |item| %>
+      <li><%= @order_quantities[item].to_s + ' x ' + item + ' = £' + @order_line_totals[item].to_s%></li>
     <% end %>
   </ul>
+  Subtotal: £<%= @order_subtotal %>
+  <br>
+  Tax rate: <%= @TAX_RATE %>%
+  <br>
+  Order total: £<%= @order_total %>
 </div>

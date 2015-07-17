@@ -11,7 +11,8 @@ The project uses Travis CI to test features as they were being built and submitt
 
 - [x] As a customer, so I can select the items I would like to purchase, I would like to see a price list for the coffee shop
 - [x] As a staff member, so I can start building an order, I would like to add a menu item and quantity to an order and see the line total
-- [ ] As a staff member, so I can calculate an order total, I would like to place a multi-line order using the price list and see the order total
+- [x] As a staff member, so I can calculate an order total, I would like to place a multi-line order using the price list and see the order total including tax of 8.64%
+- [x] As a staff member, so I can use the product in a real world environment, I would like the till's functionality to be presented through a user interface that I can interact with
 - [ ] As a staff member, so I can give the right change, I would like to enter payment and be told how much to give
 - [ ] As a staff member, so I can honour our bulk discount, I would like a 5% discount on order total over £50
 - [ ] As a staff member, so I can honour our muffin discount, I would like a 10% discount on all muffins to be applied to the order total
