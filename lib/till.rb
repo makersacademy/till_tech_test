@@ -15,6 +15,7 @@ class Till
     @prices = data[0]['prices'][0]
     @orders = []
     @currentOrder = []
+    self.newOrder
   end
 
   def printPrices
@@ -28,5 +29,12 @@ class Till
   def addItem(item, quantity)
     price = self.prices[item]
     self.currentOrder.add([item,quantity,price])
+  end
+
+  def finishOrder
+    self.currentOrder.finish
+    self.currentOrder.print
+    self.orders.push self.currentOrder
+    self.newOrder
   end
 end
