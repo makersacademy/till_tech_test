@@ -61,13 +61,17 @@ As a skinflint
 I want to see the discount (if any) received on my order
 So that I can relish the savings
 
+As a bargain lover
+I want to be able to view details of offers
+So that I can be aware of them for future visits
+
 As a customer with an awareness and interest in the economy
 I want to see the tax amount of my order on my receipt
 So that I can appreciate how much is feeding back in to the budget
 
-As a bargain lover
-I want to be able to view details of offers
-So that I can be aware of them for future visits
+As someone who likes to change their mind
+I want to be able to remove items from the order before it is final
+So that I purchase the items I absolutely want
 
 As someone who doesn't trust tradespeople
 I want the receipt to display the cash given and change due
@@ -100,7 +104,7 @@ Setup:
 - Run Jasmine tests on server `http://localhost:8080/SpecRunner.html`
 
 
-Process:
+Process / Obstacles:
 -------
 
 - Jasmine tests currently use local JSON object in SpecHelper.js. Possible to make AJAX call to JSON object contained in hipstercoffe.json using below method in test files, but will *not* pass Travis CI (giving following error: `Error: Timeout - Async callback was not invoked within timeout specified by jasmine. DEFAULT_TIMEOUT_INTERVAL. (1)`).
@@ -120,12 +124,14 @@ beforeEach(function(done) {
 
 ```
 
+- AppSpec.js (runs tests for UI): Buttons are not being created on page load and therefore test cannot identify element to click. Console in SpecRunner.html window reads: `Synchronous XMLHttpRequest on the main thread is deprecated because of its detrimental effects to the end user's experience. For more help, check http://xhr.spec.whatwg.org/.`. Possible further solution [here](http://jasmine.github.io/2.0/introduction.html#section-Asynchronous_Support).
+
 
 Process:
 -------
 
 - Further unit tests for Till: `produceOrderTotal()` and `calculateMuffinDiscount()` (mock `order` to test functions).
-- Create `generateReceipt()` method in Till.js, calling other appropriate functions so that both discounts are applied automatically when generating receipt.
+- App.js: write `generateReceipt()` method, calling other appropriate functions so that both discounts are applied automatically when generating receipt.
 
 
 Links:
@@ -136,6 +142,12 @@ Links:
 [Connect](https://www.npmjs.com/package/connect)
 
 [Serve Static](https://github.com/expressjs/serve-static)
+
+
+Screenshots:
+-------
+
+![till_screenshot](/images/till_screenshot.png)
 
 
 Images:
