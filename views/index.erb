@@ -25,6 +25,13 @@
 <hr>
 <div class="container" id="order">
   <h3>Your Order</h3>
+  <%= Time.now %>
+  <br>
+  <%= @cafe_name %>
+  <br>
+  <%= @cafe_address %>
+  <br>
+  Phone: +<%= @cafe_phone %>
   <ul>
     <% @order_items.each do |item| %>
       <li><%= @order_quantities[item].to_s + ' x ' + item + ' = ' + pounds(@order_line_totals[item]) %></li>
