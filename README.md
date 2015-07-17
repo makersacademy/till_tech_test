@@ -20,6 +20,9 @@ The project uses Travis CI to test features as they were being built and submitt
 - [ ] As a staff member, so I can honour our muffin discount, I would like a 10% discount on all muffins to be applied to the order total
 - [ ] As a staff member, so I can start a new order, I would like to press a button to finish or cancel the current order
 - [ ] As a staff member, so I can remove an incorrect order line, I would like order lines to have a 'cancel' button that gets rid of them
+- [ ] As a customer, so I have a receipt for my order, I would like a printable display of the order to be produced
+- [ ] As a staff member, so I know whose order I'm preparing, I would like to be able to enter names of customers into the order screen and show them on the receipt
+- [ ] As a store manager, so I can track sales, I would like completed, paid-for orders to be stored and retrievable
 
 ## Original tech test specification
 
