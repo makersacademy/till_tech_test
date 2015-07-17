@@ -12,8 +12,10 @@ tillReceiptApp.controller('TillReceiptController',[function() {
   self.orderItemsWithPrices = [];
   self.calculatedTax = 0.00;
   self.changeDueToCustomer = 0.00;
+  self.muffinMessage = '';
+  self.overFiftyMessage = '';
 
-// if time, api call to this json
+// if time, api call to this hipstercoffee.json
   self.items = {"Cafe Latte": 4.75,
                 "Flat White": 4.75,
                 "Cappucino": 3.85,
@@ -99,12 +101,12 @@ tillReceiptApp.controller('TillReceiptController',[function() {
 
   self.calcFivePercentDiscount = function() {
     self.calcDiscount(0.95);
-    console.log("5% discount on orders over £50");
+    self.overFiftyMessage = "You received a 5% discount as your order is over £50!";
   };
 
   self.calcTenPercentDiscount = function() {
     self.calcDiscount(0.9);
-    console.log("10% discount on orders including muffins");
+    self.muffinMessage = "You received a 10% discount when you ordered your muffin!";
   };
 
   self.calcDiscount = function(discountAmountPercent) {
@@ -132,7 +134,7 @@ tillReceiptApp.controller('TillReceiptController',[function() {
 
   self.customerPayment = function(amountPaid) {
     if (amountPaid >= self.confirmedPostTaxOrderTotal) {
-      self.changeDueToCustomer = amountPaid - self.confirmedPostTaxOrderTotal;
+      self.changeDueToCustomer = self.roundToTwoDP(amountPaid - self.confirmedPostTaxOrderTotal);
     } else {
       throw new Error("This amount does not cover the bill");
     };

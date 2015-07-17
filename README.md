@@ -1,6 +1,22 @@
 Till
 ====
 
+![screenshot of page](/images/receipt.jpg)
+
+Till tech test
+==============
+
+![a till](/images/till.jpg)
+
+We want to sell tills to local hipster coffee shop who are finally embracing the 21st century. We need a new till to replace their vintage machines - unfortunately, hipster staff are too cool to learn a new system, so we need you to build something that they will understand.
+
+Specification
+-------------
+
+This is what a sample receipt looks like:
+
+![a receipt](/images/receipt.jpg)
+
 Version 1
 ---------
 
@@ -26,6 +42,13 @@ Version 2
 - Add functionality to take payment and calculate correct change.  
 - Add functionality to handle discounts - in this example, a 5% discount on orders over $50, and a 10% muffin discount.
 - Add functionality to print date and time on receipt
+
+Version 3
+---------
+
+Implement an user interface that can actually be used as a till.
+
+You may use whatever technologies you see fit.
 
 User Stories (Version 1)
 ------------
@@ -68,62 +91,21 @@ User Stories (Version 2)
 	So that my hipster customers can enjoy the financial perks of my super hipster coffee shop
 	I would like to give them a 10% discount on their total order price when they buy a muffin
 
-If time:
+Still To Do:
 
 As a time travelling hipster coffee lord
 So that my hipster customers and I can keep track of our history together
 I would like my receipt to print the date and time that their hipster order was made
 ```
 
+Tech Used
+---------
+Written in Javascript and AngularJS, and tested in Jasmine and Protractor.
+
 Testing
 -------
+Tested in Jasmine! To run Jasmine tests from the command line, navigate to the folder that the SpecRunner.html is in and run the command "open SpecRunner.html" to run the Jasmine tests (they are all passing, but for some reason when running these same Jasmine tests throuh Karma, 6 fail as '.includes()' is not recognised as a method? Will be looking into that, as I want to get these tests running for Travis).
 
-Tested in Jasmine! To run Jasmine tests from the command line, navigate to the folder that the SpecRunner.html is in and run the command "open SpecRunner.html" to run the Jasmine tests.
-
-Use Karma to run the unit Jasmine tests
-
+To run the Protractor tests, run "protractor spec/e2e/conf.js" from the command line.
 
 
-
-
-CURRENTLY WANT TO GET TRAVIS WORKING FOR JAVASCRIPT BUILDS - have bookmarked pages for later
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Till tech test
-==============
-
-![a till](/images/till.jpg)
-
-We want to sell tills to local hipster coffee shop who are finally embracing the 21st century. We need a new till to replace their vintage machines - unfortunately, hipster staff are too cool to learn a new system, so we need you to build something that they will understand.
-
-Specification
--------------
-
-This is what a sample receipt looks like:
-
-![a receipt](/images/receipt.jpg)
-
-
-
-
-Version 3
----------
-
-Implement an user interface that can actually be used as a till.
-
-You may use whatever technologies you see fit.

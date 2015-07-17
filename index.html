@@ -4,6 +4,7 @@
   <link href='public/style.css' rel='stylesheet' media="screen" type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Homemade+Apple' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+  <title>hipsterTill</title>
 </head>
 <body ng-controller="TillReceiptController as mainCtrl">
 
@@ -24,7 +25,6 @@
   </div>
 
   <div class="till">
-    <br>
     Select item to add to order: 
     <form>
       <select ng-model="mainCtrl.itemName">
@@ -35,18 +35,22 @@
       </select>
       <input type="submit" value="Add To Order" ng-click="mainCtrl.addToOrder(mainCtrl.itemName, mainCtrl.itemQuantity)">
     </form>
-    (Currently breaks if you try to add more than one of the same item!!! Angular has trouble with duplcates... track by $index isn't fixing it! Commented out 'quantity' box)
+    Type in how much the customer has paid:
+    <form>
+      <input type="text" ng-model="amountPaid" placeholder="Amount paid..."></input>
+      <input type="submit" value="Confirm Payment" ng-click="mainCtrl.customerPayment(amountPaid)"></input>
+    </form>
   </div>
 
   <div class="receipt">
     <p>{{mainCtrl.shopName}}</p>
     <p>{{mainCtrl.address}}</p>
     <p>{{mainCtrl.phone}}</p>
-    <span ng-if="mainCtrl.individualOrderItems ">You ordered:</span>
+    <span>You ordered:</span>
     <table>
       <tr ng-model="mainCtrl.individualOrderItems" ng-repeat="item in mainCtrl.individualOrderItems track by $index">
         <td class="leftColumn">{{item}}</td>
-        <td>£{{mainCtrl.items[item]}}</td>
+        <td>£ {{mainCtrl.items[item]}}</td>
       </tr>
     </table>
     <br>
@@ -63,6 +67,19 @@
         <td class="leftColumn">Total with Tax:</td>
         <td>£ {{mainCtrl.confirmedPostTaxOrderTotal}}</td>
       </tr>
+      <tr>
+        <td class="leftColumn" >Cash:</td>
+        <td>£ {{amountPaid}}<span ng-if="">0</span></td>
+      </tr>
+      <tr>
+        <td class="leftColumn">Change Due:</td>
+        <td ng-model="amountPaid">£ {{mainCtrl.changeDueToCustomer}}</td>
+      </tr>
+    </table>
+    <br>
+
+    <div ng-if="mainCtrl.message!==''">{{mainCtrl.muffinMessage}}</div>
+    <div ng-if="mainCtrl.message!==''">{{mainCtrl.overFiftyMessage}}</div>
 
   </div>
 
