@@ -19,7 +19,14 @@ feature Till do
       till.newOrder
       till.addItem("Choc Mudcake", 2)
       till.addItem("Blueberry Muffin", 1)
-      expect(till.currentOrder.totalNoTax).to eq 16.85      
+      expect(till.currentOrder.totalNoTax).to eq 16.85
+    end
+
+    scenario 'calculate correct amount with tax' do
+      till.newOrder
+      till.addItem("Choc Mudcake", 2)
+      till.addItem("Blueberry Muffin", 1)
+      expect(till.currentOrder.totalWithTax).to eq 18.31
     end
   end
 end

@@ -1,6 +1,8 @@
 require 'json'
 require_relative 'order'
 
+TAX = 8.64
+
 class Till
   attr_reader :shopName, :address, :phone, :prices, :orders, :currentOrder
 

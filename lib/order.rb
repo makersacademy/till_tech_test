@@ -13,4 +13,8 @@ attr_accessor :orderLines
     lineTotals = self.orderLines.map {|line| line[1]* line[2]}
     lineTotals.inject(:+)
   end
+
+  def totalWithTax
+    (totalNoTax * (100 + TAX)/ 100).round(2)
+  end
 end
