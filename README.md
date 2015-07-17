@@ -12,9 +12,12 @@ https://github.com/makersacademy/till_tech_test
 
 I have implemented Version 1 with a focus on OOD
 
-First clone the repo:
+Clone the repo and run bundle:
 
-`$ git clone git@github.com:rodcul/till_tech_test.git`
+```
+$ git clone git@github.com:rodcul/till_tech_test.git
+$ bundle install
+```
 
 
 Boot IRB/PRY and load till.rb:
@@ -67,7 +70,7 @@ This will also create a new order so you're ready to go again!
 
 ## How to run tests
 
-Tested using rspec & capuybara
+Tested using rspec & capybara
 
 `$ rspec`
 

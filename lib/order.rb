@@ -1,4 +1,5 @@
 class Order
+  TAX = 8.64
 
   attr_accessor :lines, :total
 
@@ -12,7 +13,7 @@ class Order
   end
 
   def total_no_tax
-    line_totals = self.lines.map { |line| line[1] * line[2] }
+    line_totals = lines.map { |line| line[1] * line[2] }
     line_totals.inject(:+)
   end
 
@@ -20,16 +21,17 @@ class Order
     (total_no_tax * (100 + TAX) / 100).round(2)
   end
 
-  def finish
+  def finish # builder pattern / finish not required
     @total = total_with_tax
   end
 
-  def print
-    self.lines.each do |line|
-      puts "#{line[0]} - #{line[1]} x #{line[2]}\n"
+  def print # do no puts, save to variable and return
+    output = ''
+    lines.each do |line|
+      output << "#{line[0]} - #{line[1]} x #{line[2]}\n"
     end
-    puts "Tax: #{(self.total_no_tax * 8.64 / 100).round(2)}\n"
-    puts "Total #{self.total_with_tax}"
+    output << "Tax: #{(total_no_tax * 8.64 / 100).round(2)}\n"
+    output << "Total #{total_with_tax}"
+    output
   end
-
 end

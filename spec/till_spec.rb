@@ -8,15 +8,10 @@ describe Till do
   end
 
   it 'loads Tiramisu & price' do
-    expect(till.prices["Tiramisu"]).to eq 11.40
+    expect(till.prices['Tiramisu']).to eq 11.40
   end
 
   it 'shows a list of prices' do
-    expect(till.prices.count).to eq 15
-  end
-
-  xit 'prints a list of prices' do
-    expect(STDOUT).to receive(:puts).to include('Cafe Latte: 4.75')
-    till.print_prices
+    expect(till.prices.count).to eq 15 # magic number, load the json in the test
   end
 end

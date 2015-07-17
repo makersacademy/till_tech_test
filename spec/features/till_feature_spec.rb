@@ -29,6 +29,7 @@ feature Till do
       till.add_item('Choc Mudcake', 2)
       till.add_item('Blueberry Muffin', 1)
       till.finish_order
+      # expect(STDOUT).to receive(:puts).with('Choc Mudcake')
       expect(till.orders.count).to eq 1
       expect(till.orders[0].lines.count).to eq 2
       expect(till.orders[0].total).to eq 18.31
