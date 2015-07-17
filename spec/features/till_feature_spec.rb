@@ -3,7 +3,7 @@ require 'till'
 feature Till do
   let(:till) { Till.new }
 
-    context 'Orders' do
+  context 'Orders' do
 
     scenario 'Can create a new order' do
       expect(till).to respond_to(:newOrder)

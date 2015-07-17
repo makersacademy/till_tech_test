@@ -1,5 +1,6 @@
 class Order
-attr_accessor :lines, :total
+
+  attr_accessor :lines, :total
 
   def initialize
     @lines = []
@@ -11,12 +12,12 @@ attr_accessor :lines, :total
   end
 
   def totalNoTax
-    lineTotals = self.lines.map {|line| line[1]* line[2]}
+    lineTotals = self.lines.map { |line| line[1] * line[2] }
     lineTotals.inject(:+)
   end
 
   def totalWithTax
-    (totalNoTax * (100 + TAX)/ 100).round(2)
+    (totalNoTax * (100 + TAX) / 100).round(2)
   end
 
   def finish
@@ -27,8 +28,8 @@ attr_accessor :lines, :total
     self.lines.each do |line|
       puts "#{line[0]} - #{line[1]} x #{line[2]}\n"
     end
-    puts "Tax: #{(self.totalNoTax * 8.64/100).round(2)}\n"
+    puts "Tax: #{(self.totalNoTax * 8.64 / 100).round(2)}\n"
     puts "Total #{self.totalWithTax}"
-
   end
+
 end

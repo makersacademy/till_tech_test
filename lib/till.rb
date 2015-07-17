@@ -4,6 +4,7 @@ require_relative 'order'
 TAX = 8.64
 
 class Till
+
   attr_reader :shopName, :address, :phone, :prices, :orders, :currentOrder
 
   def initialize
@@ -19,7 +20,7 @@ class Till
   end
 
   def printPrices
-    self.prices.each {|k,v| puts "#{k}: #{v}"}
+    self.prices.each { |k, v| puts "#{k}: #{v}" }
   end
 
   def newOrder
@@ -28,7 +29,7 @@ class Till
 
   def addItem(item, quantity)
     price = self.prices[item]
-    self.currentOrder.add([item,quantity,price])
+    self.currentOrder.add([item, quantity, price])
   end
 
   def finishOrder
@@ -37,4 +38,5 @@ class Till
     self.orders.push self.currentOrder
     self.newOrder
   end
+
 end
