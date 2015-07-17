@@ -10,6 +10,8 @@ class Till < Sinatra::Base
   configure do
     # Tax rate is a magic number so set outside of main code
     set :tax_rate, 8.64
+    set :volume_discount_threshold, 5000
+    set :volume_discount_rate, 5
   end
 
   def pounds(pence)
@@ -40,9 +42,19 @@ class Till < Sinatra::Base
       end
     end
     @order_subtotal = @order_line_totals.values.inject(:+).to_i
+    @volume_discount_rate = settings.volume_discount_rate
+    @volume_discount_threshold = settings.volume_discount_threshold
+    @volume_discount_amount = (@order_subtotal * @volume_discount_rate / 100).to_i
     @TAX_RATE = settings.tax_rate
-    @order_tax = (@order_subtotal * @TAX_RATE / 100).to_i
-    @order_total = @order_subtotal + @order_tax
+    if @order_subtotal >= @volume_discount_threshold
+      @volume_discount = true
+      @order_tax = ((@order_subtotal - @volume_discount_amount) * @TAX_RATE / 100).to_i
+      @order_total = @order_subtotal - @volume_discount_amount + @order_tax
+    else
+      @volume_discount = false
+      @order_tax = (@order_subtotal * @TAX_RATE / 100).to_i
+      @order_total = @order_subtotal + @order_tax
+    end
     erb :index
   end
 
