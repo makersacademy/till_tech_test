@@ -3,24 +3,21 @@
 <head>
   <link href='public/style.css' rel='stylesheet' media="screen" type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Homemade+Apple' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
 </head>
 <body ng-controller="TillReceiptController as mainCtrl">
 
   <h1>hipsterTill</h1>
   <h2>becauseCamelCaseIsn'tJustForJavascript...</h2>
 
-  <!-- Type in/or choose from dropdown list items list -->
-  <!-- Choose the quantity -->
-  <!--  -->
-
   <div class="menu">
     <table>
       <tr>
-        <th>Item</th>
+        <th class="leftColumn">Item</th>
         <th>Price</th>
       </tr>
       <tr ng-repeat="(key, value) in mainCtrl.items">
-        <td>{{key}}</td>
+        <td class="leftColumn">{{key}}</td>
         <td>£{{value}}</td>
       </tr>
     </table>
@@ -28,25 +25,47 @@
 
   <div class="till">
     <br>
-    Type in item to order:
+    Select item to add to order: 
     <form>
-      <select>
+      <select ng-model="mainCtrl.itemName">
         <option ng-repeat="(key, value) in mainCtrl.items">{{key}}</option>
       </select>
-      <select>
+      <select ng-model="mainCtrl.itemQuantity">
         <option ng-repeat="number in mainCtrl.quantity">{{number}}</option>
       </select>
-      <input type="submit" value="Add To Order" ng-click="mainCtrl.addToOrder(itemName)">
+      <input type="submit" value="Add To Order" ng-click="mainCtrl.addToOrder(mainCtrl.itemName, mainCtrl.itemQuantity)">
     </form>
+    (Currently breaks if you try to add more than one of the same item!!! Angular has trouble with duplcates... track by $index isn't fixing it! Commented out 'quantity' box)
   </div>
 
   <div class="receipt">
+    <p>{{mainCtrl.shopName}}</p>
+    <p>{{mainCtrl.address}}</p>
+    <p>{{mainCtrl.phone}}</p>
+    <span ng-if="mainCtrl.individualOrderItems ">You ordered:</span>
+    <table>
+      <tr ng-model="mainCtrl.individualOrderItems" ng-repeat="item in mainCtrl.individualOrderItems track by $index">
+        <td class="leftColumn">{{item}}</td>
+        <td>£{{mainCtrl.items[item]}}</td>
+      </tr>
+    </table>
     <br>
-    Receipt
+    <table>
+      <tr>
+        <td class="leftColumn">Total:</td>
+        <td>£ {{mainCtrl.confirmedPreTaxOrderTotal}}</td>
+      </tr>
+      <tr>
+        <td class="leftColumn">Tax:</td>
+        <td>£ {{mainCtrl.calculatedTax}}</td>
+      </tr>
+      <tr>
+        <td class="leftColumn">Total with Tax:</td>
+        <td>£ {{mainCtrl.confirmedPostTaxOrderTotal}}</td>
+      </tr>
+
   </div>
 
-
-  
   <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-resource/angular-resource.js"></script>

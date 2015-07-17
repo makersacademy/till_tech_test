@@ -1,15 +1,19 @@
 tillReceiptApp.controller('TillReceiptController',[function() {
 
   var self = this;
-  var nameOfShop;
-  self.confirmedPostTaxOrderTotal = 0;
-  self.confirmedPreTaxOrderTotal = 0;
+  self.shopName = "The Coffee Connection";
+  self.address = "123 Lakeside Way";
+  self.phone = "16503600708";
+
+  self.confirmedPostTaxOrderTotal = 0.00;
+  self.confirmedPreTaxOrderTotal = 0.00;
   self.individualOrderItems = [];
   self.individualOrderPrices = [];
   self.orderItemsWithPrices = [];
-  self.calculatedTax = 0;
-  self.changeDueToCustomer = 0;
+  self.calculatedTax = 0.00;
+  self.changeDueToCustomer = 0.00;
 
+// if time, api call to this json
   self.items = {"Cafe Latte": 4.75,
                 "Flat White": 4.75,
                 "Cappucino": 3.85,
@@ -27,28 +31,25 @@ tillReceiptApp.controller('TillReceiptController',[function() {
                 "Muffin Of The Day": 4.55
   };
 
-  self.quantity = [1,2,3,4,5,6,7,8,9,10]
-
-  self.nameOfCoffeeShop = function(coffeeShopName) {
-    this.nameOfShop = coffeeShopName;
-  };
+  self.quantity = [1,2,3,4,5,6,7,8,9,10];
 
   self.addToOrder = function(itemName, itemQuantity) {
-    if (this.ifItemIsOnMenu(itemName)) {
-      if (this.isAnInteger(itemQuantity)) {
+    if (self.ifItemIsOnMenu(itemName)) {
+      if (self.isAnInteger(itemQuantity)) {
         for (i=0; i<itemQuantity; i++) {
-          this.addItemToOrderAndNotePriceAndName(itemName);
+          self.addItemToOrderAndNotePriceAndName(itemName);
         };
       } else {
-        this.addItemToOrderAndNotePriceAndName(itemName);
+        self.addItemToOrderAndNotePriceAndName(itemName);
       };
     };
+    self.confirmOrder();
   };
 
   self.addItemToOrderAndNotePriceAndName = function(itemName) {
-    this.addItemAndPriceToOrder(itemName);
-    this.takeItemPrice(itemName);
-    this.takeItemName(itemName);
+    self.addItemAndPriceToOrder(itemName);
+    self.takeItemPrice(itemName);
+    self.takeItemName(itemName);
   };
 
   self.isAnInteger = function(itemQuantity) {
@@ -56,67 +57,67 @@ tillReceiptApp.controller('TillReceiptController',[function() {
   };
 
   self.takeItemPrice = function(itemName) {
-    this.individualOrderPrices.push(this.items[itemName]);
+    self.individualOrderPrices.push(self.items[itemName]);
   };
 
   self.takeItemName = function(itemName) {
-    this.individualOrderItems.push(itemName);
+    self.individualOrderItems.push(itemName);
   };
 
   self.ifItemIsOnMenu = function(itemName) {
-    return this.items[itemName] !== undefined;
+    return self.items[itemName] !== undefined;
   };
 
   self.addItemAndPriceToOrder = function(itemName) {
-    var itemToAddToOrder = this.createHashOfItemAndPrice(itemName);
-    this.orderItemsWithPrices.push(itemToAddToOrder);
+    var itemToAddToOrder = self.createHashOfItemAndPrice(itemName);
+    self.orderItemsWithPrices.push(itemToAddToOrder);
   };
 
   self.confirmOrder = function() {
-    this.calcOrderTotalBeforeTax();
-    this.calculateTax();
-    this.calcOrderTotalWithTax();
+    self.calcOrderTotalBeforeTax();
+    self.calculateTax();
+    self.calcOrderTotalWithTax();
   };
 
   self.calcOrderTotalBeforeTax = function() {
-    for (i=0; i<this.individualOrderPrices.length; i++) {
-      this.calcOrderTotalBeforeDiscount();
+    for (i=0; i<self.individualOrderPrices.length; i++) {
+      self.roundToTwoDP(self.calcOrderTotalBeforeDiscount());
     };
-    if (this.confirmedPreTaxOrderTotal >= 50) {
-      this.calcFivePercentDiscount();
+    if (self.confirmedPreTaxOrderTotal >= 50) {
+      self.roundToTwoDP(self.calcFivePercentDiscount());
     };
-    for (i=0; i<this.individualOrderItems.length; i++) {
-      if (this.individualOrderItems[i].includes("Muffin")) {
-        this.calcTenPercentDiscount();
+    for (i=0; i<self.individualOrderItems.length; i++) {
+      if (self.individualOrderItems[i].includes("Muffin")) {
+        self.roundToTwoDP(self.calcTenPercentDiscount());
       };
     };
   };
 
   self.calcOrderTotalBeforeDiscount = function() {
-    this.confirmedPreTaxOrderTotal = this.confirmedPreTaxOrderTotal + this.individualOrderPrices[i];
+    self.confirmedPreTaxOrderTotal = self.roundToTwoDP(self.confirmedPreTaxOrderTotal + self.individualOrderPrices[i]);
   };
 
   self.calcFivePercentDiscount = function() {
-    this.calcDiscount(0.95);
+    self.calcDiscount(0.95);
     console.log("5% discount on orders over £50");
   };
 
   self.calcTenPercentDiscount = function() {
-    this.calcDiscount(0.9);
+    self.calcDiscount(0.9);
     console.log("10% discount on orders including muffins");
   };
 
   self.calcDiscount = function(discountAmountPercent) {
-    this.confirmedPreTaxOrderTotal = this.roundToTwoDP(this.confirmedPreTaxOrderTotal * discountAmountPercent);
+    self.confirmedPreTaxOrderTotal = self.roundToTwoDP(self.confirmedPreTaxOrderTotal * discountAmountPercent);
   };
 
   self.calculateTax = function() {
-    this.calculatedTax = this.roundToTwoDP(this.confirmedPreTaxOrderTotal* 0.0864);
-    return this.calculatedTax;
+    self.calculatedTax = self.roundToTwoDP(self.confirmedPreTaxOrderTotal* 0.0864);
+    return self.calculatedTax;
   };
 
   self.calcOrderTotalWithTax = function() {
-    this.confirmedPostTaxOrderTotal = this.confirmedPreTaxOrderTotal + this.calculatedTax;
+    self.confirmedPostTaxOrderTotal = self.roundToTwoDP(self.confirmedPreTaxOrderTotal + self.calculatedTax);
   };
 
   self.roundToTwoDP = function(number) {
@@ -125,13 +126,13 @@ tillReceiptApp.controller('TillReceiptController',[function() {
 
   self.createHashOfItemAndPrice = function(itemName) {
     var itemToAddToOrder = {};
-    itemToAddToOrder[itemName] = this.items[itemName];
+    itemToAddToOrder[itemName] = self.items[itemName];
     return itemToAddToOrder;
   };
 
   self.customerPayment = function(amountPaid) {
-    if (amountPaid >= this.confirmedPostTaxOrderTotal) {
-      this.changeDueToCustomer = amountPaid - this.confirmedPostTaxOrderTotal;
+    if (amountPaid >= self.confirmedPostTaxOrderTotal) {
+      self.changeDueToCustomer = amountPaid - self.confirmedPostTaxOrderTotal;
     } else {
       throw new Error("This amount does not cover the bill");
     };
