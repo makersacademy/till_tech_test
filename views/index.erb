@@ -32,6 +32,10 @@
   </ul>
   Subtotal: <%= pounds(@order_subtotal) %>
   <br>
+  <% if @volume_discount == true %>
+    Discount: 5% from <%= pounds(@order_subtotal) %>
+    <br>
+  <% end %>
   Tax rate: <%= @TAX_RATE %>%
   <br>
   Tax: <%= pounds(@order_tax) %>

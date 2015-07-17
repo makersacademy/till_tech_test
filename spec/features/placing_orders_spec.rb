@@ -80,7 +80,6 @@ feature 'Placing An Order' do
     order_item('Affogato', 2)
     within('#order') do
       expect(page).to have_content('£58.05')
-      expect(page).to have_content('£55.15')
       expect(page).to have_content('£59.91')
     end
   end
