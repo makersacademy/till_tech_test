@@ -28,7 +28,7 @@ The project uses Travis CI to test features as they were being built and submitt
 
 ![actual till](/images/till_actual.png)
 
-Note that the totals are different from the example image in the original spec. This appears to be because the original spec till appears to take tax off before discount, rather than taxing at the final discounted rate.
+Note that the totals are different from the example image in the original spec. This appears to be because the original spec till takes tax off before discount, rather than taxing at the final discounted rate. Also, display currency is £ rather than $.
 
 ## Original tech test specification
 
