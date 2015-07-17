@@ -16,7 +16,7 @@
   <% @cafe_prices.each_with_index do |(item, price), index| %>
     <%= '<div class="row">' if index%4 == 0 %>
       <div class="col-md-3">
-        <button type="submit" name="item" class="btn btn-success btn-block" value="<%= item %>"><%= item %> - <%= price %></button>
+        <button type="submit" name="item" class="btn btn-success btn-block" value="<%= item %>"><%= item %> - <%= pounds(price) %></button>
       </div>
     <%= '</div>' if index%4 == 3 || index == @cafe_prices.count - 1%>
   <% end %>
@@ -29,12 +29,12 @@
   <h3>Your Order</h3>
   <ul>
     <% @order_items.each do |item| %>
-      <li><%= @order_quantities[item].to_s + ' x ' + item + ' = £' + @order_line_totals[item].to_s%></li>
+      <li><%= @order_quantities[item].to_s + ' x ' + item + ' = ' + pounds(@order_line_totals[item]) %></li>
     <% end %>
   </ul>
-  Subtotal: £<%= @order_subtotal %>
+  Subtotal: <%= pounds(@order_subtotal) %>
   <br>
   Tax rate: <%= @TAX_RATE %>%
   <br>
-  Order total: £<%= @order_total %>
+  Order total: <%= pounds(@order_total) %>
 </div>

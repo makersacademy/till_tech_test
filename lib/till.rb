@@ -13,13 +13,23 @@ class Till < Sinatra::Base
     set :tax_rate, 8.64
   end
 
+  def pounds(pence)
+    pence_text = pence.to_s
+    if pence_text.length < 3
+      pence_text = "0" * (3 - pence_text.length) + pence_text
+    end
+    "£#{pence_text[0..-3]}.#{pence_text[-2..-1]}"
+  end
+
   get '/' do
     file = File.read('hipstercoffee.json')
     cafe_hash = JSON.parse(file).first
     @cafe_name = cafe_hash["shopName"]
     @cafe_address = cafe_hash["address"]
     @cafe_phone = cafe_hash["phone"]
-    @cafe_prices = cafe_hash["prices"][0]
+    @cafe_prices = cafe_hash["prices"][0].map do |item, price|
+      [item, price.to_s.ljust(price.to_s.index('.')+3,'0').delete('.').to_i]
+    end
     @order_items = []
     @order_quantities = {}
     @order_line_totals = {}
@@ -27,13 +37,13 @@ class Till < Sinatra::Base
       if session.has_key?(item)
         @order_items << item
         @order_quantities[item] = session[item]
-        @order_line_totals[item] = session[item] * price
+        @order_line_totals[item] = (session[item] * price)
       end
     end
-    @order_subtotal = @order_line_totals.values.inject(:+).to_f
+    @order_subtotal = @order_line_totals.values.inject(:+).to_i
     @TAX_RATE = settings.tax_rate
-    @order_tax = @order_subtotal * @TAX_RATE / 100
-    @order_total = (@order_subtotal + @order_tax).round(2)
+    @order_tax = (@order_subtotal * @TAX_RATE / 100).to_i
+    @order_total = @order_subtotal + @order_tax
     erb :index
   end
 
