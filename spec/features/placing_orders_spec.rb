@@ -63,7 +63,7 @@ feature 'Placing An Order' do
   scenario 'can select an item and a quantity and add them to an order' do
     visit '/'
     within('#multiplier') do
-      choose('4')
+      choose('add-4')
     end
     within('#menu') do
       click_button('Flat White - £4.75')
@@ -95,7 +95,7 @@ feature 'Placing An Order' do
     # sleep 3
     fill_in('paid', :with => '7000')
     within('#change') do
-      expect(page).to have_content('6.96')
+      expect(page).to have_content('£6.94')
     end
   end
 
