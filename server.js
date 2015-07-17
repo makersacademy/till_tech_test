@@ -31,15 +31,12 @@ app.get('/prices', function (req, res) {
 
 app.post('/', function(req, res, error) {
   var data = req.body;
-
-
+  console.log(req.body);
   var fileName = "receipt.txt";
   res.setHeader('Content-disposition', 'attachment; filename=' + fileName);
   res.set('Content-Type', 'text/csv');
   res.charset = 'binary';
   res.send(data);
-  console.log(data);
-
 });
 
 app.get('/test', function (req, res) {

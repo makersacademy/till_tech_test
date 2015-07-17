@@ -1,10 +1,21 @@
+[![Build Status](https://travis-ci.org/bagolol/till_tech_test.png)](https://travis-ci.org/bagolol/till_tech_test)
+
+
 till tech test
 ==============
 
 brief
 -----
 
-build a simple till application to calculate the total amount due for each order.
+build a simple till application to calculate the total amount due for each order. and print a receipt showing the total amount,taxes, a list of products and the discount when appropriate.
+
+
+
+sample receipt:
+-------
+
+![a receipt](/images/receipt.jpg)
+
 
 
 user stories
@@ -16,43 +27,44 @@ as a coffe shop owner
 in order to calculate the right amount for each order
 I want to be able to rely on a till
 
+as a coffee shop owner
+in order to calculate the right total
+I want to automatically apply discounts
 
 as a customer
 in order to be able to review the amount
 I want to receive a receit with my order and a total
 
+as a cutomer with little money
+in order to check I paid the right amount
+I want to see the applied discount on my receipt
+
 
 ````
 
 
-Version 1
----------
+technologies
 
-Implement a system that contains the business logic to produce receipts similar to this, based on a `json` price list and test orders. A sample `.json` file has been provided with the list of products sold at this particular coffee shop.
+------------
 
-Here are some sample orders you can try - whether you use this information is up to you:
+- javascript for both frontend (jquery) and backend (node.js, express)
+- jasmine (js) for the tests
 
-> **Jane**
-> 2 x Cafe Latte
-> 1 x Blueberry Muffin
-> 1 x Choc Mudcake
->
-> **John**
-> 4 x Americano
-> 2 x Tiramisu
-> 5 x Blueberry Muffin
 
-Your receipt must calculate and show the correct amount of tax (in this shop's case, 8.64%), as well as correct line totals and total amount. Do not worry about calculating discounts or change yet. Consider what output formats may be suitable.
 
-Version 2
----------
+setup
 
-- Add functionality to take payment and calculate correct change.
-- Add functionality to handle discounts - in this example, a 5% discount on orders over $50, and a 10% muffin discount.
 
-Version 3
----------
 
-Implement an user interface that can actually be used as a till.
+`````
+- clone repo
+- node server.js
+- http://localhost:3000/
 
-You may use whatever technologies you see fit.
+`````
+
+
+Images:
+-------
+
+![a till](/images/till.jpg)
