@@ -32,8 +32,12 @@
   </ul>
   Subtotal: <%= pounds(@order_subtotal) %>
   <br>
+  <% if @order_muffin_subtotal > 0 %>
+    Voucher: 10% off all muffins!
+  <% end %>
+  <br>
   <% if @volume_discount == true %>
-    Discount: 5% from <%= pounds(@order_subtotal) %>
+    Discount: 5% from <%= pounds(@order_subtotal - @order_muffin_discount_amount) %>
     <br>
   <% end %>
   Tax rate: <%= @TAX_RATE %>%
