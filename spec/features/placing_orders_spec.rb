@@ -21,7 +21,11 @@ feature 'Placing An Order' do
 
   def order_item(item, quantity = 1)
     visit '/'
-    choose(quantity)
+    # choose(quantity)
+    # find(:css, "input[type='radio'][value='#{quantity}']").click
+    # page.find_field(quantity).click
+    # find('input #5').click
+    choose("multiplier", option: quantity)
     click_button(item)
   end
 
@@ -79,6 +83,21 @@ feature 'Placing An Order' do
     within('#order') do
       expect(page).to have_content('58.05')
       expect(page).to have_content('63.06')
+    end
+  end
+
+  scenario 'enter payment and show change due', :js => true do
+    order_item('Flat White')
+    # sleep 3
+    order_item('Tea', 4)
+    # sleep 3
+    order_item('Muffin Of The Day', 2)
+    # sleep 3
+    order_item('Affogato', 2)
+    # sleep 3
+    fill_in('paid', :with => '7000')
+    within('#change') do
+      expect(page).to have_content('6.96')
     end
   end
 
