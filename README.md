@@ -8,6 +8,8 @@ https://github.com/makersacademy/till_tech_test
 - My solution: Version 1 Pure Ruby code to be run in IRB/PRY
 - Testing: RSPEC/CAPYBARA Feature & Unit tests
 
+*Please note: Commit  [45b9012](https://github.com/rodcul/till_tech_test/commit/b25456c47dc277861b556a7814ef16fa1fe07700) is based heavily on feedback from [@sdorunga1](https://github.com/sdorunga1) (Coach @ Makers Academy)*
+
 ## Instructions:
 
 I have implemented Version 1 with a focus on OOD
