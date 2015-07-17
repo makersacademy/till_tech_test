@@ -1,8 +1,1 @@
-var till = new TillReceipt();
-
-
-
-
-someRandomFunction = function() {
-	console.log("HELLLOOOOOO")
-};
+var tillReceiptApp = angular.module('TillReceiptApp',[]);
