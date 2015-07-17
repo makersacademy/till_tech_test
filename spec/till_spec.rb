@@ -4,7 +4,7 @@ describe Till do
   let(:till) { Till.new }
 
   it 'loads Shop Name' do
-    expect(till.shopName).to eq 'The Coffee Connection'
+    expect(till.shop_name).to eq 'The Coffee Connection'
   end
 
   it 'loads Tiramisu & price' do
@@ -17,6 +17,6 @@ describe Till do
 
   xit 'prints a list of prices' do
     expect(STDOUT).to receive(:puts).to include('Cafe Latte: 4.75')
-    till.printPrices
+    till.print_prices
   end
 end

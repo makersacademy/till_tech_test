@@ -11,25 +11,25 @@ class Order
     lines.push(line)
   end
 
-  def totalNoTax
-    lineTotals = self.lines.map { |line| line[1] * line[2] }
-    lineTotals.inject(:+)
+  def total_no_tax
+    line_totals = self.lines.map { |line| line[1] * line[2] }
+    line_totals.inject(:+)
   end
 
-  def totalWithTax
-    (totalNoTax * (100 + TAX) / 100).round(2)
+  def total_with_tax
+    (total_no_tax * (100 + TAX) / 100).round(2)
   end
 
   def finish
-    @total = totalWithTax
+    @total = total_with_tax
   end
 
   def print
     self.lines.each do |line|
       puts "#{line[0]} - #{line[1]} x #{line[2]}\n"
     end
-    puts "Tax: #{(self.totalNoTax * 8.64 / 100).round(2)}\n"
-    puts "Total #{self.totalWithTax}"
+    puts "Tax: #{(self.total_no_tax * 8.64 / 100).round(2)}\n"
+    puts "Total #{self.total_with_tax}"
   end
 
 end

@@ -28,7 +28,7 @@ Create a new till (also creates your first empty order):
 Let's see what is available today:
 
 ```
-[2] pry(main)> till.printPrices
+[2] pry(main)> till.print_prices
 Cafe Latte: 4.75
 Flat White: 4.75
 Cappucino: 3.85
@@ -48,16 +48,16 @@ Muffin Of The Day: 4.55
 
 Nice, let's add 2 Chocolate Mudcakes to our order (yum!)
 
-`[3] pry(main)> till.addItem("Choc Mudcake", 2)`
+`[3] pry(main)> till.add_item("Choc Mudcake", 2)`
 
 We also want to bring back something for our pair, let's get a muffin:
 
-`[4] pry(main)> till.addItem("Blueberry Muffin", 1)`
+`[4] pry(main)> till.add_item("Blueberry Muffin", 1)`
 
 We're all set for now, let's pay (this will also print an order summary):
 
 ```
-[5] pry(main)> till.finishOrder
+[5] pry(main)> till.finish_order
 Choc Mudcake - 2 x 6.4
 Blueberry Muffin - 1 x 4.05
 Tax: 1.46

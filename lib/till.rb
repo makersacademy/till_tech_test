@@ -5,38 +5,38 @@ TAX = 8.64
 
 class Till
 
-  attr_reader :shopName, :address, :phone, :prices, :orders, :currentOrder
+  attr_reader :shop_name, :address, :phone, :prices, :orders, :current_order
 
   def initialize
     file = File.read('hipstercoffee.json')
     data = JSON.parse(file)
-    @shopName = data[0]['shopName']
+    @shop_name = data[0]['shop_name']
     @address = data[0]['address']
     @phone = data[0]['phone']
     @prices = data[0]['prices'][0]
     @orders = []
-    @currentOrder = []
-    self.newOrder
+    @current_order = []
+    self.new_order
   end
 
-  def printPrices
+  def print_prices
     self.prices.each { |k, v| puts "#{k}: #{v}" }
   end
 
-  def newOrder
-    @currentOrder = Order.new # refactor dependency injection
+  def new_order
+    @current_order = Order.new # refactor dependency injection
   end
 
-  def addItem(item, quantity)
+  def add_item(item, quantity)
     price = self.prices[item]
-    self.currentOrder.add([item, quantity, price])
+    self.current_order.add([item, quantity, price])
   end
 
-  def finishOrder
-    self.currentOrder.finish
-    self.currentOrder.print
-    self.orders.push self.currentOrder
-    self.newOrder
+  def finish_order
+    self.current_order.finish
+    self.current_order.print
+    self.orders.push self.current_order
+    self.new_order
   end
 
 end
