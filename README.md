@@ -102,10 +102,36 @@ Tech Used
 ---------
 Written in Javascript and AngularJS, and tested in Jasmine and Protractor.
 
-Testing
+To Run
 -------
-Tested in Jasmine! To run Jasmine tests from the command line, navigate to the folder that the SpecRunner.html is in and run the command "open SpecRunner.html" to run the Jasmine tests (they are all passing, but for some reason when running these same Jasmine tests throuh Karma, 6 fail as '.includes()' is not recognised as a method? Will be looking into that, as I want to get these tests running for Travis).
+Navigate to any folder and in the command line:
 
-To run the Protractor tests, run "protractor spec/e2e/conf.js" from the command line.
+```
+$ git clone https://github.com/ashleigh090990/till_tech_test
 
+$ cd till_tech_test
 
+$ npm install
+
+$ bower install
+```
+
+You may have to install npm and bower before installing the dependencies.
+
+To run the Jasmine tests from the command line, navigate to the folder that the SpecRunner.html is in and run the command "open SpecRunner.html" to run the Jasmine tests (they are all passing, but for some reason when running these same Jasmine tests throuh Karma, 6 fail as '.includes()' is not recognised as a method? Will be looking into that, as I want to get these tests running for Travis).
+
+To run the Protractor tests, run "protractor spec/e2e/conf.js" from the command line. <<< NOT RUNNING SIMPLE TESTS... CHECK ON THIS
+
+To run the application, in one terminal tab:
+
+```
+$ webdriver-manager start
+```
+
+And in another terminal tab:
+
+```
+$ http-server ./
+```
+
+Then in Google Chrome, navigate to "http://localhost:8080/" and the application should load!
