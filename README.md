@@ -16,7 +16,7 @@ The project uses Travis CI to test features as they were being built and submitt
 - [x] As a staff member, so I can calculate an order total, I would like to place a multi-line order using the price list and see the order total including tax of 8.64%
 - [x] As a staff member, so I can use the product in a real world environment, I would like the till's functionality to be presented through a user interface that I can interact with
 - [x] As a staff member, so I can give the right change, I would like to enter payment and be told how much to give
-- [ ] As a staff member, so I can honour our bulk discount, I would like a 5% discount on order total over £50
+- [x] As a staff member, so I can honour our bulk discount, I would like a 5% discount on order total over £50
 - [ ] As a staff member, so I can honour our muffin discount, I would like a 10% discount on all muffins to be applied to the order total
 - [ ] As a staff member, so I can start a new order, I would like to press a button to finish or cancel the current order
 - [ ] As a staff member, so I can remove an incorrect order line, I would like order lines to have a 'cancel' button that gets rid of them
