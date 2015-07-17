@@ -1,4 +1,5 @@
 class Order
+
   TAX = 8.64
 
   attr_accessor :lines, :total
@@ -34,4 +35,5 @@ class Order
     output << "Total #{total_with_tax}"
     output
   end
+
 end
