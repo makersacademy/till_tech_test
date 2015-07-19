@@ -52,7 +52,7 @@ hiptillio.controller('HipTillioController', ['$http', 'GetShopDetails', function
   //     console.log("Error")
   // });
 
-  self.addItem = function(newItem, quantity) {
+  self.addItem = function(newItem) {
     self.newItem = {itemName: newItem, price: self.menu[0].prices[0][newItem]}
     console.log(self.newItem.price)
     if (self.newItem.price == undefined) {
@@ -76,13 +76,11 @@ hiptillio.controller('HipTillioController', ['$http', 'GetShopDetails', function
       self.orderCount[key] = (self.orderCount[key] || 0) + 1
     });
 
-    //how refactor this out into separate method whilst still handling asychronicity?
     for (item in self.orderCount) {
       var finalOrderItem = {itemName: item, price: self.menu[0].prices[0][item], quantity: self.orderCount[item]}
       self.confirmedItems.push(finalOrderItem)
     }
 
-    //refactor out method > calculate total cost
     self.costs = []
     self.confirmedItems.forEach(function(item) {
       var itemCost = item.price * item.quantity
@@ -93,9 +91,9 @@ hiptillio.controller('HipTillioController', ['$http', 'GetShopDetails', function
     })
 
      self.totalItemCost = parseFloat(self.totalItemCost * (1 - self.customerDiscount/100)).toFixed(2)
-      //refactor out method > calculate proportion that is tax
+
      self.taxCost = parseFloat(self.totalItemCost * taxRate).toFixed(2);
-      //refactor out method > calculate change
+
      self.change = parseFloat(self.customerPayment - self.totalItemCost).toFixed(2);
     }
 }])
