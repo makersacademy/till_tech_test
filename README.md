@@ -111,3 +111,5 @@ Further Improvements
 
 *  Further refactor controller methods whilst maintaining necessary sequential commands in asynchronous environment
 
+*  Add stylistic guide e.g. JShint and extend unit testing
+
