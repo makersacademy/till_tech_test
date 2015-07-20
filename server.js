@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var fs = require('fs');
 var bodyParser = require('body-parser');
-var request = require('request')
+
 
 
 app.use(bodyParser.json());
@@ -31,7 +31,6 @@ app.get('/prices', function (req, res) {
 
 app.post('/', function(req, res, error) {
   var data = req.body;
-  console.log(req.body);
   var fileName = "receipt.txt";
   res.setHeader('Content-disposition', 'attachment; filename=' + fileName);
   res.set('Content-Type', 'text/csv');
