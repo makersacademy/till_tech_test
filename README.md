@@ -33,7 +33,7 @@ Create a new till (also creates your first empty order):
 Let's see what is available today:
 
 ```
-[2] pry(main)> till.print_prices
+[2] pry(main)> till.prices
 Cafe Latte: 4.75
 Flat White: 4.75
 Cappucino: 3.85
