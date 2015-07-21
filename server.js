@@ -31,7 +31,7 @@ app.get('/prices', function (req, res) {
 
 app.post('/', function(req, res, error) {
   var data = req.body;
-  var fileName = "receipt.txt";
+  var fileName = 'receipt.txt';
   res.setHeader('Content-disposition', 'attachment; filename=' + fileName);
   res.set('Content-Type', 'text/csv');
   res.charset = 'binary';
