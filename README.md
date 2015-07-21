@@ -1,29 +1,29 @@
 [![Build Status](https://travis-ci.org/bagolol/till_tech_test.png)](https://travis-ci.org/bagolol/till_tech_test)
 
 
-till tech test
+Till tech test
 ==============
 
-brief
+Brief
 -----
 
-build a simple till application to calculate the total amount due for each order. and print a receipt showing the total amount,taxes, a list of products and the discount when appropriate.
+Build a simple till application to calculate the total amount due for each order. And print a receipt showing the total amount,taxes, a list of products and the discount when appropriate.
 
 
 
-sample receipt:
+Sample receipt:
 -------
 
 ![a receipt](/images/receipt.jpg)
 
 
 
-user stories
+User stories
 
 ------------
 
 ````
-as a coffe shop owner
+as a coffee shop owner
 in order to calculate the right amount for each order
 I want to be able to rely on a till
 
@@ -43,7 +43,7 @@ I want to see the applied discount on my receipt
 ````
 
 
-technologies
+Technologies
 
 ------------
 
@@ -52,7 +52,7 @@ technologies
 
 
 
-setup
+Setup
 
 
 
