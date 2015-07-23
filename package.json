@@ -1,0 +1,31 @@
+{
+  "name": "till_tech_test",
+  "version": "1.0.0",
+  "description": "till tech test ==============",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "grunt travis --verbose",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bagolol/till_tech_test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bagolol/till_tech_test/issues"
+  },
+  "homepage": "https://github.com/bagolol/till_tech_test#readme",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "bower": "^1.4.1",
+    "express": "^4.13.1"
+  },
+  "devDependencies": {
+    "grunt": "~0.3.14"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "till_tech_test",
+  "version": "0.0.0",
+  "homepage": "https://github.com/bagolol/till_tech_test",
+  "authors": [
+    "Rocco <roccorighi@hotmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jasmine": "~2.3.4"
+  }
+}
