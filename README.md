@@ -19,7 +19,6 @@ Sample receipt:
 
 
 User stories
-
 ------------
 
 ````
@@ -44,7 +43,6 @@ I want to see the applied discount on my receipt
 
 
 Technologies
-
 ------------
 
 - javascript for both frontend (jquery) and backend (node.js, express)
@@ -53,6 +51,7 @@ Technologies
 
 
 Setup
+-----
 
 
 
