@@ -4,7 +4,7 @@ jasmine: {
           'components/*js'
           ],
           options: {
-            specs: 'tests/spec/*Spec.js',
+            specs: 'spec/*Spec.js',
             keepRunner : true,
             //helpers: 'test/spec/*.js'
           }
