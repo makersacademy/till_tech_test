@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/bagolol/till_tech_test.png)](https://travis-ci.org/bagolol/till_tech_test)
+
 
 
 Till tech test
