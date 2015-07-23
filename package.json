@@ -7,7 +7,11 @@
     "test": "test"
   },
   "scripts": {
+<<<<<<< HEAD
     "test": "grunt test",
+=======
+    "test": "grunt travis --verbose",
+>>>>>>> bower
     "start": "node server.js"
   },
   "repository": {
@@ -22,6 +26,13 @@
   "homepage": "https://github.com/bagolol/till_tech_test#readme",
   "dependencies": {
     "body-parser": "^1.13.2",
+    "bower": "^1.4.1",
     "express": "^4.13.1"
+<<<<<<< HEAD
+=======
+  },
+  "devDependencies": {
+    "grunt": "~0.3.14"
+>>>>>>> bower
   }
 }
