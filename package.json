@@ -22,9 +22,10 @@
   "homepage": "https://github.com/bagolol/till_tech_test#readme",
   "dependencies": {
     "body-parser": "^1.13.2",
+    "bower": "^1.4.1",
     "express": "^4.13.1"
   },
   "devDependencies": {
-  "grunt": "~0.3.14"
+    "grunt": "~0.3.14"
   }
 }
