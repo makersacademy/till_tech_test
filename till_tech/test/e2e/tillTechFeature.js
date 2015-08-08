@@ -17,8 +17,6 @@ describe('HipTillio', function() {
    var taxCost = element(by.id('taxcost'))
    var totalCost = element(by.id('totalcost'))
    var resetOrderButton = element(by.className('button-dark'))
-   // var ptor = protractor.getInstance(),
-   //      button;
 
    it('displays a list of added items with names and prices for an order as being built', function() {
       addOrderField.sendKeys('Americano')
@@ -27,22 +25,15 @@ describe('HipTillio', function() {
    });
 
    it('displays the item name, price and quantity when order is completed', function() {
-      //asychronicity issue - how resolve?
       addOrderField.sendKeys('Americano')
       addOrderButton.click()
-      // addOrderField.sendKeys('Cafe Latte')
-      // addOrderButton.click()
       confirmOrderButton.click()
       expect(finalorderItems.get(0).getText()).toEqual('Americano, 3.75 * 1');
-      // expect(finalorderItems.get(1).getText()).toEqual('Cafe Latte, 4.75 * 1');
    });
 
    it('displays the total cost of food items before tax when order is completed', function() {
-      //asychronicity issue - how resolve?
       addOrderField.sendKeys('Americano')
       addOrderButton.click()
-      // addOrderField.sendKeys('Cafe Latte')
-      // addOrderButton.click()
       confirmOrderButton.click()
       expect(totalCost.getText()).toContain('3.75')
    });
@@ -92,12 +83,6 @@ describe('HipTillio', function() {
        expect(taxCost.getText()).toContain('0')
        expect(cash.getText()).toContain('0')
        expect(change.getText()).toContain('0')
-   })
-
-   xit('prevents barista from adding an item that is not the menu to the order', function() {
-       addOrderField.sendKeys('Caffe Latte')
-       addOrderButton.click()
-
    })
 });
 
