@@ -1,6 +1,8 @@
 Till tech test
 ==============
 
+*Instructions*: Please fork this repo and submit a pull request once you've finished. Then prepare for code review!
+
 ![a till](/images/till.jpg)
 
 We want to sell tills to local hipster coffee shop who are finally embracing the 21st century. We need a new till to replace their vintage machines - unfortunately, hipster staff are too cool to learn a new system, so we need you to build something that they will understand.
@@ -30,7 +32,7 @@ Here are some sample orders you can try - whether you use this information is up
 > 2 x Tiramisu  
 > 5 x Blueberry Muffin  
 
-Your receipt must calculate and show the correct amount of tax (in this shop's case, 8.64%), as well as correct line totals and and total amount. Do not worry about calculating discounts or change yet. Consider what output formats may be suitable.
+Your receipt must calculate and show the correct amount of tax (in this shop's case, 8.64%), as well as correct line totals and total amount. Do not worry about calculating discounts or change yet. Consider what output formats may be suitable.
 
 Version 2
 ---------
