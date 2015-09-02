@@ -1,0 +1,13 @@
+<h2>Ready to take the next order</h2>
+
+
+<select name='item' form='order-entry' id='menu-dropdown'>
+  <% @menu_items.each do |item| %>
+      <option value="<%=item%>"><%=item%></option>
+  <% end %>
+</select>
+<form action='/add_order_item' method='post' id='order-entry'>
+  <label for="quantity">Quantity</label>
+  <input type='number' name='quantity'><br>
+  <input type='submit' value='Submit Order Item'>
+</form>
