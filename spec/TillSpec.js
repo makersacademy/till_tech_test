@@ -7,5 +7,10 @@ describe('Till', function() {
       till = new Till();
       expect(till.retrievePrice('Cafe Latte')).toEqual(4.75);
     });
+
+    it('Blueberry Muffin as 4.05', function(){
+      till = new Till();
+      expect(till.retrievePrice('Blueberry Muffin')).toEqual(4.05);
+    });
   });
 });

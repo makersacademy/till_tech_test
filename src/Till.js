@@ -1,5 +1,7 @@
-var Till = function() {};
+var Till = function() {
+  this.detailsList = hipsterCoffeeDetails;
+};
 
-Till.prototype.retrievePrice = function (item) {
-  return 4.75;
+Till.prototype.retrievePrice = function(item) {
+  return this.detailsList[0].prices[0][item];
 };
