@@ -1,16 +1,25 @@
 describe('Till', function() {
   var till;
 
-  describe('gives the price of a', function() {
+  describe('gives the price of', function() {
 
-    it('Cafe Latte as 4.75', function(){
+    it('a Cafe Latte as 4.75', function(){
       till = new Till();
       expect(till.retrievePrice('Cafe Latte')).toEqual(4.75);
     });
 
-    it('Blueberry Muffin as 4.05', function(){
+    it('a Blueberry Muffin as 4.05', function(){
       till = new Till();
       expect(till.retrievePrice('Blueberry Muffin')).toEqual(4.05);
+    });
+  });
+
+  describe('calculates the total price', function() {
+    it('of a Cafe Latte and a Blueberry Muffin', function() {
+      till = new Till();
+      till.addItem('Cafe Latte');
+      till.addItem('Blueberry Muffin')
+      expect(till.calculateTotal()).toEqual(8.80);
     });
   });
 });
