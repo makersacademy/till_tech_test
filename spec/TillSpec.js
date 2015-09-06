@@ -21,5 +21,12 @@ describe('Till', function() {
       till.addItem('Blueberry Muffin')
       expect(till.calculateTotal()).toEqual(8.80);
     });
+
+    it('of two Cafe Lattes', function() {
+      till = new Till();
+      till.addItem('Cafe Latte');
+      till.addItem('Cafe Latte');
+      expect(till.calculateTotal()).toEqual(9.50);
+    });
   });
 });
