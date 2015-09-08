@@ -23,7 +23,7 @@ Till.prototype.calculateTax = function(totalOrderValue) {
 };
 
 Till.prototype.printOrder = function() {
-  var order = this.orderedItems.reduce(function (acc, curr) {
+  var order = this.orderedItems.reduce(function(acc, curr) {
     if (typeof acc[curr] == 'undefined') {
       acc[curr] = 1;
     } else {
@@ -34,12 +34,37 @@ Till.prototype.printOrder = function() {
   return order;
 };
 
-Till.prototype.calculateTotalBill = function () {
-  if (this.subTotal > 50) {
-    var totalBill = this.subTotal * 0.95;
-    return Math.round(totalBill * 100) / 100;
+Till.prototype.calculateTotalBill = function() {
+  var totalBill = this.subTotal;
+
+  if(this.subTotal > 50) {
+    totalBill = this.applyFivePercentDiscount(totalBill);
   }
-  else {
-    return this.subTotal;
+  if(this.isMuffinInOrder()) {
+    totalBill -= this.applyMuffinDiscount();
+    totalBill = Math.round(totalBill * 100) / 100;
   }
+  return totalBill;
+};
+
+Till.prototype.isMuffinInOrder = function() {
+  return (this.orderedItems.indexOf('Muffin Of The Day') > -1 || this.orderedItems.indexOf('Chocolate Chip Muffin') > -1 || this.orderedItems.indexOf('Blueberry Muffin') > -1);
+};
+
+Till.prototype.applyFivePercentDiscount = function(bill) {
+  var billAfterFivePercentDiscount = bill * 0.95;
+  return Math.round(billAfterFivePercentDiscount * 100) / 100;
+};
+
+Till.prototype.applyMuffinDiscount = function() {
+  var muffinDiscount = 0;
+  var items = this.orderedItems;
+  var details = this.detailsList;
+  for(var i = 0; i < items.length; i++) {
+      console.log(items[i]);
+    if ((items[i] === 'Muffin Of The Day') || (items[i] ==='Blueberry Muffin') || (items[i] ==='Chocolate Chip Muffin')) {
+      muffinDiscount += (0.1 * details[0].prices[0][items[i]]);
+    }
+  }
+  return muffinDiscount;
 };

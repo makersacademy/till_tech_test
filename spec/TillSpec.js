@@ -91,5 +91,12 @@ describe('Till', function() {
       till.subTotal = 50.00;
       expect(till.calculateTotalBill()).toEqual(50.00);
     });
+
+    it('10% muffin discount', function() {
+      till = new Till();
+      till.orderedItems = ['Muffin Of The Day', 'Blueberry Muffin', 'Chocolate Chip Muffin'];
+      till.subTotal = 12.65;
+      expect(till.calculateTotalBill()).toEqual(11.39);
+    });
   });
 });
