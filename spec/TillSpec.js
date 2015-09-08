@@ -41,4 +41,41 @@ describe('Till', function() {
       expect(till.calculateTax(65.30)).toEqual(5.64);
     });
   });
+
+  describe('knows which items have been ordered', function() {
+    it('contains ["Cafe Latte"] when Cafe Latte ordered', function() {
+      till = new Till();
+      till.addItem('Cafe Latte');
+      expect(till.orderedItems).toEqual(['Cafe Latte']);
+    });
+
+    it('contains ["Cafe Latte", "Cafe Latte"] when Cafe Latte ordered', function() {
+      till = new Till();
+      till.addItem('Cafe Latte');
+      expect(till.orderedItems).toEqual(['Cafe Latte']);
+    });
+  });
+
+  describe('gives the correct line totals', function() {
+    it('of one Cafe Latte', function() {
+      till = new Till();
+      till.addItem('Cafe Latte');
+      expect(till.printOrder()).toEqual({ 'Cafe Latte': 1 });
+    });
+
+    it('of two Cafe Lattes', function() {
+      till = new Till();
+      till.addItem('Cafe Latte');
+      till.addItem('Cafe Latte');
+      expect(till.printOrder()).toEqual({ 'Cafe Latte': 2 });
+    });
+
+    it('of two Cafe Lattes and a Cortado', function() {
+      till = new Till();
+      till.addItem('Cafe Latte');
+      till.addItem('Cafe Latte');
+      till.addItem('Cortado');
+      expect(till.printOrder()).toEqual({ 'Cafe Latte': 2, 'Cortado': 1 });
+    });
+  });
 });
