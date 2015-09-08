@@ -3,5 +3,10 @@ var PaymentHandler = function() {
 };
 
 PaymentHandler.prototype.calculateChange = function (cash, orderTotal) {
-  return cash - orderTotal;
+  if (cash < orderTotal) {
+    return 'Not enough cash given';
+  }
+  else {
+    return cash - orderTotal;
+  }
 };
