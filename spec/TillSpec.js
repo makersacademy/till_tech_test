@@ -49,7 +49,7 @@ describe('Till', function() {
       expect(till.orderedItems).toEqual(['Cafe Latte']);
     });
 
-    it('contains ["Cafe Latte", "Cafe Latte"] when Cafe Latte ordered', function() {
+    it('contains ["Cafe Latte", "Cafe Latte"] when Cafe Latte ordered twice', function() {
       till = new Till();
       till.addItem('Cafe Latte');
       expect(till.orderedItems).toEqual(['Cafe Latte']);
