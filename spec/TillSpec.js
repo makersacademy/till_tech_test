@@ -19,24 +19,24 @@ describe('Till', function() {
       till = new Till();
       till.addItem('Cafe Latte');
       till.addItem('Blueberry Muffin')
-      expect(till.calculateTotal()).toEqual(8.80);
+      expect(till.calculateSubTotal()).toEqual(8.80);
     });
 
     it('two Cafe Lattes', function() {
       till = new Till();
       till.addItem('Cafe Latte');
       till.addItem('Cafe Latte');
-      expect(till.calculateTotal()).toEqual(9.50);
+      expect(till.calculateSubTotal()).toEqual(9.50);
     });
   });
 
-  describe('calculates tax', function() {
-    it('of £8.64 on an order totalling £100', function() {
+  describe('calculates tax as', function() {
+    it('£8.64 on an order totalling £100', function() {
       till = new Till();
       expect(till.calculateTax(100.00)).toEqual(8.64);
     });
 
-    it('of £5.64 on an order totalling £65.30', function() {
+    it('£5.64 on an order totalling £65.30', function() {
       till = new Till();
       expect(till.calculateTax(65.30)).toEqual(5.64);
     });
@@ -76,6 +76,20 @@ describe('Till', function() {
       till.addItem('Cafe Latte');
       till.addItem('Cortado');
       expect(till.printOrder()).toEqual({ 'Cafe Latte': 2, 'Cortado': 1 });
+    });
+  });
+
+  describe('calculates discounts', function() {
+    it('5% off orders over £50', function() {
+      till = new Till();
+      till.subTotal = 50.01;
+      expect(till.calculateTotalBill()).toEqual(47.51);
+    });
+
+    it('not 5% off orders of =< £50', function() {
+      till = new Till();
+      till.subTotal = 50.00;
+      expect(till.calculateTotalBill()).toEqual(50.00);
     });
   });
 });
