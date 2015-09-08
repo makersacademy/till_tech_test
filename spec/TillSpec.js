@@ -14,15 +14,15 @@ describe('Till', function() {
     });
   });
 
-  describe('calculates the total price', function() {
-    it('of a Cafe Latte and a Blueberry Muffin', function() {
+  describe('calculates the total price of', function() {
+    it('a Cafe Latte and a Blueberry Muffin', function() {
       till = new Till();
       till.addItem('Cafe Latte');
       till.addItem('Blueberry Muffin')
       expect(till.calculateTotal()).toEqual(8.80);
     });
 
-    it('of two Cafe Lattes', function() {
+    it('two Cafe Lattes', function() {
       till = new Till();
       till.addItem('Cafe Latte');
       till.addItem('Cafe Latte');

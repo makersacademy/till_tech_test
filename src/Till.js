@@ -2,6 +2,7 @@ var Till = function() {
   this.detailsList = hipsterCoffeeDetails;
   this.orderedItems = [];
   this.subTotal = 0;
+  this.receipt = new Receipt(this.detailsList);
 };
 
 Till.prototype.retrievePrice = function(item) {
