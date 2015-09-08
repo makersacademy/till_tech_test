@@ -29,4 +29,16 @@ describe('Till', function() {
       expect(till.calculateTotal()).toEqual(9.50);
     });
   });
+
+  describe('calculates tax', function() {
+    it('of £8.64 on an order totalling £100', function() {
+      till = new Till();
+      expect(till.calculateTax(100.00)).toEqual(8.64);
+    });
+
+    it('of £5.64 on an order totalling £65.30', function() {
+      till = new Till();
+      expect(till.calculateTax(65.30)).toEqual(5.64);
+    });
+  });
 });

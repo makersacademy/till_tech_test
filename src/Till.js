@@ -14,3 +14,8 @@ Till.prototype.addItem = function (item) {
 Till.prototype.calculateTotal = function () {
   return this.subTotal;
 };
+
+Till.prototype.calculateTax = function (total_bill) {
+  tax = total_bill * 0.0864;
+  return Math.round(tax * 100) / 100;
+};
