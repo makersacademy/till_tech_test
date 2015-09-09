@@ -2,6 +2,7 @@ var Till = function() {
   this.detailsList = hipsterCoffeeDetails;
   this.orderedItems = [];
   this.subTotal = 0;
+  this.totalCalculator = new TotalCalculator(this.detailsList, this.orderedItems, this.subTotal);
 };
 
 Till.prototype.retrievePrice = function(item) {
@@ -35,46 +36,15 @@ Till.prototype.printOrder = function() {
   return order;
 };
 
-Till.prototype.calculateTotalBill = function() {
-  var totalBill = this.subTotal;
-
-  if(this.subTotal > 50) {
-    totalBill = this.applyFivePercentDiscount(totalBill);
-  }
-  if(this.isMuffinInOrder()) {
-    totalBill -= this.applyMuffinDiscount();
-    totalBill = Math.round(totalBill * 100) / 100;
-  }
-  return totalBill;
-};
-
-Till.prototype.isMuffinInOrder = function() {
-  return (this.orderedItems.indexOf('Muffin Of The Day') > -1 || this.orderedItems.indexOf('Chocolate Chip Muffin') > -1 || this.orderedItems.indexOf('Blueberry Muffin') > -1);
-};
-
-Till.prototype.applyFivePercentDiscount = function(bill) {
-  var billAfterFivePercentDiscount = bill * 0.95;
-  return Math.round(billAfterFivePercentDiscount * 100) / 100;
-};
-
-Till.prototype.applyMuffinDiscount = function() {
-  var muffinDiscount = 0;
-  var items = this.orderedItems;
-  var details = this.detailsList;
-  for(var i = 0; i < items.length; i++) {
-      console.log(items[i]);
-    if ((items[i] === 'Muffin Of The Day') || (items[i] ==='Blueberry Muffin') || (items[i] ==='Chocolate Chip Muffin')) {
-      muffinDiscount += (0.1 * details[0].prices[0][items[i]]);
-    }
-  }
-  return muffinDiscount;
-};
-
-Till.prototype.calculateChange = function (cash,billTotal) {
+Till.prototype.calculateChange = function (cash, billTotal) {
   if (cash < billTotal) {
     return 'Not enough cash given';
   }
   else {
     return cash - billTotal;
   }
+};
+
+Till.prototype.requestTotal = function () {
+  return this.totalCalculator.calculateTotalBill();
 };

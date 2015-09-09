@@ -79,27 +79,6 @@ describe('Till', function() {
     });
   });
 
-  describe('calculates discounts', function() {
-    it('5% off orders over £50', function() {
-      till = new Till();
-      till.subTotal = 50.01;
-      expect(till.calculateTotalBill()).toEqual(47.51);
-    });
-
-    it('not 5% off orders of =< £50', function() {
-      till = new Till();
-      till.subTotal = 50.00;
-      expect(till.calculateTotalBill()).toEqual(50.00);
-    });
-
-    it('10% muffin discount', function() {
-      till = new Till();
-      till.orderedItems = ['Muffin Of The Day', 'Blueberry Muffin', 'Chocolate Chip Muffin'];
-      till.subTotal = 12.65;
-      expect(till.calculateTotalBill()).toEqual(11.39);
-    });
-  });
-
   describe('taking a payment', function() {
     it('calculates correct change', function() {
       till = new Till();
