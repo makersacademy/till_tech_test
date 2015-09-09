@@ -11,6 +11,7 @@ Till.prototype.retrievePrice = function(item) {
 Till.prototype.addItem = function(item) {
   this.subTotal += this.retrievePrice(item);
   this.orderedItems.push(item);
+  return item;
 };
 
 Till.prototype.calculateSubTotal = function() {
@@ -67,4 +68,13 @@ Till.prototype.applyMuffinDiscount = function() {
     }
   }
   return muffinDiscount;
+};
+
+Till.prototype.calculateChange = function (cash,billTotal) {
+  if (cash < billTotal) {
+    return 'Not enough cash given';
+  }
+  else {
+    return cash - billTotal;
+  }
 };

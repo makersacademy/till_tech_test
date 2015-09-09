@@ -99,4 +99,16 @@ describe('Till', function() {
       expect(till.calculateTotalBill()).toEqual(11.39);
     });
   });
+
+  describe('taking a payment', function() {
+    it('calculates correct change', function() {
+      till = new Till();
+      expect(till.calculateChange(10.00, 5.00)).toEqual(5.00);
+    });
+
+    it('raises error if cash amount less than order total', function() {
+      till = new Till();
+      expect(till.calculateChange(10.00, 11.00)).toEqual('Not enough cash given');
+    });
+  });
 });
