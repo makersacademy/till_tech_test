@@ -30,6 +30,19 @@ The project uses Travis CI to test features as they were being built and submitt
 
 Note that the totals are different from the example image in the original spec. This appears to be because the original spec till takes tax off before discount, rather than taxing at the final discounted rate. Also, display currency is £ rather than $.
 
+### Installation of Till Tech Test
+
+Assuming a functional, unix-flavoured Ruby environment with Bundler installed, the following commands should set up a functioning till, likely at http://localhost:9292.
+
+```
+git clone https://github.com/DanielJohnston/till_tech_test.git
+cd till_tech_test
+bundler
+rackup
+```
+
+To run feature tests / unit tests, run `rspec` from the project root. Note that, on some Linux installs, rspec can't find PhantomJS. This is because, when PhantomJS is installed via Bundler and Gemfile, it isn't added to $PATH. Solution for this is to either add it to $PATH manually, or run `apt-get install phantomjs`, although this isn't ideal as it removes versioning of the tool from Bundler's control.
+
 ## Original tech test specification
 
 ![a till](/images/till.jpg)

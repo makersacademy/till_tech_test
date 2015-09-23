@@ -9,7 +9,4 @@ group :test do
   gem 'poltergeist'
   gem 'rubocop'
   gem 'rubocop-rspec'
-  # gem 'selenium-webdriver'
-  # gem 'capybara-webkit'
-  # gem 'byebug'
 end
