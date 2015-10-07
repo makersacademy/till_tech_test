@@ -1,48 +1,29 @@
-Till tech test
-==============
+Till Tech Test
+=======================
 
-*Instructions*: Please fork this repo and submit a pull request once you've finished. Then prepare for code review!
+![TRAVIS_BADGE](https://travis-ci.org/makersacademy/till_tech_test.svg?branch=master)
 
-![a till](/images/till.jpg)
+## Synopsis
 
-We want to sell tills to local hipster coffee shop who are finally embracing the 21st century. We need a new till to replace their vintage machines - unfortunately, hipster staff are too cool to learn a new system, so we need you to build something that they will understand.
+Original repo: (https://github.com/makersacademy/till_tech_test)
 
-Specification
--------------
+This is my submission for the Till Tech Test. This is a website simulating a till at a hipster coffee store. The user can enter items from the menu, display the running total, take payment and display receipts. It can also calculate discounts for muffins and large orders.
 
-This is what a sample receipt looks like:
+I originally created the backend logic in Ruby without much trouble. However, once it came to creating an interesting webpage and frontend, I found it tricky to decide what technology to use. In the end I decided on Rails as the framework, with Javascript and jQuery on the frontend.
 
-![a receipt](/images/receipt.jpg)
+The Javascript duplicates the majority of the Ruby backend, and in the end the original Ruby scripts are only properly used for the receipt. If I were to start the project again, I would do it entirely in Javascript to save unnecessary work, and most likely use the Express framework, which would be more suitable than Rails.
 
+A database is also used to persist items ordered, so they can be displayed on the /till/new page for the receipt. This could potentially be extended to hold many different orders.
 
-Version 1
----------
+If the coffeeshop decided to sell more items, those items only need to be added to the hipstercoffee.json file, and it will automatically be added throughout the program.
 
-Implement a system that contains the business logic to produce receipts similar to this, based on a `json` price list and test orders. A sample `.json` file has been provided with the list of products sold at this particular coffee shop. 
+## Technologies Used
 
-Here are some sample orders you can try - whether you use this information is up to you:
+- Ruby
+- Javascript, jQuery
+- Rails, Active Record
+- Rspec and Capybara
 
-> **Jane**  
-> 2 x Cafe Latte  
-> 1 x Blueberry Muffin  
-> 1 x Choc Mudcake  
->
-> **John**  
-> 4 x Americano  
-> 2 x Tiramisu  
-> 5 x Blueberry Muffin  
+## Collaborators
 
-Your receipt must calculate and show the correct amount of tax (in this shop's case, 8.64%), as well as correct line totals and total amount. Do not worry about calculating discounts or change yet. Consider what output formats may be suitable.
-
-Version 2
----------
-
-- Add functionality to take payment and calculate correct change.  
-- Add functionality to handle discounts - in this example, a 5% discount on orders over $50, and a 10% muffin discount.
-
-Version 3
----------
-
-Implement an user interface that can actually be used as a till.
-
-You may use whatever technologies you see fit.
+- Daryl (http://www.github.com/dwatson62)
