@@ -1,0 +1,25 @@
+User Stories for Till Tech Test
+
+* As a customer
+  So that I have a sense of what I bought
+  I would like to see a receipt with a list of items
+
+* As a money-conscious customer
+  So that I know how much each item cost
+  I would like to see a line total
+
+* As a customer
+  So that I know how much to pay
+  I would like to have the total cost calculated for me
+
+* As a law-abiding citizen
+  So that I fund the govt
+  I would like to pay tax
+
+* As a money-conscious customer
+  So I can take what is mine
+  I would like to receive change from the till
+
+* As a customer looking to capitalize on promotions
+  So that I can achieve greater satisfaction from my purchase
+  I would like to be able to receive the discounts that the store offers
