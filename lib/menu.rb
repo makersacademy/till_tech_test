@@ -19,7 +19,9 @@ class Menu
 
   def order(booking, quantity)
        @menu[0]["prices"][0].select do |key,value|
-          if booking == key
+          if booking == key and booking.include?'Muffin'
+       @customer_order.push key => value * quantity * 0.9
+     elsif booking == key and !booking.include?'Muffin'
        @customer_order.push key => value * quantity
     end
   end
