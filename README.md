@@ -4,7 +4,7 @@ Till tech test
 Version 1
 ---------
 
-coded in Ruby with tests in RSpec
+coded in Ruby with tests in RSpec – by bat020 and zsid
 
 the singleton class `Till` reads in two objects:
 
