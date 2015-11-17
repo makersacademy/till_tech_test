@@ -90,6 +90,7 @@ DEPENDENCIES
   byebug
   capybara
   coveralls
+  json
   rspec
   rubocop
   rubocop-rspec
