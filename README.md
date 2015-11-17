@@ -48,7 +48,7 @@ Implement an user interface that can actually be used as a till.
 You may use whatever technologies you see fit.
 
 ---------
-Test check that:
+Test checks that:
  - 1. We can see the list of the customer order
  - 2. We can see prices and quantity of products in customer bill
  - 3. We can see the final sum of the bill
@@ -58,12 +58,13 @@ Test check that:
  - 7. We can see the change of the customer
  - 8. We can see the discount to various maffins
 
+
  Program has 1 class Menu and methods  
- - `def Initialize` (set our vars and grab data from `json` file)
- - `def order` (compare each customer order with data from `json` file, also add quantity of each product and check muffin discount)
- - `def prices` (see price of each ordered product separately)
- - `def sum` (see total sum of bill, and make a discount in case the bill is more than 50$)
- - `def taxes` (show the taxes)
- - `def discount` (show amount of discount separately)
- - `def money` (show amount of money which gives customer)
- - `def charge` (show the change which gets customer)
+ - `def Initialize` (set ours vars and grabs data from `json` file)
+ - `def order` (compares each customer order with data from `json` file, also adds quantity of each product and checks muffin discount)
+ - `def prices` (show price of each ordered product separately)
+ - `def sum` (shows total sum of bill, and makes a discount in case the bill is more than 50$)
+ - `def taxes` (shows the taxes)
+ - `def discount` (shows amount of discount separately)
+ - `def money` (shows amount of money which gives customer)
+ - `def charge` (shows the change which gets customer)
