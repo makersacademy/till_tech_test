@@ -13,7 +13,8 @@ class Till
     customer_order[:order].map { |item, quantity| [item, {
       quantity: quantity,
       item_price: prices[item],
-      line_total: quantity * prices[item] }] }.to_h
+      line_total: quantity * prices[item]
+    }] }.to_h
   end
 
   def self.total_before_tax
@@ -25,11 +26,12 @@ class Till
   end
 
   def self.receipt
-    return {
+    {
       items: line_entries,
       total_before_tax: total_before_tax,
       tax: bill_tax,
-      total_inc_tax: total_before_tax + bill_tax }
+      total_inc_tax: total_before_tax + bill_tax
+    }
   end
 
 private

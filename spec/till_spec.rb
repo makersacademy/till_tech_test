@@ -4,24 +4,36 @@ describe Till do
 
   subject = described_class
 
-  let(:coffee_shop) { {
-    shopName: "Happy Coffee Shop",
-    prices: { "Latte": 4, "Flat White": 3 },
-    taxRate: 0.0864 } }
+  let(:coffee_shop) do
+    {
+      shopName: "Happy Coffee Shop",
+      prices: { "Latte": 4, "Flat White": 3 },
+      taxRate: 0.0864
+    }
+  end
 
-  let(:customer_order) { {
-    customerName: "Jane",
-    order: { "Latte": 1, "Flat White": 2 } } }
+  let(:customer_order) do
+    {
+      customerName: "Jane",
+      order: { "Latte": 1, "Flat White": 2 }
+    }
+  end
 
-  let(:line_entries) { {
-    "Latte": { quantity: 1, item_price: 4, line_total: 4 },
-    "Flat White": { quantity: 2, item_price: 3, line_total: 6 } } }
+  let(:line_entries) do
+    {
+      "Latte": { quantity: 1, item_price: 4, line_total: 4 },
+      "Flat White": { quantity: 2, item_price: 3, line_total: 6 }
+    }
+  end
 
-  let(:receipt) { {
-    items: line_entries,
-    total_before_tax: 10,
-    tax: 0.86,
-    total_inc_tax: 10.86 } }
+  let(:receipt) do
+    {
+      items: line_entries,
+      total_before_tax: 10,
+      tax: 0.86,
+      total_inc_tax: 10.86
+    }
+  end
 
   before do
     subject.coffee_shop = coffee_shop
