@@ -18,7 +18,7 @@ This is what a sample receipt looks like:
 Version 1
 ---------
 
-Implement a system that contains the business logic to produce receipts similar to this, based on a `json` price list and test orders. A sample `.json` file has been provided with the list of products sold at this particular coffee shop. 
+Implement a system that contains the business logic to produce receipts similar to this, based on a `json` price list and test orders. A sample `.json` file has been provided with the list of products sold at this particular coffee shop.
 
 Here are some sample orders you can try - whether you use this information is up to you:
 
@@ -46,3 +46,24 @@ Version 3
 Implement an user interface that can actually be used as a till.
 
 You may use whatever technologies you see fit.
+
+---------
+Test check that:
+ - 1. We can see the list of the customer order
+ - 2. We can see prices and quantity of products in customer bill
+ - 3. We can see the final sum of the bill
+ - 4. We can see the tax of the final sum of the bill
+ - 5. We can see price with 5% discount in case our purchase is more than 50$
+ - 6. We can see the discount separately in our bill
+ - 7. We can see the change of the customer
+ - 8. We can see the discount to various maffins
+
+ Program has 1 class Menu and methods  
+ - `def Initialize` (set our vars and grab data from `json` file)
+ - `def order` (compare each customer order with data from `json` file, also add quantity of each product and check muffin discount)
+ - `def prices` (see price of each ordered product separately)
+ - `def sum` (see total sum of bill, and make a discount in case the bill is more than 50$)
+ - `def taxes` (show the taxes)
+ - `def discount` (show amount of discount separately)
+ - `def money` (show amount of money which gives customer)
+ - `def charge` (show the change which gets customer)
