@@ -46,14 +46,13 @@ describe Menu do
      expect(subject.discount).to be(17.07)
   end
 
-  it "7. We can see the change of the customer" do
-    
+   it "7. We can see the change of the customer" do
+    subject.order("Affogato", 20)
+    subject.order("Muffin Of The Day", 10)
+    subject.prices
+    subject.sum
+    subject.money(600)
+    expect(subject.charge).to be(275.57)
   end
-
-
-
-
-
-
 
 end

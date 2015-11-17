@@ -2,7 +2,7 @@ require 'json'
 
 class Menu
 
-     attr_accessor :customer_bill, :customer_order, :taxes, :sum
+     attr_accessor :customer_bill, :customer_order, :taxes, :sum, :amount
      attr_reader :menu
 
   def initialize
@@ -54,6 +54,14 @@ end
      sum = self.sum
      without_discount = @customer_bill.inject(0) { |result, element| result + element}
      @discount = (without_discount - sum).round(2)
+  end
+
+  def money(amount)
+     @amount = amount
+  end
+
+  def charge
+     @charge = (@amount - @sum).round(2)
   end
 
 
