@@ -60,9 +60,9 @@ Test checks that:
 
 
  Program has 1 class Menu and methods  
- - `def Initialize` (set ours vars and grabs data from `json` file)
+ - `def Initialize` (sets ours vars and grabs data from `json` file)
  - `def order` (compares each customer order with data from `json` file, also adds quantity of each product and checks muffin discount)
- - `def prices` (show price of each ordered product separately)
+ - `def prices` (shows price of each ordered product separately)
  - `def sum` (shows total sum of bill, and makes a discount in case the bill is more than 50$)
  - `def taxes` (shows the taxes)
  - `def discount` (shows amount of discount separately)
