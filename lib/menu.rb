@@ -13,15 +13,18 @@ class Menu
     @customer_bill = []
     @total = 0
     @taxes = 0
+    @quantity = 1
+
   end
 
-  def order(booking)
-    @menu[0]["prices"][0].select do |key,value|
-      if booking == key
-        @customer_order.push key => value
-      end
+  def order(booking, quantity)
+  @menu[0]["prices"][0].select do |key,value|
+    if booking == key
+      @customer_order.push key => value * quantity
     end
   end
+end
+
 
   def prices
     @customer_order.each do |hash|
