@@ -2,16 +2,18 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :complete_order, :menu
+  attr_reader :complete_order, :menu, :order_total
 
   def initialize
     @menu = Menu.new
     @complete_order = {}
+    @order_total = 0
   end
 
-  def add(item)
+  def add(item, quantity)
     fail "Not on menu" unless menu.menu_list.key?(item)
-    complete_order << item
+    update_price(item, quantity)
+    add_to_order(item, quantity)
   end
 
   def display_menu
@@ -19,9 +21,21 @@ class Order
   end
 
   def receipt
-    order.map do |dish, quantity|
-      "#{quantity}x #{dish} - £#{menu.menu_list[dish] * quantity}"
+    complete_order.map do |item, quantity|
+      "#{quantity}x #{item} - £#{menu.menu_list[item] * quantity}"
     end.join(', ')
+    return  "Tax @8.64%   £#{(order_total * 0.0867).round(2)}"
+    return  "Total     £#{order_total + (order_total * 0.0867).round(2)}"
+  end
+
+  private
+
+  def update_price(item, quantity)
+    @order_total += menu.menu_list[item] * quantity
+  end
+
+  def add_to_order(item, quantity)
+    @complete_order[item] = quantity
   end
 
 end
