@@ -16,18 +16,19 @@ describe Order do
   end
 
   it 'will update price when added to basket' do
-    subject.add('Cafe Latte', 2)
+    subject.add('Cafe Latte', 1)
+    subject.add('Cafe Latte', 1)
     expect(subject.order_total).to eq 9.5
   end
 
   it 'will display tax amount on receipt' do
     subject.add('Cafe Latte', 2)
-    expect(subject.receipt).to include '£0.82'
+    expect(subject.tax_receipt).to include '£0.82'
   end
 
   it 'will display the total cost' do
     subject.add('Cafe Latte', 2)
-    expect(subject.receipt).to include '£10.32'
+    expect(subject.tax_receipt).to include '£10.32'
   end
 
 end

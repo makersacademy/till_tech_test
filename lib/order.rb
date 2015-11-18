@@ -23,9 +23,11 @@ class Order
   def receipt
     complete_order.map do |item, quantity|
       "#{quantity}x #{item} - £#{menu.menu_list[item] * quantity}"
-    end.join(', ')
-    return  "Tax @8.64%   £#{(order_total * 0.0867).round(2)}"
-    return  "Total     £#{order_total + (order_total * 0.0867).round(2)}"
+    end.join("\n")
+  end
+
+  def tax_receipt
+    return receipt + "\nTax @8.64%      £#{(order_total * 0.0867).round(2)} \nTotal           £#{order_total + (order_total * 0.0867).round(2)}"
   end
 
   private
