@@ -27,7 +27,8 @@ class Order
   end
 
   def tax_receipt
-    return receipt + "\nTax @8.64%      £#{(order_total * 0.0867).round(2)} \nTotal           £#{order_total + (order_total * 0.0867).round(2)}"
+    return receipt + "\nTax @8.64%      £#{(order_total * 0.0867).round(2)} \n" +
+      "Total           £#{order_total + (order_total * 0.0867).round(2)}"
   end
 
   private
