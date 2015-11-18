@@ -31,6 +31,11 @@ class Order
       "Total           £#{order_total + (order_total * 0.0867).round(2)}"
   end
 
+  def payment(amount)
+    return "£#{amount - (order_total + (order_total * 0.0867).round(2))}"
+  end
+
+
   private
 
   def update_price(item, quantity)

@@ -31,4 +31,9 @@ describe Order do
     expect(subject.tax_receipt).to include '£10.32'
   end
 
+  it 'will receive amount and return the change due' do
+    subject.add('Cafe Latte', 2)
+    expect(subject.payment(15)).to include '£4.68'
+  end
+
 end
