@@ -22,4 +22,8 @@ It has four public methods:
 * `change` is the customer payment minus the total bill (inc tax and discounts)
 * `receipt` is a hash bundling all the above data
 
-Discounts are of two types: item discounts (eg '10% off muffins') and a bill discount (eg '5% off bills of over $50'). They are applied independently (ie we calculate all the relevant discounts then apply them simultaneously rather than first applying the item discounts, then the bill discount). Thus you still get the 5% off a bill of over $50 even if your muffins discount takes the bill down to below $50, and the 5% is calculated on the bill before the muffin discount. This is the most 'customer friendly' way of calculating the bill.
+Discounts are of two types: item discounts (eg '10% off muffins') and a bill discount (eg '5% off bills of over $50'). They are applied independently (ie we calculate all the relevant discounts then apply them simultaneously rather than first applying the item discounts, then the bill discount).
+
+Thus you still get the 5% off a bill of over $50 even if your discount on muffins takes the bill down to below $50, and the 5% is calculated on the bill before the muffin discount. This is the most 'customer friendly' way of calculating the bill, and the least confusing.
+
+All discounts and taxes are calculated and stored to the nearest cent. Price data is stored as integers (ie 123¢ rather than $1.23). Percentage data is stored as a floating point number (ie 0.05 rather than 5%).
