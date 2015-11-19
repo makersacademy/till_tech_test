@@ -1,87 +1,83 @@
 class Till
 
-  def self.coffee_shop=(shop)
-    @coffee_shop = shop
-  end
+  class << self
 
-  def self.customer_order=(order)
-    @customer_order = order
-  end
+    attr_accessor :coffee_shop, :customer_order
 
-  def self.line_entries
-    prices = coffee_shop[:prices]
-    customer_order[:order].map { |item, quantity|
-      [item, {
-        quantity: quantity,
-        item_price: prices[item],
-        line_total: quantity * prices[item]
-      }]
-    }.to_h
-  end
+    def items
+      order.map { |item, quantity| [item, item_data(item, quantity)] }.to_h
+    end
 
-  def self.total_before_discounts
-    line_entries.to_a.map { |item| item[1][:line_total] }.inject(&:+).round(2)
-  end
+    def items_total
+      items.map { | _, item_data | item_data[:sum] }.inject(&:+)
+    end
 
-  def self.discounts
-    discounts = {}
-    prices = coffee_shop[:prices]
-    item_discounts = coffee_shop[:itemDiscounts]
-    bill_discount = coffee_shop[:billDiscount]
-    threshold = bill_discount[:threshold]
-    customer_order[:order].each do |item, quantity|
-      rate = item_discounts[item]
-      if rate
-        item_discount = (quantity * prices[item] * rate).round(2)
-        key = "#{(rate*100).round}% #{item} discount".to_sym
-        discounts[key] = item_discount
+    def discounts
+      item_discounts.merge(bill_discount)
+    end
+
+    def total_inc_discounts
+      items_total - discounts.map { |_, disc | disc[:amount] }.inject(&:+)
+    end
+
+    def bill_tax
+      (coffee_shop[:tax_rate] * total_inc_discounts).round
+    end
+
+    def total_inc_tax
+      total_inc_discounts + bill_tax
+    end
+
+    def change
+      customer_order[:payment] - bill_tax - total_inc_discounts
+    end
+
+    def receipt
+      {
+        items: items, items_total: items_total, discounts: discounts,
+        total_inc_discounts: total_inc_discounts, tax: bill_tax, change: change,
+        total_inc_tax: total_inc_tax, payment: customer_order[:payment]
+      }
+    end
+
+    private
+
+    def prices
+      coffee_shop[:prices]
+    end
+
+    def order
+      customer_order[:order]
+    end
+
+    def item_data(item, quantity)
+      {quantity: quantity, price: prices[item], sum: quantity * prices[item]}
+    end
+
+    def item_discounts
+      discounts = {}
+      order.each do |item, quantity|
+        rate = coffee_shop[:discounts][item]
+        discounts[item] = item_discount_data(item, quantity, rate) if rate
       end
+      discounts
     end
-    if total_before_discounts > threshold
-      rate = bill_discount[:rate]
-      key = "#{(rate*100).round}% off bill over $#{threshold}".to_sym
-      discounts[key] = (total_before_discounts * rate).round(2)
+
+    def item_discount_data(item, quantity, rate)
+      {rate: rate, amount: (quantity * prices[item] * rate).round}
     end
-    discounts
-  end
 
-  def self.total_before_tax
-    total_discounts = discounts.to_a.map { |item| item[1] }.inject(&:+).round(2)
-    total_before_discounts - total_discounts
-  end
+    def bill_discount
+      threshold = coffee_shop[:bill_discount][:threshold]
+      return unless items_total > threshold
+      rate = coffee_shop[:bill_discount][:rate]
+      {bill: bill_discount_data(rate, threshold)}
+    end
 
-  def self.bill_tax
-    (coffee_shop[:taxRate] * total_before_tax).round(2)
-  end
+    def bill_discount_data(rate, threshold)
+      {rate: rate, threshold: threshold, amount: (items_total * rate).round}
+    end
 
-  def self.total_inc_tax
-    (total_before_tax + bill_tax).round(2)
-  end
-
-  def self.change
-    (customer_order[:payment] - bill_tax - total_before_tax).round(2)
-  end
-
-  def self.receipt
-    { items: line_entries,
-      total_before_discounts: total_before_discounts,
-      discounts: discounts,
-      total_before_tax: total_before_tax,
-      tax: bill_tax,
-      total_inc_tax: total_inc_tax,
-      payment: customer_order[:payment],
-      change: change
-    }
-  end
-
-private
-
-  def self.coffee_shop
-    @coffee_shop
-  end
-
-  def self.customer_order
-    @customer_order
   end
 
 end
