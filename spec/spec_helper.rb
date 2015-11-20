@@ -7,7 +7,6 @@ SimpleCov.formatters = [
 ]
 Coveralls.wear!
 
-require 'byebug'
 require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
