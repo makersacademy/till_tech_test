@@ -5,6 +5,7 @@ gem 'json'
 
 group :test do
   gem 'rspec'
+  gem 'rspec-core'
   gem 'rubocop-rspec'
   gem 'rubocop'
   gem 'coveralls', require: false
