@@ -7,8 +7,7 @@ describe Till do
   let(:coffee_shop) do
     {
       prices: { "Latte": 400, "Flat White": 300, "Muffin": 100, "Steak": 2000},
-      tax_rate: 0.0864,
-      discounts: {"Muffin": 0.1, "Flat White": 0.5},
+      tax_rate: 0.0864, discounts: {"Muffin": 0.1, "Flat White": 0.5},
       bill_discount: {threshold: 5000, rate: 0.05}
     }
   end
@@ -39,14 +38,9 @@ describe Till do
 
   let(:receipt) do
     {
-      items: items,
-      items_total: 5300,
-      discounts: discounts,
-      total_inc_discounts: 4705,
-      tax: 407,
-      total_inc_tax: 5112,
-      payment: 6000,
-      change: 888
+      items: items, items_total: 5300, discounts: discounts,
+      total_inc_disc: 4705, bill_tax: 407, total_inc_tax: 5112,
+      payment: 6000, change: 888
     }
   end
 
@@ -68,7 +62,7 @@ describe Till do
   end
 
   it "works out total including discounts" do
-    expect(subject.total_inc_discounts).to eq 4705
+    expect(subject.total_inc_disc).to eq 4705
   end
 
   it "calculates tax on the bill" do
