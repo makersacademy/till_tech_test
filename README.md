@@ -1,48 +1,29 @@
 Till tech test
 ==============
 
-*Instructions*: Please fork this repo and submit a pull request once you've finished. Then prepare for code review!
-
-![a till](/images/till.jpg)
-
-We want to sell tills to local hipster coffee shop who are finally embracing the 21st century. We need a new till to replace their vintage machines - unfortunately, hipster staff are too cool to learn a new system, so we need you to build something that they will understand.
-
-Specification
--------------
-
-This is what a sample receipt looks like:
-
-![a receipt](/images/receipt.jpg)
-
-
-Version 1
----------
-
-Implement a system that contains the business logic to produce receipts similar to this, based on a `json` price list and test orders. A sample `.json` file has been provided with the list of products sold at this particular coffee shop. 
-
-Here are some sample orders you can try - whether you use this information is up to you:
-
-> **Jane**  
-> 2 x Cafe Latte  
-> 1 x Blueberry Muffin  
-> 1 x Choc Mudcake  
->
-> **John**  
-> 4 x Americano  
-> 2 x Tiramisu  
-> 5 x Blueberry Muffin  
-
-Your receipt must calculate and show the correct amount of tax (in this shop's case, 8.64%), as well as correct line totals and total amount. Do not worry about calculating discounts or change yet. Consider what output formats may be suitable.
-
 Version 2
 ---------
 
-- Add functionality to take payment and calculate correct change.  
-- Add functionality to handle discounts - in this example, a 5% discount on orders over $50, and a 10% muffin discount.
+Coded in Ruby with tests in RSpec – by bat020 and zsid
 
-Version 3
----------
+The singleton class `Till` reads in two objects:
 
-Implement an user interface that can actually be used as a till.
+* `coffee_shop` contains the shop details: prices, tax rate, discounts
+* `customer_order` is a hash containing order information and customer payment
 
-You may use whatever technologies you see fit.
+It has four public methods:
+
+* `items` is a hash keyed by item name, containing quantity, price per item and line total
+* `items_total` sums up all the line totals
+* `discounts` is a hash containing the order's item and bill discounts
+* `total_inc_discounts` is the total including discounts but before tax
+* `bill_tax` is the tax rate times the total before tax
+* `total_inc_tax` is the total including discounts and tax
+* `change` is the customer payment minus the total bill (inc tax and discounts)
+* `receipt` is a hash bundling all the above data
+
+Discounts are of two types: item discounts (eg '10% off muffins') and a bill discount (eg '5% off bills of over $50'). They are applied independently (ie we calculate all the relevant discounts then apply them simultaneously rather than first applying the item discounts, then the bill discount).
+
+Thus you still get the 5% off a bill of over $50 even if your discount on muffins takes the bill down to below $50, and the 5% is calculated on the bill before the muffin discount. This is the most 'customer friendly' way of calculating the bill, and the least confusing.
+
+All discounts and taxes are calculated and stored to the nearest cent. Price data is stored as integers (ie 123¢ rather than $1.23). Percentage data is stored as a floating point number (ie 0.05 rather than 5%).
