@@ -1,7 +1,5 @@
 class Till
 
-  attr_reader :company_name, :address, :phone, :prices
-
   def initialize(options)
     @company_name = options[:name]
     @address = options[:address]
@@ -10,9 +8,9 @@ class Till
   end
 
   def place_order(order)
-    { name: company_name,
-      address: address,
-      phone: phone
+    { name: @company_name,
+      address: @address,
+      phone: @phone
     }
   end
 
