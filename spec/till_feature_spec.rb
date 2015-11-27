@@ -33,7 +33,7 @@ output_receipt = {
           address: "123 Lakeside Way",
           phone: "16503600708",
           server: "Jane",
-          items: 
+          items:
           [
             {
              name: "Cafe Latte",
