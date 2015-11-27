@@ -11,7 +11,8 @@ class Till
 
   def produce_receipt(order)
     sub_total(order)
-    { name: @company_name,
+    {
+      name: @company_name,
       address: @address,
       phone: @phone,
       server: order.server,
