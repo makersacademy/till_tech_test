@@ -1,10 +1,19 @@
 class Order
 
-  attr_reader :server, :items
+  attr_reader :customers, :items, :table
 
   def initialize(options)
-    @server = options[:server]
-    @items = options[:items]
+    @customers = []
+    @items = []
+    @table = options[:table]
+  end
+
+  def add_item(item)
+    @items << item
+  end
+
+  def add_customer(customer)
+    @customers << customer
   end
 
 end
