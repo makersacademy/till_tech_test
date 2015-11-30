@@ -36,16 +36,17 @@ output_receipt = {
           items:
           [
             {
-             name: "Cafe Latte",
+             item: "Cafe Latte",
              quantity: 2,
              price: 4.75
             },
             {
-              name: "Flat White",
+              item: "Flat White",
               quantity: 1,
               price: 4.75
             }
           ],
+          subtotal: 14.25,
           tax: 1.23,
           total: 15.48
         }

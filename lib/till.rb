@@ -26,24 +26,25 @@ class Till
       customers: order.customers,
       items: itemise(order),
       tax: tax,
+      subtotal: @sub_total,
       total: @sub_total + tax
     }
   end
 
   def itemise(order)
-    quantify(order.items).map { | name, quantity | { name: name, quantity: quantity, price: item_price(name) } }
+    quantify(order.items).map { | item, quantity | { item: item, quantity: quantity, price: price(item) } }
   end
 
   def quantify(items)
     items.each_with_object(Hash.new(0)) { |item, count| count[item] +=1 }
   end
 
-  def item_price(name)
-     @prices[name]
+  def price(item)
+     @prices[item]
   end
 
   def sub_total(order)
-    @sub_total = order.items.inject(0) { | sum, item | sum += @prices[item] }
+    @sub_total = order.items.inject(0) { | sum, item | sum += price(item) }
   end
 
   def tax

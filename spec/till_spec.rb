@@ -41,14 +41,18 @@ describe Till do
     end
 
     it 'produces receipt with each items quanitity and cost' do
-      expect(till.process_order(order)[:items]).to eq([ { name: "Cafe Latte",
+      expect(till.process_order(order)[:items]).to eq([ { item: "Cafe Latte",
                                                             quantity: 2,
                                                             price: 4.75
                                                            },
                                                            {
-                                                            name: "Flat White",
+                                                            item: "Flat White",
                                                             quantity: 1,
                                                             price: 4.75 } ])
+    end
+
+    it 'produces receipt with total cost' do
+      expect(till.process_order(order)[:subtotal]).to eq(14.25)
     end
 
     it 'produces receipt with total cost' do
