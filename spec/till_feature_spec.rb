@@ -48,7 +48,9 @@ output_receipt = {
           ],
           subtotal: 14.25,
           tax: 1.23,
-          total: 15.48
+          total: 15.48,
+          cash: 20.00,
+          change: 4.52
         }
 
 
@@ -69,7 +71,8 @@ describe 'till' do
       order.add_item("Cafe Latte")
       order.add_item("Cafe Latte")
       order.add_item("Flat White")
-      expect(till.process_order(order)).to eq(output_receipt)
+      till.total(order)
+      expect(till.take_payment(20.00)).to eq(output_receipt)
     end
 
   end

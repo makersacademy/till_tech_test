@@ -9,26 +9,37 @@ class Till
     @prices = options[:prices]
   end
 
-  def process_order(order)
+  def total(order)
+    @current_order = order
     sub_total(order)
-    produce_receipt(order)
+    { amount_due: total_amount }
+  end
+
+  def take_payment(amount_paid)
+    produce_receipt(amount_paid)
   end
 
   private
 
-  def produce_receipt(order)
+  def produce_receipt(amount_paid)
     {
       time: time_stamp,
       name: @company_name,
       address: @address,
       phone: @phone,
-      table: order.table,
-      customers: order.customers,
-      items: itemise(order),
+      table: @current_order.table,
+      customers: @current_order.customers,
+      items: itemise(@current_order),
       tax: tax,
-      subtotal: @sub_total,
-      total: @sub_total + tax
+      subtotal: @subtotal,
+      total: total_amount,
+      cash: amount_paid,
+      change: amount_paid - total_amount
     }
+  end
+
+  def total_amount
+    @subtotal + tax
   end
 
   def itemise(order)
@@ -44,11 +55,11 @@ class Till
   end
 
   def sub_total(order)
-    @sub_total = order.items.inject(0) { | sum, item | sum += price(item) }
+    @subtotal = order.items.inject(0) { | sum, item | sum += price(item) }
   end
 
   def tax
-    (@sub_total / 100 * TAX_RATE).round(2)
+    (@subtotal / 100 * TAX_RATE).round(2)
   end
 
   def time_stamp
