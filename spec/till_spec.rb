@@ -13,7 +13,8 @@ describe Till do
                                items: ["Cafe Latte", "Cafe Latte", "Flat White"],
                                table: 1 ) }
 
-  let(:amount_discount) { double(:discount, trigger: 10.00 , percent: 10.00) }
+  let(:amount_discount) { double(:discount, type: :amount, trigger: 10.00 , percent: 10.00) }
+  let(:line_discount) { double(:discount, type: :line, line: "Latte", percent: 5.00) }
 
   describe '#total' do
 
@@ -32,6 +33,21 @@ describe Till do
         till.add_discount(amount_discount)
         till.total(order)
         expect(till.take_payment(20.00)[:discount]).to eq(1.55)
+      end
+
+    end
+
+    context 'when line discount is added' do
+
+      it 'calculates amount due - discount' do
+        till.add_discount(line_discount)
+        expect(till.total(order)).to eq( { amount_due: 15.00 } )
+      end
+
+      it 'shows discount on receipt' do
+        till.add_discount(line_discount)
+        till.total(order)
+        expect(till.take_payment(20.00)[:discount]).to eq(0.48)
       end
 
     end
@@ -118,8 +134,9 @@ describe Till do
 
     it 'adds discount to the till' do
       till.add_discount(amount_discount)
-      expect(till.discount).to eq(amount_discount)
+      expect(till.discounts).to eq([amount_discount])
     end
+
   end
 
 end

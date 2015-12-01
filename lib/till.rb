@@ -2,13 +2,15 @@ class Till
 
   TAX_RATE = 8.64
 
-  attr_reader :discount
+  attr_reader :discounts
 
   def initialize(options)
     @company_name = options[:shopName]
     @address = options[:address]
     @phone = options[:phone]
     @prices = options[:prices]
+    @discounts = []
+    @discount_amount = 0
   end
 
   def total(order)
@@ -23,7 +25,7 @@ class Till
   end
 
   def add_discount(discount)
-    @discount = discount
+    @discounts <<  discount
   end
 
   private
@@ -39,7 +41,7 @@ class Till
       items: itemise,
       tax: tax,
       subtotal: @subtotal,
-      discount: @discount_amount || 0.00,
+      discount: @discount_amount,
       total: @total,
       cash: amount_paid,
       change: amount_paid - @total
@@ -52,12 +54,31 @@ class Till
   end
 
   def discount_check
-    apply_discount if @discount
+    apply_discount if @discounts.any?
   end
 
   def apply_discount
-    @discount_amount =  (@discount.percent / 100 * @total).round(2) if @total > @discount.trigger
+    @discounts.each do |discount|
+      amount_discount(discount) if discount.type == :amount
+      line_discount(discount) if discount.type == :line
+    end
+    subtract_discount
+  end
+
+  def subtract_discount
     @total -= @discount_amount
+  end
+
+  def amount_discount(discount)
+    @discount_amount +=  (discount.percent / 100 * @total).round(2) if @total > discount.trigger
+  end
+
+  def line_discount(discount)
+    @discount_amount += (discount.percent / 100 * sum_items(discount_lines(discount.line))).round(2)
+  end
+
+  def discount_lines(line)
+    @current_order.items.select { |item| item.upcase.include?(line.upcase) }
   end
 
   def itemise
@@ -65,7 +86,7 @@ class Till
   end
 
   def quantify(items)
-    items.each_with_object(Hash.new(0)) { |item, count| count[item] +=1 }
+    items.each_with_object(Hash.new(0)) { |item, count| count[item] += 1 }
   end
 
   def price(item)
@@ -73,7 +94,11 @@ class Till
   end
 
   def calculate_sub_total
-    @subtotal = @current_order.items.inject(0) { | sum, item | sum += price(item) }
+    @subtotal = sum_items(@current_order.items)
+  end
+
+  def sum_items(items)
+    items.inject(0) { | sum, item | sum += price(item) }
   end
 
   def tax
