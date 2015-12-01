@@ -42,9 +42,9 @@ class Till
       tax: tax,
       subtotal: @subtotal,
       discount: @discount_amount,
-      total: @total,
+      total: @total.round(2),
       cash: amount_paid,
-      change: amount_paid - @total
+      change: (amount_paid - @total).round(2)
     }
   end
 

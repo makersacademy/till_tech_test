@@ -1,5 +1,6 @@
 require 'order'
 require 'till'
+require 'discount'
 require 'timecop'
 
 cafe_data = {
@@ -44,13 +45,24 @@ output_receipt = {
               item: "Flat White",
               quantity: 1,
               price: 4.75
+            },
+            {
+              item: "Single Espresso",
+              quantity: 1,
+              price: 2.05
+            },
+            {
+              item: "Double Espresso",
+              quantity: 1,
+              price: 3.75
             }
           ],
-          subtotal: 14.25,
-          tax: 1.23,
-          total: 15.48,
-          cash: 20.00,
-          change: 4.52
+          subtotal: 20.05,
+          tax: 1.73,
+          discount: 2.90,
+          total: 18.88,
+          cash: 30.00,
+          change: 11.12
         }
 
 
@@ -64,15 +76,22 @@ describe 'till' do
 
     till = Till.new(cafe_data)
     order = Order.new( { table: 1 } )
+    discount_line = Discount.new( { type: :line,
+                                    line: "Espresso",
+                                    percent: 50.00
+                                  } )
 
     it 'creates receipt with cost and cafe details' do
+      till.add_discount(discount_line)
       order.add_customer("Jane")
       order.add_customer("John")
       order.add_item("Cafe Latte")
       order.add_item("Cafe Latte")
       order.add_item("Flat White")
+      order.add_item("Single Espresso")
+      order.add_item("Double Espresso")
       till.total(order)
-      expect(till.take_payment(20.00)).to eq(output_receipt)
+      expect(till.take_payment(30.00)).to eq(output_receipt)
     end
 
   end
