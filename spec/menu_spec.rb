@@ -55,7 +55,7 @@ describe Menu do
     expect(subject.charge).to eq(275.57)
   end
 
-    it "8. We can see the discount to various maffins" do
+  it "8. We can see the discount to various maffins" do
       subject.order("Muffin Of The Day", 1)
       subject.order("Chocolate Chip Muffin", 1)
       subject.order("Blueberry Muffin", 1)

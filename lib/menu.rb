@@ -14,18 +14,31 @@ class Menu
        @total = 0
        @taxes = 0
        @quantity = 1
+       @array_m = []
 
   end
+
+   def showmenu
+      @menu[0]["prices"][0].each do |key, value|
+   puts "Menu item:  #{key}  price: #{value} £"
+  end
+end
+    # var.showmenu[0]
+
 
   def order(booking, quantity)
           @menu[0]["prices"][0].select do |key,value|
        if booking == key and booking.include?'Muffin'
           @customer_order.push key => value * quantity * 0.9
+          ord = "Ordered item:  #{key} , quantity: #{quantity}, price: #{value} £, sum #{value * quantity * 0.9} £"
+          @array_m.push(ord)
        elsif booking == key and !booking.include?'Muffin'
           @customer_order.push key => value * quantity
-    end
+          ord = "Ordered item:  #{key} , quantity: #{quantity}, price: #{value} £, sum #{value * quantity} £"
+          @array_m.push(ord)
+       end
+     end
   end
-end
 
 
   def prices
@@ -66,6 +79,22 @@ end
      @charge = (@amount - @sum).round(2)
   end
 
+
+  def total_bill
+      puts "------------------------------------------------"
+      puts          "Welcome to our Hipstercofee!"
+      puts "The list of your purchase without any discount :"
+      puts  @array_m
+      puts "------------------------------------------------"
+      puts "Total : #{@sum} £, taxes : #{@taxes} £          "
+      puts "------------------------------------------------"
+      puts "Discount : #{@discount} £"
+      puts "You gave us #{@amount} £; charge #{@charge} £   "
+      puts "________________________________________________"
+      puts "Company: #{ @menu[0]["shopName"]}"
+      puts "Addres:  #{ @menu[0]["address"]}"
+      puts "Phone:   #{ @menu[0]["phone"]}"
+  end
 
 
 end
