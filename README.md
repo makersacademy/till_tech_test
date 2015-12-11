@@ -33,6 +33,7 @@ This is what a sample receipt looks like:
 - type: m.discount
 - type: m.money(200)  or any other sum
 - type: m.charge
+- type: m.current_time
 - type: m.total_bill
 
 ###### you should see something like this

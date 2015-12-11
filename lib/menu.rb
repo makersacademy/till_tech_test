@@ -1,4 +1,5 @@
 require 'json'
+require 'date'
 
 class Menu
 
@@ -82,8 +83,15 @@ end
      @charge = (@amount - @sum).round(2)
   end
 
+  def current_time
+      time = Time.new
+      values = time.to_a
+      Time.utc(*values)
+  end
 
   def total_bill
+      puts "************************************************"
+      puts current_time
       puts "------------------------------------------------"
       puts          "Welcome to our Hipstercofee!"
       puts "The list of your purchase without any discount :"
@@ -97,6 +105,7 @@ end
       puts "Company: #{ @menu[0]["shopName"]}"
       puts "Addres:  #{ @menu[0]["address"]}"
       puts "Phone:   #{ @menu[0]["phone"]}"
+      puts
   end
 
 
