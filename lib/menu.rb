@@ -19,11 +19,14 @@ class Menu
   end
 
    def showmenu
-      @menu[0]["prices"][0].each do |key, value|
+   puts "Welcome to our cafe! Please choose something to order!"
+   puts "------------------------------------------------------"
+        @menu[0]["prices"][0].each do |key, value|
    puts "Menu item:  #{key}  price: #{value} £"
-  end
 end
-    # var.showmenu[0]
+   puts "------------------------------------------------------"
+end
+
 
 
   def order(booking, quantity)

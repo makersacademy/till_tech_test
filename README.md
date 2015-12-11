@@ -20,7 +20,7 @@ This is what a sample receipt looks like:
 - type: irb
 - type: require'./lib/menu'
 - create object: m=Menu.new
-- type: m.showmenu[0] you should see :
+- type: m.showmenu -  you should see :
 ![a menu-list](/images/menu.png)
 - type: m.order("Cafe Latte",5)
 - type: m.order("Affogato",5)
