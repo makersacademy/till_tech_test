@@ -3,7 +3,7 @@ Till tech test
 
 *Instructions*: Please fork this repo and submit a pull request once you've finished. Then prepare for code review!
 
-![a till](/images/till.jpg)
+![a till](/public/images/till.jpg)
 
 We want to sell tills to local hipster coffee shop who are finally embracing the 21st century. We need a new till to replace their vintage machines - unfortunately, hipster staff are too cool to learn a new system, so we need you to build something that they will understand.
 
@@ -11,7 +11,7 @@ Specification
 -------------
 This is what a sample receipt looks like:
 
-![a receipt](/images/receipt.jpg)
+![a receipt](/public/images/receipt.jpg)
 
 ##### Running locally
 - clone this repo
@@ -21,7 +21,7 @@ This is what a sample receipt looks like:
 - type: require'./lib/menu'
 - create object: m=Menu.new
 - type: m.showmenu -  you should see :
-![a menu-list](/images/menu.png)
+![a menu-list](/public/images/menu.png)
 - type: m.order("Cafe Latte",5)
 - type: m.order("Affogato",5)
 - type: m.order("Tea",5)
@@ -38,7 +38,7 @@ This is what a sample receipt looks like:
 
 ###### you should see something like this
 
-![a menu-list](/images/bill.png)
+![a menu-list](/public/images/bill.png)
 ---------
 Test checks that:
  - 1. We can see the list of the customer order

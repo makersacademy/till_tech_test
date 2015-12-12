@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Cafe hipstercoffee</title>
+    <!-- <link rel="stylesheet" href="/css/bootstrap.css"/> -->
+  </head>
+  <body>
+  <h1 align="center">Welcome to our hipstercoffee!</h1>
+
+  <table align="center" border="1" style="width:80%">
+    <tr style="width:50%">
+      <td style="width:50%">
+<ol id="new_menu">
+  <% @totals.each do |total| %>
+    <li>
+      <%= total.to_s %>
+    </li>
+  <% end %>
+   </ol>
+
+      </td>
+      <td style="width:50%">
+     <img src="http://i.ebayimg.com/00/s/NTY2WDg0OQ==/z/dO8AAOSwfcVULVhW/$_32.JPG?set_id=880000500F" width="100% " >
+    </tr>
+    <tr style="width:50%">
+      <td style="width:50%">
+        <div>
+         667
+        </div>
+      </td>
+      <td style="width:50%">
+
+5435
+      </td>
+    </tr>
+  </table>
+
+  </body>
+</html>

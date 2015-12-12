@@ -1,9 +1,10 @@
 require 'json'
 require 'date'
 
+
 class Menu
 
-     attr_accessor :customer_bill, :customer_order, :taxes, :sum, :amount
+     attr_accessor :customer_bill, :customer_order, :taxes, :sum, :amount, :array_m
      attr_reader :menu
 
   def initialize
@@ -16,6 +17,8 @@ class Menu
        @taxes = 0
        @quantity = 1
        @array_m = []
+       @array_m1 = []
+       @arram = []
 
   end
 
@@ -29,21 +32,25 @@ end
 end
 
 
+def showmenulist
+      @menu[0]["prices"][0].each{|key, value| @array_m1.push("Menu item : #{key} price : #{value}£")}
+      return @array_m1
+end
+
 
   def order(booking, quantity)
           @menu[0]["prices"][0].select do |key,value|
        if booking == key and booking.include?'Muffin'
           @customer_order.push key => value * quantity * 0.9
-          ord = "Ordered item:  #{key} , quantity: #{quantity}, price: #{value} £, sum #{value * quantity * 0.9} £"
+          ord = "Ordered item:  #{key} , quantity: #{quantity}, price: #{value} £, sum #{value * quantity * 0.9} £ "
           @array_m.push(ord)
        elsif booking == key and !booking.include?'Muffin'
           @customer_order.push key => value * quantity
-          ord = "Ordered item:  #{key} , quantity: #{quantity}, price: #{value} £, sum #{value * quantity} £"
+          ord = "Ordered item:  #{key} , quantity: #{quantity}, price: #{value} £, sum #{value * quantity} £ "
           @array_m.push(ord)
        end
      end
   end
-
 
   def prices
       @customer_order.each do |hash|
@@ -76,7 +83,12 @@ end
   end
 
   def money(amount)
+    if amount > @sum
      @amount = amount
+   else
+     puts "Transaction will not be made, not enough money"
+     @amount = "Transaction will not be made, not enough money"
+   end
   end
 
   def charge
@@ -106,6 +118,25 @@ end
       puts "Addres:  #{ @menu[0]["address"]}"
       puts "Phone:   #{ @menu[0]["phone"]}"
       puts
+  end
+
+
+  def total_bill_show
+
+    @arram = ["************************************************",
+      current_time,
+              "------------------------------------------------",
+              "           Welcome to our Hipstercofee!         ",
+              "The list of your purchase without any discount :",
+              "------------------------------------------------",
+              "Total : #{@sum} £, taxes : #{@taxes} £          ",
+              "------------------------------------------------",
+              "Discount : #{@discount} £",
+              "------------------------------------------------",
+              "Company: #{ @menu[0]["shopName"]}"               ,
+              "Addres:  #{ @menu[0]["address"]}"                ,
+              "Phone:   #{ @menu[0]["phone"]}"                  ,
+              " ******* Thank you for you purchas**************"]
   end
 
 
