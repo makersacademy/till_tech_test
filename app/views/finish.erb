@@ -6,14 +6,36 @@
     <!-- <link rel="stylesheet" href="/css/bootstrap.css"/> -->
   </head>
   <body>
-  <h1 align="center">Welcome to our hipstercoffee!</h1>
+  <h1 align="center">See you in hipstercoffee!</h1>
 
   <table align="center" border="1" style="width:80%">
     <tr style="width:50%">
       <td style="width:50%">
         <h3 align="center" >
           Thank you for purchase, have a nice day!
-          <h3>
+        </h3>
+        <form id="finish">
+        <ol>
+          <% @totals.each do |total| %>
+            <li>
+              <%= total.to_s %>
+            </li>
+          <% end %>
+           </ol>
+        <ol>
+        <% @orderedlists.each do | orderedlist | %>
+        <li>
+          <%= orderedlist.to_s %>
+        </li>
+          <% end %>
+        </ol>
+        <ul>
+          You paid <%= @payit%> £
+       </ul>
+       <ul>
+         Your change <%= @change%> £
+      </ul>
+      </form>
       </td>
       <td style="width:50%">
      <img src="http://i.ebayimg.com/00/s/NTY2WDg0OQ==/z/dO8AAOSwfcVULVhW/$_32.JPG?set_id=880000500F" width="100% " >

@@ -136,8 +136,10 @@ end
               "Company: #{ @menu[0]["shopName"]}"               ,
               "Addres:  #{ @menu[0]["address"]}"                ,
               "Phone:   #{ @menu[0]["phone"]}"                  ,
-              "********* Thank you for you purchas**************"]
+              "************ The list of your purchase **************"]
   end
+
+
 
 
 end

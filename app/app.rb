@@ -77,19 +77,19 @@ end
 end
 
  get '/finish' do
-  totals=session[:totals]
-  orderedlists=session[:orderedlists]
-  payit = session[:payit]
-  sum_order = session[:sum_order]
-  @change = payit.to_f - sum_order.to_f
-  puts payit
-  puts sum_order
-  puts orderedlists
+  @totals=session[:totals]
+  @orderedlists=session[:orderedlists]
+  @payit = session[:payit]
+  @sum_order = session[:sum_order]
+  @change = @payit.to_f - @sum_order.to_f
+  puts @payit
+  puts @sum_order
+  puts @orderedlists
   puts @change
   # @orderedlists = orderedlists.to_a
   # @orderedlists.each do |orderedlist|
   # puts @orderedlist
-  puts totals
+  puts @totals
    erb :finish
  end
 
