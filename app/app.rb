@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'tilt/erb'
+require 'database_cleaner'
 require_relative '../data_mapper_setup'
 # require 'sinatra/flash'
 require_relative '../lib/menu.rb'
@@ -36,7 +37,8 @@ get '/new_menu' do
     @m.order(@name, @quant)
   end
     @price_order=@m.prices
-    @sum_order=@m.sum
+    sum_order=@m.sum
+    session[:sum_order]=sum_order
     @taxes_order=@m.taxes
     @discount_order=@m.discount
     @totals=@m.total_bill_show
@@ -51,12 +53,17 @@ end
 post '/new_menu' do
   payit=params[:payit]
   @payit=payit.to_f
-  if @payit > @sum_order.to_f
+  sum_order=session[:sum_order]
+  @money = sum_order.to_f
+  puts @payit
+  puts @money
+  if @payit < @money
    redirect to('/not_enough')
   else
    session[:payit] = @payit
+ end
    redirect to('/finish')
-end
+
 end
 
  get '/not_enough' do
@@ -67,7 +74,9 @@ end
    erb :finish
  end
 
-
+ DatabaseCleaner.cleaning do
+   Database
+ end
 
 
 
