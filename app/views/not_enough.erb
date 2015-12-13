@@ -11,25 +11,15 @@
   <table align="center" border="1" style="width:80%">
     <tr style="width:50%">
       <td style="width:50%">
-<ol id="new_menu">
-  <% @totals.each do |total| %>
-    <li>
-      <%= total.to_s %>
-    </li>
-  <% end %>
-   </ol>
+        <h3 align="center" id="menu" >
+           Transaction will not be made, not enough money
+          <h3>
       </td>
       <td style="width:50%">
      <img src="http://i.ebayimg.com/00/s/NTY2WDg0OQ==/z/dO8AAOSwfcVULVhW/$_32.JPG?set_id=880000500F" width="100% " >
     </tr>
     <tr style="width:50%">
       <td style="width:50%">
-        <div>
-          <form method="POST" action="new_menu">
-             Please add money to finish your purchase <br/>
-            <input type="text" name="payit" required><br/>
-            <input type="submit" value="Pay it!">
-        </div>
       </td>
       <td style="width:50%">
       </td>

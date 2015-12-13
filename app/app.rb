@@ -18,19 +18,14 @@ end
   m=Menu.new
   @lists = m.showmenulist
   @time = m.current_time
-
   erb :menu
+
 end
 
 post '/menu' do
   Database.create(item: params[:item], quantity: params[:quantity])
-  redirect to('/new_menu')
+  redirect to('/menu')
 end
-
-
-
-
-
 
 get '/new_menu' do
     @m=Menu.new
@@ -53,10 +48,27 @@ get '/new_menu' do
 end
 
 
+post '/new_menu' do
+  payit=params[:payit]
+  @payit=payit.to_f
+  if @payit > @sum_order.to_f
+   redirect to('/not_enough')
+  else
+   session[:payit] = @payit
+   redirect to('/finish')
+end
+end
 
-# ost '/new_menu' do
-#   redirect to('/new_menu')
-# end
+ get '/not_enough' do
+   erb :not_enough
+end
+
+ get '/finish' do
+   erb :finish
+ end
+
+
+
 
 
 
