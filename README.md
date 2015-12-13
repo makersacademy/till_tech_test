@@ -9,7 +9,8 @@ We want to sell tills to local hipster coffee shop who are finally embracing the
 - create database `till_tech_devalopment` in psql
 - in command line type : ruby app/app.rb
 - in your browser go to `localhost:4567`
-![a receipt](/public/images/receipt.jpg)
+
+![Screenshot 1](https://github.com/TJQKAs/till_tech_test/blob/master/public/images/screen1.png?raw=true=200) [Screenshot-1]
 
 
 #### Technologies Used
@@ -21,7 +22,6 @@ We want to sell tills to local hipster coffee shop who are finally embracing the
 Specification
 -------------
 This is what a sample receipt looks like:
-
 ![a receipt](/public/images/receipt.jpg)
 
 
