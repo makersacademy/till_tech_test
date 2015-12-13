@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Cafe hipstercoffee</title>
+    <!-- <link rel="stylesheet" href="/css/bootstrap.css"/> -->
+  </head>
+  <body>
+  <h1 align="center">See you in hipstercoffee!</h1>
+
+  <table align="center" border="0" style="width:80%">
+    <tr style="width:50%">
+      <td style="width:50%">
+        <h3 align="center" >
+          Thank you for purchase, have a nice day!
+        </h3>
+        <form id="finish">
+        <ol>
+          <% @totals.each do |total| %>
+            <li>
+              <%= total.to_s %>
+            </li>
+          <% end %>
+           </ol>
+        <ol>
+        <% @orderedlists.each do | orderedlist | %>
+        <li>
+          <%= orderedlist.to_s %>
+        </li>
+          <% end %>
+        </ol>
+        <ul>
+          You paid <%= @payit%> £
+       </ul>
+       <ul>
+         Your change <%= @change%> £
+      </ul>
+      </form>
+      </td>
+      <td style="width:50%">
+     <img src="http://i.ebayimg.com/00/s/NTY2WDg0OQ==/z/dO8AAOSwfcVULVhW/$_32.JPG?set_id=880000500F" width="100% " >
+    </tr>
+    <tr style="width:50%">
+      <td style="width:50%" align="center">
+        <form action="/" class="inline">
+          <button class="float-left submit-button" > Home </button>
+       </form>
+      </td>
+      <td style="width:50%" align="center">
+      </td>
+    </tr>
+  </table>
+
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Cafe hipstercoffee</title>
+    <!-- <link rel="stylesheet" href="/css/bootstrap.css"/> -->
+  </head>
+  <body>
+  <h1 align="center">Welcome to our hipstercoffee!</h1>
+
+  <table align="center" border="0" style="width:80%">
+    <tr style="width:50%">
+      <td style="width:50%">
+        <h3 align="center" id="menu" >
+          Menu list for today: <%= @time %>, make order please!
+          <h3>
+        <div>
+        <ul id="menu">
+          <% @lists.each do |list| %>
+          <%= list %><br/>
+          <% end %>
+        </ul>
+        <div>
+      </td>
+      <td style="width:50%">
+     <img src="http://i.ebayimg.com/00/s/NTY2WDg0OQ==/z/dO8AAOSwfcVULVhW/$_32.JPG?set_id=880000500F" width="100% " >
+    </tr>
+    <tr style="width:50%">
+      <td style="width:50%">
+
+        <div>
+        <form method="POST" action="menu">
+          Enter your order items<br/>
+          <input type="text" name="item" required><br/>
+          Enter your quantity of each item<br/>
+          <input type="text" name="quantity" required><br/>
+          <input type="submit" value="Get it!">
+        </form>
+        <form action="/new_menu" class="inline">
+          <button class="float-left submit-button" > Finish </button>
+       </form>
+        </div>
+      </td>
+      <td style="width:50%">
+     <ul id="get">
+       <%=  @cat %>
+     </ul>
+
+      </td>
+    </tr>
+  </table>
+
+  </body>
+</html>
