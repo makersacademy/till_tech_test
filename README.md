@@ -18,13 +18,6 @@ We want to sell tills to local hipster coffee shop who are finally embracing the
 `Sinatra`
 `DataMapper`
 
-Specification
--------------
-This is what a sample receipt looks like:
-![a receipt](/public/images/receipt.jpg)
-
-
-
 
 ##### Running locally in command line
 - clone this repo
