@@ -1,11 +1,22 @@
 Till tech test
 ==============
-
-*Instructions*: Please fork this repo and submit a pull request once you've finished. Then prepare for code review!
-
-![a till](/public/images/till.jpg)
-
 We want to sell tills to local hipster coffee shop who are finally embracing the 21st century. We need a new till to replace their vintage machines - unfortunately, hipster staff are too cool to learn a new system, so we need you to build something that they will understand.
+
+*Instructions*:
+#### Running locally
+- Git clone this repo
+- in command line type `bundle install`  
+- create database `till_tech_devalopment` in psql
+- in command line type : ruby app/app.rb
+- in your browser go to `localhost:4567`
+![a receipt](/public/images/receipt.jpg)
+
+
+#### Technologies Used
+
+`Sinatra`
+`DataMapper`
+
 
 Specification
 -------------
@@ -13,7 +24,8 @@ This is what a sample receipt looks like:
 
 ![a receipt](/public/images/receipt.jpg)
 
-##### Running locally
+
+##### Running locally in command line
 - clone this repo
 - type rspec init
 - check test
