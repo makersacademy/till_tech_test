@@ -11,18 +11,19 @@ We want to sell tills to local hipster coffee shop who are finally embracing the
 - in your browser go to `localhost:4567`
 
 ![Screenshot 1](https://github.com/TJQKAs/till_tech_test/blob/master/public/images/screen1.png?raw=true=200) [Screenshot-1]
-
+![Screenshot 1](https://github.com/TJQKAs/till_tech_test/blob/master/public/images/screen2.png?raw=true=200) [Screenshot-2]
+![Screenshot 1](https://github.com/TJQKAs/till_tech_test/blob/master/public/images/screen3.png?raw=true=200) [Screenshot-3]
 
 #### Technologies Used
-
 `Sinatra`
 `DataMapper`
-
 
 Specification
 -------------
 This is what a sample receipt looks like:
 ![a receipt](/public/images/receipt.jpg)
+
+
 
 
 ##### Running locally in command line
