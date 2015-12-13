@@ -42,11 +42,11 @@ end
           @menu[0]["prices"][0].select do |key,value|
        if booking == key and booking.include?'Muffin'
           @customer_order.push key => value * quantity * 0.9
-          ord = "Ordered item:  #{key} , quantity: #{quantity}, price: #{value} £, sum #{value * quantity * 0.9} £ "
+          ord = "Ordered item:  #{key} , quantity: #{quantity}, price: #{value} £, sum #{(value * quantity * 0.9).round(2)} £ "
           @array_m.push(ord)
        elsif booking == key and !booking.include?'Muffin'
           @customer_order.push key => value * quantity
-          ord = "Ordered item:  #{key} , quantity: #{quantity}, price: #{value} £, sum #{value * quantity} £ "
+          ord = "Ordered item:  #{key} , quantity: #{quantity}, price: #{value} £, sum #{(value * quantity).round(2)} £ "
           @array_m.push(ord)
        end
      end
@@ -127,7 +127,7 @@ end
       current_time,
               "------------------------------------------------",
               "           Welcome to our Hipstercofee!         ",
-              "The list of your purchase without any discount :",
+              "The list of your purchase with  discount :",
               "------------------------------------------------",
               "Total : #{@sum} £, taxes : #{@taxes} £          ",
               "------------------------------------------------",

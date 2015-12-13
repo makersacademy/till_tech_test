@@ -81,7 +81,7 @@ end
   @orderedlists=session[:orderedlists]
   @payit = session[:payit]
   @sum_order = session[:sum_order]
-  @change = @payit.to_f - @sum_order.to_f
+  @change = (@payit.to_f - @sum_order.to_f).round(2)
   puts @payit
   puts @sum_order
   puts @orderedlists
