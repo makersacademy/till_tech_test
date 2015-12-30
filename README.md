@@ -1,3 +1,8 @@
+Setup
+=====
+Run ```bundle install```
+Run the tests with ```rspec```
+
 Till tech test
 ==============
 
