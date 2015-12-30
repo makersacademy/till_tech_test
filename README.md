@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/meads58/till_tech_test.png)](https://travis-ci.org/meads58/till_tech_test)
+
 Setup
 =====
 Run ```bundle install```
