@@ -1,5 +1,7 @@
 language: ruby
 rvm:
-  - 2.1.5
-
+- 2.1.5
 script: bundle exec rspec spec
+notifications:
+  slack:
+    secure: MDd3iL6jtJ6Mcr1eQq39jh65ednbia16D25PDzppjC/bsCStQrmk7cYPx/hVkAxRIR6yvlSGRIcfEZdwAv/f4R5S4fNOg5BHfocxfq9ty3/sD4HoAsEyu5ORQfvUSUqih1RRSTDG0pYqj5RcIkS5QEQrL/9uU25myofhIESWtOE=
