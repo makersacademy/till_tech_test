@@ -12,6 +12,15 @@ describe Till do
       {"Choc Mudcake": 1}
     ]
   }
+
+  order1 = {
+    name: "John",
+    items: [
+      {"Americano": 4},
+      {"Tiramisu": 2},
+      {"Blueberry Muffin": 5}
+    ]
+  }
   line = order[:items][0]
 
   describe "#calculate_line_total" do
@@ -37,6 +46,18 @@ describe Till do
     it "return the full total" do
       expect(till.total(order)).to eq(21.67)
     end
+
+    context "When a bill is above 50" do
+      before(:each) do
+        till.total(order1)
+      end
+
+      it "applies a discount of 5%" do
+        p till.calculate_base_total(order1)
+        p till.total(order1)
+        expect(till.total(order1)).to eq(59.91)
+      end
+    end
   end
 
   describe "#take_payment(amount)" do
@@ -54,4 +75,6 @@ describe Till do
       expect{till.take_payment(20)}.to raise_error("The amount given is less than the cost of the order")
     end
   end
+
+
 end

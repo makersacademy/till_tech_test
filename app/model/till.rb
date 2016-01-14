@@ -13,17 +13,20 @@ class Till
   end
 
   def calculate_base_total(order)
-    total = 0
-    order[:items].each{|order_item| total += calculate_line_total(order_item)}
-    total.round(2)
+    order[:items].inject(0){|total, order_item|
+      total + (calculate_line_total(order_item))}.round(2)
   end
 
   def calculate_tax(order_amount)
     (order_amount * to_percent(tax)).round(2)
   end
 
+  def calculate_discount(base)
+    base > 50 ? base *= 0.95 : base
+  end
+
   def total(order)
-    base = calculate_base_total(order)
+    base = calculate_discount(calculate_base_total(order))
     tax = calculate_tax(base)
     @order_total = (base + tax).round(2)
   end
