@@ -9,7 +9,7 @@ class Till
   end
 
   def calculate_line_total(line)
-    quantity * price
+    quantity(line) * price(line)
   end
 
   def calculate_base_total(order)
@@ -38,7 +38,6 @@ class Till
     end
     change.round(2)
   end
-
 
   private
 
