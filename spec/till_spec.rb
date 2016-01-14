@@ -7,17 +7,17 @@ describe Till do
   order = {
     name: "Jane",
     items: [
-      {"Cafe Latte": 2},
-      {"Cortado": 1},
-      {"Choc Mudcake": 1}
+      {"Cafe Latte"=> 2},
+      {"Cortado"=> 1},
+      {"Choc Mudcake"=> 1}
     ]
   }
   order1 = {
     name: "John",
     items: [
-      {"Americano": 4},
-      {"Tiramisu": 2},
-      {"Blueberry Muffin": 5}
+      {"Americano"=> 4},
+      {"Tiramisu"=> 2},
+      {"Blueberry Muffin"=> 5}
     ]
   }
   line = order[:items][0]
