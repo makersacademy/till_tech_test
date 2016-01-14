@@ -19,4 +19,11 @@ describe Till do
     end
   end
 
+  context "#calculate_tax" do
+
+    it "calculates the total tax for an order" do
+      expect(till.calculate_tax(14.25)).to eq(1.23)
+    end
+  end
+
 end

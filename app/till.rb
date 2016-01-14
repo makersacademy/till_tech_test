@@ -21,4 +21,8 @@ SHOP_DETAILS = JSON.parse(file)
     total
   end
 
+  def calculate_tax(sum)
+    ((sum / 100) * 8.62).round(2)
+  end
+
 end
