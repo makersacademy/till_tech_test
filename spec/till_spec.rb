@@ -26,4 +26,20 @@ describe Till do
     end
   end
 
+  context "#calculate_change" do
+
+    it "calculates the total change for payment received" do
+      sum = 8
+      payment_received = 10
+      expect(till.calculate_change(sum, payment_received)).to eq(2)
+    end
+  end
+
+  context "#apply_discount" do
+
+    it "applies a discount of 5% on orders over $50" do
+      expect(till.apply_discount(70)).to eq(66.5)
+    end
+  end
+
 end
