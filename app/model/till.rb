@@ -9,7 +9,7 @@ class Till
   end
 
   def calculate_line_total(line)
-    line[get_line_key(line)]*menu[get_line_key(line).to_s]
+    quantity * price
   end
 
   def calculate_base_total(order)
@@ -41,6 +41,14 @@ class Till
 
 
   private
+
+  def quantity(line)
+    line[get_line_key(line)]
+  end
+
+  def price(line)
+    menu[get_line_key(line).to_s]
+  end
 
   def menu
     data["prices"][0]
