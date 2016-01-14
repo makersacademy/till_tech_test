@@ -11,4 +11,12 @@ describe Till do
     end
   end
 
+  context "#calculate_sum" do
+
+    it "calculates the total sum for an order" do
+      order = {"Cafe Latte":1, "Flat White":2}
+      expect(till.calculate_sum(order)).to eq(14.25)
+    end
+  end
+
 end

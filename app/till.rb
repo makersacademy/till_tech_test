@@ -13,4 +13,12 @@ SHOP_DETAILS = JSON.parse(file)
     @shop_details
   end
 
+  def calculate_sum(order)
+    total = 0
+    order.each do |item, quantity|
+      total += (shop_details[0]["prices"][0][item.to_s] * quantity)
+    end
+    total
+  end
+
 end
