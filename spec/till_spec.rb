@@ -8,11 +8,10 @@ describe Till do
     name: "Jane",
     items: [
       {"Cafe Latte": 2},
-      {"Blueberry Muffin": 1},
+      {"Cortado": 1},
       {"Choc Mudcake": 1}
     ]
   }
-
   order1 = {
     name: "John",
     items: [
@@ -22,6 +21,7 @@ describe Till do
     ]
   }
   line = order[:items][0]
+  muffins = order1[:items][2]
 
   describe "#calculate_line_total" do
     it "calculates the total cost of one line of an order" do
@@ -52,10 +52,14 @@ describe Till do
         till.total(order1)
       end
 
-      it "applies a discount of 5%" do
-        p till.calculate_base_total(order1)
-        p till.total(order1)
-        expect(till.total(order1)).to eq(59.91)
+      it "applies a total discount of 5%" do
+        expect(till.total(order1)).to eq(57.85)
+      end
+    end
+    context "when an order includes muffins" do
+      it "applies a 10% discount to any muffins ordered" do
+        expect(till.calculate_line_total(muffins)).to eq(18.25)
+        expect(till.calculate_line_total(muffins)).not_to eq(8.10)
       end
     end
   end

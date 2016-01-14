@@ -9,24 +9,31 @@ class Till
   end
 
   def calculate_line_total(line)
-    quantity(line) * price(line)
+    if line.keys[0].to_s.include?("Muffin")
+      price = (price(line) * 0.9).round(2)
+    else
+      price = price(line)
+    end
+    quantity(line) * price
   end
 
   def calculate_base_total(order)
-    order[:items].inject(0){|total, order_item|
-      total + (calculate_line_total(order_item))}.round(2)
+    order[:items].inject(0) do |total, order_item|
+      total + (calculate_line_total(order_item))
+    end
+      .round(2)
   end
 
   def calculate_tax(order_amount)
     (order_amount * to_percent(tax)).round(2)
   end
 
-  def calculate_discount(base)
+  def calculate_total_discount(base)
     base > 50 ? base *= 0.95 : base
   end
 
   def total(order)
-    base = calculate_discount(calculate_base_total(order))
+    base = calculate_total_discount(calculate_base_total(order))
     tax = calculate_tax(base)
     @order_total = (base + tax).round(2)
   end
