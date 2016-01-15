@@ -4,7 +4,7 @@ describe TillFactory do
   context "when passed a filename, TillFactory will build a till object" do
     it "returns a Till class on #build" do
       allow(File).to receive(:read)
-      allow(JSON).to receive(:parse)
+      allow(JSON).to receive(:parse).with(any_args).and_return({prices: {}})
       expect(till_factory.build(:filename).class).to be Till
     end
   end
