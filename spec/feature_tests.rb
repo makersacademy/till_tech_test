@@ -25,4 +25,19 @@ Total                   $21.67"
       expect(new_till.print_receipt(janes_order)).to eq(jane_receipt)
     end
   end
+
+  context "John's order" do
+    it "receipt printed corresponds to supplied order" do
+      john_receipt = "\
+2016.01.01 00:00:00\n\
+The Coffee Connection\n\
+123 Lakeside Way\n\
+Phone: +1 (650) 360-0708\n\
+  Americano         4 x $15.00\n\
+  Tiramisu          2 x $22.80\n\
+  Blueberry Muffin  5 x $20.25\n\
+Tax                      $5.02\n\
+Total                   $63.07"
+    end
+  end
 end
