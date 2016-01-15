@@ -16,9 +16,9 @@ class ReceiptPrinter
   def header
     "\
 #{Time.new.strftime("%Y.%m.%d %H:%M:%S")}\n\
-#{@restaurant_data["shopName"]}\n\
-#{@restaurant_data["address"]}\n\
-#{format_phone(@restaurant_data["phone"])}"
+#{sym_to_string(@restaurant_data[:shopname])}\n\
+#{sym_to_string(@restaurant_data[:address])}\n\
+#{format_phone(@restaurant_data[:phone])}"
   end
 
   def subtotals

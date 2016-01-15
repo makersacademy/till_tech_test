@@ -13,7 +13,7 @@ class ReadJson
 
   def parse(filename)
     json_file = @file_klass.read(filename)
-    puts symbol_keys(@json_klass.parse(json_file).first)
+    symbol_keys(unwrap_array(@json_klass.parse(json_file)))
   end
 
   private
@@ -26,6 +26,11 @@ class ReadJson
     return symbol_keys(string) if string.is_a? Hash
     return string unless string.is_a? String
     string.gsub(' ','_').downcase.to_sym
+  end
+
+  def unwrap_array(json_hash)
+    return json_hash if not json_hash.is_a? Array
+    json_hash.first.map{|key, value| [key, unwrap_array(value)]}.to_h
   end
 
 end
