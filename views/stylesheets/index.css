@@ -1,0 +1,77 @@
+body {
+	margin: auto;
+	width: 1170px;
+	font-family: Hoefler Text, Baskerville Old Face, Garamond, Times New Roman, serif;
+	color: #4B4C4C;
+	 overflow-y: scroll;
+}
+
+header, h1 {
+	text-align: center;
+	margin-top: 15px;
+	padding-top: 15px;
+	padding-bottom: 10px;
+	font-size: 55px;
+  letter-spacing: 4px;
+}
+
+.container {
+	margin-top: 50px;
+	position: fixed;
+	background-color: ice;
+}
+
+#till { 
+ 	float: left;
+}
+
+#listItems {
+  min-width: 600px;
+  height: 700px; 
+  position: relative;
+  margin: 20px 40px 50px 0px; 
+}
+#item {
+	width: 170px;
+	height: 100px;
+	float: left;
+	margin: 5px 10px 5px 0px;
+  font-size: 15px;
+  background-color: #262525;
+  color: rgba(177,149,145,1);
+}
+
+#receipt {
+	margin-top: 20px;
+	width: 450px;
+ 	float: left;
+}
+
+#totalPrice {
+	text-align: right;
+	font-size: 18px;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
+	vertical-align: middle;
+	text-align: center;
+	font-size: 14px;
+	font-weight: 100;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th {  
+	font-size: 17px;
+}
+
+#qty {
+	font-size: 18px;
+  margin: 0px;
+  padding: 0px 9px;
+}
+
+img {
+	float: left;
+  margin-left: 117px;
+  width: 40%;
+}
+

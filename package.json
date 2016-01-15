@@ -1,0 +1,27 @@
+{
+  "name": "till_tech_test",
+  "version": "1.0.0",
+  "description": "Till Tech Test ================== Installation ------------ ```sh $ git clone https://github.com/d9nny/till_tech_test ``` Navigate to root directory of the project: ```sh $ bower install  $ npm install ``` To run locally, open index.html in your browser.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/d9nny/till_tech_test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/d9nny/till_tech_test/issues"
+  },
+  "homepage": "https://github.com/d9nny/till_tech_test#readme",
+  "devDependencies": {
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.19",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.3",
+    "phantomjs": "^1.9.19"
+  }
+}

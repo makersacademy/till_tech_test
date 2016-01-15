@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en" ng-app='CoffeeTill'>
+<head>
+	<meta charset="utf-8">
+	<title>Till</title>
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="views/stylesheets/index.css">
+
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.js"></script>
+	<script src="app/app.js"></script>
+	<script src="app/services/tillCalculation.js"></script>
+	<script src="app/controllers/tillController.js"></script>
+</head>
+
+<body ng-controller='TillController as tilCtrl'>
+	<header>
+		<h1>{{ tilCtrl.coffeeShopInfo[0].shopName }}</h1>
+		<img src="./../till_tech_test/views/images/coffee-beans-out-of-the-sack.gif";
+	</header>
+	<div class='container'>
+		<div id="till">
+			<div id='listItems'>
+				<ul class="list-group">
+					<ul ng-repeat="(key, value) in tilCtrl.coffeeShopInfo[0].prices[0]">
+						<button id='item' class='btn' ng-click='tilCtrl.addCurrentSelection(key, value); tilCtrl.update()'>
+							{{ key }} <br> <c>{{ value | currency : symbol : fractionSize }}</c>
+						</button>
+					</ul>
+				</ul>
+			</div>
+		</div>
+
+		<div id='receipt'>
+			<div id='orderItems'>
+				<table class="table table-striped" >
+					<colgroup>
+			       <col span="1" style="width: 30%;">
+			       <col span="1" style="width: 20%;">
+			       <col span="1" style="width: 20%;">
+			       <col span="1" style="width: 20%;">
+			       <col span="1" style="width: 20%;">
+			    </colgroup>
+					<thead>
+						<tr >
+							<th>Item</th>
+							<th>Unit Price</th>
+							<th>Quantity</th>
+							<th></th>
+							<th>Line Price</th>
+						</tr>
+					</thead>
+				</table>
+				<div style="height:350px; overflow:auto;">
+				<table class="table table-striped">
+					<colgroup>
+			       <col span="1" style="width: 30%;">
+			       <col span="1" style="width: 20%;">
+			       <col span="1" style="width: 20%;">
+			       <col span="1" style="width: 20%;">
+			       <col span="1" style="width: 20%;">
+			    </colgroup>
+					<tbody>
+						<tr ng-repeat="(key, value) in tilCtrl.order" >
+							<td>{{ key }}</td>
+							<td> {{ value[0] | currency : symbol : fractionSize }} </td>
+							<td>{{ value[1] }} 
+							</td>
+							<td>
+								<button id="qty" type="button" ng-click="tilCtrl.addOne(key); tilCtrl.update()" class="btn btn-default">+</button>
+								<button id="qty" type="button" ng-click="tilCtrl.minusOne(key); tilCtrl.update()" class="btn btn-default">-</button>
+							</td>
+							<td>{{ value[2] | currency : symbol : fractionSize }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			</div>
+			<div id="totalPrice">
+				<p>
+					Discount: {{ tilCtrl.fiftyDiscount | currency : symbol : fractionSize }}<br>
+					Tax: {{ tilCtrl.tax | currency : symbol : fractionSize }}<br>
+					Total: {{ tilCtrl.totalPrice	| currency : symbol : fractionSize }}
+				</p>
+				<p ng-show=''>
+					Cash: {{ tilCtrl.cash | currency : symbol : fractionSize }}
+					Change: {{ tilCtrl.change | currency : symbol : fractionSize }}
+				</p>
+			</div>
+		</div>
+	</div>
+</body>
+<html>
+
+
+<!-- 
+			<p>Address: {{ tilCtrl.coffeeShopInfo[0].address }}</p>
+			<p>Tel: {{ tilCtrl.coffeeShopInfo[0].phone }}</p>
+ -->
