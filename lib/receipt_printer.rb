@@ -12,6 +12,7 @@ class ReceiptPrinter
     "#{header}\n#{subtotals}\n#{tax_and_total}"
   end
 
+  private
   def header
     "\
 #{Time.new.strftime("%Y.%m.%d %H:%M:%S")}\n\
@@ -30,7 +31,6 @@ class ReceiptPrinter
 #{label_pad_value(:total, @totals, TAX_TOTAL_PADDING)}"
   end
 
-  private
   TAX_TOTAL_PADDING = 30
   SUBTOTAL_PADDING = 28
 

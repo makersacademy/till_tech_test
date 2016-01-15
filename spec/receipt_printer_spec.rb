@@ -21,26 +21,6 @@ Phone: +1 (650) 360-0708\n\
 Tax                      $1.17\n\
 Total                   $14.72")
     end
-
-    it "prints the header" do
-      expect(receipt_printer.header).to eq(
-"2016.01.01 00:00:00\n\
-The Coffee Connection\n\
-123 Lakeside Way\n\
-Phone: +1 (650) 360-0708"
-      )
-    end
-
-    it "prints the subtotals" do
-      expect(receipt_printer.subtotals).to eq(
-"  Cafe Latte         2 x $9.50\n\
-  Blueberry Muffin   1 x $4.05")
-    end
-
-    it "prints the tax and total" do
-      expect(receipt_printer.tax_and_total).to eq(
-"Tax                      $1.17\n\
-Total                   $14.72")
-    end
   end
+
 end
