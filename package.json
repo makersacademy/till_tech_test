@@ -7,10 +7,10 @@
     "bower": "^1.6.8",
     "express": "^4.13.3",
     "http-server": "^0.8.5"
-  }
+  },
   "scripts": {
     "start": "node app.js",
-    "postinstall": "bower install"
+    "postinstall": "bower install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
