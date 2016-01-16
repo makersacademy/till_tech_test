@@ -1,6 +1,8 @@
 Till Tech Test
 ==================
 
+Live Site : https://coffeetill.herokuapp.com
+
 Installation
 ------------
 ```sh
@@ -11,7 +13,12 @@ Navigate to root directory of the project:
 $ bower install 
 $ npm install
 ```
-To run locally, open index.html in your browser.
+To run locally, run:
+
+```sh
+$ node server.js
+```
+and navigate to http://localhost:5000/ in your browser
 
 Testing
 -------
