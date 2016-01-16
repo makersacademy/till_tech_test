@@ -1,7 +1,7 @@
 Till Tech Test
 ==================
 
-Live Site : https://coffeetill.herokuapp.com
+Live Site : https://aqueous-cliffs-8772.herokuapp.com/
 
 Installation
 ------------
