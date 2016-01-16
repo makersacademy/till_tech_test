@@ -25,6 +25,12 @@
     "phantomjs": "^1.9.19"
   },
   "dependencies": {
-    "express": "^4.13.3"
+    "bower": "^1.6.8",
+    "express": "^4.13.3",
+    "http-server": "^0.8.5"
   }
+  "scripts": {
+    "start": "node app.js",
+    "postinstall": "bower install"
+  },
 }
