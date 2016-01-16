@@ -20,6 +20,7 @@ To run tests:
 ```sh
 $ karma start test/karma.conf.js
 ```
+.....................................................
 
 *Instructions*: Please fork this repo and submit a pull request once you've finished. Then prepare for code review!
 
@@ -58,7 +59,9 @@ Version 2
 ---------
 
 - Add functionality to take payment and calculate correct change.  
-- Add functionality to handle discounts - in this example, a 5% discount on orders over $50, and a 10% muffin discount.
+- Add functionality to handle discounts - in this example, a 5% discount on orders over $50,
+
+ and a 10% muffin discount.
 
 Version 3
 ---------

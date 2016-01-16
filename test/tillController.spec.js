@@ -25,8 +25,20 @@ describe('TillController', function() {
 		expect(ctrl.order).toEqual(order); 
 	});
 
-	describe('calculate', function() {
+	describe('setTab', function() {
+		it('sets the tab', function() {
+			ctrl.setTab(2);
+			expect(ctrl.activeTab).toEqual(2);
+		});
+	});
 
+	describe('isActive', function() {
+		it('returns true if active tab equals the input', function() {
+			expect(ctrl.isActive(1)).toEqual(true);
+		});
+	});
+
+	describe('calculate', function() {
 		var quantity = 2;
 
 		it('calculates the total product', function() {

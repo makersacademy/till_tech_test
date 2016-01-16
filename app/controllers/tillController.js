@@ -3,11 +3,22 @@ tillSystem.controller('TillController', ['$http', function($http) {
 	var self = this;
 	self.order = {};
  	self.fiftyDiscount = 0;
+ 	self.totalPrice = 0;
+ 	self.tax = 0;
+ 	self.activeTab = 1;
 
-	$http.get('hipstercoffee.json;')
+	$http.get('./../../hipstercoffee.json')
    	.success(function (data) {
        self.coffeeShopInfo  = data;
    	});
+
+  self.setTab = function(tab) {
+    self.activeTab = tab;
+  };
+
+  self.isActive = function(tab) {
+    return (self.activeTab === tab);
+  };
 
 	self.calculate = function(item) {
 		return Math.round((item[0] * item[1])*100)/100;
@@ -60,6 +71,10 @@ tillSystem.controller('TillController', ['$http', function($http) {
 
 	self.calcTax = function() {
 		self.tax = self.totalPrice - self.totalPrice / 1.0864;
+	};
+
+	self.calcChange = function() {
+		self.change = self.cash - self.totalPrice
 	};
 		
 }]);
