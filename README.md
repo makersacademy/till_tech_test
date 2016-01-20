@@ -31,7 +31,8 @@ $ karma start test/karma.conf.js
 To Do:
 -------
 - BDD
-- Clean Controller
+- Muffin Discount
+- Factory for HTTP request
 
 .....................................................
 
