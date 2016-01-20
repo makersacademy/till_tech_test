@@ -1,7 +1,7 @@
 Till Tech Test
 ==================
 
-Live Site : https://coffeetill.herokuapp.com
+Live Site : https://aqueous-cliffs-8772.herokuapp.com/
 
 Installation
 ------------
@@ -16,7 +16,7 @@ $ npm install
 To run locally, run:
 
 ```sh
-$ node server.js
+$ node app.js
 ```
 and navigate to http://localhost:5000/ in your browser
 
@@ -27,6 +27,12 @@ To run tests:
 ```sh
 $ karma start test/karma.conf.js
 ```
+
+To Do:
+-------
+- BDD
+- Clean Controller
+
 .....................................................
 
 *Instructions*: Please fork this repo and submit a pull request once you've finished. Then prepare for code review!
