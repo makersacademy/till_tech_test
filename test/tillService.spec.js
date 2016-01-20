@@ -69,7 +69,7 @@ describe('TillService', function() {
 			}
 			tillService.addTotal();
 			tillService.minusDiscount();
-			expect(tillService.discount).toEqual(price);
+			expect(tillService.discount).toBeGreaterThan(price);
 		});
 	});
 
