@@ -1,5 +1,40 @@
-Till tech test
-==============
+Till Tech Test
+==================
+
+Live Site : https://aqueous-cliffs-8772.herokuapp.com/
+
+Installation
+------------
+```sh
+$ git clone https://github.com/d9nny/till_tech_test
+```
+Navigate to root directory of the project:
+```sh
+$ bower install 
+$ npm install
+```
+To run locally, run:
+
+```sh
+$ node app.js
+```
+and navigate to http://localhost:5000/ in your browser
+
+Testing
+-------
+
+To run tests:
+```sh
+$ karma start test/karma.conf.js
+```
+
+To Do:
+-------
+- BDD
+- Muffin Discount
+- Factory for HTTP request
+
+.....................................................
 
 *Instructions*: Please fork this repo and submit a pull request once you've finished. Then prepare for code review!
 
@@ -38,7 +73,9 @@ Version 2
 ---------
 
 - Add functionality to take payment and calculate correct change.  
-- Add functionality to handle discounts - in this example, a 5% discount on orders over $50, and a 10% muffin discount.
+- Add functionality to handle discounts - in this example, a 5% discount on orders over $50,
+
+ and a 10% muffin discount.
 
 Version 3
 ---------
