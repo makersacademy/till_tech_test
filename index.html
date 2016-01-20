@@ -1,131 +1,138 @@
 <!doctype html>
 <html lang="en" ng-app='CoffeeTill'>
-<head>
-	<meta charset="utf-8">
-	<title>Till</title>
-	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-	<link rel="stylesheet" href="views/stylesheets/index.css">
+	<head>
+		<meta charset="utf-8">
+		<title>Till</title>
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+		<link rel="stylesheet" href="views/stylesheets/index.css">
 
-	<script src="bower_components/jquery/dist/jquery.js"></script>
-	<script src="bower_components/angular/angular.js"></script>
-	<script src="bower_components/angular-resource/angular-resource.js"></script>
-	<script src="app/app.js"></script>
-	<script src="app/controllers/tillController.js"></script>
-</head>
+		<script src="bower_components/jquery/dist/jquery.js"></script>
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/angular-resource/angular-resource.js"></script>
+		<script src="app/app.js"></script>
+		<script src="app/controllers/tillController.js"></script>
+		<script src="app/services/tillService.js"></script>
+	</head>
 
-<body ng-controller='TillController as tilCtrl'>
-	<header>
-		<h1>{{ tilCtrl.coffeeShopInfo[0].shopName }} Till</h1>
-	</header>
-	<div class='container' ng-show='tilCtrl.isActive(1)'>
-		<div id="till">
-			<div id='listItems'>
-				<ul class="list-group">
-					<ul ng-repeat="(key, value) in tilCtrl.coffeeShopInfo[0].prices[0]">
-						<button id='item' class='btn' ng-click='tilCtrl.addCurrentSelection(key, value); tilCtrl.update()'>
-							{{ key }} <br> <c>{{ value | currency : "£" : symbol : fractionSize }}</c>
-						</button>
+	<body ng-controller='TillController as tilCtrl'>
+		<header>
+			<h1>{{ tilCtrl.coffeeShopInfo[0].shopName }} Till</h1>
+		</header>
+		<div class='container' ng-show='tilCtrl.isActive(1)' >
+			<div id="till">
+				<div id='listItems'>
+					<ul class="list-group">
+						<ul ng-repeat="(key, value) in tilCtrl.coffeeShopInfo[0].prices[0]">
+							<button id='item' class='btn' ng-click='tilCtrl.addSelection(key, value); tilCtrl.update()'>
+								{{ key }} <br> <c>{{ value | currency : "£" : symbol : fractionSize }}</c>
+							</button>
+						</ul>
 					</ul>
-				</ul>
+				</div>
+			</div>
+
+			<div id='receipt'>
+				
+				<div id='orderItems'>
+					<table class="table table-striped" >
+						<colgroup>
+							<col span="1" style="width: 30%;">
+							<col span="1" style="width: 20%;">
+							<col span="1" style="width: 20%;">
+							<col span="1" style="width: 20%;">
+							<col span="1" style="width: 20%;">
+						</colgroup>
+						<thead>
+							<tr >
+								<th>Item</th>
+								<th>Unit Price</th>
+								<th>Quantity</th>
+								<th></th>
+								<th>Line Price</th>
+							</tr>
+						</thead>
+					</table>
+					
+					<div style="height:350px; overflow:auto;">
+						<table class="table table-striped">
+							<colgroup>
+								<col span="1" style="width: 30%;">
+								<col span="1" style="width: 20%;">
+								<col span="1" style="width: 20%;">
+								<col span="1" style="width: 20%;">
+								<col span="1" style="width: 20%;">
+							</colgroup>
+							<tbody>
+								<tr ng-repeat="(key, value) in tilCtrl.order" >
+									<td>{{ key }}</td>
+									<td> {{ value[0] | currency : "£" : symbol : fractionSize }} </td>
+									<td>{{ value[1] }}</td>
+									<td>
+									<button id="qty" type="button" ng-click="tilCtrl.addOne(key); tilCtrl.update()" class="btn btn-default">+</button>
+									<button id="qty" type="button" ng-click="tilCtrl.minusOne(key); tilCtrl.update()" class="btn btn-default">-</button>
+									</td>
+									<td>{{ value[2] | currency : "£" : symbol : fractionSize }}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</div>		
+				<div id="totalPrice">
+					<button id='pay' ng-click="tilCtrl.setTab(2)">Pay</button>
+					<p>
+						Discount: {{ tilCtrl.discount | currency : "£" : symbol : fractionSize }}<br>
+						Tax: {{ tilCtrl.tax | currency : "£" : symbol : fractionSize }}<br>
+						Total: {{ tilCtrl.totalPrice	| currency : symbol : fractionSize }}
+					</p>
+				</div>
 			</div>
 		</div>
 
-		<div id='receipt'>
-			<div id='orderItems'>
-				<table class="table table-striped" >
-					<colgroup>
-					<col span="1" style="width: 30%;">
-					<col span="1" style="width: 20%;">
-					<col span="1" style="width: 20%;">
-					<col span="1" style="width: 20%;">
-					<col span="1" style="width: 20%;">
-				</colgroup>
-				<thead>
-					<tr >
-						<th>Item</th>
-						<th>Unit Price</th>
-						<th>Quantity</th>
-						<th></th>
-						<th>Line Price</th>
-					</tr>
-				</thead>
-			</table>
-			<div style="height:350px; overflow:auto;">
-				<table class="table table-striped">
-					<colgroup>
-					<col span="1" style="width: 30%;">
-					<col span="1" style="width: 20%;">
-					<col span="1" style="width: 20%;">
-					<col span="1" style="width: 20%;">
-					<col span="1" style="width: 20%;">
-				</colgroup>
-				<tbody>
-					<tr ng-repeat="(key, value) in tilCtrl.order" >
-						<td>{{ key }}</td>
-						<td> {{ value[0] | currency : "£" : symbol : fractionSize }} </td>
-						<td>{{ value[1] }}</td>
-						<td>
-							<button id="qty" type="button" ng-click="tilCtrl.addOne(key); tilCtrl.update()" class="btn btn-default">+</button>
-							<button id="qty" type="button" ng-click="tilCtrl.minusOne(key); tilCtrl.update()" class="btn btn-default">-</button>
-						</td>
-						<td>{{ value[2] | currency : "£" : symbol : fractionSize }}</td>
-					</tr>
-				</tbody>
-			</table>
+		<div id="cashInput" ng-show='tilCtrl.isActive(2)'>
+			<p>Cash Amount</p>
+			£<input ng-model="tilCtrl.cash" name='Cash Amount'>
+			<button id="print" ng-click='tilCtrl.setTab(3); tilCtrl.complete()'>Enter</button>
 		</div>
-	</div>
-	<div id="totalPrice">
-		<button id='pay' ng-click="tilCtrl.setTab(2)">Pay</button>
-		<p>
-			Discount: {{ tilCtrl.fiftyDiscount | currency : "£" : symbol : fractionSize }}<br>
-			Tax: {{ tilCtrl.tax | currency : "£" : symbol : fractionSize }}<br>
-			Total: {{ tilCtrl.totalPrice	| currency : symbol : fractionSize }}
-		</p>
-	</div>
-</div>
-</div>
-<div id="cashInput" ng-show='tilCtrl.isActive(2)'>
-	<p>Cash Amount</p>
-	£<input ng-model="tilCtrl.cash" name='Cash Amount'>
-	<button id="print" ng-click='tilCtrl.setTab(3); tilCtrl.calcChange();'>Enter</button>
-</div>
-<div ng-show='tilCtrl.isActive(3)' style="text-align: center;">
-	<button id="print" onClick="window.print()" ng-click='tilCtrl.setTab(1)'>Print</button>
-	<div id="printReceipt">
-		<div id="top">
-			<h4>{{ tilCtrl.coffeeShopInfo[0].shopName }}</h1>
-				<h5>Address: {{ tilCtrl.coffeeShopInfo[0].address }}</h5>
-				<h5>Tel: {{ tilCtrl.coffeeShopInfo[0].phone }}</h5>
+
+		<div ng-show='tilCtrl.isActive(3)' style="text-align: center;">
+			<button id="print" onClick="window.print()" ng-click='tilCtrl.setTab(1)'>Print</button>
+			<div id="printReceipt">
+				<div id="top">
+					<h3>{{ tilCtrl.coffeeShopInfo[0].shopName }}</h3>
+					<br>
+					<h5>Address: {{ tilCtrl.coffeeShopInfo[0].address }}</h5>
+					<h5>Tel: {{ tilCtrl.coffeeShopInfo[0].phone }}</h5>
+				</div>
+				<br>
+				<br>
+				<div id="receiptItems">
+					<table class="table">
+						<colgroup>
+							<col span="1" style="width: 75%;">
+							<col span="1" style="width: 10%;">
+							<col span="1" style="width: 50%;">
+							<col span="1" style="width: 10%;">
+						</colgroup>
+						<tbody>
+							<tr ng-repeat="(key, value) in tilCtrl.order" >
+								<td>{{ key }}</td>
+								<td> {{ value[0] | currency: "£" : symbol : fractionSize }} </td>
+								<td>{{ value[1] }}</td>
+								<td>{{ value[2] | currency: "£" : symbol : fractionSize }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<p>
+					Discount: {{ tilCtrl.discount | currency : "£" : symbol : fractionSize }}<br>
+					Tax: {{ tilCtrl.tax | currency : "£" : symbol : fractionSize }}<br>
+					Total: {{ tilCtrl.totalPrice	| currency : "£" : symbol : fractionSize }}<br>
+					Cash: {{ tilCtrl.cash	| currency : "£" : symbol : fractionSize }}<br>
+					Change: {{ tilCtrl.change	| currency : "£" : symbol : fractionSize }}
+				</p>
 			</div>
-			<br>
-			<br>
-			<div id="receiptItems">
-				<table class="table">
-					<colgroup>
-					<col span="1" style="width: 75%;">
-					<col span="1" style="width: 10%;">
-					<col span="1" style="width: 50%;">
-					<col span="1" style="width: 10%;">
-				</colgroup>
-				<tbody>
-					<tr ng-repeat="(key, value) in tilCtrl.order" >
-						<td>{{ key }}</td>
-						<td> {{ value[0] | currency: "£" : symbol : fractionSize }} </td>
-						<td>{{ value[1] }}</td>
-						<td>{{ value[2] | currency: "£" : symbol : fractionSize }}</td>
-					</tr>
-				</tbody>
-			</table>
+			<br><br><br>
 		</div>
-		<p>
-			Discount: {{ tilCtrl.fiftyDiscount | currency : "£" : symbol : fractionSize }}<br>
-			Tax: {{ tilCtrl.tax | currency : "£" : symbol : fractionSize }}<br>
-			Total: {{ tilCtrl.totalPrice	| currency : "£" : symbol : fractionSize }}<br>
-			Cash: {{ tilCtrl.cash	| currency : "£" : symbol : fractionSize }}<br>
-			Change: {{ tilCtrl.change	| currency : "£" : symbol : fractionSize }}
-		</p>
-	</div>
-	<br><br><br>
-</div>
-</body>
+	</body>
 <html>
