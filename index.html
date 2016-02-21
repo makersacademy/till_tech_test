@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html ng-app="TillReceiptApp">
+<head>
+  <link href='public/style.css' rel='stylesheet' media="screen" type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Homemade+Apple' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+  <title>hipsterTill</title>
+</head>
+<body ng-controller="TillReceiptController as mainCtrl">
+
+  <h1>hipsterTill</h1>
+  <h2>becauseCamelCaseIsn'tJustForJavascript...</h2>
+
+  <div class="menu">
+    <table>
+      <tr>
+        <th class="leftColumn">Item</th>
+        <th>Price</th>
+      </tr>
+      <tr ng-repeat="(key, value) in mainCtrl.items">
+        <td class="leftColumn">{{key}}</td>
+        <td>£{{value}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="till">
+    Select item to add to order: 
+    <form>
+      <select ng-model="mainCtrl.itemName">
+        <option ng-repeat="(key, value) in mainCtrl.items">{{key}}</option>
+      </select>
+      <select ng-model="mainCtrl.itemQuantity">
+        <option ng-repeat="number in mainCtrl.quantity">{{number}}</option>
+      </select>
+      <input type="submit" value="Add To Order" ng-click="mainCtrl.addToOrder(mainCtrl.itemName, mainCtrl.itemQuantity)">
+    </form>
+    Type in how much the customer has paid:
+    <form>
+      <input type="text" ng-model="amountPaid" placeholder="Amount paid..."></input>
+      <input type="submit" value="Confirm Payment" ng-click="mainCtrl.customerPayment(amountPaid)"></input>
+    </form>
+  </div>
+
+  <div class="receipt">
+    <p>{{mainCtrl.shopName}}</p>
+    <p>{{mainCtrl.address}}</p>
+    <p>{{mainCtrl.phone}}</p>
+    <span>You ordered:</span>
+    <table>
+      <tr ng-model="mainCtrl.individualOrderItems" ng-repeat="item in mainCtrl.individualOrderItems track by $index">
+        <td class="leftColumn">{{item}}</td>
+        <td>£ {{mainCtrl.items[item]}}</td>
+      </tr>
+    </table>
+    <br>
+    <table>
+      <tr>
+        <td class="leftColumn">Total:</td>
+        <td>£ {{mainCtrl.confirmedPreTaxOrderTotal}}</td>
+      </tr>
+      <tr>
+        <td class="leftColumn">Tax:</td>
+        <td>£ {{mainCtrl.calculatedTax}}</td>
+      </tr>
+      <tr>
+        <td class="leftColumn">Total with Tax:</td>
+        <td>£ {{mainCtrl.confirmedPostTaxOrderTotal}}</td>
+      </tr>
+      <tr>
+        <td class="leftColumn" >Cash:</td>
+        <td>£ {{amountPaid}}<span ng-if="">0</span></td>
+      </tr>
+      <tr>
+        <td class="leftColumn">Change Due:</td>
+        <td ng-model="amountPaid">£ {{mainCtrl.changeDueToCustomer}}</td>
+      </tr>
+    </table>
+    <br>
+
+    <div ng-if="mainCtrl.message!==''">{{mainCtrl.muffinMessage}}</div>
+    <div ng-if="mainCtrl.message!==''">{{mainCtrl.overFiftyMessage}}</div>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="js/tillReceipt.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/tillReceiptController.js"></script>
+
+</body>
+</html>

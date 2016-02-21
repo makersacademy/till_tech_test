@@ -1,0 +1,27 @@
+{
+  "name": "till_tech_test",
+  "version": "1.0.0",
+  "description": "creating a till that prints a receipt",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashleigh090990/till_tech_test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ashleigh090990/till_tech_test/issues"
+  },
+  "homepage": "https://github.com/ashleigh090990/till_tech_test#readme",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "jasmine-core": "^2.3.4",
+    "phantomjs": "^1.9.17",
+    "protractor": "^2.1.0"
+  },
+  "dependencies": {
+    "http-server": "^0.8.0"
+  }
+}

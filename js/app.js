@@ -1,0 +1,1 @@
+var tillReceiptApp = angular.module('TillReceiptApp',[]);
