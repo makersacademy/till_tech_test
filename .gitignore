@@ -1,0 +1,8 @@
+.cache
+images
+.hound.yml
+.rubocop.yml
+.travis.yml
+CONTRIBUTING.md
+disabled.yml
+enabled.yml
