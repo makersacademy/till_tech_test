@@ -1,9 +1,10 @@
-Till tech test
-==============
+# Till tech test
 
 # About :coffee:
 
 This is my solution to the Till tech test, requirements specified below.
+
+I also used this tech test to learn Python and how to test-drive with Python's `unittest` testing framework.
 
 # Features :star2:
 
