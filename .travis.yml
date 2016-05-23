@@ -1,1 +1,1 @@
-script: bundle exec rspec spec
+script: pip3 install green && green
