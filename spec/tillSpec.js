@@ -11,4 +11,9 @@ describe("Till", function() {
     expect(till.customersNames()).toEqual(['Jane']);
   });
 
+  it('can store the table number', function(){
+    till.addTableNumber(4);
+    expect(till.tableNumber()).toEqual(4)
+  })
+
 });
