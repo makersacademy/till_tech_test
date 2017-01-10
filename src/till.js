@@ -66,3 +66,12 @@ Till.prototype.printReceipt = function () {
               }
   return receipt;
 };
+
+Till.prototype.makePayment = function (amount) {
+  if (amount >= this.subTotal()){
+   var change = (amount * 10 - this.subTotal() * 10) / 10;
+   return change;
+ } else {
+   return "Insufficient payment, the total is " + this.subTotal();
+ }
+};
