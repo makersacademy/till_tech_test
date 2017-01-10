@@ -34,3 +34,13 @@ Till.prototype.addOrder = function (order) {
 Till.prototype.ordersList = function () {
   return this.orders;
 };
+
+Till.prototype.subTotal = function () {
+  var total = 0;
+  var orderTotal = 0;
+  for (order in this.orders) {
+    orderTotal = this.orders[order][0] * this.orders[order][1];
+    total += orderTotal
+  }
+  return total;
+};

@@ -28,4 +28,11 @@ describe("Till", function() {
     expect(till.ordersList()).toEqual({'Cafe Latte': [ 5, 4.75 ]})
   });
 
+  it('can add up the bill', function(){
+    for ( i = 0; i < 5; i++ ) {
+      till.addOrder('Cafe Latte');
+    }
+    expect(till.subTotal()).toEqual(23.75);
+  });
+
 });
