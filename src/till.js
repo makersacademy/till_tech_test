@@ -3,6 +3,8 @@ function Till() {
   this.tableNum = null;
   this.orders = {};
   this.taxRate = 8.64;
+  this.thresholdDiscountPercentage = 5;
+  this.muffinDiscountPercentage = 10;
 };
 
 Till.prototype.addCustomerName = function (name) {
@@ -71,7 +73,27 @@ Till.prototype.makePayment = function (amount) {
   if (amount >= this.subTotal()){
    var change = (amount * 10 - this.subTotal() * 10) / 10;
    return change;
- } else {
+  } else {
    return "Insufficient payment, the total is " + this.subTotal();
- }
+  }
+};
+
+Till.prototype.thresholdDiscount = function () {
+  var discount;
+  if (this.subTotal() > 50) {
+    discount = (this.subTotal() / 100) * this.thresholdDiscountPercentage;
+  return Math.floor(discount * 100) / 100;
+  }
+};
+
+Till.prototype.muffinDiscount = function () {
+  var discount;
+  var orderTotal = 0;
+  for (order in this.orders) {
+    if (order == "Blueberry Muffin" || order == "Chocolate Chip Muffin") {
+      orderTotal += this.orders[order][0] * this.orders[order][1];
+    }
+  }
+  discount = orderTotal / 100 * this.muffinDiscountPercentage;
+  return Math.floor(discount * 100) / 100;
 };
