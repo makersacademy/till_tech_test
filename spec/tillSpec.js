@@ -41,7 +41,10 @@ describe("Till", function() {
         "orders": { 'Cafe Latte': [ 5, 4.75 ] },
         "taxRate": 8.64,
         "tax": 2.06,
-        "total": 23.75
+        "subTotal": 23.75,
+        "thresholdDiscount": 0,
+        "muffinDiscount": 0,
+        "amountDue": 23.75
       });
   });
 
@@ -66,6 +69,11 @@ describe("Till", function() {
     expect(till.muffinDiscount()).toEqual(0.81);
   });
 
-
+  it('can give you a final bill due after discount', function(){
+    for (i = 0; i < 10; i ++) {
+      till.addOrder("Choc Mousse");
+    }
+    expect(till.finalTotal()).toEqual(100.47);
+  });
 
 });

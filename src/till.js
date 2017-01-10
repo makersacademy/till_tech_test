@@ -64,7 +64,10 @@ Till.prototype.printReceipt = function () {
                 "orders": this.listOrders(),
                 "taxRate": this.taxRate,
                 "tax": this.calculateTax(),
-                "total": this.subTotal()
+                "subTotal": this.subTotal(),
+                "thresholdDiscount": this.thresholdDiscount(),
+                "muffinDiscount": this.muffinDiscount(),
+                "amountDue": this.finalTotal()
               }
   return receipt;
 };
@@ -84,6 +87,7 @@ Till.prototype.thresholdDiscount = function () {
     discount = (this.subTotal() / 100) * this.thresholdDiscountPercentage;
   return Math.floor(discount * 100) / 100;
   }
+  return 0;
 };
 
 Till.prototype.muffinDiscount = function () {
@@ -96,4 +100,12 @@ Till.prototype.muffinDiscount = function () {
   }
   discount = orderTotal / 100 * this.muffinDiscountPercentage;
   return Math.floor(discount * 100) / 100;
+};
+
+Till.prototype.finalTotal = function () {
+  if (this.subTotal() < 50) {
+    return (this.subTotal() * 100 - this.muffinDiscount() * 100) / 100;
+  } else {
+    return (this.subTotal() * 100 - (this.thresholdDiscount() * 100 + this.muffinDiscount() * 100)) / 100;
+  }
 };
