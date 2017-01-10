@@ -32,7 +32,7 @@ Till.prototype.addOrder = function (order) {
   }
 };
 
-Till.prototype.ordersList = function () {
+Till.prototype.listOrders = function () {
   return this.orders;
 };
 
@@ -51,4 +51,18 @@ Till.prototype.calculateTax = function () {
   var tax = (total / 100) * this.taxRate;
   var rounded = Math.ceil(tax * 100)/100;
   return rounded;
+};
+
+Till.prototype.printReceipt = function () {
+  var receipt = { "shopName": menu[0].shopName,
+                "address": menu[0].address,
+                "phone": menu[0].phone,
+                "customer": this.customersNames(),
+                "table": this.tableNumber(),
+                "orders": this.listOrders(),
+                "taxRate": this.taxRate,
+                "tax": this.calculateTax(),
+                "total": this.subTotal()
+              }
+  return receipt;
 };
