@@ -2,6 +2,7 @@ function Till() {
   this.customers = [];
   this.tableNum = null;
   this.orders = {};
+  this.taxRate = 8.64;
 };
 
 Till.prototype.addCustomerName = function (name) {
@@ -43,4 +44,11 @@ Till.prototype.subTotal = function () {
     total += orderTotal
   }
   return total;
+};
+
+Till.prototype.calculateTax = function () {
+  var total = this.subTotal();
+  var tax = (total / 100) * this.taxRate;
+  var rounded = Math.ceil(tax * 100)/100;
+  return rounded;
 };
