@@ -8,18 +8,27 @@
 
 <body>
 
-  <form>
+
+
+  <form id="menu-form">
     Customer Names: <input id="customer-name" type="text" name="customer-name">
     Table No. <input id="table-number" type="number" name="table-number">
-    <input id="start-button" type="submit" value="Submit">
-  </form>
-
-
-  <form>
+    <br>
     <select id="menu">
+      <option value='0'>Please Select Order</option>
     </select>
-    <input id="order-button" type="submit" value="Submit">
+    <input id="order-button" type="submit" value="Add Order">
   </form>
+
+  <div id='receipt'>
+
+  </div>
+
+  <button id='print-receipt'>Print Receipt</button>
+
+
+
+
 
   <script type="text/javascript" src="hipstercoffee.json"></script>
   <script src="src/till.js"></script>

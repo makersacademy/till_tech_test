@@ -12,7 +12,7 @@ describe("Till", function() {
   });
 
   it('can store the customers names', function(){
-    expect(till.customersNames()).toEqual(['Jane']);
+    expect(till.customersNames()).toEqual('Jane');
   });
 
   it('can store the table number', function(){
@@ -36,7 +36,7 @@ describe("Till", function() {
       { "shopName": "The Coffee Connection",
         "address": "123 Lakeside Way",
         "phone": "16503600708",
-        "customer": ["Jane"],
+        "customer": "Jane",
         "table": 4,
         "orders": { 'Cafe Latte': [ 5, 4.75 ] },
         "taxRate": 8.64,
