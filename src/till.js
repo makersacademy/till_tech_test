@@ -45,7 +45,7 @@ Till.prototype.subTotal = function () {
     orderTotal = this.orders[order][0] * this.orders[order][1];
     total += orderTotal
   }
-  return (total * 100) / 100;
+  return Math.floor(total * 100) / 100;
 };
 
 Till.prototype.calculateTax = function () {
