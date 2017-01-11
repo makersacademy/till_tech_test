@@ -2,6 +2,8 @@ $(document).ready(function() {
 
     var till = new Till;
 
+    $('#payment').hide();
+
     var displayMenuSelections = function(){
       var menuSelection = menu[0].prices[0];
       var menuItems = Object.keys(menuSelection);
@@ -26,7 +28,6 @@ $(document).ready(function() {
     $('#print-receipt').click(function(){
       var receipt = till.printReceipt();
       var orders = receipt.orders;
-      console.log(orders);
         for (var key in receipt) {
           if (key != "orders"){
             $('#receipt').append($('<p>' + key + " : " + receipt[key] + '</p>'));
@@ -36,6 +37,13 @@ $(document).ready(function() {
             }
           }
         }
+        $('#payment').show();
+    });
+
+    $('#payment-button').click(function(event){
+      event.preventDefault();
+      var change = till.makePayment($('#payment-amount').val());
+      $('#change').append($('<h4>Change: £ ' + change + '</h4>'));
     });
 
 });
