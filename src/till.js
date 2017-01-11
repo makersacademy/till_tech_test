@@ -94,7 +94,7 @@ Till.prototype.muffinDiscount = function () {
   var discount;
   var orderTotal = 0;
   for (order in this.orders) {
-    if (order == "Blueberry Muffin" || order == "Chocolate Chip Muffin" || order == "Muffin of The Day") {
+    if (order.indexOf("Muffin") !== -1){
       orderTotal += this.orders[order][0] * this.orders[order][1];
     }
   }

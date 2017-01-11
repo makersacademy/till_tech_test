@@ -38,6 +38,7 @@ $(document).ready(function() {
           }
         }
         $('#payment').show();
+        $('#print-receipt').hide();
     });
 
     $('#payment-button').click(function(event){
