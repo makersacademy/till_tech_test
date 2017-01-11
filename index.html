@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Till Tech Test</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+
+
+  <form id="menu-form">
+    Customer Names: <input id="customer-name" type="text" name="customer-name">
+    Table No. <input id="table-number" type="number" name="table-number">
+    <br>
+    <select id="menu">
+      <option value='0'>Please Select Order</option>
+    </select>
+    <input id="order-button" type="submit" value="Add Order">
+  </form>
+
+  <div id='receipt'>
+  </div>
+
+  <button id='print-receipt'>Print Receipt</button>
+
+
+  <form id='payment'>
+    Amount paid:<input type='number' name='payment' id='payment-amount'>
+    <input id="payment-button" type='submit' value='Pay'>
+  </form>
+
+  <div id='change'>
+  </div>
+
+
+
+  <script type="text/javascript" src="hipstercoffee.json"></script>
+  <script src="src/till.js"></script>
+  <script src="src/index.js"></script>
+</body>
+</html>
